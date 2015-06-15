@@ -1,0 +1,23 @@
+Who is this guy?
+    - Kyle Joecken
+    - Several years of experience teaching Calculus at Ohio State
+    - Several years coding experience, 18 months in Python
+
+What is a computer?
+    - Fast and accurate
+    - Dumb
+
+What is a Program?
+    - A list of precise instructions
+    - A creative pursuit
+    - A series of highs/lows, frustration/elation
+    - The lifeblood of your machine
+
+What is a language?
+    - A set of instructions designed for a specific class of tasks
+    - A translator for communicating with your computer
+
+How do I learn to program?
+    - Get curious/inspired
+    - Code every day
+    - Ask questions (Google-fu)
