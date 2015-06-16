@@ -8,4 +8,4 @@ def string_to_ascii(s):
     return output
 
 print(string_to_ascii("ABC"))
-print(string_to_ascii("KEL"))
+print(string_to_ascii("Kyle"))
