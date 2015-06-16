@@ -5,10 +5,15 @@ s = "Hello world"
 
 # Exercise 1: I want to live in a Jello world.  Do it with slicing.
 
-t = s[]
+t = s[:]
 print t
 
-# Exercise 2: Use a negative step to print 'row'.  Hint: try s[::-1]
+# Exercise 2: Use stepping to get the string 'lowrd'.
 
-v = s[]
+u = s[::]
+print u
+
+# Exercise 3: Use a negative step to print 'row'.  Hint: try s[::-1]
+
+v = s[::]
 print v
