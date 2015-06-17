@@ -6,13 +6,41 @@
 #   3. Allow the user to change the maximum using from sys import argv;
 #           you'd call the script with python 06_guess_number.py <max>
 
-import randint from random
+from random import randint
+from sys import argv
 
 # store a random integer as `target` (google randint for help)
+print "Welcome to the number guessing game."
 
-target = 45
+min_guess = int(argv[1])
+max_guess = int(argv[2])
+target = randint(min_guess, max_guess)
+correct = False
+guess_count = 0
+guess_limit = 10
 
-while <condition>:
+while not correct:
+    if guess_count <= guess_limit:
+	    guess = int(raw_input("Enter a number between %d and %d: " % (min_guess, max_guess)))
+	    if guess < target:
+		print "Too low!"
+		if guess > min_guess:
+			min_guess = guess
+	    elif guess > target:
+		if guess < max_guess:
+			max_guess = guess
+		print "Too high!"
+	    else:
+		correct = True
+	    guess_count += 1
+    else:
+	    print "You ran out of guesses. The target number was", target
+	    break
+
+if correct:
+	print "Correct!"
+	print "You took", guess_count, "guesses."
+    
     # any indented code will run over and over again
     # until the condition is no longer true
 
