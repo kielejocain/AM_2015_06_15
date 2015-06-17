@@ -28,5 +28,5 @@ txt_again = open(file_again)
 print txt_again.read()
 
 # close files to prevent memory leakage
-close(txt)
-close(txt_again)
+txt.close()
+txt_again.close()
