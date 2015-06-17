@@ -23,9 +23,10 @@ while (guess != target) and (guesses_left > 0) :
 	guesses_left -= 1
 	# print "You guessed " + str(guess)
 	if guess < target :
-		guess = "Too low. You now have " + int(raw_input("Too low. Guess again: "))
+		guess = int(raw_input("Too low. Guess again: "))
 	else :
 		guess = int(raw_input("Too high. Guess again: "))
+	print
 
 if count < max_guesses :
 	print "Congratulations! You guessed " + str(target) + " correctly!"
