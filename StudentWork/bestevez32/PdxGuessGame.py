@@ -6,16 +6,17 @@
 #   3. Allow the user to change the maximum using from sys import argv;
 #           you'd call the script with python 06_guess_number.py <max>
 
-from random import randint
+from random import randint 
 
 # store a random integer as `target` (google randint for help)
 
-target = 45
+target = randint(1, 100)
+guessed = False
 
-while <condition>:
+while not guessed:
     # any indented code will run over and over again
     # until the condition is no longer true
 
 # code no longer indented will run once the while loop
 # is finished.  Is there anything you need to do to clean up?
-# If so, put it here.
+# If so, put it here. 
