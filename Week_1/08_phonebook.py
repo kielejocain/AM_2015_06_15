@@ -1,4 +1,6 @@
 # Create a dictionary of dictionaries to hold your data.
+# If you want more of a challenge, try to add various checks and loops
+# to increase the usability.
 phonebook = {
     'joecken': {'name': 'Kyle Joecken', 'phone': '503-555-1212'},
     'jones': {'name': 'Chris Jones', 'phone': '503-234-5678'}
@@ -6,7 +8,6 @@ phonebook = {
 
 
 def add():
-    # add an entry to your phonebook.
     pass
 
 

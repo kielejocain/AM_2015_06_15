@@ -6,7 +6,7 @@
 #   3. Allow the user to change the maximum using from sys import argv;
 #           you'd call the script with python 06_guess_number.py <max>
 
-import randint from random
+from random import randint
 
 # store a random integer as `target` (google randint for help)
 
