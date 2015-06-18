@@ -1,0 +1,1 @@
+x = int(raw_input())

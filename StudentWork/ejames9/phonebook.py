@@ -1,6 +1,4 @@
 # Create a dictionary of dictionaries to hold your data.
-# If you want more of a challenge, try to add various checks and loops
-# to increase the usability.
 phonebook = {
     'joecken': {'name': 'Kyle Joecken', 'phone': '503-555-1212'},
     'jones': {'name': 'Chris Jones', 'phone': '503-234-5678'}
@@ -8,23 +6,43 @@ phonebook = {
 
 
 def add():
-    pass
+    # add an entry to your phonebook.
+    last_name = raw_input("What is the last name of the contact? >>")
+    first_name = raw_input("What is their first name? >>")
+    phone = raw_input("What is their phone number? >>")
+    entry = {
+        'name': first_name + " " + last_name,
+        'phone': phone
+    }
 
 
 def edit():
     # change an entry in your phonebook.  Use del if necessary!
-    pass
+    key = raw_input("What is the last name of the contact you'd like to edit?")
+    if key in phonebook:
+        print "The last name of this contact is %s." % key
+        entry[last_name] = raw_input
+    else:
+            pass
 
 
 def delete():
+    wish = False
+
     # delete an entry from the phonebook if it exists.
-    pass
+    key = raw_input("What is the name of the contact you'd like to delete?")
+    if key in phonebook:
+        del phonebook[key]
+    else:
+        print "Name not found."
+    print phonebook
 
 
 def search():
     # find and print an entry if it exists.
-    pass
-
+     key = raw_input("What is the last name of the contact? >>")
+     print phonebook[key]
+    
 
 # MAIN LOOP
 # keep track of whether or not we're done
