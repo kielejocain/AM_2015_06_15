@@ -5,7 +5,7 @@ def multi_multiply(*factors):
     return output
 
 
-def purchase(inventory, **purchase):
+def bulk_purchase(inventory, **purchase):
     for item in purchase:
         if item in inventory:
             inventory[item] += purchase[item]
@@ -21,6 +21,6 @@ fruit = {
     'oranges': 23
 }
 
-purchase(fruit, apples = 5, bananas = 15)
+bulk_purchase(fruit, apples = 5, bananas = 15)
 
 print fruit['apples']
