@@ -45,7 +45,7 @@ print output[:-3]
 
 # An alternative method below uses a "list comprehension" to build a list of
 # factors and their exponents procedurally, element by element.  You can then
-# `join` the list with the `join` method on " * ".
+# glue the list together into one long string with the `join` method on " * ".
 
 # factors = [factor_print(counts, factor) for factor in sorted(counts.keys())]
 #
