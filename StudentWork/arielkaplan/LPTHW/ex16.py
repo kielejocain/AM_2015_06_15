@@ -30,6 +30,9 @@ target.write("\n")
 target.write(line3)
 target.write("\n")
 
+# One line
+target.write(line1 + "\n" + line2 + "\n" + line3 + "\n")
+
 # Must close file before can reopen
 target.close()
 
