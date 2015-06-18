@@ -1,0 +1,3 @@
+This is the file that I am going to use for the exercise # 15 in Learning 
+Python the Hard Way. It is full of useless information that is completely
+irrelevant to anything other than this particular exercise.
