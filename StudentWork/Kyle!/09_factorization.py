@@ -48,5 +48,10 @@ print output[:-3]
 # glue the list together into one long string with the `join` method on " * ".
 
 # factors = [factor_print(counts, factor) for factor in sorted(counts.keys())]
+
+# or even better (i.e., without the function call)
+
+# factors = ["^".join([str(factor), str(counts[factor])]) if counts[factor] > 1 \
+#     else str(factor) for factor in sorted(counts.keys())]
 #
-# print " * ".join(factors)
+# print str(target) + " = " + " * ".join(factors)
