@@ -1,0 +1,10 @@
+DICTIONARIES
+
+lists: access items using integer as index
+
+dictionary: use a string or some other thing as the index.
+
+coin_values = {'penny': 1, 'nickel': 5, 'dime': 10, 'quarter': 25}
+
+coin_values['dime'] --> returns 10
+
