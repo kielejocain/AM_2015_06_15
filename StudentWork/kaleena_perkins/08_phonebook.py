@@ -21,6 +21,7 @@ def add():
 
 def edit():
     # change an entry in your phonebook.  Use del if necessary!
+    #use .update then pass in a dict of the updated info
     contact = raw_input("Who do you want to edit?")
     phonebook.get(contact)
     print phonebook[contact]
