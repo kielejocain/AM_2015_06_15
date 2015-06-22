@@ -1,0 +1,9 @@
+homework 6/18
+
+ex 22, 23, 24
+
+use yahtzeerolls on Kyle's github, or pycross, or nhl_sql 
+or use another python program. 
+
+
+

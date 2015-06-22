@@ -4,4 +4,13 @@
 
 statement = raw_input("Please enter a statment to reverse.\n>> ")
 
-print " ".join( [x for x in reversed(statement.split(" "))] )
+words_list = statement.split()
+words_list.reverse()
+
+reverse_statement = ""
+
+for word in words_list:
+	reverse_statement += word
+	reverse_statement += " "
+	
+print reverse_statement

@@ -2,7 +2,7 @@
 
 # strings are immutable.  They cannot be changed.
 x = 'foo'
-y = x
+y = x # refers to the same area in memory. can check with id(y)
 print x # foo
 y += 'bar'
 print x # still foo
@@ -10,7 +10,7 @@ print x # still foo
 # perhaps that went as you expected.
 # lists, however, are mutable.  This can lead to unexpected behavior.
 x = [1, 2, 3]
-y = x
+y = x # x and y now refer to the same place in memory 
 print x # [1, 2, 3]
 y += [3, 2, 1]
 print x # [1, 2, 3, 3, 2, 1]
