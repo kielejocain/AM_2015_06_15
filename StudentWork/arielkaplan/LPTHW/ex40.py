@@ -14,6 +14,13 @@ happy_bday = Song(["Happy birthday to you",
 bulls_on_parade = Song(["They rally around tha family",
 						"With pockets full of shells"])
 
+marys_lamb = Song(["Mary had a little lamb",
+				   "(Little lamb, little lamb)",
+				   "Mary had a little lamb",
+				   "Its fleece was white as snow."])
+
 happy_bday.sing_me_a_song()
 
 bulls_on_parade.sing_me_a_song()
+
+marys_lamb.sing_me_a_song()
