@@ -2,13 +2,13 @@ def new(num_buckets=256):
 	"""Initializes a Map with the given number of buckets."""
 	aMap = []
 	for i in range(0, num_buckets):
-		aMap.append([])
+		aMap.append([]) # aMap is a list of 256 empty lists
 	return aMap
 
 def hash_key(aMap, key):
 	"""Given a key, this will create a number and then convert it to
-	an index for the aMap's buckets."""
-	return hash(key) % len(aMap)
+	an index for the aMap's buckets.""" # returns an index for key in aMap??
+	return hash(key) % len(aMap) # keeps hash number within available 256 buckets
 
 def get_bucket(aMap, key):
 	"""Given a key, find the bucket where it would go."""
@@ -22,10 +22,43 @@ def get_slot(aMap, key, default=None):
 	"""
 	bucket = get_bucket(aMap, key)
 
-	for i, kv in enumerate(bucket):
-		k, v = kv # is this a list? is kv a standard name?
-		if key == k:
+	for i, kv in enumerate(bucket): # i= bucket, kv is key/value in that bucket
+		k, v = kv # tuple, broken up into k and v
+		if key == k: # is the key the one I'm looking for? if y, return everything
 			return i, k, v
 
-	return -1, key, default
+	return -1, key, default # if we never find it, return hashplacement? "-1" --> not there
 
+def get(aMap, key, default=None):
+	"""Gets the value in a bucket for the given key, or the default."""
+	i, k, v = get_slot(aMap, key, default=default)
+	return v
+
+def set(aMap, key, value):
+	"""Sets the key to the value, replacing any existing value."""
+	bucket = get_bucket(aMap, key)
+	i, k, v = get_slot(aMap, key)
+
+	if i >= 0:
+		# the key exists, replace it
+		bucket[i] = (key, value) # (i == -1 if does not exist)
+	else:
+		# the key does not, append to create it
+		bucket.append((key, value))
+
+def delete(aMap, key):
+	"""Deletes the given key from the Map."""
+	bucket = get_bucket(aMap, key)
+
+	for i in xrange(len(bucket)):
+		k, v = bucket[i]
+		if key == k:
+			del bucket[i]
+			break
+
+def list(aMap):
+	"""Prints out what's in the Map."""
+	for bucket in aMap:
+		if bucket:
+			for k, v in bucket:
+				print k, v

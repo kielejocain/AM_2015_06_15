@@ -7,6 +7,12 @@ class Song(object):
 		for line in self.lyrics:
 			print line
 
+	def __repr__():
+		"""If you ask for the object, it'll just say what class it is,
+		and where it is in memory. This tells the object how to represent
+		itself."""
+		pass
+
 happy_bday = Song(["Happy birthday to you",
 				   "I don't want to get sued",
 				   "So I'll stop right there"])
