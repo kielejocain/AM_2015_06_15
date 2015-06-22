@@ -4,6 +4,17 @@
 
 statement = raw_input("Please enter a statment to reverse.\n>> ")
 
+# Short version
+
+print " ".join(statement.split()[::-1])
+# or in more detail:
+words = statement.split()
+sdrow = words[::-1]
+output = " ".join(sdrow)
+print output
+
+# Long version
+
 words = []
 start = 0
 
