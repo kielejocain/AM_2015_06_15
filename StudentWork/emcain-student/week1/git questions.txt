@@ -1,0 +1,1434 @@
+Windows PowerShell
+Copyright (C) 2014 Microsoft Corporation. All rights reserved.
+
+PS C:\Users\Emily> cd desktop/codeguild/AM_2015_06_15/StudentWork/emcain-student
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+  File "game.py", line 3
+    def end:
+           ^
+SyntaxError: invalid syntax
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 2
+As you wander across the sand you notice what seems to be an abandoned fleet of fishing boats in the distance.
+1. approach the boats.
+2. head back to the docks.
+> 2
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 1
+The Royal Guard catches you and throws you in prison.
+It wasn't supposed to end like this...
+ **********
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 3
+cliffs happen
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 2
+As you wander across the sand you notice what seems to be an abandoned fleet of fishing boats in the distance.
+1. approach the boats.
+2. head back to the docks.
+> 1
+Traceback (most recent call last):
+  File "game.py", line 64, in <module>
+    start()
+  File "game.py", line 24, in start
+    beach()
+  File "game.py", line 48, in beach
+    start()
+  File "game.py", line 20, in start
+    guard()
+  File "game.py", line 34, in guard
+    end()
+  File "game.py", line 5, in end
+    start()
+  File "game.py", line 24, in start
+    beach()
+  File "game.py", line 45, in beach
+    boats()
+TypeError: 'str' object is not callable
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+Traceback (most recent call last):
+  File "game.py", line 1, in <module>
+    start()
+NameError: name 'start' is not defined
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 1
+The Royal Guard catches you and throws you in prison.
+It wasn't supposed to end like this...
+*********************
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 2
+As you wander across the sand you notice what seems to be an abandoned fleet of fishing boats in the distance.
+1. approach the boats.
+2. head back to the docks.
+> 1
+Traceback (most recent call last):
+  File "game.py", line 64, in <module>
+    start()
+  File "game.py", line 20, in start
+    guard()
+  File "game.py", line 34, in guard
+    end()
+  File "game.py", line 5, in end
+    start()
+  File "game.py", line 24, in start
+    beach()
+  File "game.py", line 45, in beach
+    boats()
+TypeError: 'str' object is not callable
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 2
+As you wander across the sand you notice what seems to be an abandoned fleet of fishing boats in the distance.
+1. approach the boats.
+2. head back to the docks.
+> 1
+You approach the boats and see that despite being in a state of disrepair, they have not been abandoned.
+They seem to be attached to one another with a variety of ropes, chains, hooks, seaweed and assorted detritus.
+Continue... >
+As you draw closer, you hear the sounds of conversations, arguments, children crying, dogs barking, meals being prepared
+...all the hustle and bustle of city life.
+But where is the city?
+Continue... >
+As you wander across the sand you notice what seems to be an abandoned fleet of fishing boats in the distance.
+1. approach the boats.
+2. head back to the docks.
+> 4
+Well, you have to do *something.*
+As you wander across the sand you notice what seems to be an abandoned fleet of fishing boats in the distance.
+1. approach the boats.
+2. head back to the docks.
+> Traceback (most recent call last):
+  File "game.py", line 64, in <module>
+
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+Welcome to the Beach Segment of this game.
+When you see >, enter the number of your choice followed by 'enter' or 'return.' When you see >>, press 'enter' or 'retu
+rn' to continue.
+Ok... >>
+Good luck!
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 1
+The Royal Guard catches you and throws you in prison.
+It wasn't supposed to end like this...
+*********************
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> Traceback (most recent call last):
+  File "game.py", line 71, in <module>
+    print "Good luck!"
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+Welcome to the Beach Segment of this game.
+When you see >, enter the number of your choice followed by 'enter' or 'return.' When you see >>, press 'enter' or 'retu
+rn' to continue.
+Ok... >>
+Good luck!
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 1
+The Royal Guard catches you and throws you in prison.
+It wasn't supposed to end like this...
+everyone deserves a second chance.
+******************************
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> Traceback (most recent call last):
+  File "game.py", line 72, in <module>
+    raw_input("Ok... >>  ")
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+Welcome to the Beach Segment of this game.
+When you see >, enter the number of your choice followed by 'enter' or 'return.'
+When you see >>, press 'enter' or 'return' to continue.
+Ok... >>
+Good luck!
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 3
+cliffs happen
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> Traceback (most recent call last):
+  File "game.py", line 74, in <module>
+    start()
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+  File "game.py", line 51
+    print "
+        ^
+IndentationError: expected an indented block
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+  File "game.py", line 62
+    print ("It's hard to tell with all the sunlight sparkling on the water")
+        ^
+SyntaxError: invalid syntax
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+  File "game.py", line 74
+    if cliffside_choice = 2:
+                        ^
+SyntaxError: invalid syntax
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+Welcome to the Beach Segment of this game.
+When you see >, enter the number of your choice followed by 'enter' or 'return.'
+When you see >>, press 'enter' or 'return' to continue.
+Ok... >>
+Good luck!
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 1
+The Royal Guard catches you and throws you in prison.
+It wasn't supposed to end like this...
+******************************
+everyone deserves a second chance.
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 3
+You hike up a gradual, grassy slope to get to the top of the cliffs.
+1. That was a nice hike! Go back down to the beach.
+2. Continue up to the cliffside.
+> 1
+You hike up a gradual, grassy slope to get to the top of the cliffs.
+1. That was a nice hike! Go back down to the beach.
+2. Continue up to the cliffside.
+> 1
+You hike up a gradual, grassy slope to get to the top of the cliffs.
+1. That was a nice hike! Go back down to the beach.
+2. Continue up to the cliffside.
+> Traceback (most recent call last):
+  File "game.py", line 117, in <module>
+    print "Good luck!"
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+  File "game.py", line 9
+    continue
+SyntaxError: 'continue' not properly in loop
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+  File "game.py", line 32
+    continue
+SyntaxError: 'continue' not properly in loop
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+  File "game.py", line 32
+    continue()
+            ^
+SyntaxError: invalid syntax
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+Welcome to the Beach Segment of this game.
+When you see >, enter the number of your choice followed by 'enter' or 'return.'
+When you see >>, press 'enter' or 'return' to continue.
+Ok... >>
+Good luck!
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> e
+Well, you have to do *something.*
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> Traceback (most recent call last):
+  File "game.py", line 118, in <module>
+    print "When you see >, enter the number of your choice followed by 'enter' or 'return.'"
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+Welcome to the Beach Segment of this game.
+When you see >, enter the number of your choice followed by 'enter' or 'return.'
+When you see >>, press 'enter' or 'return' to continue.
+Ok... >>
+Good luck!
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 1
+The Royal Guard catches you and throws you in prison.
+It wasn't supposed to end like this...
+******************************
+everyone deserves a second chance.
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 3
+You hike up a gradual, grassy slope to get to the top of the cliffs.
+1. That was a nice hike! Go back down to the beach.
+2. Continue up to the cliffside.
+> 1
+Well, you have to do *something.*
+You hike up a gradual, grassy slope to get to the top of the cliffs.
+1. That was a nice hike! Go back down to the beach.
+2. Continue up to the cliffside.
+> 1
+Well, you have to do *something.*
+You hike up a gradual, grassy slope to get to the top of the cliffs.
+1. That was a nice hike! Go back down to the beach.
+2. Continue up to the cliffside.
+> Traceback (most recent call last):
+  File "game.py", line 122, in <module>
+    start()
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student>
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+Welcome to the Beach Segment of this game.
+When you see >, enter the number of your choice followed by 'enter' or 'return.'
+When you see >>, press 'enter' or 'return' to continue.
+Ok... >>
+Good luck!
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 3
+You hike up a gradual, grassy slope to get to the top of the cliffs.
+1. That was a nice hike! Go back down to the beach.
+2. Continue up to the cliffside.
+> 2
+You have an excellent view of the sparkling ocean to your right, and the forested hills stretching down to the left.
+You see the docks beneath you. Royal Guards are everywhere!
+A large boat approaches. You think, 'I need to get on a boat like that...
+...but how? It's not safe down there.
+Look farther down the beach. >>
+You can't quite make out what it is down there.
+Some wood platforms, like abandoned docks? Or perhaps a floating bridge?
+It's hard to tell with all the sunlight sparkling on the water
+1. Move closer to the edge for a better look.
+2. Go back down to the beach.
+> 1
+Oops!
+That ground wasn't as sturdy as it looks.
+You tumble down the side of the cliff, trying in vain to grab a root or piece of grass growing from the cliffside.
+It wasn't supposed to end like this...
+******************************
+everyone deserves a second chance.
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> Traceback (most recent call last):
+  File "game.py", line 122, in <module>
+    print "Good luck!"
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+Welcome to the Beach Segment of this game.
+When you see >, enter the number of your choice followed by 'enter' or 'return.'
+When you see >>, press 'enter' or 'return' to continue.
+Ok... >>
+Good luck!
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 1
+The Royal Guard catches you and throws you in prison.
+It wasn't supposed to end like this...
+****************************************
+everyone deserves a second chance.
+Take it. >> Traceback (most recent call last):
+  File "game.py", line 123, in <module>
+    start()
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student>
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+Welcome to the Beach Segment of this game.
+When you see >, enter the number of your choice followed by 'enter' or 'return.'
+When you see >>, press 'enter' or 'return' to continue.
+Ok... >>
+Good luck!
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 1
+The Royal Guard catches you and throws you in prison.
+It wasn't supposed to end like this...
+****************************************
+...everyone deserves a second chance.
+Take it. >>
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 3
+You hike up a gradual, grassy slope to get to the top of the cliffs.
+1. That was a nice hike! Go back down to the beach.
+2. Continue up to the cliffside.
+> 1
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 3
+You hike up a gradual, grassy slope to get to the top of the cliffs.
+1. That was a nice hike! Go back down to the beach.
+2. Continue up to the cliffside.
+> 2
+You have an excellent view of the sparkling ocean to your right, and the forested hills stretching down to the left.
+You see the docks beneath you. Royal Guards are everywhere!
+A large boat approaches. You think, 'I need to get on a boat like that...'
+...but how? It's not safe down there.
+Look farther down the beach. >>
+You can't quite make out what it is down there.
+Some wood platforms, like abandoned docks? Or perhaps a floating bridge?
+It's hard to tell with all the sunlight sparkling on the water.
+1. Move closer to the edge for a better look.
+2. Go back down to the beach.
+> 1
+Oops!
+That ground wasn't as sturdy as it looks.
+You tumble down the side of the cliff, trying in vain to grab a root or piece of grass growing from the cliffside.
+It wasn't supposed to end like this...
+****************************************
+...everyone deserves a second chance.
+Take it. >>
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+>
+Well, you have to do *something.*
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> fajiof
+Well, you have to do *something.*
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 3
+You hike up a gradual, grassy slope to get to the top of the cliffs.
+1. That was a nice hike! Go back down to the beach.
+2. Continue up to the cliffside.
+> 1
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 2
+As you wander across the sand you notice what seems to be an abandoned fleet of fishing boats in the distance.
+1. approach the boats.
+2. head back to the docks.
+> 1
+You approach the boats and see that despite being in a state of disrepair, they have not been abandoned.
+They seem to be attached to one another with a variety of ropes, chains, hooks, seaweed and assorted detritus.
+Continue... >>
+As you draw closer, you hear the sounds of conversations, arguments, children crying, dogs barking, meals being prepared
+...all the hustle and bustle of city life.
+But where is the city?
+Approach the boats. >>
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+Welcome to the Beach Segment of this game.
+When you see >, enter the number of your choice followed by 'enter' or 'return.'
+When you see >>, press 'enter' or 'return' to continue.
+Ok... >>
+Good luck!
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 2
+As you wander across the sand you notice what seems to be an abandoned fleet of fishing boats in the distance.
+1. approach the boats.
+2. head back to the docks.
+> 2
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 3
+You hike up a gradual, grassy slope to get to the top of the cliffs.
+1. That was a nice hike! Go back down to the beach.
+2. Continue up to the cliffside.
+> 2
+You have an excellent view of the sparkling ocean to your right, and the forested hills stretching down to the left.
+You see the docks beneath you. Royal Guards are everywhere!
+A large boat approaches. You think, 'I need to get on a boat like that...'
+...but how? It's not safe down there.
+Look farther down the beach. >>
+You can't quite make out what it is down there.
+Some wood platforms, like abandoned docks? Or perhaps a floating bridge?
+It's hard to tell with all the sunlight sparkling on the water.
+1. Move closer to the edge for a better look.
+2. Go back down to the beach.
+> 2
+You find the narrow trail you used to climb the hill and proceed back down to the beach.
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 3
+You hike up a gradual, grassy slope to get to the top of the cliffs.
+1. That was a nice hike! Go back down to the beach.
+2. Continue up to the cliffside.
+> 1
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 2
+As you wander across the sand you notice what seems to be an abandoned fleet of fishing boats in the distance.
+1. approach the boats.
+2. head back to the docks.
+> 1
+You approach the boats and see that despite being in a state of disrepair, they have not been abandoned.
+They seem to be attached to one another with a variety of ropes, chains, hooks, seaweed and assorted detritus.
+Continue... >>
+As you draw closer, you hear the sounds of conversations, arguments, children crying, dogs barking, meals being prepared
+...all the hustle and bustle of city life.
+But where is the city?
+Approach the boats. >>
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+Welcome to the Beach Segment of this game.
+When you see >, enter the number of your choice followed by 'enter' or 'return.'
+When you see >>, press 'enter' or 'return' to continue.
+Ok... >>
+Good luck!
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 3
+You hike up a gradual, grassy slope to get to the top of the cliffs.
+1. That was a nice hike! Go back down to the beach.
+2. Continue up to the cliffside.
+> 2
+You have an excellent view of the sparkling ocean to your right, and the forested hills stretching down to the left.
+You see the docks beneath you. Royal Guards are everywhere!
+A large boat approaches. You think, 'I need to get on a boat like that...'
+...but how? It's not safe down there.
+Look farther down the beach. >>
+You can't quite make out what it is down there.
+Some wood platforms, like abandoned docks? Or perhaps a floating bridge?
+It's hard to tell with all the sunlight sparkling on the water.
+True
+1. Move closer to the edge for a better look.
+2. Go back down to the beach.
+> 2
+You find the narrow trail you used to climb the hill and proceed back down to the beach.
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 2
+As you wander across the sand you notice what seems to be an abandoned fleet of fishing boats in the distance.
+False
+1. approach the boats.
+2. head back to the docks.
+> Traceback (most recent call last):
+  File "game.py", line 130, in <module>
+    raw_input("Ok... >>  ")
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python game.py
+Welcome to the Beach Segment of this game.
+When you see >, enter the number of your choice followed by 'enter' or 'return.'
+When you see >>, press 'enter' or 'return' to continue.
+Ok... >>
+Good luck!
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 3
+You hike up a gradual, grassy slope to get to the top of the cliffs.
+1. That was a nice hike! Go back down to the beach.
+2. Continue up to the cliffside.
+> 2
+You have an excellent view of the sparkling ocean to your right, and the forested hills stretching down to the left.
+You see the docks beneath you. Royal Guards are everywhere!
+A large boat approaches. You think, 'I need to get on a boat like that...'
+...but how? It's not safe down there.
+Look farther down the beach. >>
+You can't quite make out what it is down there.
+Some wood platforms, like abandoned docks? Or perhaps a floating bridge?
+It's hard to tell with all the sunlight sparkling on the water.
+True
+1. Move closer to the edge for a better look.
+2. Go back down to the beach.
+> 2
+You find the narrow trail you used to climb the hill and proceed back down to the beach.
+You head to the dock hoping to catch the next boat across the sea. You notice the Royal Guard's banner flying above the
+dock.
+1. Approach the dock anyway.
+2. Head east along the beach.
+3. Head west to the cliffs.
+> 2
+As you wander across the sand you notice what seems to be an abandoned fleet of fishing boats in the distance.
+Traceback (most recent call last):
+  File "game.py", line 132, in <module>
+    start()
+  File "game.py", line 33, in start
+    cliffs()
+  File "game.py", line 56, in cliffs
+    cliffside()
+  File "game.py", line 86, in cliffside
+    start()
+  File "game.py", line 30, in start
+    beach()
+  File "game.py", line 95, in beach
+    print have_seen_boats
+NameError: global name 'have_seen_boats' is not defined
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git pull
+remote: Counting objects: 443, done.
+remote: Compressing objects: 100% (407/407), done.
+emote: Total 443 (delta 201), reused 8 (delta 8), pack-reused 18 eceiving objects:  65% (288/443), 60.01 KiB | 53.00 KiB
+/s
+Receiving objects: 100% (443/443), 70.83 KiB | 53.00 KiB/s, done.
+Resolving deltas: 100% (204/204), completed with 5 local objects.
+From github.com:kielejocain/AM_2015_06_15
+   c35c8cc..365cb2f  master     -> origin/master
+Updating c35c8cc..365cb2f
+Fast-forward
+ ...cx => June 1 Evening Bootcamp Syllabus (1).docx |  Bin
+ StudentWork/Kyle!/01_introduction.txt              |   23 +
+ StudentWork/Kyle!/02_stringtoASCIICODE.py          |   11 +
+ StudentWork/Kyle!/03_boolean_quiz.py               |   60 +
+ StudentWork/Kyle!/04_mutable.py                    |   41 +
+ StudentWork/Kyle!/05_slicing.py                    |   19 +
+ StudentWork/Kyle!/06_guess_number.py               |   54 +
+ StudentWork/Kyle!/07_reverse.py                    |   26 +
+ StudentWork/Kyle!/07_reverse_easy.py               |   11 +
+ StudentWork/Kyle!/08_phonebook.py                  |  162 ++
+ StudentWork/Kyle!/09_factorization.py              |   57 +
+ StudentWork/Kyle!/bad_function.py                  |   16 +
+ StudentWork/Kyle!/pocket_change.py                 |   24 +
+ StudentWork/Kyle!/primes.txt                       | 2284 ++++++++++++++++++++
+ StudentWork/arielkaplan/.DS_Store                  |  Bin 6148 -> 6148 bytes
+ StudentWork/arielkaplan/05_slicing.py              |   25 +
+ StudentWork/arielkaplan/06_guess_number.py         |   39 +
+ StudentWork/arielkaplan/07_reverse.py              |   48 +
+ StudentWork/arielkaplan/08_phonebook.py            |  110 +
+ StudentWork/arielkaplan/09_factorization.py        |   59 +
+ StudentWork/arielkaplan/LPTHW/.DS_Store            |  Bin 0 -> 6148 bytes
+ StudentWork/arielkaplan/LPTHW/LPTHW12.py           |   10 +
+ StudentWork/arielkaplan/LPTHW/LPTHW13.py           |   13 +
+ StudentWork/arielkaplan/LPTHW/LPTHW14.py           |   23 +
+ StudentWork/arielkaplan/LPTHW/ex15.py              |   32 +
+ StudentWork/arielkaplan/LPTHW/ex15_sample.txt      |    3 +
+ StudentWork/arielkaplan/LPTHW/ex16.py              |   46 +
+ StudentWork/arielkaplan/LPTHW/ex16_sample.txt      |    6 +
+ StudentWork/arielkaplan/LPTHW/ex17.py              |   35 +
+ StudentWork/arielkaplan/LPTHW/ex17_from.txt        |    1 +
+ StudentWork/arielkaplan/LPTHW/ex17_to.txt          |    1 +
+ StudentWork/arielkaplan/LPTHW/ex18.py              |   22 +
+ StudentWork/arielkaplan/LPTHW/ex19.py              |   33 +
+ StudentWork/arielkaplan/LPTHW/ex20.py              |   33 +
+ StudentWork/arielkaplan/LPTHW/ex21.py              |   33 +
+ StudentWork/arielkaplan/LPTHW/ex22.py              |    1 +
+ StudentWork/arielkaplan/LPTHW/ex24.py              |   39 +
+ StudentWork/arielkaplan/LPTHW/ex25.py              |   35 +
+ StudentWork/arielkaplan/LPTHW/ex25.pyc             |  Bin 0 -> 1538 bytes
+ StudentWork/arielkaplan/LPTHW/ex29.py              |   28 +
+ StudentWork/arielkaplan/LPTHW/ex30.py              |   23 +
+ StudentWork/arielkaplan/LPTHW/ex31.py              |   34 +
+ StudentWork/arielkaplan/LPTHW/ex32.py              |   30 +
+ StudentWork/arielkaplan/LPTHW/ex33.py              |   16 +
+ StudentWork/arielkaplan/LPTHW/ex35.py              |   73 +
+ StudentWork/arielkaplan/euler002.py                |   29 +
+ StudentWork/arielkaplan/euler003.py                |   49 +
+ StudentWork/arielkaplan/euler004.py                |   68 +
+ StudentWork/arielkaplan/primes.txt                 | 2284 ++++++++++++++++++++
+ StudentWork/bestevez32/08_phonebook.py             |   83 +
+ StudentWork/bestevez32/09_factorization.py         |   28 +
+ StudentWork/bestevez32/PdxGuessGame.py             |   22 +
+ StudentWork/bestevez32/PdxReverse.py               |   43 +
+ StudentWork/bestevez32/PdxReverseSlim.py           |   33 +
+ StudentWork/bestevez32/PdxWargame.py               |   24 +
+ StudentWork/bestevez32/Pdxgroceries.py             |   22 +
+ StudentWork/bestevez32/ex11.py                     |   18 +
+ StudentWork/bestevez32/ex12.py                     |   18 +
+ StudentWork/bestevez32/ex13.py                     |    8 +
+ StudentWork/bestevez32/ex14.py                     |   22 +
+ StudentWork/bestevez32/ex15.py                     |   19 +
+ StudentWork/bestevez32/ex15_sample.txt             |    3 +
+ StudentWork/bestevez32/ex16.py                     |   33 +
+ StudentWork/bestevez32/ex17.py                     |   24 +
+ StudentWork/bestevez32/ex18-5.py                   |   23 +
+ StudentWork/bestevez32/ex18.py                     |   23 +
+ StudentWork/bestevez32/ex19.py                     |   21 +
+ StudentWork/bestevez32/ex20.py                     |   33 +
+ StudentWork/bestevez32/ex21.py                     |   34 +
+ StudentWork/bestevez32/ex21puzzle.py               |   39 +
+ StudentWork/bestevez32/ex24.py                     |   36 +
+ StudentWork/bestevez32/ex25.py                     |   35 +
+ StudentWork/bestevez32/ex25.pyc                    |  Bin 0 -> 1544 bytes
+ StudentWork/bestevez32/ex29.py                     |   28 +
+ StudentWork/bestevez32/ex30.py                     |   26 +
+ StudentWork/bestevez32/ex31.py                     |   35 +
+ StudentWork/bestevez32/ex32.py                     |   29 +
+ StudentWork/bestevez32/ex33.py                     |   15 +
+ StudentWork/bestevez32/ex34.py                     |   62 +
+ StudentWork/bestevez32/primes.txt                  | 2284 ++++++++++++++++++++
+ StudentWork/bestevez32/pyglatintranslator.py       |   13 +
+ StudentWork/bestevez32/test.py                     |   33 +
+ StudentWork/bestevez32/test.txt                    |    3 +
+ StudentWork/bestevez32/test2.txt                   |    3 +
+ StudentWork/ejames9/.DS_Store                      |  Bin 6148 -> 8196 bytes
+ StudentWork/ejames9/booleanquiz.py                 |   60 +
+ StudentWork/ejames9/cat.py                         |   17 +
+ StudentWork/ejames9/ex13.py                        |    8 +
+ StudentWork/ejames9/ex14.py                        |   24 +
+ StudentWork/ejames9/ex15.py                        |   18 +
+ StudentWork/ejames9/ex16.py                        |   33 +
+ StudentWork/ejames9/formatter.py                   |   12 +
+ StudentWork/ejames9/{num3 => guess#.py}            |    0
+ StudentWork/ejames9/guessnumber.py                 |   49 +
+ StudentWork/ejames9/input.py                       |   13 +
+ StudentWork/ejames9/madlib                         |   11 -
+ StudentWork/ejames9/mutable.py                     |   41 +
+ StudentWork/ejames9/phonebook.py                   |   74 +
+ StudentWork/ejames9/primefact.py                   |   22 +
+ StudentWork/ejames9/primes.txt                     | 2284 ++++++++++++++++++++
+ StudentWork/ejames9/printing.py                    |   14 +
+ StudentWork/ejames9/puv.py                         |    8 +
+ StudentWork/ejames9/raw.py                         |    1 +
+ StudentWork/ejames9/reverse.py                     |   25 +
+ StudentWork/ejames9/slice.py                       |   23 +
+ StudentWork/ejames9/text15.txt                     |    3 +
+ StudentWork/ejames9/what.py                        |   15 +
+ StudentWork/orionbuyukas/05_slicingex.py           |   18 +
+ StudentWork/orionbuyukas/06_guess_numberex.py      |   45 +
+ StudentWork/orionbuyukas/07_reverseex.py           |   27 +
+ StudentWork/orionbuyukas/07_reverseexeasymethod.py |   15 +
+ StudentWork/orionbuyukas/08_phonebookex.py         |   67 +
+ StudentWork/orionbuyukas/lphwex11.py               |    8 +
+ StudentWork/orionbuyukas/lphwex12.py               |    5 +
+ StudentWork/orionbuyukas/lphwex13.py               |    8 +
+ StudentWork/orionbuyukas/lphwex14.py               |   21 +
+ StudentWork/orionbuyukas/lphwex15.py               |   21 +
+ .../treecasiano/LPTHW/LPTHW_15_sample_tree.txt     |    3 +
+ StudentWork/treecasiano/LPTHW/LPTHW_15_tree.py     |   15 +
+ StudentWork/treecasiano/LPTHW/LPTHW_16_tree.py     |   27 +
+ StudentWork/treecasiano/LPTHW/LPTHW_17_tree.py     |   29 +
+ StudentWork/treecasiano/LPTHW/LPTHW_18_tree.py     |   21 +
+ StudentWork/treecasiano/LPTHW/LPTHW_19_tree.py     |   20 +
+ StudentWork/treecasiano/LPTHW/LPTHW_20_tree.py     |   49 +
+ StudentWork/treecasiano/LPTHW/LPTHW_21_tree.py     |   29 +
+ StudentWork/treecasiano/LPTHW/LPTHW_24_tree.py     |   35 +
+ StudentWork/treecasiano/LPTHW/LPTHW_25_tree.py     |   34 +
+ StudentWork/treecasiano/LPTHW/LPTHW_25_tree.pyc    |  Bin 0 -> 1563 bytes
+ StudentWork/treecasiano/LPTHW/LPTHW_32_tree.py     |   32 +
+ StudentWork/treecasiano/LPTHW/LPTHW_33_tree.py     |   38 +
+ StudentWork/treecasiano/LPTHW/LPTHW_35_tree.py     |   76 +
+ StudentWork/treecasiano/LPTHW/ex17_from_file.txt   |    1 +
+ StudentWork/treecasiano/LPTHW/ex17_to_file.txt     |    1 +
+ StudentWork/treecasiano/LPTHW/ex20_textfile.txt    |    3 +
+ StudentWork/treecasiano/LPTHW/new_file.txt         |    1 +
+ StudentWork/treecasiano/LPTHW/test.txt             |    1 +
+ .../treecasiano/Week_1/06_guess_number_tree.py     |   35 +
+ StudentWork/treecasiano/Week_1/07_reverse_tree.py  |   37 +
+ StudentWork/treecasiano/Week_1/08_phonebook.py     |   79 +
+ .../treecasiano/Week_1/09_factorization_tree.py    |   28 +
+ StudentWork/treecasiano/{ => Week_1}/madlib.py     |    0
+ StudentWork/treecasiano/Week_1/primes.txt          | 2284 ++++++++++++++++++++
+ StudentWork/treecasiano/initialfile.txt            |    0
+ Week_1/05_slicing.py                               |   11 +-
+ Week_1/06_guess_number.py                          |    2 +-
+ Week_1/07_reverse.py                               |    2 +-
+ Week_1/08_phonebook.py                             |    3 +-
+ Week_1/11_fruit_stand.py                           |    7 +
+ Week_1/LPTHW/ex11.py                               |   10 +
+ Week_1/LPTHW/ex12.py                               |    9 +
+ Week_1/LPTHW/ex13.py                               |    8 +
+ Week_1/LPTHW/ex14.py                               |   22 +
+ Week_1/LPTHW/ex15.py                               |   18 +
+ Week_1/LPTHW/ex15_sample.txt                       |    3 +
+ Week_1/LPTHW/ex16.py                               |   29 +
+ Week_1/LPTHW/ex17.py                               |   24 +
+ Week_1/LPTHW/ex18.py                               |   27 +
+ Week_1/LPTHW/ex19.py                               |   20 +
+ Week_1/LPTHW/ex20.py                               |   33 +
+ Week_1/LPTHW/ex21.py                               |   26 +
+ Week_1/LPTHW/ex24.py                               |   32 +
+ Week_1/LPTHW/ex25.py                               |   35 +
+ Week_1/LPTHW/ex29.py                               |   26 +
+ Week_1/LPTHW/ex30.py                               |   22 +
+ Week_1/LPTHW/ex31.py                               |   33 +
+ Week_1/LPTHW/ex32.py                               |   28 +
+ Week_1/LPTHW/ex33.py                               |   15 +
+ Week_1/LPTHW/ex35.py                               |   76 +
+ Week_1/LPTHW/new_file.txt                          |    3 +
+ Week_1/LPTHW/test.txt                              |    3 +
+ Week_1/args_kwargs_example.py                      |   26 +
+ 171 files changed, 15648 insertions(+), 17 deletions(-)
+ rename Week_1/June 1 Evening Bootcamp Syllabus (1).docx => June 1 Evening Bootcamp Syllabus (1).docx (100%)
+ create mode 100644 StudentWork/Kyle!/01_introduction.txt
+ create mode 100644 StudentWork/Kyle!/02_stringtoASCIICODE.py
+ create mode 100644 StudentWork/Kyle!/03_boolean_quiz.py
+ create mode 100644 StudentWork/Kyle!/04_mutable.py
+ create mode 100644 StudentWork/Kyle!/05_slicing.py
+ create mode 100644 StudentWork/Kyle!/06_guess_number.py
+ create mode 100644 StudentWork/Kyle!/07_reverse.py
+ create mode 100644 StudentWork/Kyle!/07_reverse_easy.py
+ create mode 100644 StudentWork/Kyle!/08_phonebook.py
+ create mode 100644 StudentWork/Kyle!/09_factorization.py
+ create mode 100644 StudentWork/Kyle!/bad_function.py
+ create mode 100644 StudentWork/Kyle!/pocket_change.py
+ create mode 100644 StudentWork/Kyle!/primes.txt
+ create mode 100644 StudentWork/arielkaplan/05_slicing.py
+ create mode 100644 StudentWork/arielkaplan/06_guess_number.py
+ create mode 100644 StudentWork/arielkaplan/07_reverse.py
+ create mode 100644 StudentWork/arielkaplan/08_phonebook.py
+ create mode 100644 StudentWork/arielkaplan/09_factorization.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/.DS_Store
+ create mode 100644 StudentWork/arielkaplan/LPTHW/LPTHW12.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/LPTHW13.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/LPTHW14.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex15.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex15_sample.txt
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex16.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex16_sample.txt
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex17.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex17_from.txt
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex17_to.txt
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex18.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex19.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex20.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex21.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex22.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex24.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex25.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex25.pyc
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex29.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex30.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex31.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex32.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex33.py
+ create mode 100644 StudentWork/arielkaplan/LPTHW/ex35.py
+ create mode 100644 StudentWork/arielkaplan/euler002.py
+ create mode 100644 StudentWork/arielkaplan/euler003.py
+ create mode 100644 StudentWork/arielkaplan/euler004.py
+ create mode 100644 StudentWork/arielkaplan/primes.txt
+ create mode 100644 StudentWork/bestevez32/08_phonebook.py
+ create mode 100644 StudentWork/bestevez32/09_factorization.py
+ create mode 100644 StudentWork/bestevez32/PdxGuessGame.py
+ create mode 100644 StudentWork/bestevez32/PdxReverse.py
+ create mode 100644 StudentWork/bestevez32/PdxReverseSlim.py
+ create mode 100644 StudentWork/bestevez32/PdxWargame.py
+ create mode 100644 StudentWork/bestevez32/Pdxgroceries.py
+ create mode 100644 StudentWork/bestevez32/ex11.py
+ create mode 100644 StudentWork/bestevez32/ex12.py
+ create mode 100644 StudentWork/bestevez32/ex13.py
+ create mode 100644 StudentWork/bestevez32/ex14.py
+ create mode 100644 StudentWork/bestevez32/ex15.py
+ create mode 100644 StudentWork/bestevez32/ex15_sample.txt
+ create mode 100644 StudentWork/bestevez32/ex16.py
+ create mode 100644 StudentWork/bestevez32/ex17.py
+ create mode 100644 StudentWork/bestevez32/ex18-5.py
+ create mode 100644 StudentWork/bestevez32/ex18.py
+ create mode 100644 StudentWork/bestevez32/ex19.py
+ create mode 100644 StudentWork/bestevez32/ex20.py
+ create mode 100644 StudentWork/bestevez32/ex21.py
+ create mode 100644 StudentWork/bestevez32/ex21puzzle.py
+ create mode 100644 StudentWork/bestevez32/ex24.py
+ create mode 100644 StudentWork/bestevez32/ex25.py
+ create mode 100644 StudentWork/bestevez32/ex25.pyc
+ create mode 100644 StudentWork/bestevez32/ex29.py
+ create mode 100644 StudentWork/bestevez32/ex30.py
+ create mode 100644 StudentWork/bestevez32/ex31.py
+ create mode 100644 StudentWork/bestevez32/ex32.py
+ create mode 100644 StudentWork/bestevez32/ex33.py
+ create mode 100644 StudentWork/bestevez32/ex34.py
+ create mode 100644 StudentWork/bestevez32/primes.txt
+ create mode 100644 StudentWork/bestevez32/pyglatintranslator.py
+ create mode 100644 StudentWork/bestevez32/test.py
+ create mode 100644 StudentWork/bestevez32/test.txt
+ create mode 100644 StudentWork/bestevez32/test2.txt
+ create mode 100644 StudentWork/ejames9/booleanquiz.py
+ create mode 100644 StudentWork/ejames9/cat.py
+ create mode 100644 StudentWork/ejames9/ex13.py
+ create mode 100644 StudentWork/ejames9/ex14.py
+ create mode 100644 StudentWork/ejames9/ex15.py
+ create mode 100644 StudentWork/ejames9/ex16.py
+ create mode 100644 StudentWork/ejames9/formatter.py
+ rename StudentWork/ejames9/{num3 => guess#.py} (100%)
+ create mode 100644 StudentWork/ejames9/guessnumber.py
+ create mode 100644 StudentWork/ejames9/input.py
+ delete mode 100644 StudentWork/ejames9/madlib
+ create mode 100644 StudentWork/ejames9/mutable.py
+ create mode 100644 StudentWork/ejames9/phonebook.py
+ create mode 100644 StudentWork/ejames9/primefact.py
+ create mode 100644 StudentWork/ejames9/primes.txt
+ create mode 100644 StudentWork/ejames9/printing.py
+ create mode 100644 StudentWork/ejames9/puv.py
+ create mode 100644 StudentWork/ejames9/raw.py
+ create mode 100644 StudentWork/ejames9/reverse.py
+ create mode 100644 StudentWork/ejames9/slice.py
+ create mode 100644 StudentWork/ejames9/text15.txt
+ create mode 100644 StudentWork/ejames9/what.py
+ create mode 100644 StudentWork/orionbuyukas/05_slicingex.py
+ create mode 100644 StudentWork/orionbuyukas/06_guess_numberex.py
+ create mode 100644 StudentWork/orionbuyukas/07_reverseex.py
+ create mode 100644 StudentWork/orionbuyukas/07_reverseexeasymethod.py
+ create mode 100644 StudentWork/orionbuyukas/08_phonebookex.py
+ create mode 100644 StudentWork/orionbuyukas/lphwex11.py
+ create mode 100644 StudentWork/orionbuyukas/lphwex12.py
+ create mode 100644 StudentWork/orionbuyukas/lphwex13.py
+ create mode 100644 StudentWork/orionbuyukas/lphwex14.py
+ create mode 100644 StudentWork/orionbuyukas/lphwex15.py
+ create mode 100644 StudentWork/treecasiano/LPTHW/LPTHW_15_sample_tree.txt
+ create mode 100644 StudentWork/treecasiano/LPTHW/LPTHW_15_tree.py
+ create mode 100644 StudentWork/treecasiano/LPTHW/LPTHW_16_tree.py
+ create mode 100644 StudentWork/treecasiano/LPTHW/LPTHW_17_tree.py
+ create mode 100644 StudentWork/treecasiano/LPTHW/LPTHW_18_tree.py
+ create mode 100644 StudentWork/treecasiano/LPTHW/LPTHW_19_tree.py
+ create mode 100644 StudentWork/treecasiano/LPTHW/LPTHW_20_tree.py
+ create mode 100644 StudentWork/treecasiano/LPTHW/LPTHW_21_tree.py
+ create mode 100644 StudentWork/treecasiano/LPTHW/LPTHW_24_tree.py
+ create mode 100644 StudentWork/treecasiano/LPTHW/LPTHW_25_tree.py
+ create mode 100644 StudentWork/treecasiano/LPTHW/LPTHW_25_tree.pyc
+ create mode 100644 StudentWork/treecasiano/LPTHW/LPTHW_32_tree.py
+ create mode 100644 StudentWork/treecasiano/LPTHW/LPTHW_33_tree.py
+ create mode 100644 StudentWork/treecasiano/LPTHW/LPTHW_35_tree.py
+ create mode 100644 StudentWork/treecasiano/LPTHW/ex17_from_file.txt
+ create mode 100644 StudentWork/treecasiano/LPTHW/ex17_to_file.txt
+ create mode 100644 StudentWork/treecasiano/LPTHW/ex20_textfile.txt
+ create mode 100644 StudentWork/treecasiano/LPTHW/new_file.txt
+ create mode 100644 StudentWork/treecasiano/LPTHW/test.txt
+ create mode 100644 StudentWork/treecasiano/Week_1/06_guess_number_tree.py
+ create mode 100644 StudentWork/treecasiano/Week_1/07_reverse_tree.py
+ create mode 100644 StudentWork/treecasiano/Week_1/08_phonebook.py
+ create mode 100644 StudentWork/treecasiano/Week_1/09_factorization_tree.py
+ rename StudentWork/treecasiano/{ => Week_1}/madlib.py (100%)
+ create mode 100644 StudentWork/treecasiano/Week_1/primes.txt
+ delete mode 100644 StudentWork/treecasiano/initialfile.txt
+ create mode 100644 Week_1/11_fruit_stand.py
+ create mode 100644 Week_1/LPTHW/ex11.py
+ create mode 100644 Week_1/LPTHW/ex12.py
+ create mode 100644 Week_1/LPTHW/ex13.py
+ create mode 100644 Week_1/LPTHW/ex14.py
+ create mode 100644 Week_1/LPTHW/ex15.py
+ create mode 100644 Week_1/LPTHW/ex15_sample.txt
+ create mode 100644 Week_1/LPTHW/ex16.py
+ create mode 100644 Week_1/LPTHW/ex17.py
+ create mode 100644 Week_1/LPTHW/ex18.py
+ create mode 100644 Week_1/LPTHW/ex19.py
+ create mode 100644 Week_1/LPTHW/ex20.py
+ create mode 100644 Week_1/LPTHW/ex21.py
+ create mode 100644 Week_1/LPTHW/ex24.py
+ create mode 100644 Week_1/LPTHW/ex25.py
+ create mode 100644 Week_1/LPTHW/ex29.py
+ create mode 100644 Week_1/LPTHW/ex30.py
+ create mode 100644 Week_1/LPTHW/ex31.py
+ create mode 100644 Week_1/LPTHW/ex32.py
+ create mode 100644 Week_1/LPTHW/ex33.py
+ create mode 100644 Week_1/LPTHW/ex35.py
+ create mode 100644 Week_1/LPTHW/new_file.txt
+ create mode 100644 Week_1/LPTHW/test.txt
+ create mode 100644 Week_1/args_kwargs_example.py
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student>
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git commit -m "for game questions"
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes not staged for commit:
+        modified:   ../../Week_1/10_prime_generator.py
+
+Untracked files:
+        04_mutable.py
+        05_slicing.py
+        06_guess_number.py
+        07_reverse.py
+        07_reverse2.py
+        07_reverse3.py
+        08_phonebook.py
+        09_factorization.py
+        aboutme.py
+        ascii-thing.py
+        dictionaries notes.txt
+        easy_reverse.py
+        ex10.py
+        ex11.py
+        ex13.py
+        ex14.py
+        ex15.py
+        ex15_sample.txt
+        ex16.py
+        ex17.py
+        ex17_short.py
+        ex18.py
+        ex20.py
+        ex21.py
+        ex29.py
+        ex31.py
+        ex31_own_game.py
+        ex32.py
+        ex35.py
+        ex39.py
+        ex6.py
+        ex7.py
+        ex8.py
+        ex9.py
+        fun.py
+        game.py
+        homework weekend 1.txt
+        keywords.txt
+        keywords_test.py
+        madlibs.py
+        notes 18 june.txt
+        primes.txt
+        test.txt
+        test2.txt
+        xkcd_death.py
+        xkcd_death_notes.py
+
+no changes added to commit
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> cd desktop/codeguild/AM_2015_06_15/Student
+Work/emcain-student git push
+Set-Location : A positional parameter cannot be found that accepts argument 'git'.
+At line:1 char:1
++ cd desktop/codeguild/AM_2015_06_15/StudentWork/emcain-student git push
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Set-Location], ParameterBindingException
+    + FullyQualifiedErrorId : PositionalParameterNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git init
+Initialized empty Git repository in C:/Users/Emily/desktop/codeguild/AM_2015_06_15/StudentWork/emcain-student/.git/
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git commit -m "game questions"
+On branch master
+
+Initial commit
+
+Untracked files:
+        04_mutable.py
+        05_slicing.py
+        06_guess_number.py
+        07_reverse.py
+        07_reverse2.py
+        07_reverse3.py
+        08_phonebook.py
+        09_factorization.py
+        aboutme.py
+        ascii-thing.py
+        dictionaries notes.txt
+        easy_reverse.py
+        ex10.py
+        ex11.py
+        ex13.py
+        ex14.py
+        ex15.py
+        ex15_sample.txt
+        ex16.py
+        ex17.py
+        ex17_short.py
+        ex18.py
+        ex20.py
+        ex21.py
+        ex29.py
+        ex31.py
+        ex31_own_game.py
+        ex32.py
+        ex35.py
+        ex39.py
+        ex6.py
+        ex7.py
+        ex8.py
+        ex9.py
+        fun.py
+        game.py
+        homework weekend 1.txt
+        keywords.txt
+        keywords_test.py
+        madlibs.py
+        notes 18 june.txt
+        primes.txt
+        test.txt
+        test2.txt
+        thing.txt
+        xkcd_death.py
+        xkcd_death_notes.py
+
+nothing added to commit but untracked files present
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git init
+Reinitialized existing Git repository in C:/Users/Emily/desktop/codeguild/AM_2015_06_15/StudentWork/emcain-student/.git/
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git pull
+fatal: No remote repository specified.  Please, specify either a URL or a
+remote name from which new revisions should be fetched.
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> cd../..
+cd../.. : The term 'cd../..' is not recognized as the name of a cmdlet, function, script file, or operable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ cd../..
++ ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (cd../..:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> cd ..
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> cd ..
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15> git init
+Reinitialized existing Git repository in C:/Users/Emily/desktop/codeguild/AM_2015_06_15/.git/
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15> git pull
+Already up-to-date.
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15> git commit -m "game"
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes not staged for commit:
+        modified:   Week_1/10_prime_generator.py
+
+Untracked files:
+        StudentWork/emcain-student/04_mutable.py
+        StudentWork/emcain-student/05_slicing.py
+        StudentWork/emcain-student/06_guess_number.py
+        StudentWork/emcain-student/07_reverse.py
+        StudentWork/emcain-student/07_reverse2.py
+        StudentWork/emcain-student/07_reverse3.py
+        StudentWork/emcain-student/08_phonebook.py
+        StudentWork/emcain-student/09_factorization.py
+        StudentWork/emcain-student/aboutme.py
+        StudentWork/emcain-student/ascii-thing.py
+        StudentWork/emcain-student/dictionaries notes.txt
+        StudentWork/emcain-student/easy_reverse.py
+        StudentWork/emcain-student/ex10.py
+        StudentWork/emcain-student/ex11.py
+        StudentWork/emcain-student/ex13.py
+        StudentWork/emcain-student/ex14.py
+        StudentWork/emcain-student/ex15.py
+        StudentWork/emcain-student/ex15_sample.txt
+        StudentWork/emcain-student/ex16.py
+        StudentWork/emcain-student/ex17.py
+        StudentWork/emcain-student/ex17_short.py
+        StudentWork/emcain-student/ex18.py
+        StudentWork/emcain-student/ex20.py
+        StudentWork/emcain-student/ex21.py
+        StudentWork/emcain-student/ex29.py
+        StudentWork/emcain-student/ex31.py
+        StudentWork/emcain-student/ex31_own_game.py
+        StudentWork/emcain-student/ex32.py
+        StudentWork/emcain-student/ex35.py
+        StudentWork/emcain-student/ex39.py
+        StudentWork/emcain-student/ex6.py
+        StudentWork/emcain-student/ex7.py
+        StudentWork/emcain-student/ex8.py
+        StudentWork/emcain-student/ex9.py
+        StudentWork/emcain-student/fun.py
+        StudentWork/emcain-student/game.py
+        StudentWork/emcain-student/homework weekend 1.txt
+        StudentWork/emcain-student/keywords.txt
+        StudentWork/emcain-student/keywords_test.py
+        StudentWork/emcain-student/madlibs.py
+        StudentWork/emcain-student/notes 18 june.txt
+        StudentWork/emcain-student/primes.txt
+        StudentWork/emcain-student/test.txt
+        StudentWork/emcain-student/test2.txt
+        StudentWork/emcain-student/xkcd_death.py
+        StudentWork/emcain-student/xkcd_death_notes.py
+
+no changes added to commit
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15> git init
+Reinitialized existing Git repository in C:/Users/Emily/desktop/codeguild/AM_2015_06_15/.git/
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15> cd StudentWork
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git init
+Initialized empty Git repository in C:/Users/Emily/desktop/codeguild/AM_2015_06_15/StudentWork/.git/
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git add emcain-student
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git commit -m "game questions"
+[master (root-commit) b7b2cd4] game questions
+ 47 files changed, 3896 insertions(+)
+ create mode 100644 emcain-student/04_mutable.py
+ create mode 100644 emcain-student/05_slicing.py
+ create mode 100644 emcain-student/06_guess_number.py
+ create mode 100644 emcain-student/07_reverse.py
+ create mode 100644 emcain-student/07_reverse2.py
+ create mode 100644 emcain-student/07_reverse3.py
+ create mode 100644 emcain-student/08_phonebook.py
+ create mode 100644 emcain-student/09_factorization.py
+ create mode 100644 emcain-student/aboutme.py
+ create mode 100644 emcain-student/ascii-thing.py
+ create mode 100644 emcain-student/dictionaries notes.txt
+ create mode 100644 emcain-student/easy_reverse.py
+ create mode 100644 emcain-student/ex10.py
+ create mode 100644 emcain-student/ex11.py
+ create mode 100644 emcain-student/ex13.py
+ create mode 100644 emcain-student/ex14.py
+ create mode 100644 emcain-student/ex15.py
+ create mode 100644 emcain-student/ex15_sample.txt
+ create mode 100644 emcain-student/ex16.py
+ create mode 100644 emcain-student/ex17.py
+ create mode 100644 emcain-student/ex17_short.py
+ create mode 100644 emcain-student/ex18.py
+ create mode 100644 emcain-student/ex20.py
+ create mode 100644 emcain-student/ex21.py
+ create mode 100644 emcain-student/ex29.py
+ create mode 100644 emcain-student/ex31.py
+ create mode 100644 emcain-student/ex31_own_game.py
+ create mode 100644 emcain-student/ex32.py
+ create mode 100644 emcain-student/ex35.py
+ create mode 100644 emcain-student/ex39.py
+ create mode 100644 emcain-student/ex6.py
+ create mode 100644 emcain-student/ex7.py
+ create mode 100644 emcain-student/ex8.py
+ create mode 100644 emcain-student/ex9.py
+ create mode 100644 emcain-student/fun.py
+ create mode 100644 emcain-student/game.py
+ create mode 100644 emcain-student/homework weekend 1.txt
+ create mode 100644 emcain-student/keywords.txt
+ create mode 100644 emcain-student/keywords_test.py
+ create mode 100644 emcain-student/madlibs.py
+ create mode 100644 emcain-student/notes 18 june.txt
+ create mode 100644 emcain-student/primes.txt
+ create mode 100644 emcain-student/test.txt
+ create mode 100644 emcain-student/test2.txt
+ create mode 100644 emcain-student/thing.txt
+ create mode 100644 emcain-student/xkcd_death.py
+ create mode 100644 emcain-student/xkcd_death_notes.py
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git push
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git push https://github.com/kielejocain/AM_2015_06_15/tre
+e/master/StudentWork/emcain-student
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+In Git 2.0, Git will default to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+fatal: repository 'https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWork/emcain-student/' not found
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git remote add emcain-student https://github.com/kielejoc
+ain/AM_2015_06_15/tree/master/StudentWork/emcain-student
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git push emcain-student
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+In Git 2.0, Git will default to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+fatal: repository 'https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWork/emcain-student/' not found
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git remote add origin emcain-student https://github.com/k
+ielejocain/AM_2015_06_15/tree/master/StudentWork/emcain-student
+usage: git remote add [<options>] <name> <url>
+
+    -f, --fetch           fetch the remote branches
+    --tags                import all tags and associated objects when fetching
+                          or do not fetch any tag at all (--no-tags)
+    -t, --track <branch>  branch(es) to track
+    -m, --master <branch>
+                          master branch
+    --mirror[=<push|fetch>]
+                          set up remote as a mirror to push to or fetch from
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git remote add origin emcain-student https://github.com/k
+ielejocain/AM_2015_06_15/tree/master/StudentWork/emcain-student
+usage: git remote add [<options>] <name> <url>
+
+    -f, --fetch           fetch the remote branches
+    --tags                import all tags and associated objects when fetching
+                          or do not fetch any tag at all (--no-tags)
+    -t, --track <branch>  branch(es) to track
+    -m, --master <branch>
+                          master branch
+    --mirror[=<push|fetch>]
+                          set up remote as a mirror to push to or fetch from
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git remote add emcain-student https://github.com/kielejoc
+ain/AM_2015_06_15/tree/master/StudentWork/emcain-student
+fatal: remote emcain-student already exists.
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git remote -v
+emcain-student  https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWork/emcain-student (fetch)
+emcain-student  https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWork/emcain-student (push)
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git push emcain-student
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+In Git 2.0, Git will default to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+fatal: repository 'https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWork/emcain-student/' not found
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git push https://github.com/kielejocain/AM_2015_06_15/tre
+e/master/StudentWork/emcain-student
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+In Git 2.0, Git will default to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+fatal: repository 'https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWork/emcain-student/' not found
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git remote -v
+emcain-student  https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWork/emcain-student (fetch)
+emcain-student  https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWork/emcain-student (push)
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git push
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git remote add origin https://github.com/kielejocain/AM_2
+015_06_15/tree/master/StudentWork/emcain-student
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git remote -v
+emcain-student  https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWork/emcain-student (fetch)
+emcain-student  https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWork/emcain-student (push)
+origin  https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWork/emcain-student (fetch)
+origin  https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWork/emcain-student (push)
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> git push origin
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+In Git 2.0, Git will default to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+fatal: repository 'https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWork/emcain-student/' not found
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> ^A
