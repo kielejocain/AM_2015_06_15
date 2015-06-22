@@ -1,0 +1,32 @@
+Learn Python the Hard Way: Exercise 22
+
+strings = (my_name, my_age, my_weight)
+print "My name is %s, my age is %d, and my weight is %d." % (my_name, my_age, my_weight)
+	# %d == decimal   %s == string value
+
+add == + 
+	# will add values together
+	print my_weight + my_age 
+	
+raw_input # user input
+	response = raw_input("Do you like peanut butter?")
+	
+\t # tab in
+\ # split a line
+
+print "How old are you?",
+age = raw_input()
+print "How tall are you?",
+height = raw_input()
+print "How much do you weigh?",
+weight = raw_input()
+
+print "So, you're %r old, %r tall and %r heavy." % (
+	age, height, weight)
+	
+from sys import argv # this imports from system an argument vector
+
+txt.close # a closing command otherwise memory is allocated
+
+
+	
