@@ -1,0 +1,163 @@
+Learning Python EX:23
+
+from itertools import combinations
+
+
+class GridLine():
+    def __init__(self, dir, i, length):
+        print('Please enter {0} #{1}\'s numbers separated by commas.'.format(dir, i))
+        self.length = length
+        self.nums, self.total = self.line_input()
+        self.poss = self.possibles()
+        self.soln = [None] * self.length
+        self.done = False
+
+    def line_input(self):
+        done = False
+        while not done:
+            nums = raw_input("-->")
+            numList = nums.split(",")
+            total = 0
+            typeOK = True
+            for num in numList:
+                try:
+                    total += int(num)
+                except (TypeError, ValueError):
+                    typeOK = False
+            if not typeOK:
+                print("Please enter only integers and commas.")
+            elif total + len(numList) > self.length + 1:
+                print("That doesn't fit!  Try again.")
+            else:
+                nums = [int(i) for i in numList]
+                done = True
+        return nums, total
+
+    def possibles(self):
+        # permSet = [1] * len(self.nums) + [0] * (self.length - self.total - len(self.nums) + 1)
+        # perms = list(set(permutations(permSet)))
+        perms = []
+        spots = self.length - self.total + 1
+        for comb in list(combinations(range(spots), len(self.nums))):
+            perm = [0] * spots
+            for elem in comb:
+                perm[elem] = 1
+            perms += [perm]
+        out = []
+        for perm in perms:
+            counter = 0
+            convert = []
+            for elem in perm:
+                if elem == 0:
+                    convert += [False]
+                else:
+                    convert += [True] * self.nums[counter]
+                    convert += [False]
+                    counter += 1
+            del convert[-1]
+            out += [convert]
+        return out
+
+    def prune(self, dir, i):
+        keep = []
+        if dir == 'row':
+            for count in range(len(self.poss)):
+                isok = True
+                for j in range(cols):
+                    if soln[i][j] == u'\u2588' and not self.poss[count][j]:
+                        isok = False
+                    elif soln[i][j] == 'X' and self.poss[count][j]:
+                        isok = False
+                if isok:
+                    keep += [True]
+                else:
+                    keep += [False]
+        else:
+            for count in range(len(self.poss)):
+                isok = True
+                for j in range(rows):
+                    if soln[j][i] == u'\u2588' and not self.poss[count][j]:
+                        isok = False
+                    elif soln[j][i] == 'X' and self.poss[count][j]:
+                        isok = False
+                if isok:
+                    keep += [True]
+                else:
+                    keep += [False]
+        new = []
+        for elem in range(len(self.poss)):
+            if keep[elem]:
+                new += [self.poss[elem]]
+        self.poss = new
+
+    def solve(self):
+        for i in range(self.length):
+            if self.soln[i] is None:
+                standard = self.poss[0]
+                check = True
+                for poss in self.poss[1:]:
+                    if poss[i] != standard[i]:
+                        check = False
+                if check:
+                    self.soln[i] = standard[i]
+
+
+def update(dir, i):
+    solnLine = {u' ': None, u'\u2588': True, u'X': False}
+    lineSoln = {True: u'\u2588', False: u'X'}
+    if dir == 'row':
+        for j in range(cols):
+            if horiz[i].soln[j] is None:
+                horiz[i].soln[j] = solnLine[soln[i][j]]
+            else:
+                soln[i][j] = lineSoln[horiz[i].soln[j]]
+        horiz[i].prune(dir, i)
+    else:
+        for j in range(rows):
+            if vert[i].soln[j] is None:
+                vert[i].soln[j] = solnLine[soln[j][i]]
+            else:
+                soln[j][i] = lineSoln[vert[i].soln[j]]
+        vert[i].prune(dir, i)
+
+
+def display():
+    print ''
+    lMarg = max([len(' '.join([str(e) for e in a.nums])) for a in horiz])
+    tMarg = max([len(' '.join([str(e) for e in a.nums])) for a in vert])
+    spacer = ' ' * lMarg + '+-' * cols + '+'
+    for i in range(tMarg):
+        out = " " * (lMarg + 1)
+        out += ' '.join([' '.join([str(e) for e in col.nums]).rjust(tMarg)[i] for col in vert])
+        print out
+    print spacer
+    for i in range(rows):
+        out = ' '.join([str(e) for e in horiz[i].nums]).rjust(lMarg) + '|'
+        out += '|'.join(soln[i])
+        out += '|'
+        print out
+        print spacer
+
+print("How many rows in your diagram?")
+rows = input("-->")
+print("How many columns?")
+cols = input("-->")
+soln = [[u' ' for j in range(cols)] for i in range(rows)]
+horiz = [GridLine("row", i + 1, cols) for i in range(rows)]
+vert = [GridLine("column", j + 1, rows) for j in range(cols)]
+display()
+done = False
+while not done:
+    check = str(soln)
+    for row in range(rows):
+        update('row', row)
+        horiz[row].solve()
+        update('row', row)
+    for col in range(cols):
+        update('col', col)
+        vert[col].solve()
+        update('col', col)
+    if check == str(soln):
+        done = True
+    else:
+        display()
