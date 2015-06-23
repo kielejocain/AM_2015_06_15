@@ -6,9 +6,14 @@ class Song(object):
         for line in self.lyrics:
             print line
 
+    def __repr__(self):
+        return self.__class__.__name__
+
 happy_bday = Song(["Happy birthday to you",
                     "I don't want to get sued",
                     "So I'll stop right there"])
+
+print happy_bday
 
 bulls_on_parade = Song(["They rally around tha family",
                         "With pockets full of shells"])

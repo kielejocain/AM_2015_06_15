@@ -10,6 +10,9 @@ class Account(object):
         self.apr = apr
         self.transactions = []
 
+    def __repr__(self):
+        return "%s's %s account" % (self.name, self.account_type)
+
     def deposit(self, amount):
         """Add the requested amount to the balance."""
         self.balance += amount
@@ -26,6 +29,7 @@ class Account(object):
             print "Please take your cash."
             print "Your balance is now $%d." % self.balance
             self.transactions.append(("Withdrawal", amount))
+
 
 class SavingsAccount(Account):
     """A general blueprint for savings accounts."""
@@ -45,11 +49,11 @@ class CheckingAccount(Account):
     account_type = 'checking'
     apr = .01
     minimum_balance = 0.0
-    transactions = []
 
     def __init__(self, name, balance):
         self.name = name
         self.balance = balance
+        self.transactions = []
 
     def setup_dd(self, company):
         """Offers a savings apr to checking accounts with direct deposit."""
