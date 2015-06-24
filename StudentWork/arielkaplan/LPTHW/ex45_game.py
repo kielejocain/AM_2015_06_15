@@ -1,10 +1,10 @@
 from sys import exit
 from random import random, randint
 
-keep_playing = True
-health = 100
-evidence = 0
-carrying = []
+# playing = True
+# health = 100
+# evidence = 0
+# carrying = []
 
 # ENGINE
 class Engine(object):
@@ -14,29 +14,74 @@ class Engine(object):
 	def __init__(self, scene_map):
 		self.scene_map = scene_map
 
-	def play(self):
+	def play(self, player):
 		# Starting scene of the game
 		current_scene = self.scene_map.opening_scene()
 		
 		# needs loop or won't change rooms more than once
-		while keep_playing == True: 
+		while player.playing == True: 
 			# uses returned value for next chosen scene from current scene.enter()
-			next_scene_name = current_scene.enter()
+			next_scene_name = current_scene.enter(player)
 			current_scene = self.scene_map.next_scene(next_scene_name)
 
 		# runs new scene
-		current_scene.enter()
+		current_scene.enter(player)
 
 # PLAYER
 
-# Don't actually think I need this. Made variables global for ease of modification
-# class Assistant(object):
-# 	"""Player is an undercover lab assistant. Resuce animals
-# 	and collect evidence without getting caught or too injured."""
-# 	def __init__(self):
-# 		self.health = 100
-# 		self.evidence = 0
-# 		self.carrying = [] # animals
+class Assistant(object):
+	"""Player is an undercover lab assistant. Resuce animals
+	and collect evidence without getting caught or too injured."""
+	def __init__(self, name):
+		self.name = name
+		self.playing = True # Continue playing
+		self.health = 100
+		self.evidence = 0
+		self.max_weight = 60 
+		self.carrying = [] # animals
+
+	def get_injured(self, animal):
+		pass
+
+	def pick_up_animals(self, cages):
+		print "\nWhich animals to rescue?"
+
+		# Keep choosing animals
+		stay = True
+
+		while stay == True:
+			for i in range(len(cages)):
+				# hiding stats for now
+				print str(i + 1) + ": " + str(cages[i])
+			print str(len(cages) + 1) + ": None; I'm finished."
+			
+			pick_up = raw_input("Which animal do you pick up? >> ")
+
+			# check that pick_up is a number
+			try :
+				pick_up = int(pick_up)
+				# switch from cardinal to ordinal #
+				pick_up -= 1
+
+				# if picking from empty cage
+				if (pick_up < len(cages)) and (cages[pick_up] == "Empty Cage"):
+					print "You already got that one. Pick something else."
+					self.pick_up_animals()
+				# if valid: p/u animal & remove from cage
+				elif 0 <= pick_up < len(cages):
+					self.carrying.append(cages[pick_up])
+					print self.carrying
+					print "\n"
+					cages[pick_up] = "Empty Cage"
+				# if choice is to leave
+				elif pick_up == len(cages):
+					stay = False
+				else:
+					print "You seem confused. You're worrying me."
+
+			except TypeError:
+				print "That's not a number. Try again."
+				self.pick_up_animals()
 
 
 # ANIMALS
@@ -57,6 +102,7 @@ class Bunny(Animal):
 	def __init__(self, danger):
 		super(Bunny, self).__init__()
 		self.name = "bunny"
+		self.weight = randint(3, 5)
 		self.value = 3
 
 	def __repr__(self):
@@ -70,6 +116,7 @@ class Cat(Animal):
 	def __init__(self, danger):
 		super(Cat, self).__init__()
 		self.name = "cat"
+		self.weight = randint(5, 11)
 		self.claws *= 1.5
 		self.value = 5
 
@@ -84,6 +131,7 @@ class Dog(Animal):
 	def __init__(self, danger):
 		super(Dog, self).__init__()
 		self.name = "dog"
+		self.weight = randint(8, 35)
 		self.teeth *= 2.0
 		self.claws /= 2.0
 		self.value = 8
@@ -98,27 +146,23 @@ class Dog(Animal):
 
 class Scene(object):
 	"""Parent for scenes"""
-	global keep_playing
-	global health
-	global evidence
-	global carrying
 
-	def enter(self):
+	def enter(self, player):
 		print "Not yet configured."
 		exit(1)
 		
 # Entry door
 class FrontDoor(Scene):
 	"""Figure the combination code to get in the lab."""
-	def enter(self):
-		print "\nYou're at the front door. Yay."
+	def enter(self, player):
+		print "\nHi, %s. You're at the front door." % player.name
 		print "I'm gonna assume you got the code right. Lucky you."
 		return "hallway"
 
 # Hallway
 class Hallway(Scene):
 	"""Lets player choose lab room"""
-	def enter(self):
+	def enter(self, player):
 		print "\nYou've made it to the hallway. Where do you go?"
 		print "1: Red Room"
 		print "2: Blue Room"
@@ -155,11 +199,11 @@ class Lab(Scene):
 		if self.cages == []:
 			self.fill_cages()
 
-	def enter(self):
+	def enter(self, player):
 		print "\nYou've made it to the %s Room." % self.color
 		print "There are %d cages." % len(self.cages)
 
-		self.pick_up_animals()
+		player.pick_up_animals(self.cages)
 
 		return "hallway"
 
@@ -174,38 +218,6 @@ class Lab(Scene):
 			# creates a random animal in each cage
 			self.cages.append(species[randint(0, 2)])
 
-	def pick_up_animals(self):
-		print "\nWhich animals to rescue?"
-		for i in range(len(self.cages)):
-			# hiding stats for now
-			print str(i + 1) + ": " + str(self.cages[i])
-		print str(len(self.cages) + 1) + ": None; I'm finished."
-		
-		pick_up = raw_input("Which animal do you pick up? >> ")
-
-		# check that pick_up is a number
-		try :
-			pick_up = int(pick_up)
-			# switch from cardinal to ordinal #
-			pick_up -= 1
-			# add animal to pack & remove from cage
-			if (pick_up < len(self.cages)) and (self.cages[pick_up] == "Empty Cage"):
-				print "You already got that one. Pick something else."
-				self.pick_up_animals()
-			elif 0 <= pick_up < len(self.cages):
-				carrying.append(self.cages[pick_up])
-				print carrying
-				self.cages[pick_up] = "Empty Cage"
-			elif pick_up == len(self.cages):
-			 	return self.leave()
-			else:
-				print "You seem confused. You're worrying me."
-				self.enter()
-
-		except TypeError:
-			print "That's not a number. Try again."
-			self.pick_up_animals()
-
 
 	def leave(self):
 		print "Okay, let's go."
@@ -213,20 +225,28 @@ class Lab(Scene):
 
 class Drop(Scene):
 	"""Drop off animals carrying outside"""
-	def enter(self):
+	def enter(self, player):
 		# global evidence
 		# pull amt of evidence out of carrying list.
-		print "\nYou put the animals in a safe place."
-		print "You've collected ??? of the evidence you need." 
-		for animal in carrying:
-			print str(animal.name) + " is worth " + str(animal.value)
-			evidence += animal.value
-		# Empty player's list
-		carrying = []
-		print evidence
+		if len(player.carrying) == 0:
+			print "\nYou don't have any animals! Get back in there!"
+			return "front_door"
+		elif len(player.carrying) == 1:
+			print "\nYou only have one animal. Better than nothing."
+		else: 
+			print "\nYou put the animals in a safe place."
 
-		if evidence >= 100:
-			return "win"
+		for animal in player.carrying:
+			print str(animal.name) + " is worth " + str(animal.value)
+			player.evidence += animal.value
+		print "You've collected %d%% of the evidence you need." % (
+			player.evidence)
+
+		# Empty player's list
+		player.carrying = []
+
+		if player.evidence >= 100:
+			return "You've got enough evidence to shut down the lab! You win!"
 		else:
 			print "Go back in? y/n"
 			answer = raw_input(">> ")
@@ -240,35 +260,35 @@ class Drop(Scene):
 # Get caught
 class Caught(Scene):
 	"""The scientist found you. Can you talk yourself out of it?"""
-	def enter(self):
+	def enter(self, player):
 		print "You got caught"
 		pass
 
 # End: Pass out
 class PassOut(Scene):
 	"""Health has reached 0. Game Over."""
-	def enter(self):
+	def enter(self, player):
 		print "\nA valiant effort, but the animals did too much damage to you."
 		print "You pass out in the lab and are found the next morning."
 		print "The mad scientist fires you for sleeping on the job."
-		keep_playing = False
+		player.playing = False
 		exit(1)
 
 # End: Give up
 class GiveUp(Scene):
 	"""You got bored and gave up."""
-	def enter(self):
+	def enter(self, player):
 		print "\nWhat a terrible work ethic. I'm disappointed. You lose."
-		keep_playing = False
+		player.playing = False
 		exit(1)
 
 # End: You win!
 class Win(Scene):
 	"""You've gathered enough evidence. You Win."""
-	def enter(self):
+	def enter(self, player):
 		print "\nYou win"
-		keep_playing = False
-		# exit(1)
+		player.playing = False
+		exit(1)
 
 # MAP
 class Map(object):
@@ -305,10 +325,12 @@ class Map(object):
 	def opening_scene(self):
 		return self.next_scene(self.start_scene)
 
-
+print "You're undercover at a mad scientist's animal-testing lab."
+code_name = raw_input("What is your code name? >> ")
 
 a_map = Map("front_door")
+a_player = Assistant(code_name)
 
 a_game = Engine(a_map)
-a_game.play()
+a_game.play(a_player)
 
