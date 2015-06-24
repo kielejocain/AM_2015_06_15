@@ -36,7 +36,7 @@ class Engine(object):
 # 	def __init__(self):
 # 		self.health = 100
 # 		self.evidence = 0
-# 		self.carrying = {} # animals
+# 		self.carrying = [] # animals
 
 
 # ANIMALS
@@ -56,6 +56,7 @@ class Bunny(Animal):
 	"""Smallest of animals"""
 	def __init__(self, danger):
 		super(Bunny, self).__init__()
+		self.name = "bunny"
 		self.value = 3
 
 	def __repr__(self):
@@ -68,6 +69,7 @@ class Cat(Animal):
 	"""Mediumest of animals."""
 	def __init__(self, danger):
 		super(Cat, self).__init__()
+		self.name = "cat"
 		self.claws *= 1.5
 		self.value = 5
 
@@ -81,6 +83,7 @@ class Dog(Animal):
 	"""Largest of animals."""
 	def __init__(self, danger):
 		super(Dog, self).__init__()
+		self.name = "dog"
 		self.teeth *= 2.0
 		self.claws /= 2.0
 		self.value = 8
@@ -141,7 +144,7 @@ class Hallway(Scene):
 			return "drop_off"
 		else:
 			print "You wander in circles for a while."
-			self.enter()
+			return "hallway"
 
 # Labs: make four instances
 class Lab(Scene):
@@ -154,7 +157,7 @@ class Lab(Scene):
 
 	def enter(self):
 		print "\nYou've made it to the %s Room." % self.color
-		print "There are %d occupied cages." % len(self.cages)
+		print "There are %d cages." % len(self.cages)
 
 		self.pick_up_animals()
 
@@ -176,31 +179,32 @@ class Lab(Scene):
 		for i in range(len(self.cages)):
 			# hiding stats for now
 			print str(i + 1) + ": " + str(self.cages[i])
-		print str(len(self.cages) + 1) + ": None"
+		print str(len(self.cages) + 1) + ": None; I'm finished."
 		
 		pick_up = raw_input("Which animal do you pick up? >> ")
 
 		# check that pick_up is a number
+		try :
+			pick_up = int(pick_up)
+			# switch from cardinal to ordinal #
+			pick_up -= 1
+			# add animal to pack & remove from cage
+			if (pick_up < len(self.cages)) and (self.cages[pick_up] == "Empty Cage"):
+				print "You already got that one. Pick something else."
+				self.pick_up_animals()
+			elif 0 <= pick_up < len(self.cages):
+				carrying.append(self.cages[pick_up])
+				print carrying
+				self.cages[pick_up] = "Empty Cage"
+			elif pick_up == len(self.cages):
+			 	return self.leave()
+			else:
+				print "You seem confused. You're worrying me."
+				self.enter()
 
-		pick_up = int(pick_up)
-		# switch from cardinal to ordinal #
-		pick_up -= 1
-
-		# add animal to pack & remove from cage
-		if self.cages[pick_up] == "Empty Cage":
-			print "You already got that one. Pick something else."
+		except TypeError:
+			print "That's not a number. Try again."
 			self.pick_up_animals()
-		elif 0 <= pick_up <= len(self.cages):
-			carrying.append(self.cages[pick_up])
-			print carrying
-			self.cages[pick_up] = "Empty Cage"
-
-
-		elif pick_up == len(self.cages + 1):
-			return self.leave()
-		else:
-			print "You seem confused. You're worrying me."
-			self.enter()
 
 
 	def leave(self):
@@ -210,9 +214,17 @@ class Lab(Scene):
 class Drop(Scene):
 	"""Drop off animals carrying outside"""
 	def enter(self):
-		# pull amt of evidence out of carrying dict.
+		# global evidence
+		# pull amt of evidence out of carrying list.
 		print "\nYou put the animals in a safe place."
 		print "You've collected ??? of the evidence you need." 
+		for animal in carrying:
+			print str(animal.name) + " is worth " + str(animal.value)
+			evidence += animal.value
+		# Empty player's list
+		carrying = []
+		print evidence
+
 		if evidence >= 100:
 			return "win"
 		else:
