@@ -1,6 +1,18 @@
-#This is a text based game that involves moving between interconnected boats. 
-import random 
+# This is a text based game that involves moving between interconnected boats. 
 
+# It's basically a trading sequence game; you're talking to characters to determine what they want, so you can help them and they can give you something you need to continue. It's my first Python program. I hope you like it!
+
+# This game was written in 2015 by Emily Cain (github.com/EMCain; emcain.net) 
+
+# Protected by Attribution-ShareAlike 4.0 International, see https://creativecommons.org/licenses/by-sa/4.0/ for details. 
+
+    # Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+    # ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
+
+    # No additional restrictions - You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+import random 
 
 
 # a function to validate input when you need an integer. This prevents type input errors from crashing the program. 
@@ -42,64 +54,50 @@ def validate_str(input):
 #defines the Boat object which is the basis for location in this game 
 class Boat(object):
 		
-	 #inputs are place (the boat's position), cons (a dictionary of connecting boat numbers : the conditions to move to those boats) and style (the boat's type, for flavor)
+	 #inputs are place (the boat's position), cons (a dictionary of connecting boat numbers : the conditions to move to those boats)  style (the boat's type, for flavor), and character (the person who is on the boat; None by default.)
 	
 	def __init__(self, place, cons, style, character = None):
 		
 		self.connections = {} 
-#		print cons # a test to ensure cons has properly been passed in
 		for key in cons: # transfer the key-value pairs in the dictionary "cons" to the internal (self) dictionary "connections"
 			self.connections[key] = cons[key] 
 		self.position = validate_int(place) # self's position is the input int called place
 		self.kind = validate_str(style) # self's kind is the input string called style
 		self.person = character
-	
-	# def see_connections(self): # this is not used 
-		# output = "Boat " + str(self.position) + " is connected to the following boats: "
-		# for thing in self.connections:
-			# output += str(thing) + ", " 
-		# print output[:-2]
 		
-	def get_person(self): #probably not needed 
+	def get_person(self): # used when a string describing the person is needed. Npc has a custom __str__method so you can use it this way.  
 		if self.person is not None:
 			return self.person
 		else:
-			self.blank_things = ["dust bunny", "mouse", "pile of old boxes"]
+			self.blank_things = ["dust bunny", "mouse", "pile of old boxes"] # the idea is that if no one is on the boat you see some random junk.
 			return random.choice(self.blank_things)
 
-
+# the Player class handles most of your actions in the game. The Map class handles most of the background stuff that needs to happen. 
 class Player(object):
 	def __init__(self):
-		self.the_map = Map() # error
-		#give this an attribute that is its position in the map 
-		self.location = 0 
+		self.the_map = Map() 
+		self.location = 0 # your current position; the number refers to a boat. 
 
 	def see_connected_boats(self):
 		print "You can move to the following places."
 		current_boat = self.the_map.boats[self.location] # assign current_boat to the boat object located in the map's boats list in the position of own location
-		for connection in current_boat.connections:
-			
-			# print "Boat number " + str(connection) + ", which is", self.the_map.boats[connection].kind 
-			# print "To move to", self.the_map.boats[connection].kind, "enter the number", connection
-			
+		for connection in current_boat.connections:		
 			print connection, ":", self.the_map.boats[connection].kind
-			# self.the_map.boats[connection].kind #eventually figure out a mechanism to make this not show the boat number. 
 		
-	def on_boat_actions(self):
-	#stuff that should happen after moving:
+	def on_boat_actions(self): # this must be run in a loop for the game to work. 
 		
 		self.the_boat = self.the_map.boats[self.location]
 		
-		raw_input("Continue >> ")
+		raw_input("Continue >> ") # exists simply to slow down the flow of text. Otherwise it gets overwhelming. 
 		print "\n"
 		print "You are on " + self.the_boat.kind + "."
-		self.the_person = self.the_boat.get_person()
-		print "You see a", str(self.the_person) + ".\n"
+		self.the_person = self.the_boat.get_person() # the person (Npc) who's on the boat
+		print "You see a", str(self.the_person) + ".\n" # will show some random junk like 'pile of old boxes' if there's no person
 		print "What do you want to do?"
 		print "1. talk to the", self.the_person  
 		print "2. move to a different boat"
 		
-		action = validate_int(raw_input(" > "))
+		action = validate_int(raw_input(" > ")) # ensures input is an integer and asks for new  input if it's not 
 		
 		self.input_needed = True
 		
@@ -107,64 +105,113 @@ class Player(object):
 		
 			if action == 1:
 				try:
-					self.the_boat.person.interact()
+					self.the_boat.person.interact() # starts a conversation with the person 
 				except:
-					print "That's an odd choice.\n"
+					print "That's an odd choice.\n" # this happens if you try to talk to the inanimate object that's displayed if there's no person. 
 				self.input_needed = False
 			elif action == 2:
 				self.move_to_boat()
 				self.input_needed = False
 			else: 
 				print "please enter 1 or 2, then press ENTER or RETURN"
-				action = validate_int(raw_input(" > "))
+				action = validate_int(raw_input(" > ")) # asks for new input and returns to the top of this while loop
 				continue 
 			
 		
+	# performs various tests to see if moving is possible, moves if possible, if not tells you why. Tests if the move causes you to win, and if so ends game
+	def move_to_boat(self): 
 	
-	def move_to_boat(self):
-		# show what the connections of this boat are
-		# get the list of boats from the_map
-		# get the boat at self.location
-		# call see_connections on that boat. 
-		self.the_boat = self.the_map.boats[self.location]
-
+		self.the_boat = self.the_map.boats[self.location] # creates the_boat attribute (if needed) and assigns it the boat you're on 
 		self.see_connected_boats()
+		
 		print "Where do you want to go?"
 
 		move_to = validate_int(raw_input(">  "))
 			
-		if move_to in self.the_boat.connections:
-
-			self.the_condition = self.the_boat.connections[move_to] # trying to get the move condition associated with this connection. 
-
+		if move_to in self.the_boat.connections: # tests if the requested boat is connected to your current one 
+		
+			# gets the MoveCondition object associated with your current boat and the one you want to move to 
+			self.the_condition = self.the_boat.connections[move_to] 
 						
-			if self.the_condition.fulfilled:
+			# next uses the MoveCondition object to determine if you have done the in-game task needed to make this move. 			
+			if self.the_condition.fulfilled: 
 				self.location = move_to 
 				self.the_boat = self.the_map.boats[self.location]
 				
 				print "\nYou cross a narrow rope bridge.\n"
 
-				if self.location == self.the_map.win_boat: #tests if the most recent move has moved you to the winning boat. 
+				if self.location == self.the_map.win_boat: # tests if the most recent move has moved you to the winning boat. 
 					print "Congratulations, you have reached the last boat!\n"
-					print "~~~~~You win!~~~~~\n"
-					print "< ('o'<) ( '-' ) (>^o^)> v( ^.' )v < (' .' )> < ('.'<) ( '.^ ) (>^.^)> v( 0.0 )v < (' .' )>\n"
+					print "~~~~~~~~~~~~~~~~~~~~You win!~~~~~~~~~~~~~~~~~~~~\n"
+					print "< ('o'<) ( '-' ) (>^o^)> v( ^.' )v < (' .' )> < ('.'<) ( '.^ ) (>^.^)> v( 0.0 )v < (' .' )>\n" # does a little dance 
 					exit(1)
 					
-				self.on_boat_actions()
-				
-			
-			#will replace this with validation for the move condition.
-			#1. determine which move condition will be used
-			#  a. look at the boat we are starting at, go to that boat
-			#  b. look at the connections and find the one that has been selected to move to
-			#  c. find the condition associated with that connection
-			#  d. evaluate to enter the if statement. 
-
 			else:
-				print "You can't move to this boat yet, because", str(self.the_condition.success_no)
+				print "You can't move to this boat yet, because", str(self.the_condition.success_no) # if a MoveCondition prevents you from moving to this boat, this happens to explain why. 
 		else:
 			print "Sorry, you cannot move to Boat Number", move_to, "because it is not connected to this boat."
+
+
+# MoveCondition objects are the basis of this game's logic system. They determine whether you can take actions or not. 
+# If there's no restriction on an action, use the default MoveCondition object with no parameters, which I have called below as always_yes. 
+# success_question is a question you're trying to answer with this MoveCondition.  
+# success_no describes what happens if the answer is no; success_yes describes what happens if the answer is yes. 
+# All 3 parameters are strings and only matter for story purposes; they don't affect how the object functions. 
+class MoveCondition(object):
+
+			def __init__(self, success_question = None, success_no = None, success_yes = None):
+
+				self.success_question = ""
+				self.success_no = ""
+				self.success_yes = ""
 			
+				if success_question is None and success_no is None and success_yes is None: #default object 
+					self.fulfilled = True
+
+				else:
+					self.success_question = validate_str(success_question)
+					self.success_no = validate_str(success_no)
+					self.success_yes = validate_str(success_yes)
+				
+					self.fulfilled = False 
+				
+			# I suppose it would make sense to have variations on this to make it unfulfilled or the opposite of whatever it is currently,
+			# but I don't use them in this game so I haven't added them. 
+			def make_fulfilled(self): 
+				self.fulfilled = True
+
+			def __str__(self):
+				return self.success_question
+
+#all this does is create move conditions and store them in a list. 
+# The move conditions will be used in a dictionary where they are paired with connections between boats. 
+class MoveHandler(object):
+
+	conditions = {}
+	
+	def __init__(self):
+
+		# a stand-in move condition that starts out true 
+		always_yes = MoveCondition()
+		self.conditions["AlwaysYes"] = always_yes 
+		
+		baby_crying = MoveCondition("Is the baby happy?", "the baby's dad is blocking the way, and won't move until she stops crying.", "The baby is happy.")
+		self.conditions["BabyCrying"] = baby_crying
+		has_cookie = MoveCondition("Do you have a cookie?", "you don't have a cookie.", "You have a cookie.")
+		self.conditions["HasCookie"] = has_cookie
+		knows_joke = MoveCondition("Do you know a joke?", "the bored little boy is sprawled out in front of the bridge.", "You know a great joke!")
+		self.conditions["KnowsJoke"] = knows_joke
+
+			
+# There's a lot going on here. This is the non-player character class. 
+	# Here are the inputs: 
+	# desc is the description of the person, such as "a teenage girl."
+	# falsetxt is what the character says before they have gotten what they want. If the person doesn't want you to do anything besides talk to them, this is never used. 
+	# truetxt_first is what the character says the first time you talk to them after getting/doing the thing they want. For characters that don't want anything this is the first thing they say to you. 
+	# truetxt_have_talked is what they say all other times after getting what they want; it's usually shorter and involves thanking you. 
+	# move_cond_obj_trigger is the MoveCondition this character has control over. 
+	# move_cond_obj_needed is the MoveCondition representing what this character wants. 
+	
 class Npc(object):
 
 	def __init__(self, desc, falsetxt, truetxt_first, truetxt_have_talked, move_cond_obj_trigger, move_cond_obj_needed):
@@ -176,10 +223,8 @@ class Npc(object):
 		self.move_condition_trigger = move_cond_obj_trigger #this is the move condition that is toggled by giving this person what they need
 		
 		self.move_condition_needed = move_cond_obj_needed # this is what needs to be true to satisfy this person so they trigger the "trigger" condition above
-		
-		self.have_fulfilled = False #have you given this person what they wanted? This is what determines whether that individual lets you pass. May get rid of this 
-		
-		self.have_talked = False # have you talked to this person before? 
+				
+		self.have_talked = False # have you talked to this person before? No. 
 	
 	def __str__(self):
 		return self.description
@@ -196,10 +241,7 @@ class Npc(object):
 				self.have_talked = True 
 		else: 
 			print "\n", self.false_text, "\n"			#they state that their need has not been fulfilled e.g. I'm still hungry 
-			
-
-	
-	
+				
 	
 class Map(object):
 	
@@ -214,7 +256,6 @@ class Map(object):
 		
 		
 		#create people, add them to dictionary "people" 
-		#desc, falsetxt, truetxt_first, truetxt_have_talked, move_cond_obj_trigger, move_cond_obj_needed
 		teen_girl = Npc("teenage girl", 
 			"The girl says, 'I'm so hungry! Ever since Mom started rearranging our stuff, \nthe boats are a mess and we can't get to the pantry.' \n \n'It sucks, because I had a great joke I wanted to tell you, but now I can't remember it.'", 
 			"She says, 'Ugh, I'm SOOO hungry!' \n\n 'Is that a cookie? Give me that!' \n\n *munch munch* \n\n'Thanks! Now I remember the joke! What's brown and sticky?' \n\n 'A stick!'", 
@@ -258,29 +299,27 @@ class Map(object):
 			
 		self.people[5] = midage_woman
 
-		
-		
-		boat_cons = [[1],[0, 2],[1, 3, 5]]
-		
+		#connections to each boat and the logical condition needed to move between them. 
 		boat_cons = [{1: self.condits["AlwaysYes"]}, # boat 0 (beach)
 					{0: self.condits["AlwaysYes"], 2: self.condits["AlwaysYes"]}, # boat 1
 					{1: self.condits["AlwaysYes"], 3: self.condits["BabyCrying"], 5: self.condits["AlwaysYes"]}, # boat 2 
-					{2:self.condits["BabyCrying"]}, # boat 3 eliminated 4:self.condits["AlwaysYes"]
-					{6: self.condits["KnowsJoke"], 5:self.condits["AlwaysYes"]}, #boat 4 eliminated 3: self.condits["AlwaysYes"]  
+					{2:self.condits["BabyCrying"]}, # boat 3 
+					{6: self.condits["KnowsJoke"], 5:self.condits["AlwaysYes"]}, #boat 4 
 					{2: self.condits["AlwaysYes"], 4:self.condits["AlwaysYes"]}, # boat 5  
 					{4: self.condits["KnowsJoke"]}] # boat 6 
+		
 		boat_kinds = ["the beach", "a small fishing boat", "a house boat", "a dilapidated old yacht", "a sailing ship with the sails missing",  "the back part of a shipping barge", "a large rowboat"]
 		
 		
 		for x in range(7):
-			# if statement testing if there are people 
+			# if statement testing if there are people on a given boat 
 			if x in self.people: 
-				a_boat = Boat(x, boat_cons[x], boat_kinds[x], self.people[x]) # error
+				a_boat = Boat(x, boat_cons[x], boat_kinds[x], self.people[x]) 
 			else: 
 				a_boat = Boat(x, boat_cons[x], boat_kinds[x])
 			self.boats.append(a_boat)
 		
-	def see_all_boats(self):
+	def see_all_boats(self): # a testing function which isn't used, but it's handy so I'll leave it here. 
 		output = "These are the boats: \n \n "
 		for boat in self.boats:
 			output += "\n " + str(boat.position)
@@ -295,102 +334,18 @@ class Map(object):
 		print output
 		
 
-class MoveHandler(object):
-#all this does is create move conditions and store them in a list. The move conditions will be used in a dictionary where they are paired with connections between boats. 
-
-	conditions = {}
-	
-	def __init__(self):
-
-		# a standin move condition that starts out true 
-		always_yes = MoveCondition()
-		self.conditions["AlwaysYes"] = always_yes 
-		
-		# a standin move condition that starts  out false:
-		starts_no = MoveCondition()
-		starts_no.make_unfulfilled()
-		self.conditions["StartsNo"] = starts_no
-		
-		
-		# a standin move condition that doesn't influence enaything, for person objects needing a condition object. 
-		unused = MoveCondition()
-		self.conditions["Unused"] = unused
-	
-		baby_crying = MoveCondition("Is the baby happy?", "the baby's dad is blocking the way, and won't move until she stops crying.", "The baby is happy.")
-		self.conditions["BabyCrying"] = baby_crying
-		has_cookie = MoveCondition("Do you have a cookie?", "you don't have a cookie.", "You have a cookie.")
-		self.conditions["HasCookie"] = has_cookie
-		knows_joke = MoveCondition("Do you know a joke?", "the bored little boy is sprawled out in front of the bridge.", "You know a great joke!")
-		self.conditions["KnowsJoke"] = knows_joke
-		
-
-
-class MoveCondition(object):
-
-			def __init__(self, success_question = None, success_no = None, success_yes = None):
-
-				self.success_question = ""
-				self.success_no = ""
-				self.success_yes = ""
-			
-				if success_question is None and success_no is None and success_yes is None:
-					self.fulfilled = True
-			# example instance: has_cookie = MoveCondition("Do you have a cookie?", "You don't have a cookie", "You have a cookie")
-				else:
-					self.success_question = validate_str(success_question)
-					self.success_no = validate_str(success_no)
-					self.success_yes = validate_str(success_yes)
+def play():
 				
-					self.fulfilled = False 
-				
-			def ask_if_true(self):
-				print success_question
-				if self.fulfilled:
-					print success_yes
-					return True
-				else:
-					print success_no
-					return False
-					
-			def make_fulfilled(self): 
-				self.fulfilled = True
-				
-			def make_unfulfilled(self):
-				self.fulfilled = False
-				
-			def __str__(self):
-				return self.success_question
+	#start playing: 
+	print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	print "Welcome to the boat game!"
+	print "You start at the beach. There are a number of interconnected boats. The goal is to move to Boat 6, a rowboat." 
+	print "Select options using the numbers on your keyboard and press ENTER or RETURN to proceed."
+	print "Have fun!"
+
+	the_player = Player()
+
+	while True:
+		the_player.on_boat_actions()
 		
-#start playing: 
-print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-print "Welcome to the boat game!"
-print "You start at the beach. The goal is to move to Boat 6, a rowboat." 
-print "Select options using the numbers on your keyboard and press ENTER or RETURN to proceed."
-print "Have fun!"
-
-the_player = Player() # error 
-
-while True:
-	the_player.on_boat_actions()
-	
-# testing of map and move conditions:	
-	
-# a_map = Map()
-# a_map.see_all_boats()
-
-
-
-	
-#testing of move conditions and move handler
-
-# print "Creating MoveHandler"
-# the_handler = MoveHandler()
-
-# print "Printing conditions"
-# for thing  in the_handler.conditions:
-	# print "Printing condition", thing
-	# print thing.success_question
-	# print thing.success_no
-	# print thing.success_yes
-	# print thing.fulfilled
-	
+play()
