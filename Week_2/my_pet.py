@@ -1,53 +1,64 @@
 from collections import OrderedDict
 
-class MyPet(object):
+
+class Engine(object):
+    """Drives the game"""
+
+    def play(self):
+        """Builds and runs pet"""
+        done = False
+        while not done:
+            name = raw_input("What would you like to name your pet? > ")
+            my_pet = MyPetAlpha(name)
+            while my_pet.alive:
+                print my_pet
+                my_pet.next_move()
+                done, evolve = my_pet.check()
+                if evolve:
+                    self.evolve_pet(my_pet)
+
+    def evolve_pet(self, other):
+        """Evolves pet when conditions met"""
+        if other.level == "baby":
+            name = other.name
+            hunger = other.hunger
+            boredom = other.boredom
+            happiness = other.happiness
+            del other
+            other = MyPetBeta(name, hunger, boredom, happiness)
+
+
+class BasePet(object):
 
     max_hunger = 10
-    max_strength = 10
     max_boredom = 10
     max_happiness = 10
+    max_strength = 10
 
     def __init__(self, name):
-        self.level = "baby"
+        self.alive = True
         self.name = name
-        print "%s is hatching!" % self.name
-        self.hunger = 9
-        self.strength = 0
+        self.hunger = 0
         self.boredom = 0
         self.happiness = 10
-        self.activities = OrderedDict([
-            ("Eat", self.feed),
-            ("Play", self.play),
-            ("Exercise", self.lift)
-            ])
-        self.check()
-
-    def __str__(self):
-        output = "\n%s: %s pet\n" % (self.name, self.level)
-        output += "-" * 20 + "\n"
-        output += "Hunger: %d / %d\n" % (self.hunger, self.max_hunger)
-        output += "Boredom: %d / %d\n" % (self.boredom, self.max_boredom)
-        output += "Happiness: %d / %d\n" % (self.happiness, self.max_happiness)
-        output += "Strength: %d\n" % (self.strength)
-        return output
+        self.strength = 0
 
     def check(self):
         """Checks stats for end_game conditions, evolution."""
         if self.hunger > self.max_hunger:
-            self.game_end("hunger")
+            return self.game_end("hunger"), False
         elif self.boredom > self.max_boredom:
-            self.game_end("boredom")
+            return self.game_end("boredom"), False
         elif self.happiness <= 0:
-            self.game_end("happiness")
-        elif self.strength >= self.max_strength and self.happiness > 7:
-            self.evolve()
+            return self.game_end("happiness"), False
         else:
-            print self
-            self.next_move()
+            return False, self.evolve_check()
+
+    def evolve_check(self):
+        return False
 
     def game_end(self, reason):
         """Ends the game"""
-        global exit
         if reason == "hunger":
             print "%s got hungry and left in search of food." % self.name
         elif reason == "boredom":
@@ -58,7 +69,8 @@ class MyPet(object):
         print "Thanks for playing!"
         print "Try again?"
         if raw_input("> ").lower not in ['y', 'yes']:
-            exit = True
+            return True
+        return False
 
     def next_move(self):
         """Decide your next move"""
@@ -80,7 +92,6 @@ class MyPet(object):
     def feed(self):
         print "Let's eat!"
         self.hunger = 0
-        self.boredom += 1
         if self.happiness < self.max_happiness - 2:
             self.happiness += 2
         else:
@@ -96,19 +107,93 @@ class MyPet(object):
         self.check()
 
     def lift(self):
-        print "Throw the ball!"
+        print "How high can you jump, %s?" % self.name
         self.boredom += 1
         self.happiness -= 2
         self.hunger += 3
-        self.strength += 1
+        if self.strength < self.max_strength:
+            self.strength += 1
         self.check()
 
-    def evolve(self):
-        if self.level == "baby":
-            self = MyPetAlpha(self.name)
+    def mine(self):
+        print "Mining gold..."
+        self.boredom += 2
+        self.happiness -= 3
+        self.hunger += 4
+        if self.strength < self.max_strength - 1:
+            self.strength += 2
+        else:
+            self.strength = self.max_strength
+        self.gold += 10
+        self.check()
 
 
-exit = False
-while not exit:
-    name = raw_input("What would you like to name your pet? > ")
-    my_pet = MyPet(name)
+class MyPetAlpha(BasePet):
+    """First-level pet"""
+
+    def __init__(self, name):
+        self.alive = True
+        self.level = "baby"
+        self.name = name
+        print "%s is hatching!" % self.name
+        self.hunger = 9
+        self.strength = 0
+        self.boredom = 0
+        self.happiness = 10
+        self.activities = OrderedDict([
+            ("Eat", self.feed),
+            ("Play", self.play),
+            ("Exercise", self.lift)
+            ])
+
+    def __str__(self):
+        output = "\n%s: %s pet\n" % (self.name, self.level)
+        output += "-" * 20 + "\n"
+        output += "Hunger: |%s%s|%d\n" % (
+            self.hunger * "==",
+            (self.max_hunger - self.hunger) * "  ",
+            self.hunger
+            )
+        output += "Boredom: %d / %d\n" % (self.boredom, self.max_boredom)
+        output += "Happiness: %d / %d\n" % (self.happiness, self.max_happiness)
+        output += "Strength: %d\n" % (self.strength)
+        return output
+
+    def evolve_check(self):
+        return self.strength >= 10 and self.happiness >= 7
+
+
+class MyPetBeta(BasePet):
+    """First evolution of pet"""
+
+    max_strength = 100
+
+    def __init__(self, name, hunger, boredom, happiness):
+        self.alive = True
+        self.name = name
+        print "(>^v^)>\n<(^v^<)\n" * 4
+        print "%s is evolving!" % self.name
+        self.level = "teen"
+        self.hunger = hunger
+        self.boredom = boredom
+        self.happiness = happiness
+        self.strength = 10
+        self.gold = 0
+        self.activities = OrderedDict([
+            ("Eat", self.feed),
+            ("Play", self.play),
+            ("Work", self.earn)
+            ])
+
+    def __str__(self):
+        output = "\n%s: %s pet\n" % (self.name, self.level)
+        output += "-" * 20 + "\n"
+        output += "Hunger: %d / %d\n" % (self.hunger, self.max_hunger)
+        output += "Boredom: %d / %d\n" % (self.boredom, self.max_boredom)
+        output += "Happiness: %d / %d\n" % (self.happiness, self.max_happiness)
+        output += "Strength: %d\n" % (self.strength)
+        output += "Gold: %d" % self.gold
+        return output
+
+game = Engine()
+game.play()
