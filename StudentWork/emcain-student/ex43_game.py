@@ -75,7 +75,7 @@ class Player(object):
 		self.location = 0 
 
 	def see_connected_boats(self):
-		print "You can move to the following places. Where do you want to go? "
+		print "You can move to the following places."
 		current_boat = self.the_map.boats[self.location] # assign current_boat to the boat object located in the map's boats list in the position of own location
 		for connection in current_boat.connections:
 			
@@ -91,6 +91,7 @@ class Player(object):
 		self.the_boat = self.the_map.boats[self.location]
 		
 		raw_input("Continue >> ")
+		print "\n"
 		print "You are on " + self.the_boat.kind + "."
 		self.the_person = self.the_boat.get_person()
 		print "You see a", str(self.the_person) + ".\n"
@@ -108,7 +109,7 @@ class Player(object):
 				try:
 					self.the_boat.person.interact()
 				except:
-					print "That's an odd choice."
+					print "That's an odd choice.\n"
 				self.input_needed = False
 			elif action == 2:
 				self.move_to_boat()
@@ -128,7 +129,7 @@ class Player(object):
 		self.the_boat = self.the_map.boats[self.location]
 
 		self.see_connected_boats()
-		print "What boat do you want to move to?"
+		print "Where do you want to go?"
 
 		move_to = validate_int(raw_input(">  "))
 			
@@ -141,8 +142,14 @@ class Player(object):
 				self.location = move_to 
 				self.the_boat = self.the_map.boats[self.location]
 				
-				print "\nYou cross a narrow rope bridge."
-				
+				print "\nYou cross a narrow rope bridge.\n"
+
+				if self.location == self.the_map.win_boat: #tests if the most recent move has moved you to the winning boat. 
+					print "Congratulations, you have reached the last boat!\n"
+					print "~~~~~You win!~~~~~\n"
+					print "< ('o'<) ( '-' ) (>^o^)> v( ^.' )v < (' .' )> < ('.'<) ( '.^ ) (>^.^)> v( 0.0 )v < (' .' )>\n"
+					exit(1)
+					
 				self.on_boat_actions()
 				
 			
@@ -152,10 +159,7 @@ class Player(object):
 			#  b. look at the connections and find the one that has been selected to move to
 			#  c. find the condition associated with that connection
 			#  d. evaluate to enter the if statement. 
-				if self.location == self.the_map.win_boat: #tests if the most recent move has moved you to the winning boat. 
-					print "Congratulations, you have reached the last boat!"
-					print "You win!"
-					exit(1)
+
 			else:
 				print "You can't move to this boat yet, because", str(self.the_condition.success_no)
 		else:
@@ -213,7 +217,7 @@ class Map(object):
 		#desc, falsetxt, truetxt_first, truetxt_have_talked, move_cond_obj_trigger, move_cond_obj_needed
 		teen_girl = Npc("teenage girl", 
 			"The girl says, 'I'm so hungry! Ever since Mom started rearranging our stuff, \nthe boats are a mess and we can't get to the pantry.' \n \n'It sucks, because I had a great joke I wanted to tell you, but now I can't remember it.'", 
-			"She says, 'Ugh, I'm SOOO hungry!' \n\n 'Is that a cookie? Give me that!' \n\n *munch munch* 'Thanks! Now I remember the joke! What's brown and sticky?' \n\n 'A stick!'", 
+			"She says, 'Ugh, I'm SOOO hungry!' \n\n 'Is that a cookie? Give me that!' \n\n *munch munch* \n\n'Thanks! Now I remember the joke! What's brown and sticky?' \n\n 'A stick!'", 
 			"She says, 'Thanks for the cookie! Did you like my joke?", 
 			self.condits["KnowsJoke"], 
 			self.condits["HasCookie"])
@@ -221,7 +225,7 @@ class Map(object):
 		self.people[1] = teen_girl
 		
 		young_man = Npc("young man holding a baby",
-			"He is blocking the path to the yacht. \n\nHe says: 'Hold on a minute, my daughter is crying.'", "You give the toy to the baby and she stops crying. \n\nThe young man says, 'Thanks for calming the baby, go take a cookie!'", 
+			"He is blocking the path to the yacht. \n\nHe says: 'Hold on a minute, my daughter is crying.'", "You give the toy to the baby and she stops crying. \n\nThe young man says, 'Thanks for calming the baby, go take a cookie from the yacht!'", 
 			"The baby looks happy. She's so cute!", 
 			self.condits["AlwaysYes"], 
 			self.condits["BabyCrying"])
@@ -238,7 +242,7 @@ class Map(object):
 		self.people[3] = baker 
 						
 		little_boy = Npc("little boy", 
-			"He is blocking the bridge to the rowboat. \n\n'UGGGH I'M SO BORED' he moans.", 
+			"He is blocking the bridge to the rowboat. \n\n'UGGGH I'M SO BORED' he moans. \n\n'Do you know any jokes?'", 
 			"You tell him the joke you just learned. He laughs and moves out of the way.", 
 			"The little boy is sitting on the edge of the boat. \n\nHe says, 'I'm still bored. Do you know any more jokes?'", 
 			self.condits["AlwaysYes"],
@@ -263,7 +267,7 @@ class Map(object):
 					{1: self.condits["AlwaysYes"], 3: self.condits["BabyCrying"], 5: self.condits["AlwaysYes"]}, # boat 2 
 					{2:self.condits["BabyCrying"]}, # boat 3 eliminated 4:self.condits["AlwaysYes"]
 					{6: self.condits["KnowsJoke"], 5:self.condits["AlwaysYes"]}, #boat 4 eliminated 3: self.condits["AlwaysYes"]  
-					{2: self.condits["AlwaysYes"], 4:self.condits["HasCookie"]}, # boat 5  
+					{2: self.condits["AlwaysYes"], 4:self.condits["AlwaysYes"]}, # boat 5  
 					{4: self.condits["KnowsJoke"]}] # boat 6 
 		boat_kinds = ["the beach", "a small fishing boat", "a house boat", "a dilapidated old yacht", "a sailing ship with the sails missing",  "the back part of a shipping barge", "a large rowboat"]
 		
@@ -358,7 +362,7 @@ class MoveCondition(object):
 				return self.success_question
 		
 #start playing: 
-
+print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 print "Welcome to the boat game!"
 print "You start at the beach. The goal is to move to Boat 6, a rowboat." 
 print "Select options using the numbers on your keyboard and press ENTER or RETURN to proceed."
