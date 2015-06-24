@@ -1,0 +1,23 @@
+nouns
+undercover lab assistant (player)
+mad scientist (try to talk yourself out of suspicion)
+animal
+	bunny
+	cat
+	dog
+	mutant (evidence *3, danger *2)
+		bunny 
+		cat 
+		dog  
+	(small mythical creature --> bonus)
+hallway
+room
+door w/ entry code (incentive for fewer, larger trips)
+map
+evidence 
+health
+get caught
+end
+	fail being caught
+	pass out
+	locked out
