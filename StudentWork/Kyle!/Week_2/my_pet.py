@@ -80,9 +80,7 @@ class BasePet(object):
         print "Try again?"
         self.alive = False
         if raw_input("> ").lower() not in ['y', 'yes']:
-            print "NO!"
             return True
-        print "YES!"
         return False
 
     def next_move(self):
