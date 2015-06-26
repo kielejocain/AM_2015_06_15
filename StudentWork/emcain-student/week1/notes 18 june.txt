@@ -1,0 +1,5 @@
+notes 6/18
+
+with statements
+
+*args (used for list of args) and *kwargs (keyword args, used for dictionary of args)

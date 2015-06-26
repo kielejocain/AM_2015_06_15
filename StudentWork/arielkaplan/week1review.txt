@@ -1,0 +1,66 @@
+We will:
+
+    Review Basics.
+
+    Revisit core concepts.
+
+Fog is normal.
+
+Clarity comes in waves and levels.
+
+
+Key concepts and their application is priority.
+
+Memorization of syntax comes last and only with practice.
+
+
+
+
+
+For each of the following words; please answer the following three questions using your own words.
+
+    -   What is it?
+
+    -   What real life thing is it similar to?
+
+    -   When would you use it (what problem does it solve?)
+
+
+1. Variable: a name that is a placeholder for a value/function/etc
+	= a box you can put anything in, including changing what's in it
+	= whenever you want to not have to hard-code values
+2. Operator: + - * / %
+	= same as in arithmetic
+	= when you manipulate values; doing math
+3. Assignment Operator = setting a variable
+	= labeling the box and putting something in it
+	= whenever creating a variable or changing its value
+4. String: "stuff in quotes." immutable
+	= word/sentence
+	= talking to the user
+5. Float: a decimal number
+	= a decimal number?
+	= more precise than integers, makes sure division works as expected
+6. Boolean: True or False
+	= on/off switch
+	= toggles for loops, checking if statements
+7. List: [], a list of any datatypes, mutable
+	= Quiz questions. Ordered list.
+	= collecting and iterating over multiple values
+8. Dict: {}, a collection of keys and values
+	= a dictionary
+	= don't care about order. want to tie information to a specific key rather than an index.
+9. Conditional Expression/Operator: "X if test else Y"
+	= test
+	= run code if a condition is met, otherwise run different code
+10. Function: some code bundled and given a name. can take arguments and 	return values
+	= Input --> Black Box --> Output
+	= reusing code! organizing code by what it's doing. 
+11. Argument: value passed to a function
+	= Fill-in-the-blank
+	= Lets you reuse a function for many different inputs
+12. Return Value: what the function gives back
+	= Answer
+	= Let you use a function to compute an answer and then automatically use that answer in some other code.
+
+BONUS: What other python keywords can you answer these questions for?

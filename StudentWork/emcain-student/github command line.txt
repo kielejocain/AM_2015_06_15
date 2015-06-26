@@ -1,0 +1,762 @@
+Windows PowerShell
+Copyright (C) 2014 Microsoft Corporation. All rights reserved.
+
+PS C:\Users\Emily> cd desktop/codeguild/AM_2015_06_15/StudentWork/emcain-student
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git pull
+fatal: No remote repository specified.  Please, specify either a URL or a
+remote name from which new revisions should be fetched.
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git pull https://github.com/kielejocain/AM
+_2015_06_15/tree/master/StudentWork
+fatal: repository 'https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWork/' not found
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> cd ..
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> cd ..
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15> git pull https://github.com/kielejocain/AM_2015_06_15/tree/master/Stu
+dentWork
+fatal: repository 'https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWork/' not found
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15> git pull
+remote: Counting objects: 76, done.
+remote: Compressing objects: 100% (52/52), done.
+remote: Total 76 (delta 27), reused 68 (delta 19), pack-reused 0
+Unpacking objects: 100% (76/76), done.
+From github.com:kielejocain/AM_2015_06_15
+   365cb2f..d07f2a5  master     -> origin/master
+Updating 365cb2f..d07f2a5
+Fast-forward
+ StudentWork/Kyle!/{ => Week_1}/01_introduction.txt |    0
+ .../Kyle!/{ => Week_1}/02_stringtoASCIICODE.py     |    0
+ StudentWork/Kyle!/{ => Week_1}/03_boolean_quiz.py  |    0
+ StudentWork/Kyle!/{ => Week_1}/04_mutable.py       |    0
+ StudentWork/Kyle!/{ => Week_1}/05_slicing.py       |    0
+ StudentWork/Kyle!/{ => Week_1}/06_guess_number.py  |    0
+ StudentWork/Kyle!/{ => Week_1}/07_reverse.py       |    0
+ StudentWork/Kyle!/{ => Week_1}/07_reverse_easy.py  |    0
+ StudentWork/Kyle!/{ => Week_1}/08_phonebook.py     |    0
+ StudentWork/Kyle!/{ => Week_1}/09_factorization.py |    0
+ StudentWork/Kyle!/{ => Week_1}/bad_function.py     |    0
+ StudentWork/Kyle!/{ => Week_1}/madlib.py           |    0
+ StudentWork/Kyle!/{ => Week_1}/pocket_change.py    |    0
+ StudentWork/Kyle!/{ => Week_1}/primes.txt          |    0
+ StudentWork/bestevez32/Week 1 Definitions.txt      |  110 +
+ StudentWork/bestevez32/codecademy notes.py         |   82 +
+ StudentWork/bestevez32/ex22.txt                    |   32 +
+ StudentWork/bestevez32/ex35.py                     |   82 +
+ StudentWork/bestevez32/treasurelords.py            |   14 +
+ StudentWork/kaleena_perkins/06_guess_number.py     |   45 +
+ StudentWork/kaleena_perkins/07_reverse.py          |   46 +
+ StudentWork/kaleena_perkins/08_phonebook.py        |   78 +
+ StudentWork/kaleena_perkins/prime_generator.py     |   27 +
+ StudentWork/kaleena_perkins/primes.txt             | 2284 ++++++++++++++++++++
+ StudentWork/kaleena_perkins/review.txt             |  232 ++
+ StudentWork/kaleena_perkins/word_count.py          |   18 +
+ StudentWork/palmerev/vocabulary.txt                |   64 +
+ Week_1/04_mutable.py~                              |   41 +
+ Week_1/05_slicing.py                               |   14 +
+ Week_1/05_slicing.py~                              |   21 +
+ Week_1/06_guess_number.py                          |   35 +-
+ Week_1/06_guess_number.py~                         |   49 +
+ Week_1/07_reverse.py                               |   15 +
+ Week_1/07_reverse.py~                              |    7 +
+ Week_1/08_phonebook.py                             |   58 +-
+ Week_1/09_factorization.py                         |   17 +
+ Week_2/01_review.py                                |   35 +
+ week1/README.md                                    |    1 +
+ 38 files changed, 3401 insertions(+), 6 deletions(-)
+ rename StudentWork/Kyle!/{ => Week_1}/01_introduction.txt (100%)
+ rename StudentWork/Kyle!/{ => Week_1}/02_stringtoASCIICODE.py (100%)
+ rename StudentWork/Kyle!/{ => Week_1}/03_boolean_quiz.py (100%)
+ rename StudentWork/Kyle!/{ => Week_1}/04_mutable.py (100%)
+ rename StudentWork/Kyle!/{ => Week_1}/05_slicing.py (100%)
+ rename StudentWork/Kyle!/{ => Week_1}/06_guess_number.py (100%)
+ rename StudentWork/Kyle!/{ => Week_1}/07_reverse.py (100%)
+ rename StudentWork/Kyle!/{ => Week_1}/07_reverse_easy.py (100%)
+ rename StudentWork/Kyle!/{ => Week_1}/08_phonebook.py (100%)
+ rename StudentWork/Kyle!/{ => Week_1}/09_factorization.py (100%)
+ rename StudentWork/Kyle!/{ => Week_1}/bad_function.py (100%)
+ rename StudentWork/Kyle!/{ => Week_1}/madlib.py (100%)
+ rename StudentWork/Kyle!/{ => Week_1}/pocket_change.py (100%)
+ rename StudentWork/Kyle!/{ => Week_1}/primes.txt (100%)
+ create mode 100644 StudentWork/bestevez32/Week 1 Definitions.txt
+ create mode 100644 StudentWork/bestevez32/codecademy notes.py
+ create mode 100644 StudentWork/bestevez32/ex22.txt
+ create mode 100644 StudentWork/bestevez32/ex35.py
+ create mode 100644 StudentWork/bestevez32/treasurelords.py
+ create mode 100644 StudentWork/kaleena_perkins/06_guess_number.py
+ create mode 100644 StudentWork/kaleena_perkins/07_reverse.py
+ create mode 100644 StudentWork/kaleena_perkins/08_phonebook.py
+ create mode 100644 StudentWork/kaleena_perkins/prime_generator.py
+ create mode 100644 StudentWork/kaleena_perkins/primes.txt
+ create mode 100644 StudentWork/kaleena_perkins/review.txt
+ create mode 100644 StudentWork/kaleena_perkins/word_count.py
+ create mode 100644 StudentWork/palmerev/vocabulary.txt
+ create mode 100644 Week_1/04_mutable.py~
+ create mode 100644 Week_1/05_slicing.py~
+ create mode 100644 Week_1/06_guess_number.py~
+ create mode 100644 Week_1/07_reverse.py~
+ create mode 100644 Week_2/01_review.py
+ create mode 100644 week1/README.md
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15> cd StudentWork
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork> cd emcain-student
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git commit -m "Monday week 2"
+On branch master
+
+Initial commit
+
+Untracked files:
+        .~lock.review questions.odt#
+        04_mutable.py
+        05_slicing.py
+        06_guess_number.py
+        07_reverse.py
+        07_reverse2.py
+        07_reverse3.py
+        08_phonebook.py
+        09_factorization.py
+        aboutme.py
+        ascii-thing.py
+        dictionaries notes.txt
+        easy_reverse.py
+        ex10.py
+        ex11.py
+        ex13.py
+        ex14.py
+        ex15.py
+        ex15_sample.txt
+        ex16.py
+        ex17.py
+        ex17_short.py
+        ex18.py
+        ex20.py
+        ex21.py
+        ex29.py
+        ex31.py
+        ex31_own_game.py
+        ex32.py
+        ex35.py
+        ex39.py
+        ex6.py
+        ex7.py
+        ex8.py
+        ex9.py
+        fun.py
+        game.py
+        git questions.txt
+        homework weekend 1.txt
+        keywords.txt
+        keywords_test.py
+        madlibs.py
+        notes 18 june.txt
+        primes.txt
+        review questions.odt
+        test.txt
+        test2.txt
+        thing.txt
+        xkcd_death.py
+        xkcd_death_notes.py
+
+nothing added to commit but untracked files present
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> cd ../..
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15> git pull
+remote: Counting objects: 19, done.
+remote: Compressing objects: 100% (9/9), done.
+remote: Total 19 (delta 10), reused 19 (delta 10), pack-reused 0
+Unpacking objects: 100% (19/19), done.
+From github.com:kielejocain/AM_2015_06_15
+   d07f2a5..68a9718  master     -> origin/master
+Updating d07f2a5..68a9718
+Fast-forward
+ StudentWork/arielkaplan/.DS_Store                  |  Bin 6148 -> 6148 bytes
+ .../arielkaplan/{euler001.py => PE/pe001.py}       |    0
+ .../arielkaplan/{euler002.py => PE/pe002.py}       |    0
+ .../arielkaplan/{euler003.py => PE/pe003.py}       |    0
+ .../arielkaplan/{euler004.py => PE/pe004.py}       |    0
+ StudentWork/arielkaplan/PE/pe005.py                |   26 +
+ StudentWork/arielkaplan/PE/pe006.py                |   18 +
+ StudentWork/arielkaplan/PE/poker.txt               | 1000 ++++++++++++++++++++
+ StudentWork/arielkaplan/PE/pokerhands.py           |  252 +++++
+ StudentWork/arielkaplan/week1review.txt            |   66 ++
+ 10 files changed, 1362 insertions(+)
+ rename StudentWork/arielkaplan/{euler001.py => PE/pe001.py} (100%)
+ rename StudentWork/arielkaplan/{euler002.py => PE/pe002.py} (100%)
+ rename StudentWork/arielkaplan/{euler003.py => PE/pe003.py} (100%)
+ rename StudentWork/arielkaplan/{euler004.py => PE/pe004.py} (100%)
+ create mode 100644 StudentWork/arielkaplan/PE/pe005.py
+ create mode 100644 StudentWork/arielkaplan/PE/pe006.py
+ create mode 100644 StudentWork/arielkaplan/PE/poker.txt
+ create mode 100644 StudentWork/arielkaplan/PE/pokerhands.py
+ create mode 100644 StudentWork/arielkaplan/week1review.txt
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15> cd StudentWork/emcain-student
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python 01_review.py
+  File "01_review.py", line 14
+    print "Last five:", movies[-5:]
+    ^
+IndentationError: unexpected indent
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python 01_review.py
+  File "01_review.py", line 27
+    fruits[fruit] = number
+    ^
+IndentationError: unexpected indent
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python 01_review.py
+First five: ['Jurassic Park', 'Princess Mononoke', 'Mad Max: Fury Road']
+Last five: ['Jurassic Park', 'Princess Mononoke', 'Mad Max: Fury Road']
+First five: ['Jurassic Park', 'Princess Mononoke', 'Mad Max: Fury Road']
+Last five: ['Jurassic Park', 'Princess Mononoke', 'Mad Max: Fury Road']
+First five: ['Jurassic Park', 'Princess Mononoke', 'Mad Max: Fury Road']
+Last five: ['Jurassic Park', 'Princess Mononoke', 'Mad Max: Fury Road']
+Traceback (most recent call last):
+  File "01_review.py", line 34, in <module>
+    count_update(strawberries, fruits[strawberries] + 10)
+NameError: name 'strawberries' is not defined
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python 01_review.py
+First five: Juras
+Last five:  Park
+First five: Princ
+Last five: onoke
+First five: Mad M
+Last five:  Road
+Traceback (most recent call last):
+  File "01_review.py", line 34, in <module>
+    count_update(strawberries, fruits[strawberries] + 10)
+NameError: name 'strawberries' is not defined
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python 01_review.py
+First five: Juras
+Last five:  Park
+First five: Princ
+Last five: onoke
+First five: Mad M
+Last five:  Road
+Traceback (most recent call last):
+  File "01_review.py", line 34, in <module>
+    count_update(strawberries, 20)
+NameError: name 'strawberries' is not defined
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python 01_review.py
+First five: Juras
+Last five:  Park
+First five: Princ
+Last five: onoke
+First five: Mad M
+Last five:  Road
+Traceback (most recent call last):
+  File "01_review.py", line 34, in <module>
+    count_update('strawberries', fruits[strawberries] + 10)
+NameError: name 'strawberries' is not defined
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> python 01_review.py
+First five: Juras
+Last five:  Park
+First five: Princ
+Last five: onoke
+First five: Mad M
+Last five:  Road
+there were 30 strawberries
+now there are 40 strawberries
+there were 5 mangoes
+now there are 10 mangoes
+there were 10 kiwis
+now there are 0 kiwis
+{'mangoes': 10, 'kiwis': 0, 'strawberries': 40}
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git commit -m "week 1'
+>>
+>>
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student>
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git commit -m "week 1"
+On branch master
+
+Initial commit
+
+Untracked files:
+        01_review.py
+        week1/
+
+nothing added to commit but untracked files present
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git status -s
+?? 01_review.py
+?? week1/
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git add
+Nothing specified, nothing added.
+Maybe you wanted to say 'git add .'?
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git add .
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git status -s
+A  01_review.py
+A  week1/04_mutable.py
+A  week1/05_slicing.py
+A  week1/06_guess_number.py
+A  week1/07_reverse.py
+A  week1/07_reverse2.py
+A  week1/07_reverse3.py
+A  week1/08_phonebook.py
+A  week1/09_factorization.py
+A  week1/aboutme.py
+A  week1/ascii-thing.py
+A  "week1/dictionaries notes.txt"
+A  week1/easy_reverse.py
+A  week1/ex10.py
+A  week1/ex11.py
+A  week1/ex13.py
+A  week1/ex14.py
+A  week1/ex15.py
+A  week1/ex15_sample.txt
+A  week1/ex16.py
+A  week1/ex17.py
+A  week1/ex17_short.py
+A  week1/ex18.py
+A  week1/ex20.py
+A  week1/ex21.py
+A  week1/ex29.py
+A  week1/ex31.py
+A  week1/ex31_own_game.py
+A  week1/ex32.py
+A  week1/ex35.py
+A  week1/ex39.py
+A  week1/ex6.py
+A  week1/ex7.py
+A  week1/ex8.py
+A  week1/ex9.py
+A  week1/fun.py
+A  week1/game.py
+A  "week1/git questions.txt"
+A  "week1/homework weekend 1.txt"
+A  week1/keywords.txt
+A  week1/keywords_test.py
+A  week1/madlibs.py
+A  "week1/notes 18 june.txt"
+A  week1/primes.txt
+A  "week1/review questions.odt"
+A  week1/test.txt
+A  week1/test2.txt
+A  week1/thing.txt
+A  week1/xkcd_death.py
+A  week1/xkcd_death_notes.py
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git commit -m "week 2 monday"
+[master (root-commit) 58ca365] week 2 monday
+ 50 files changed, 5384 insertions(+)
+ create mode 100644 01_review.py
+ create mode 100644 week1/04_mutable.py
+ create mode 100644 week1/05_slicing.py
+ create mode 100644 week1/06_guess_number.py
+ create mode 100644 week1/07_reverse.py
+ create mode 100644 week1/07_reverse2.py
+ create mode 100644 week1/07_reverse3.py
+ create mode 100644 week1/08_phonebook.py
+ create mode 100644 week1/09_factorization.py
+ create mode 100644 week1/aboutme.py
+ create mode 100644 week1/ascii-thing.py
+ create mode 100644 week1/dictionaries notes.txt
+ create mode 100644 week1/easy_reverse.py
+ create mode 100644 week1/ex10.py
+ create mode 100644 week1/ex11.py
+ create mode 100644 week1/ex13.py
+ create mode 100644 week1/ex14.py
+ create mode 100644 week1/ex15.py
+ create mode 100644 week1/ex15_sample.txt
+ create mode 100644 week1/ex16.py
+ create mode 100644 week1/ex17.py
+ create mode 100644 week1/ex17_short.py
+ create mode 100644 week1/ex18.py
+ create mode 100644 week1/ex20.py
+ create mode 100644 week1/ex21.py
+ create mode 100644 week1/ex29.py
+ create mode 100644 week1/ex31.py
+ create mode 100644 week1/ex31_own_game.py
+ create mode 100644 week1/ex32.py
+ create mode 100644 week1/ex35.py
+ create mode 100644 week1/ex39.py
+ create mode 100644 week1/ex6.py
+ create mode 100644 week1/ex7.py
+ create mode 100644 week1/ex8.py
+ create mode 100644 week1/ex9.py
+ create mode 100644 week1/fun.py
+ create mode 100644 week1/game.py
+ create mode 100644 week1/git questions.txt
+ create mode 100644 week1/homework weekend 1.txt
+ create mode 100644 week1/keywords.txt
+ create mode 100644 week1/keywords_test.py
+ create mode 100644 week1/madlibs.py
+ create mode 100644 week1/notes 18 june.txt
+ create mode 100644 week1/primes.txt
+ create mode 100644 week1/review questions.odt
+ create mode 100644 week1/test.txt
+ create mode 100644 week1/test2.txt
+ create mode 100644 week1/thing.txt
+ create mode 100644 week1/xkcd_death.py
+ create mode 100644 week1/xkcd_death_notes.py
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git push
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> pit push github master
+pit : The term 'pit' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ pit push github master
++ ~~~
+    + CategoryInfo          : ObjectNotFound: (pit:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git push github master
+fatal: 'github' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git push https://github.com/kielejocain/AM
+_2015_06_15/tree/master/StudentWork/emcain-student
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+In Git 2.0, Git will default to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+fatal: repository 'https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWork/emcain-student/' not found
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> git push https://github.com/kielejocain/AM
+_2015_06_15/tree/master/StudentWork/emcain-student git remote set-url origin https://github.com/kielejocain/AM_2015_06_1
+5/tree/master/StudentWork/emcain-student
+fatal: remote part of refspec is not a valid name in https://github.com/kielejocain/AM_2015_06_15/tree/master/StudentWor
+k/emcain-student
+Unexpected end of command stream
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15\StudentWork\emcain-student> cd ../..
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15> git add .
+warning: You ran 'git add' with neither '-A (--all)' or '--ignore-removal',
+whose behaviour will change in Git 2.0 with respect to paths you removed.
+Paths like 'StudentWork/emcain-student/thing.txt' that are
+removed from your working tree are ignored with this version of Git.
+
+* 'git add --ignore-removal <pathspec>', which is the current default,
+  ignores paths you removed from your working tree.
+
+* 'git add --all <pathspec>' will let you also record the removals.
+
+Run 'git status' to check the paths you removed from your working tree.
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15> ls -a
+Get-ChildItem : Parameter cannot be processed because the parameter name 'a' is ambiguous. Possible matches include:
+-Attributes -Directory -File -Hidden -ReadOnly -System.
+At line:1 char:4
++ ls -a
++    ~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-ChildItem], ParameterBindingException
+    + FullyQualifiedErrorId : AmbiguousParameter,Microsoft.PowerShell.Commands.GetChildItemCommand
+
+PS C:\Users\Emily\desktop\codeguild\AM_2015_06_15> cmd
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>ls -a
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>dir
+ Volume in drive C is TI10675800F
+ Volume Serial Number is E6B8-B669
+
+ Directory of C:\Users\Emily\desktop\codeguild\AM_2015_06_15
+
+06/22/2015  09:36 AM    <DIR>          .
+06/22/2015  09:36 AM    <DIR>          ..
+06/20/2015  04:16 PM           171,867 June 1 Evening Bootcamp Syllabus (1).docx
+06/16/2015  09:40 AM               285 README.md
+06/22/2015  09:36 AM    <DIR>          StudentWork
+06/22/2015  09:36 AM    <DIR>          week1
+06/22/2015  09:36 AM    <DIR>          Week_1
+06/22/2015  09:46 AM    <DIR>          Week_2
+               2 File(s)        172,152 bytes
+               6 Dir(s)  616,372,146,176 bytes free
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>dir -hidden
+ Volume in drive C is TI10675800F
+ Volume Serial Number is E6B8-B669
+
+ Directory of C:\Users\Emily\desktop\codeguild\AM_2015_06_15
+
+File Not Found
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>dir -Hidden
+ Volume in drive C is TI10675800F
+ Volume Serial Number is E6B8-B669
+
+ Directory of C:\Users\Emily\desktop\codeguild\AM_2015_06_15
+
+File Not Found
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>git add *
+warning: You ran 'git add' with neither '-A (--all)' or '--ignore-removal',
+whose behaviour will change in Git 2.0 with respect to paths you removed.
+Paths like 'StudentWork/emcain-student/thing.txt' that are
+removed from your working tree are ignored with this version of Git.
+
+* 'git add --ignore-removal <pathspec>', which is the current default,
+  ignores paths you removed from your working tree.
+
+* 'git add --all <pathspec>' will let you also record the removals.
+
+Run 'git status' to check the paths you removed from your working tree.
+
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>git add -A
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    Week_2/01_review.py -> StudentWork/emcain-student/01_review.py
+        new file:   StudentWork/emcain-student/week1/04_mutable.py
+        new file:   StudentWork/emcain-student/week1/05_slicing.py
+        new file:   StudentWork/emcain-student/week1/06_guess_number.py
+        new file:   StudentWork/emcain-student/week1/07_reverse.py
+        new file:   StudentWork/emcain-student/week1/07_reverse2.py
+        new file:   StudentWork/emcain-student/week1/07_reverse3.py
+        new file:   StudentWork/emcain-student/week1/08_phonebook.py
+        new file:   StudentWork/emcain-student/week1/09_factorization.py
+        new file:   StudentWork/emcain-student/week1/aboutme.py
+        new file:   StudentWork/emcain-student/week1/ascii-thing.py
+        new file:   StudentWork/emcain-student/week1/dictionaries notes.txt
+        new file:   StudentWork/emcain-student/week1/easy_reverse.py
+        new file:   StudentWork/emcain-student/week1/ex10.py
+        new file:   StudentWork/emcain-student/week1/ex11.py
+        new file:   StudentWork/emcain-student/week1/ex13.py
+        new file:   StudentWork/emcain-student/week1/ex14.py
+        new file:   StudentWork/emcain-student/week1/ex15.py
+        new file:   StudentWork/emcain-student/week1/ex15_sample.txt
+        new file:   StudentWork/emcain-student/week1/ex16.py
+        new file:   StudentWork/emcain-student/week1/ex17.py
+        new file:   StudentWork/emcain-student/week1/ex17_short.py
+        new file:   StudentWork/emcain-student/week1/ex18.py
+        new file:   StudentWork/emcain-student/week1/ex20.py
+        new file:   StudentWork/emcain-student/week1/ex21.py
+        new file:   StudentWork/emcain-student/week1/ex29.py
+        new file:   StudentWork/emcain-student/week1/ex31.py
+        new file:   StudentWork/emcain-student/week1/ex31_own_game.py
+        new file:   StudentWork/emcain-student/week1/ex32.py
+        new file:   StudentWork/emcain-student/week1/ex35.py
+        new file:   StudentWork/emcain-student/week1/ex39.py
+        new file:   StudentWork/emcain-student/week1/ex6.py
+        new file:   StudentWork/emcain-student/week1/ex7.py
+        new file:   StudentWork/emcain-student/week1/ex8.py
+        new file:   StudentWork/emcain-student/week1/ex9.py
+        new file:   StudentWork/emcain-student/week1/fun.py
+        new file:   StudentWork/emcain-student/week1/game.py
+        new file:   StudentWork/emcain-student/week1/git questions.txt
+        new file:   StudentWork/emcain-student/week1/homework weekend 1.txt
+        new file:   StudentWork/emcain-student/week1/keywords.txt
+        new file:   StudentWork/emcain-student/week1/keywords_test.py
+        new file:   StudentWork/emcain-student/week1/madlibs.py
+        new file:   StudentWork/emcain-student/week1/notes 18 june.txt
+        new file:   StudentWork/emcain-student/week1/primes.txt
+        new file:   StudentWork/emcain-student/week1/review questions.odt
+        new file:   StudentWork/emcain-student/week1/test.txt
+        new file:   StudentWork/emcain-student/week1/test2.txt
+        renamed:    StudentWork/emcain-student/thing.txt -> StudentWork/emcain-student/week1/thing.txt
+        new file:   StudentWork/emcain-student/week1/xkcd_death.py
+        new file:   StudentWork/emcain-student/week1/xkcd_death_notes.py
+        modified:   Week_1/10_prime_generator.py
+
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>git commit -m "week 2 monday"
+[master a75a81c] week 2 monday
+ 51 files changed, 5358 insertions(+), 8 deletions(-)
+ rename {Week_2 => StudentWork/emcain-student}/01_review.py (57%)
+ create mode 100644 StudentWork/emcain-student/week1/04_mutable.py
+ create mode 100644 StudentWork/emcain-student/week1/05_slicing.py
+ create mode 100644 StudentWork/emcain-student/week1/06_guess_number.py
+ create mode 100644 StudentWork/emcain-student/week1/07_reverse.py
+ create mode 100644 StudentWork/emcain-student/week1/07_reverse2.py
+ create mode 100644 StudentWork/emcain-student/week1/07_reverse3.py
+ create mode 100644 StudentWork/emcain-student/week1/08_phonebook.py
+ create mode 100644 StudentWork/emcain-student/week1/09_factorization.py
+ create mode 100644 StudentWork/emcain-student/week1/aboutme.py
+ create mode 100644 StudentWork/emcain-student/week1/ascii-thing.py
+ create mode 100644 StudentWork/emcain-student/week1/dictionaries notes.txt
+ create mode 100644 StudentWork/emcain-student/week1/easy_reverse.py
+ create mode 100644 StudentWork/emcain-student/week1/ex10.py
+ create mode 100644 StudentWork/emcain-student/week1/ex11.py
+ create mode 100644 StudentWork/emcain-student/week1/ex13.py
+ create mode 100644 StudentWork/emcain-student/week1/ex14.py
+ create mode 100644 StudentWork/emcain-student/week1/ex15.py
+ create mode 100644 StudentWork/emcain-student/week1/ex15_sample.txt
+ create mode 100644 StudentWork/emcain-student/week1/ex16.py
+ create mode 100644 StudentWork/emcain-student/week1/ex17.py
+ create mode 100644 StudentWork/emcain-student/week1/ex17_short.py
+ create mode 100644 StudentWork/emcain-student/week1/ex18.py
+ create mode 100644 StudentWork/emcain-student/week1/ex20.py
+ create mode 100644 StudentWork/emcain-student/week1/ex21.py
+ create mode 100644 StudentWork/emcain-student/week1/ex29.py
+ create mode 100644 StudentWork/emcain-student/week1/ex31.py
+ create mode 100644 StudentWork/emcain-student/week1/ex31_own_game.py
+ create mode 100644 StudentWork/emcain-student/week1/ex32.py
+ create mode 100644 StudentWork/emcain-student/week1/ex35.py
+ create mode 100644 StudentWork/emcain-student/week1/ex39.py
+ create mode 100644 StudentWork/emcain-student/week1/ex6.py
+ create mode 100644 StudentWork/emcain-student/week1/ex7.py
+ create mode 100644 StudentWork/emcain-student/week1/ex8.py
+ create mode 100644 StudentWork/emcain-student/week1/ex9.py
+ create mode 100644 StudentWork/emcain-student/week1/fun.py
+ create mode 100644 StudentWork/emcain-student/week1/game.py
+ create mode 100644 StudentWork/emcain-student/week1/git questions.txt
+ create mode 100644 StudentWork/emcain-student/week1/homework weekend 1.txt
+ create mode 100644 StudentWork/emcain-student/week1/keywords.txt
+ create mode 100644 StudentWork/emcain-student/week1/keywords_test.py
+ create mode 100644 StudentWork/emcain-student/week1/madlibs.py
+ create mode 100644 StudentWork/emcain-student/week1/notes 18 june.txt
+ create mode 100644 StudentWork/emcain-student/week1/primes.txt
+ create mode 100644 StudentWork/emcain-student/week1/review questions.odt
+ create mode 100644 StudentWork/emcain-student/week1/test.txt
+ create mode 100644 StudentWork/emcain-student/week1/test2.txt
+ rename StudentWork/emcain-student/{ => week1}/thing.txt (100%)
+ create mode 100644 StudentWork/emcain-student/week1/xkcd_death.py
+ create mode 100644 StudentWork/emcain-student/week1/xkcd_death_notes.py
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>git push
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+In Git 2.0, Git will default to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+To git@github.com:kielejocain/AM_2015_06_15.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@github.com:kielejocain/AM_2015_06_15.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working directory clean
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>git pull
+remote: Counting objects: 17, done.
+remote: Compressing objects: 100% (14/14), done.
+remote: Total 17 (delta 3), reused 17 (delta 3), pack-reused 0
+Unpacking objects: 100% (17/17), done.
+From github.com:kielejocain/AM_2015_06_15
+   68a9718..c726ff3  master     -> origin/master
+Removing Week_1/07_reverse.py~
+Removing Week_1/06_guess_number.py~
+Removing Week_1/05_slicing.py~
+Removing Week_1/04_mutable.py~
+Merge made by the 'recursive' strategy.
+ StudentWork/Kyle!/CodeAbbey/001.py       |  4 +++
+ StudentWork/Kyle!/CodeAbbey/002.py       |  7 +++++
+ StudentWork/Kyle!/CodeAbbey/003.py       |  7 +++++
+ StudentWork/Kyle!/CodeAbbey/003_data.txt | 14 +++++++++
+ StudentWork/Kyle!/euler/pe003.py         | 26 ++++++++++++++++
+ StudentWork/Kyle!/euler/pe005.py         | 52 ++++++++++++++++++++++++++++++++
+ StudentWork/Kyle!/euler/pe006.py         |  8 +++++
+ Week_1/04_mutable.py~                    | 41 -------------------------
+ Week_1/05_slicing.py~                    | 21 -------------
+ Week_1/06_guess_number.py~               | 49 ------------------------------
+ Week_1/07_reverse.py~                    |  7 -----
+ Week_2/bank_no_classes.py                | 47 +++++++++++++++++++++++++++++
+ Week_2/bank_with_class.py                | 52 ++++++++++++++++++++++++++++++++
+ 13 files changed, 217 insertions(+), 118 deletions(-)
+ create mode 100644 StudentWork/Kyle!/CodeAbbey/001.py
+ create mode 100644 StudentWork/Kyle!/CodeAbbey/002.py
+ create mode 100644 StudentWork/Kyle!/CodeAbbey/003.py
+ create mode 100644 StudentWork/Kyle!/CodeAbbey/003_data.txt
+ create mode 100644 StudentWork/Kyle!/euler/pe003.py
+ create mode 100644 StudentWork/Kyle!/euler/pe005.py
+ create mode 100644 StudentWork/Kyle!/euler/pe006.py
+ delete mode 100644 Week_1/04_mutable.py~
+ delete mode 100644 Week_1/05_slicing.py~
+ delete mode 100644 Week_1/06_guess_number.py~
+ delete mode 100644 Week_1/07_reverse.py~
+ create mode 100644 Week_2/bank_no_classes.py
+ create mode 100644 Week_2/bank_with_class.py
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>git status
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working directory clean
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>git add
+Nothing specified, nothing added.
+Maybe you wanted to say 'git add .'?
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>git add -A
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>git commit -m 'week 2 mon'
+error: pathspec '2' did not match any file(s) known to git.
+error: pathspec 'mon'' did not match any file(s) known to git.
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>git commit -m "week 2 mon"
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working directory clean
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>git push
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+In Git 2.0, Git will default to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Counting objects: 70, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (58/58), done.
+Writing objects: 100% (60/60), 54.07 KiB | 0 bytes/s, done.
+Total 60 (delta 8), reused 0 (delta 0)
+To git@github.com:kielejocain/AM_2015_06_15.git
+   c726ff3..171a3bf  master -> master
+
+C:\Users\Emily\desktop\codeguild\AM_2015_06_15>
