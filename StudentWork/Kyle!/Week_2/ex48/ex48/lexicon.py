@@ -2,7 +2,7 @@
 lexicon = {
     'direction': ['north', 'south', 'east', 'west',
         'down', 'up', 'left', 'right', 'back'],
-    'verb': ['go', 'stop', 'kill', 'eat'],
+    'verb': ['go', 'stop', 'kill', 'eat', 'bounce'],
     'stop': ['the', 'in', 'of', 'from', 'at', 'it'],
     'noun': ['door', 'bear', 'princess', 'cabinet']
 }

@@ -9,6 +9,15 @@ class Sentence(object):
         self.verb = verb[1]
         self.object = obj[1]
 
+    # if we want to compare whether two Sentence instances are equal, we have
+    # to tell Python what it means to be equal.
+    def __eq__(self, other):
+        return self.subject == other.subject and self.verb == other.verb and self.object == other.object
+
+    # we also have to define what it means to be not equal.
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
 def peek(word_list):
     if word_list:
         word = word_list[0]
