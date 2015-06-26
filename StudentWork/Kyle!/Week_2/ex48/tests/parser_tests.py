@@ -101,3 +101,17 @@ def test_sentence():
         parser.parse_sentence,
         [('verb', 'eat'), ('verb', 'kill')]
     )
+
+# let's try out our equality definitions!
+def test_sentence_again():
+    assert_equal(
+        parser.parse_sentence([
+            ('verb', 'go'),
+            ('direction', 'north')
+        ]),
+        parser.Sentence(
+            ('noun', 'player'),
+            ('verb', 'go'),
+            ('direction', 'north')
+        )
+    )
