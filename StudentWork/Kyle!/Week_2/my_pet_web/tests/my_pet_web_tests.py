@@ -1,5 +1,5 @@
 from nose.tools import *
-import NAME
+import my_pet_web
 
 def setup():
     print "SETUP!"
