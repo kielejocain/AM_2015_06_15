@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, choice
 from sys import exit
 
 class Villain(object):
@@ -22,9 +22,10 @@ class SuperVillain(Villain):
 	
 	def attack(self,force):
 		if force >=7:
+			actual_force = int(force) - (int(force)/2)
 			print "%s has defended themselves. you only yielded %d damage!" % (
-			self.name, (int(force) - 4))
-			self.strength -= int(force) -4
+			self.name, actual_force)
+			self.strength -= actual_force
 		else:
 			print "\"Ouch! That hurt!\" %s says." % self.name
 			self.strength -= int(force)
@@ -61,8 +62,9 @@ class Defeated(Scene):
 	"You sink into despair and eventual madness without your prized possession",
 	"You are inducted into the 'Hero Hall of Disdain'",
 	]
-	def enter(self):
+	def enter(self, hero):
 		print Defeated.done[randint(0, len(self.done)-1)]
+		print "You lose and never recover your posession."
 		exit(1)
 	
 	
@@ -104,7 +106,7 @@ class Payphone(Scene):
 		print "It's {}!".format(joker.name) 
 		print "\"Ha, Ha! You will never find what he has taken!\""
 		print "{} says.".format(joker.name)
-		print joker.check_strength()
+		joker.check_strength()
 		print "Do you 'attack', 'run away' or 'tell a joke'?"
 		choice = raw_input(">>> ")
 		
@@ -116,14 +118,14 @@ class Payphone(Scene):
 			while joker.strength > 0:
 				print "How much force do you want to use?"
 				force = int(raw_input(">>> "))
-				print joker.attack(force)
+				joker.attack(force)
 				hero.force_power -= force
 				
 				if joker.strength % 2 == 0:
 					hero.life -= force/2
 					print "%s fought back!" % joker.name
-				print hero.check_life()
-				print joker.check_strength()
+				hero.check_life()
+				joker.check_strength()
 			print "Press 'enter' to continue"
 			raw_input(">>>   ")
 	
@@ -151,7 +153,7 @@ class Payphone(Scene):
 			else:
 				print "The Joker can't control his laughter!"
 				joker.attack(10)
-				print joker.check_strength()
+				joker.check_strength()
 				print "Press 'enter' to continue"
 				raw_input(">>>  ")
 				print "Your phone buzzes; another text message from the "
@@ -160,6 +162,9 @@ class Payphone(Scene):
 				print "You may have defeated The Joker, but you'll never"
 				print "defeat me. Meet me at dock 17...\""
 				return 'the_docks', hero
+		else:
+			print "That's not a choice!"
+			return 'defeated', hero
 	
 class TheDocks(Scene):
 	def enter(self, hero):
@@ -185,10 +190,10 @@ class TheDocks(Scene):
 			while green_goblin.strength > 0:
 				print "How much force do you want to use?"
 				force = int(raw_input(">>> "))
-				print green_goblin.attack(force)
+				green_goblin.attack(force)
 				hero.force_power -= force
-				print hero.check_life()
-				print green_goblin.check_strength()
+				hero.check_life()
+				green_goblin.check_strength()
 			print "Press 'enter' to continue"
 			raw_input(">>>   ")
 			return 'abandoned_warehouse', hero
@@ -199,8 +204,10 @@ class TheDocks(Scene):
 			print "Green Goblin. The seagulls swarm the villain and his "
 			print "cape gets twisted up; he loses his balance and falls"
 			print "from the hoverboard."
-			print green_goblin.attack(10)
-			print green_goblin.check_strength()
+			green_goblin.attack(10)
+			green_goblin.check_strength()
+			print "Some of the seagulls attack you by mistake"
+			hero.life -= 5
 			print"Press 'enter' to continue"
 			raw_input(">>>  ")
 			return 'abandoned_warehouse', hero
@@ -213,27 +220,34 @@ class AbandonedWarehouse(Scene):
 		print "Swooping down from a crane is Loki. You realize you're in"
 		print "for the fight of your life. You hope you have enough "
 		print "strength left..."
-		print loki.check_strength()
-		print hero.check_life()
+		
 		while (loki.strength >= 1) and ((hero.life >= 1) and (hero.force_power >= 1)) :
-			print loki.check_strength()
-			print hero.check_life()
+			loki.check_strength()
+			hero.check_life()
 			print "How much force do you want to use?"
 			force = int(raw_input(">>> "))
 			loki.attack(force)
 			hero.force_power -= int(force)
 		if loki.strength < 1 and hero.life > 1:
-			print """
-You have defeated Loki! Congratulations! You are able to recover your 
-most prized posession: a grilled cheese sandwich which you then eat.
-			"""
-			return exit(1)
+			return 'finished', hero
 		else:
 			print "Loki is too powerful for you!"
 			return 'defeated', hero
 
 class Finished(Scene):
-	pass	
+	posession = {
+		'a grilled cheese sandwich': 'then eat',
+		'an ark of the the covenant': 'then open',
+	}	
+	
+	def enter(self, hero):
+		item = choice(self.posession.keys())
+		which_you = self.posession[item]
+		print "You have defeated Loki! Congratulations! You were able to "
+		print "recover your most prized posession: "
+		print "%s, which you %s" % (item, which_you)
+		exit(1)
+		
 
 class Engine(object):
 	scenes = {
@@ -260,7 +274,7 @@ class Engine(object):
 			next_scene_name, hero = current_scene.enter(hero)
 			current_scene = self.scenes[next_scene_name]
 			
-		current_scene.enter()
+		current_scene.enter(hero)
 
 
 a_game = Engine()
