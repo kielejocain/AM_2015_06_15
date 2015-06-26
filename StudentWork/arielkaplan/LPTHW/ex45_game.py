@@ -359,7 +359,7 @@ class Caught(Scene):
 		print "You got caught!"
 		print self.phrase[randint(0, 2)]
 		print "\n" + self.action[randint(0, 2)]
-		print "'What number am I thinking of?', he asks."
+		print "'What number am I thinking of?', he asks. 'It's less than 100. Maybe.'"
 		number = randint(-8, 113)
 		tries = 10
 		# print number
