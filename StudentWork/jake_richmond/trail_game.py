@@ -1,3 +1,4 @@
+# encoding: utf-8
 from sys import exit
 
 class Area(object):
@@ -14,21 +15,35 @@ class Engine(object):
     def play(self):
         current_area = self.area_map.opening_area()
         last_area = self.area_map.next_area('finished')
+        cause = None
 
         while current_area != last_area:
-            next_area_name = current_area.enter()
+            next_area_name, cause = current_area.enter(cause)
             current_area = self.area_map.next_area(next_area_name)
 
         current_area.enter()    
 
 class Death(Area): 
 
-    def enter(self):
-        pass
+    def enter(self, cause):
+        if cause == 'self destruct':
+            print "You are an idiot that was not an option! This will self destruct in 5 4 3 2 1 BOOOOOOOOOMMMM"
+        
+        elif cause == 'fish':        
+            print "Well dumbass those guppys turned out to be pirahnas! Way to kill your people! YOU SUCK"
+
+        elif cause == 'donkey':
+            print "You take a bite of the donkey and it gives you Dysentary and you poop yourself to death!!"   
+
+        elif cause == 'drown':
+            print "You swallow a bunch of water and algae and die!"
+
+        exit(1)
+        
 
 class MountainTop(Area):
 
-    def enter(self):
+    def enter(self, cause):
         print "You and your wagon train are standing on top of the"
         print "endless mountain top known as Big Mountain Go Boom."
         print "Your leader has died of Typhoid Fever and a nasty case of"
@@ -49,21 +64,20 @@ class MountainTop(Area):
         if choice == "1":
             print "Woooooo thats was awesome!!! All the weak people died on"
             print "the way down the mountain and now you have a group of warriors!!"
-            return 'river'
+            return 'river' , None
 
         elif choice == "2":
             print "The strong and athletic people starved to death"
             print "during the slow pace waiting for the old geezers"
             print "to come down the mountain."
-            return 'river'
+            return 'river', None
 
         else:
-            print "You are an idiot that was not an option! This will self destruct in 5 4 3 2 1 BOOOOOOOOOMMMM"
-            return 'death'
+            return 'death', 'self destruct'
 
 class River(Area):
 
-    def enter(self):
+    def enter(self, cause):
         print "You approach raging whitewater filled with guppys. Do you try to cross the raging water?"
         print "While you are standing there and pondering this you see that there is a calmer section down river"
         print "about 2,000 metric yards. You walk down there and take a look and see a giant crocodile swimming"
@@ -76,9 +90,8 @@ class River(Area):
         if choice == "1":
             print "You slowly approach the raging water... Then you kick the ox in his ass and just go for it!!!!"
             print "All the sudden the ox start making crazy weird noises and the water starts to turn red!"
-            print "You start thinking what is going on!? Well dumbass those guppys turned out to be pirahnas!"
-            print "Way to kill your people! YOU SUCK"
-            return 'death'
+            print "You start thinking what is going on!?"
+            return 'death', 'fish'
 
         elif choice == "2":
             print "You cautiously approach the water and look for the big scary crocodile. He comes flying out of"
@@ -89,15 +102,15 @@ class River(Area):
             print "You think to yourself oh shit I am a goner, he is going to eat all of us! The crocodile starts swimming"
             print "towards you faster and faster! Then you hear a huge crunch and open your eyes and can't believe what"
             print "you see!? The damn crocodile is a vegetarian and just bit into some corn you had sitting next to you."
-            return 'forest'
+            return 'forest', None
 
         else:
             print "You are an idiot that was not an option! This will self destruct in 5 4 3 2 1 BOOOOOOOOOMMMM"
-            return 'death'
+            return 'death', 'self destruct'
 
 class Forest(Area):
 
-    def enter(self):
+    def enter(self, cause):
         print "Wow you made it this far!!! You're wagon people rejoice! After 200 days you know come up to a dense dark"
         print "forest. There is a lot of strange scary noises coming from the trees. OMG!!! What if they are blood thirsty"
         print "Spider Monkeys!!!?? What ever shall we do? Shall you send one of the kids in to scout it out? How about we"
@@ -110,24 +123,23 @@ class Forest(Area):
             print "believe you would do something as atrocious as that!!!! You are a sick human being! But whatever you gotta"
             print "do to survive right? Kids eat a lot of food anyway and aren't good for anything. You probably would have"
             print "eaten him anyways, if worse came to worse."
-            return 'ocean'
+            return 'ocean', None
 
         elif choice == "2":
             print "Really?! You sent in a damn donkey? What the hell is a donkey going to do? Do you smell that? Something"
             print "is burning... I wonder what it is... You wander towards the smell and see that the donkey laid in a fire pit"
-            print "and killed itself. You think to yourself HEY!? That smells good! You take a bite of the donkey and it gives"
-            print "Dysentary and you poop yourself to death!!"
-            return 'death'
+            print "and killed itself. You think to yourself HEY!? That smells good!" 
+            return 'death', 'donkey'
 
         else:
             print "You are an idiot that was not an option! This will self destruct in 5 4 3 2 1 BOOOOOOOOOMMMM"
-            return 'death'
+            return 'death', 'self destruct'
 
 
 
 class Ocean(Area):
 
-    def enter(self):
+    def enter(self, cause):
         print "Awesome you made it to the ocean!!! You're almost home free!!! You take a look around and notice that"
         print "there is a bunch of people standing around and taking pictures of the beautiful scenery. Someone walks"
         print "up to you and asks if you want to take a selfie..... You punch them in the face! What is this crazy mad"
@@ -138,7 +150,7 @@ class Ocean(Area):
 
         if choice == "1":
             print "You ran like a speeding Gazelle into the ocean and then realized you can't swim! Oh Shit!!!!"
-            return 'death'
+            return 'death', 'drown'
 
         elif choice == "2":
             print "You turn and run back into the forest screaming like a wild banshee. You run back through the river"
@@ -147,11 +159,26 @@ class Ocean(Area):
             print "relieved and then you trip and fall and hit your head and forget everything."
             print "\n"
             print "\n"
-            return 'mountain_top'
+            print "Now you are!!!"
+            print u"""
+──────▄▄▄▄▄███████████████████▄▄▄▄▄──────
+────▄██████████▀▀▀▀▀▀▀▀▀▀██████▀████▄────
+──▄██▀████████▄─────────────▀▀████─▀██▄──
+─▀██▄▄██████████████████▄▄▄─────────▄██▀─
+───▀█████████████████████████▄────▄██▀───
+─────▀████▀▀▀▀▀▀▀▀▀▀▀▀█████████▄▄██▀─────
+───────▀███▄──────────────▀██████▀───────
+─────────▀██████▄─────────▄████▀─────────
+────────────▀█████▄▄▄▄▄▄▄███▀────────────
+──────────────▀████▀▀▀████▀──────────────
+────────────────▀███▄███▀────────────────
+───────────────────▀█▀───────────────────
+"""
+            return 'mountain_top', None
 
         else:
             print "You are an idiot that was not an option! This will self destruct in 5 4 3 2 1 BOOOOOOOOOMMMM"
-            return 'death'
+            return 'death', 'self destruct'
 
 class Map(object):
 
