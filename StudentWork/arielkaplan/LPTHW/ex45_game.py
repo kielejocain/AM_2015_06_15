@@ -29,19 +29,20 @@ class Engine(object):
 
 # PLAYER
 
-class Assistant(object):
+class Player(object):
 	"""Player is an undercover lab assistant. Resuce animals
 	and collect evidence without getting caught or too injured."""
+	
+	health_states = ["hungry", "thirsty", "tired"]
+
 	def __init__(self, name):
 		self.name = name
 		self.playing = True # Continue playing
 		self.health = 100
 		self.evidence = 0
+		self.sneak = 5
 		self.max_weight = 60 
 		self.carrying = [] # animals
-
-	def get_injured(self, animal):
-		pass
 
 	def pick_up_animals(self, cages):
 		print "\nWhich animals to rescue?"
@@ -59,29 +60,36 @@ class Assistant(object):
 
 			# check that pick_up is a number
 			try :
-				pick_up = int(pick_up)
 				# switch from cardinal to ordinal #
-				pick_up -= 1
+				pick_up = int(pick_up) - 1
 
 				# if picking from empty cage
 				if (pick_up < len(cages)) and (cages[pick_up] == "Empty Cage"):
 					print "You already got that one. Pick something else."
 					self.pick_up_animals()
 				# if valid: p/u animal & remove from cage
-				elif 0 <= pick_up < len(cages):
+				elif (0 <= pick_up < len(cages)) and (
+					  self.max_weight - cages[pick_up].weight >= 0):
 					self.carrying.append(cages[pick_up])
+					self.max_weight -= cages[pick_up].weight
+
+					cages[pick_up].bite(self)
+					cages[pick_up].scratch(self)
 					print self.carrying
 					print "\n"
 					cages[pick_up] = "Empty Cage"
+				elif self.max_weight - cages[pick_up].weight < 0:
+					print "You try to lift the animal into your pack,"
+					print "but you just can't carry any more!"
 				# if choice is to leave
 				elif pick_up == len(cages):
 					stay = False
 				else:
 					print "You seem confused. You're worrying me."
 
-			except TypeError:
+			except:
 				print "That's not a number. Try again."
-				self.pick_up_animals()
+				self.pick_up_animals(cages)
 
 
 # ANIMALS
@@ -90,54 +98,98 @@ class Animal(object):
 	"""Parent class for test subjects."""
 
 	def __init__(self):
-		self.teeth = random() * 10
-		self.claws = random() * 10
+		pass
 
 	def __repr__(self):
 		return "Teeth: " + self.teeth + "\nClaws: " + self.claws
 
+	def bite(self, player):
+		"""if teeth > 5, coin flip if bit"""	
+		if self.teeth > 5:
+			if random() >= 0.5:
+				player.health -= self.teeth
+				print "The %s bit you! You're down to %s health." % (self.name, 
+					player.health)
+			else:
+				print "Whew! The %s had some scary teeth, but it didn't bite you." % (
+					self.name)
+
+	def scratch(self, player):
+		"""if claws > 5, coin flip if scratched"""
+		if self.claws > 5:
+			if random() >= 0.5:
+				player.health -= self.claws
+				print "The %s scratched you! You're down to %s health." % (self.name, 
+					player.health)
+			else: 
+				print "Whew! The %s had some scary claws, but it didn't scratch you." % (
+					self.name)
+
 
 class Bunny(Animal):
 	"""Smallest of animals"""
-	def __init__(self, danger):
+	def __init__(self):
 		super(Bunny, self).__init__()
 		self.name = "bunny"
+		self.teeth = round(random(), 1) + randint(2, 5) # total 2-6
+		self.claws = round(random(), 1) + randint(1, 4) # total 1-5
 		self.weight = randint(3, 5)
 		self.value = 3
+		# 25% chance of being a mutant
+		self.mutant = (random() <= .25) 
+		if self.mutant == True:
+			self.teeth *= 2
+			self.claws *= 1.5
+			self.value *= 2
 
 	def __repr__(self):
-		return ("Bunny\n\tTeeth: " + str(self.teeth) + 
+		return ("Bunny\n\tMutant: " + str(self.mutant) +
+				"\n\tTeeth: " + str(self.teeth) + 
 			    "\n\tClaws: " + str(self.claws) +
 			    "\n\tValue: " + str(self.value))
 
 
 class Cat(Animal):
 	"""Mediumest of animals."""
-	def __init__(self, danger):
+	def __init__(self):
 		super(Cat, self).__init__()
 		self.name = "cat"
+		self.teeth = round(random(), 1) + randint(3, 6) # total 3-7
+		self.claws = round(random(), 1) + randint(3, 7) # total 3-8
 		self.weight = randint(5, 11)
-		self.claws *= 1.5
 		self.value = 5
+		# 25% chance of being a mutant
+		self.mutant = (random() <= .25) 
+		if self.mutant == True:
+			self.teeth *= 1.5
+			self.claws *= 2
+			self.value *= 2
 
 	def __repr__(self):
-		return ("Cat\n\tTeeth: " + str(self.teeth) + 
+		return ("Cat\n\tMutant: " + str(self.mutant) +
+				"\n\tTeeth: " + str(self.teeth) + 
 			    "\n\tClaws: " + str(self.claws) +
 			    "\n\tValue: " + str(self.value))
 
 
 class Dog(Animal):
 	"""Largest of animals."""
-	def __init__(self, danger):
+	def __init__(self):
 		super(Dog, self).__init__()
 		self.name = "dog"
+		self.teeth = round(random(), 1) + randint(4, 8) # total 4-9
+		self.claws = round(random(), 1) + randint(1, 4) # total 1-5
 		self.weight = randint(8, 35)
-		self.teeth *= 2.0
-		self.claws /= 2.0
 		self.value = 8
+		# 25% chance of being a mutant
+		self.mutant = (random() <= .25) 
+		if self.mutant == True:
+			self.teeth *= 2
+			self.value *= 2
 
 	def __repr__(self):
-		return ("Dog\n\tTeeth: " + str(self.teeth) + 
+		return ("Dog:\n\tMutant: " + str(self.mutant) +
+				"\n\tTeeth: " + str(self.teeth) + 
 			    "\n\tClaws: " + str(self.claws) +
 			    "\n\tValue: " + str(self.value))
 
@@ -163,6 +215,11 @@ class FrontDoor(Scene):
 class Hallway(Scene):
 	"""Lets player choose lab room"""
 	def enter(self, player):
+
+		# 25% chance you get caught
+		if random() <= 0.25:
+			Caught().enter(player)
+
 		print "\nYou've made it to the hallway. Where do you go?"
 		print "1: Red Room"
 		print "2: Blue Room"
@@ -170,7 +227,8 @@ class Hallway(Scene):
 		print "4: Purple Room"
 		print "5: Go outside"
 
-		choice = raw_input(">> ")
+		choice = raw_input("Enter a number. >> ")
+
 		if choice == "1":
 			print "You pick the Red Room"
 			return "red_room"
@@ -187,7 +245,14 @@ class Hallway(Scene):
 			print "Ahh, fresh air!"
 			return "drop_off"
 		else:
-			print "You wander in circles for a while."
+			player_state = player.health_states[randint(0, 2)]
+
+			print "You wander in circles for a while until you get %s." % (
+				player_state)
+			player.health -= 5
+			if player.health <= 0:
+				return "pass_out"
+			print "Your health is now %s." % player.health
 			return "hallway"
 
 # Labs: make four instances
@@ -210,13 +275,12 @@ class Lab(Scene):
 	def fill_cages(self):
 		"""Random 4-8 cages"""
 
-		# arguments currently don't mean anything
-		species = [Bunny(1), Cat(2), Dog(3)]
+		species = [Bunny, Cat, Dog]
 
 		# between 4 and 8 cages
 		for i in range(randint(4,8)):
 			# creates a random animal in each cage
-			self.cages.append(species[randint(0, 2)])
+			self.cages.append(species[randint(0, 2)]())
 
 
 	def leave(self):
@@ -241,12 +305,15 @@ class Drop(Scene):
 			player.evidence += animal.value
 		print "You've collected %d%% of the evidence you need." % (
 			player.evidence)
+		print "Your health is at %d%%." % (player.health)
 
 		# Empty player's list
 		player.carrying = []
+		# Refil player's max_weight
+		player.max_weight = 60
 
 		if player.evidence >= 100:
-			return "You've got enough evidence to shut down the lab! You win!"
+			return "win"
 		else:
 			print "Go back in? y/n"
 			answer = raw_input(">> ")
@@ -260,17 +327,75 @@ class Drop(Scene):
 # Get caught
 class Caught(Scene):
 	"""The scientist found you. Can you talk yourself out of it?"""
+	
+	def __init__(self):
+		self.phrase = [
+			"\n'You're here much later than I was expecting!', the scientist says suspiciously.",
+			"\n'What were you doing here again? I thought I told you to go home', the scientist says.",
+			"\n'Working late? I like that ambitious spirit!' the scientist says. \n'...But ambition can be dangerous.'"
+		]	
+		self.action = [
+			"He peers at you through his magnifying goggles.",
+			"He casually pulls a spider from his unkempt hair.",
+			"He twirls a syringe in his fingers."
+		]
+
 	def enter(self, player):
-		print "You got caught"
-		pass
+		print "You got caught!"
+		print self.phrase[randint(0, 2)]
+		print "\n" + self.action[randint(0, 2)]
+		print "'What number am I thinking of?', he asks."
+		number = randint(-8, 113)
+		tries = 10
+		print number
+		while tries != 0:
+			if tries == 1:
+				print "You only have one more try!"
+			else:
+				print "You have %d tries left." % tries
+			guess = raw_input("Make a guess. >> ")
+
+			try:
+				guess = int(guess)
+				if guess == number:
+					print "Whew, you got it! The scientist nods and wanders off."
+					# continue with your business
+					return "hallway"
+				elif guess > number:
+					print "'Too high,' he says."
+				elif guess < number:
+					print "'Too low,' he says."
+				else:
+					print "I don't know how you got here..."
+				tries -= 1
+
+			except:
+				print "That's not a number. Try a number."
+
+
+		# if you run out of tries	
+		if (tries == 0) and (player.sneak < 0):
+			print "At your final failure, his face darkens with suspicion."
+			print ".\n.\n."
+			print "He suddenly slashes at you with a scapel!"
+			print "You run for the door, knowing you've failed.\n"
+			exit(1)
+		elif tries == 0:
+			print "The scientist huffs. 'I've got my eye on you', he says."
+			print "'Keep your nose clean. Or else.'"
+			player.sneak -= 1
+		else:
+			print "You shouldn't be here."
+
+		#return "hallway"
 
 # End: Pass out
 class PassOut(Scene):
 	"""Health has reached 0. Game Over."""
 	def enter(self, player):
-		print "\nA valiant effort, but the animals did too much damage to you."
-		print "You pass out in the lab and are found the next morning."
-		print "The mad scientist fires you for sleeping on the job."
+		print "\nYou start to feel woozy..."
+		print "You pass out where you stand and are found the next morning."
+		print "The mad scientist fires you for sleeping on the job. You failed.\n"
 		player.playing = False
 		exit(1)
 
@@ -278,7 +403,7 @@ class PassOut(Scene):
 class GiveUp(Scene):
 	"""You got bored and gave up."""
 	def enter(self, player):
-		print "\nWhat a terrible work ethic. I'm disappointed. You lose."
+		print "\nWhat a terrible work ethic. I'm disappointed. You lose.\n"
 		player.playing = False
 		exit(1)
 
@@ -286,7 +411,7 @@ class GiveUp(Scene):
 class Win(Scene):
 	"""You've gathered enough evidence. You Win."""
 	def enter(self, player):
-		print "\nYou win"
+		print "\nYou've got enough evidence to shut down the lab! You win!\n"
 		player.playing = False
 		exit(1)
 
@@ -325,11 +450,17 @@ class Map(object):
 	def opening_scene(self):
 		return self.next_scene(self.start_scene)
 
-print "You're undercover at a mad scientist's animal-testing lab."
+print "-" * 10
+print "You're undercover at a mad scientist's animal-testing laboratory."
+print "It is your task to collect enough evidence to close the lab,"
+print "while not getting either arousing too much suspicion or getting"
+print "too scratched up by the distressed animals you're trying to rescue."
+print "-" * 10
+
 code_name = raw_input("What is your code name? >> ")
 
 a_map = Map("front_door")
-a_player = Assistant(code_name)
+a_player = Player(code_name)
 
 a_game = Engine(a_map)
 a_game.play(a_player)
