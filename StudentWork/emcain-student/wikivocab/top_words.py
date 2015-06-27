@@ -1,7 +1,8 @@
-#this uses the "wikipedia" class from https://pypi.python.org/pypi/wikipedia/
+# this uses the "wikipedia" class from https://pypi.python.org/pypi/wikipedia/
+# begins by ruling out the top 100 words plus conjugated forms of "to be" verbs that I have added, and the word "an." top 100 words are from https://en.wikipedia.org/wiki/Most_common_words_in_English
 
 from wikipedia import *
-import re
+import re #regular expression
 from collections import Counter 
 
 # creating a list of the top 100 English words, plus variations on the verb "to be"
@@ -10,9 +11,9 @@ top_file = open('100words.txt')
 
 top100 = []
 
-for line in top_file:
-	items = line.split()
-	top100.append(items[1])
+for line in top_file: 
+	items = line.split() 
+	top100.append(items[1]) #the text file I made has the order number as the first line and I'm too lazy to take it out.
 
 # print "these are the 100 most common words: " 
 # print top100	
@@ -23,7 +24,7 @@ def top_words_tuples(topic, number):
 	for word in raw_words:
 		try:
 			just_word = re.sub("[^a-zA-Z]+", "", word).lower()
-			topic_words.append(str(just_word))
+			topic_words.append(str(just_word)) # there's a bunch of unicode-related junk that gets tacked on that this attempts to eliminate
 		except UnicodeEncodeError:
 			pass
 			
@@ -66,7 +67,10 @@ while input_needed:
 	except PageError:
 		print "Wikipedia page of that title not found. Please try a different name for your topic."
 	except DisambiguationError as de:
-		print "There are many articles of that title; please be more specific."
+		print "-----> ~", subj, "~ could refer to any of these articles:"
+		for item in de.options:
+			print str(item)
+		print "Please type the name of the article you would like to use exactly as it appears above."
 		
 print "How many words would you like to see?"
 input_needed = True

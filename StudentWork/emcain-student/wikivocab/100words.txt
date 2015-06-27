@@ -107,3 +107,7 @@
 107 am
 108 wasn't
 109 weren't 
+110 an
+111 whose
+112 whom
+113 theirs
