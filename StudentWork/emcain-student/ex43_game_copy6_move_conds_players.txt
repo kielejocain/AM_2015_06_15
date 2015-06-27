@@ -1,7 +1,0 @@
-stuff to do today: 
-
--comment rest of game script, clean up where needed, make notes on what I'd like to do with the code
-
--test move conditions on a single connection. Hardcode the relevant move condition instead of using an in game mechanism
-
--move win condition from move to boat_action method in player
