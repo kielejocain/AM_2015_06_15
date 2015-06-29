@@ -90,4 +90,8 @@ print stocks
 stocks = {}
 
 for entry in test_data:
-    stocks[entry[1].lower()]
+    if entry[1].lower() not in stocks:
+        stocks[entry[1].lower()] = []
+    stocks[entry[1].lower()].append(entry)
+
+print stocks
