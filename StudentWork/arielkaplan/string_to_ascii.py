@@ -9,9 +9,9 @@ def ascii_to_string(list):
     for num in list:
         print chr(num)
 
-def num_to_binary(word):
-    for char in word:
-        print bin(char)
+def num_to_binary(list):
+    for num in list:
+        print bin(num)
 
 string_to_ascii(name)
 ascii_to_string(ascii)
