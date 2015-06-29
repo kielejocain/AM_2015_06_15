@@ -1,0 +1,7 @@
+setup.py
+my_pet/__init__.py
+my_pet.egg-info/PKG-INFO
+my_pet.egg-info/SOURCES.txt
+my_pet.egg-info/dependency_links.txt
+my_pet.egg-info/requires.txt
+my_pet.egg-info/top_level.txt
