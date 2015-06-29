@@ -47,7 +47,7 @@ stocks = {}
 stocks[appl[0][1].lower()] = appl
 stocks[msft[0][1].lower()] = msft
 
-print stocks
+# print stocks
 
 # result example
 
@@ -90,8 +90,15 @@ print stocks
 stocks = {}
 
 for entry in test_data:
-    if entry[1].lower() not in stocks:
-        stocks[entry[1].lower()] = []
-    stocks[entry[1].lower()].append(entry)
+    # create key from entry[1]
+    current_stock = entry[1].lower()
+    if current_stock not in stocks:
+        stocks[current_stock] = []
+    # remove stock name from entry to eliminate redundant data
+    mod_entry = [entry[0], entry[2]]
+    stocks[current_stock].append(mod_entry)
 
-print stocks
+for key in stocks.keys():
+    print key
+    for list in stocks[key]:
+        print list
