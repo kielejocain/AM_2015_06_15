@@ -45,15 +45,16 @@ class Player(object):
 		self.carrying = [] # animals
 
 	def pick_up_animals(self, cages):
-		print "\nWhich animals to rescue?"
 
 		# Keep choosing animals
 		stay = True
 
 		while stay == True:
+			print ""
 			for i in range(len(cages)):
 				# hiding stats for now
 				print str(i + 1) + ": " + str(cages[i])
+
 			print str(len(cages) + 1) + ": None; I'm finished."
 			
 			pick_up = raw_input("Which animal do you pick up? >> ")
@@ -62,35 +63,40 @@ class Player(object):
 			try :
 				# switch from cardinal to ordinal #
 				pick_up = int(pick_up) - 1
-
-				# if picking from empty cage
-				if (pick_up < len(cages)) and (cages[pick_up] == "Empty Cage"):
-					print "You already got that one. Pick something else."
-					self.pick_up_animals()
-				# if valid: p/u animal & remove from cage
-				elif (0 <= pick_up < len(cages)) and (
-					  self.max_weight - cages[pick_up].weight >= 0):
-					self.carrying.append(cages[pick_up])
-					self.max_weight -= cages[pick_up].weight
-
-					cages[pick_up].bite(self)
-					cages[pick_up].scratch(self)
-					print self.carrying
-					print "\n"
-					cages[pick_up] = "Empty Cage"
-				elif self.max_weight - cages[pick_up].weight < 0:
-					print "You try to lift the animal into your pack,"
-					print "but you just can't carry any more!"
-				# if choice is to leave
-				elif pick_up == len(cages):
-					stay = False
-				else:
-					print "You seem confused. You're worrying me."
-
 			except:
 				print "That's not a number. Try again."
 				self.pick_up_animals(cages)
 
+			# if picking from empty cage
+			if (0 <= pick_up < len(cages)) and (cages[pick_up] == "Empty Cage"):
+				print "You already got that one. Pick something else."
+				self.pick_up_animals(cages)
+
+			# if valid: p/u animal & remove from cage
+			elif (0 <= pick_up < len(cages)) and (
+				  self.max_weight - cages[pick_up].weight >= 0):
+				self.carrying.append(cages[pick_up])
+				self.max_weight -= cages[pick_up].weight
+
+				cages[pick_up].bite(self)
+				cages[pick_up].scratch(self)
+				print "\nYou're now carrying..." 
+				for animal in self.carrying:
+					print "\t" + str(animal)
+				print ""
+				cages[pick_up] = "Empty Cage"
+
+			# if valid, but too heavy
+			elif (0 <= pick_up < len(cages)) and (
+				  self.max_weight - cages[pick_up].weight < 0):
+				print "You try to lift the animal into your pack,"
+				print "but you just can't carry any more!"
+			
+			# if choice is to leave
+			elif pick_up == len(cages):
+				stay = False
+			else:
+				print "You seem confused. You're worrying me."
 
 # ANIMALS
 
@@ -98,7 +104,15 @@ class Animal(object):
 	"""Parent class for test subjects."""
 
 	def __init__(self):
-		pass
+		self.mutant_color = ["lime green", 
+					"hot pink", 
+					"subtley iridescent", 
+					"purple polka-dotted"]
+		self.normal_color = ["chocolate brown",
+					"smooth black", 
+					"white and brown spotted",
+					"fluffy white",
+					"gray striped"]
 
 	def __repr__(self):
 		return "Teeth: " + self.teeth + "\nClaws: " + self.claws
@@ -108,10 +122,10 @@ class Animal(object):
 		if self.teeth > 5:
 			if random() >= 0.5:
 				player.health -= self.teeth
-				print "The %s bit you! You're down to %s health." % (self.name, 
+				print "\nThe %s bit you! You're down to %s health." % (self.name, 
 					player.health)
 			else:
-				print "Whew! The %s had some scary teeth, but it didn't bite you." % (
+				print "\nWhew! The %s had some scary teeth, but it didn't bite you." % (
 					self.name)
 
 	def scratch(self, player):
@@ -119,10 +133,10 @@ class Animal(object):
 		if self.claws > 5:
 			if random() >= 0.5:
 				player.health -= self.claws
-				print "The %s scratched you! You're down to %s health." % (self.name, 
+				print "\nThe %s scratched you! You're down to %s health." % (self.name, 
 					player.health)
 			else: 
-				print "Whew! The %s had some scary claws, but it didn't scratch you." % (
+				print "\nWhew! The %s had some scary claws, but it didn't scratch you." % (
 					self.name)
 
 
@@ -135,18 +149,18 @@ class Bunny(Animal):
 		self.claws = round(random(), 1) + randint(1, 4) # total 1-5
 		self.weight = randint(3, 5)
 		self.value = 3
+		self.color = self.normal_color[randint(0, len(self.normal_color)-1)]
+
 		# 25% chance of being a mutant
 		self.mutant = (random() <= .25) 
 		if self.mutant == True:
 			self.teeth *= 2
 			self.claws *= 1.5
 			self.value *= 2
+			self.color = self.mutant_color[randint(0, len(self.mutant_color)-1)]
 
-	def __repr__(self):
-		return ("Bunny\n\tMutant: " + str(self.mutant) +
-				"\n\tTeeth: " + str(self.teeth) + 
-			    "\n\tClaws: " + str(self.claws) +
-			    "\n\tValue: " + str(self.value))
+	def __str__(self):
+		return ("A " + str(self.color) + " bunny")
 
 
 class Cat(Animal):
@@ -158,18 +172,20 @@ class Cat(Animal):
 		self.claws = round(random(), 1) + randint(3, 7) # total 3-8
 		self.weight = randint(5, 11)
 		self.value = 5
+		self.color = self.normal_color[randint(0, len(self.normal_color)-1)]
+
 		# 25% chance of being a mutant
 		self.mutant = (random() <= .25) 
 		if self.mutant == True:
 			self.teeth *= 1.5
 			self.claws *= 2
 			self.value *= 2
+			self.color = self.mutant_color[randint(0, len(self.mutant_color)-1)]
 
-	def __repr__(self):
-		return ("Cat\n\tMutant: " + str(self.mutant) +
-				"\n\tTeeth: " + str(self.teeth) + 
-			    "\n\tClaws: " + str(self.claws) +
-			    "\n\tValue: " + str(self.value))
+
+	def __str__(self):
+		return ("A " + str(self.color) + " cat")
+
 
 
 class Dog(Animal):
@@ -181,17 +197,19 @@ class Dog(Animal):
 		self.claws = round(random(), 1) + randint(1, 4) # total 1-5
 		self.weight = randint(8, 35)
 		self.value = 8
+		self.color = self.normal_color[randint(0, len(self.normal_color)-1)]
+
 		# 25% chance of being a mutant
 		self.mutant = (random() <= .25) 
 		if self.mutant == True:
 			self.teeth *= 2
 			self.value *= 2
+			self.color = self.mutant_color[randint(0, len(self.mutant_color)-1)]
 
-	def __repr__(self):
-		return ("Dog:\n\tMutant: " + str(self.mutant) +
-				"\n\tTeeth: " + str(self.teeth) + 
-			    "\n\tClaws: " + str(self.claws) +
-			    "\n\tValue: " + str(self.value))
+
+	def __str__(self):
+		return ("A " + str(self.color) + " dog")
+
 
 
 # SCENES
@@ -208,7 +226,7 @@ class FrontDoor(Scene):
 	"""Figure the combination code to get in the lab."""
 	def enter(self, player):
 		print "\nHi, %s. You're at the front door." % player.name
-		print "I'm gonna assume you got the code right. Lucky you."
+		print "You swipe your employee card to get in."
 		return "hallway"
 
 # Hallway
@@ -221,25 +239,21 @@ class Hallway(Scene):
 			Caught().enter(player)
 
 		print "\nYou've made it to the hallway. Where do you go?"
-		print "1: Red Room"
-		print "2: Blue Room"
-		print "3: Green Room"
-		print "4: Purple Room"
+		print "1: Red Lab"
+		print "2: Blue Lab"
+		print "3: Green Lab"
+		print "4: Purple Lab"
 		print "5: Go outside"
 
 		choice = raw_input("Enter a number. >> ")
 
 		if choice == "1":
-			print "You pick the Red Room"
 			return "red_room"
 		elif choice == "2":
-			print "You pick the Blue Room"
 			return "blue_room"
 		elif choice == "3":
-			print "You pick the Green Room"
 			return "green_room"
 		elif choice == "4":
-			print "You pick the Purple Room"
 			return "purple_room"
 		elif choice == "5":
 			print "Ahh, fresh air!"
@@ -301,7 +315,8 @@ class Drop(Scene):
 			print "\nYou put the animals in a safe place."
 
 		for animal in player.carrying:
-			print str(animal.name) + " is worth " + str(animal.value)
+			print ("A " + str(animal.color) + " " + str(animal.name) 
+				   + " is worth " + str(animal.value) + ".")
 			player.evidence += animal.value
 		print "You've collected %d%% of the evidence you need." % (
 			player.evidence)
@@ -344,10 +359,10 @@ class Caught(Scene):
 		print "You got caught!"
 		print self.phrase[randint(0, 2)]
 		print "\n" + self.action[randint(0, 2)]
-		print "'What number am I thinking of?', he asks."
+		print "'What number am I thinking of?', he asks. 'It's less than 100. Maybe.'"
 		number = randint(-8, 113)
 		tries = 10
-		print number
+		# print number
 		while tries != 0:
 			if tries == 1:
 				print "You only have one more try!"
@@ -357,24 +372,24 @@ class Caught(Scene):
 
 			try:
 				guess = int(guess)
-				if guess == number:
-					print "Whew, you got it! The scientist nods and wanders off."
-					# continue with your business
-					return "hallway"
-				elif guess > number:
-					print "'Too high,' he says."
-				elif guess < number:
-					print "'Too low,' he says."
-				else:
-					print "I don't know how you got here..."
-				tries -= 1
-
 			except:
 				print "That's not a number. Try a number."
 
+			if guess == number:
+				print "Whew, you got it! The scientist nods and wanders off."
+				# continue with your business
+				return "hallway"
+			elif guess > number:
+				print "'Too high,' he says."
+			elif guess < number:
+				print "'Too low,' he says."
+			else:
+				print "I don't know how you got here..."
+			tries -= 1
+
 
 		# if you run out of tries	
-		if (tries == 0) and (player.sneak < 0):
+		if (tries == 0) and (player.sneak <= 0):
 			print "At your final failure, his face darkens with suspicion."
 			print ".\n.\n."
 			print "He suddenly slashes at you with a scapel!"

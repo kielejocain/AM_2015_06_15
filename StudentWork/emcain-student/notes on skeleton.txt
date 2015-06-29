@@ -1,0 +1,5 @@
+http://learnpythonthehardway.org/book/ex46.html
+
+this gives directions on how to do the stuff. 
+
+remember to do all this stuff in the appropriate test environment. find existing ones with workon
