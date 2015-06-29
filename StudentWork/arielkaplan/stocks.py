@@ -86,3 +86,8 @@ print stocks
 
 #ONCE THAT WORKS THEN what would need to change to copy with an unknown number
 # of stock ticker symbols?
+
+stocks = {}
+
+for entry in test_data:
+    stocks[entry[1].lower()]

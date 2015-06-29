@@ -1,11 +1,18 @@
-name = 'AHK'
-
-for char in name:
-    print ord(char)
-
-# AHK --> 65 72 75
-
+name = 'AHK' # 65 72 75
 ascii = [65, 72, 75]
 
-for num in ascii:
-    print chr(num)
+def string_to_ascii(word):
+    for char in word:
+        print ord(char)
+
+def ascii_to_string(list):
+    for num in list:
+        print chr(num)
+
+def num_to_binary(word):
+    for char in word:
+        print bin(char)
+
+string_to_ascii(name)
+ascii_to_string(ascii)
+num_to_binary(ascii)
