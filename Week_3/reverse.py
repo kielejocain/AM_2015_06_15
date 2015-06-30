@@ -50,6 +50,6 @@ def reverse_words_hard(words):
 
     return output_str[1:]
 
-print "this is the hard way "
+print("this is the hard way ")
 print(reverse_words_hard(words))
 
