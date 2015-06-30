@@ -1,0 +1,75 @@
+We will:
+
+    Review Basics.
+
+    Revisit core concepts.
+
+Fog is normal.
+
+Clarity comes in waves and levels.
+
+
+Key concepts and their application is priority.
+
+Memorization of syntax comes last and only with practice.
+
+
+For each of the following words; please answer the following three questions using your own words.
+
+    -   What is it?
+
+    -   What real life thing is it similar to?
+
+    -   When would you use it (what problem does it solve?)
+
+
+1. Variable:
+    A variable is a symbolic name that represents data stored in the computer's memory, much like variables in algebra. Operations can be performed using variables, and the value of this data can be changed as needed. For example, a program could be written that calculates my bank balance on a daily basis using a name such as bank_balance to represent the value of my account after withdrawals and deposits are calculated.
+
+2. Operator:
+    An operator is a symbol that represents actions to be performed on the data in one's program. They are similar to the math symbols we all know such as + for addition (or concatenation when using strings), - for subtraction, and * and / for multiplication and division, respectively. In addtion to the mathematical operators, we have the assignment operator ("=") that assigns a value to a variable name, logical/Boolean operators that test for truthiness, and relational operators that compare values.
+
+3. Assignment Operator:
+    The assignment operator looks like the "equals" sign (=) in mathematics, but rather than representing equality in an expression, it assigns a value to a variable name. Such assignments are used all the time in programming and allow us to run the same programs using different values. Assigning values to variable names can also save us time and make our code more readable. Instead of having to rewrite a complicated expression, we can simply assign it to a variable name and refer to it repeatedly in our code, thus minimize errors and speeding up our time writing code.
+
+4. String:
+    Strings are one of the build-in data types in Python and consist of sequences of characters such as "Resistance is futile." or "7 of 9". They are immutable, enclosed in quotation marks, and able to be manipulated with a variety of string methods, much like arrays/lists, meaning you can iterate over them or perform actions such as the upper() method (to make uppercase), for example. Strings are used frequently in programming. For example, the input fields in forms are usually string data.
+
+5. Float:
+    A float is a data type in Python and is short for floating point numbers. Floats are numerical values that have potential decimal places. We commonly use floating numbers when dealing with money ($10.99). They are useful when dealing with fractions of numbers (10.25), something that integers do not allow. If we perform division with just integers, then the result of 3 / 4. If we instead use floats, 3.0 / 4.0, then we get .75.
+
+6. Boolean:
+    There are two Boolean values: True or False. They refer to the logical values in Boolean algebra. All objects in Python as well as all expressions using logical or comparison operators can be tested for their Boolean value. For example 5 < 10 has a Boolean value of True. 5 != 10 also has a value of True. In real life these values are similar to on-off switches with on being True and off being False.
+
+    0 (or 0.0), None, and any empty container such as [] or {} will have a False value. Any string besides any empty string ("") will be evaluated as True.
+
+    Booleans are useful when constructing while loops or when indicating state changes (monster_present = True).
+
+7. List:
+    A list is a sequence of ordered objects. Lists are mutable, so objects can be added and removed, and the items in the list can be reordered or altered. List items are accessed by index number. Lists are common tools we use every day. Storing values or objects in a list is useful because it allows us to perform operations on the list. For example, a digital to-do list might extract tasks from the primary list to a new list of completed tasks.
+
+8. Dict:
+    Dictionaries are containers that hold key-value pairs, much like a dictionary in real life. Dictionaries are not ordered by indices like lists are, but rather you select an item in a dictionary by the key name. This is useful for collections of items that are more easily retrieved by keywords such as the phonebook exercise we did in class.
+
+9. Conditional Expression/Operator:
+    A conditional expression is used in control structures such as if statements or while loops. If the condition is satisfied, then the code block inside the loop or if statement will be executed. Conditional operations happen in real life constantly. If I have extra money for a trip, then I will go to Iceland for my 10th wedding anniversary. If I get 8 hours of sleep, then I will not feel drowsy in class. While I have my wits about me, I will not have children. While the traffic light is green, I will proceed through the intersection.
+
+    In programming, control structures and the conditions thereof allow us to execute different code based on different user input or changes in a state of some kind. We do not need to proceed linearly through code statements but instead can branch or repeat behavior.
+
+10. Function:
+    A function is a block of code that performs a task which often returns a value that can be used by another part of the program. Functions are much like the functions in math whereby an input is fed into the function, undergoes some kind of operation, and results in a new value, usually not identical to the data passed into the function, though it's possible they can be the same (if the operation multiplies the value by 1, for example). "Fruitful" functions return values. "Void" functions do not.
+
+    Code is easier to read with functions because statements are grouped together.
+    Functions allow you to eliminate repetition, making code shorter and easier to edit.
+
+    Breaking the code into functions makes debugging easier because you can focus on one part at a time.
+
+    Functions can often be reused elsewhere.
+
+11. Argument:
+    Arguments are the values that are passed into functions, as designated by the parameters of the function. This allows us to use the same function repeatedly but with different input data. If I have a program that locates houses on the real estate market, I might input a zip code into a function that will provide me with a list of the houses in that particular area.
+
+12. Return Value:
+    A return value is an output of a function. This value can be fed into another function or expression. In the example above, the return value would be the list of houses in the area code of interest.
+
+BONUS: What other python keywords can you answer these questions for?

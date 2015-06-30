@@ -7,5 +7,7 @@ def string_to_ascii(s):
         print(bin(v))
     return output
 
-print(string_to_ascii("ABC"))
 print(string_to_ascii("Jake"))
+print(string_to_ascii("Obadiah"))
+print(string_to_ascii("Richmond"))
+print(string_to_ascii("JOR"))
