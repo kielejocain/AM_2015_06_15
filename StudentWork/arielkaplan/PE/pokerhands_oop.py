@@ -2,9 +2,6 @@ f = open("poker.txt")
 all_hands = f.read()
 f.close()
 
-card_order = ["2", "3", "4", "5", "6", "7", 
-	"8", "9", "T", "J", "Q", "K", "A"]
-
 class Player(object):
 
 	def __init__(self, name):
@@ -29,24 +26,26 @@ class Round(object):
 
 class Hand(object):
 	"""
-	One five-card hand as a string with spaces between, 
+	One five-card hand as a string with spaces between,
 	ex. '6S QH 6D 6H QD'
 	"""
-	# consecutive? 
+	# consecutive?
 	# how many suits?
 	# list of high->low unused cards
 	# how many of each value
-	# score dict: 
+	# score dict:
 
-	def __init__(self, cards):
-		self.cards = cards # string
-		self.suits = [] # which suits
-		self.values = [] # list of cards in high-->low order
-
+	def __init__(self, hand):
+		self.hand = hand # string
+		self.cards = hand.split(' ')
+		self.values = self.values() # list of cards in high-->low order
 
 		self.straight = self.straight() # boolean
 		self.flush = self.flush() # boolean
 		self.high = self.high_card() # list high-->low
+
+		self.card_order = ["2", "3", "4", "5", "6", "7",
+			"8", "9", "T", "J", "Q", "K", "A"]
 		self.score = {
 			# [0] is if hand is present
 			# [1] and optional [2] is value of cards
@@ -79,13 +78,17 @@ class Hand(object):
 		# 		break
 		pass
 
+	def values(self):
+		"""returns list of card values high --> low"""
+		pass
+
 	def flush(self):
 		"""Are all cards same suit? Returns boolean."""
 		suits = [
-			self.cards.count("S"), 
-			self.cards.count("H"), 
-			self.cards.count("D"),
-			self.cards.count("C")
+			self.hand.count("S"),
+			self.hand.count("H"),
+			self.hand.count("D"),
+			self.hand.count("C")
 		]
 		if max(suits) == 5:
 			return True
