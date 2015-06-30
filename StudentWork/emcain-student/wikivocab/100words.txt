@@ -7,6 +7,9 @@
 7 	in
 8 	that
 9 	have
+9a  has
+9b  had
+9c  havent
 10 	I
 11 	it
 12 	for
