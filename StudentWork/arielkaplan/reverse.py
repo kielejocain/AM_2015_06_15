@@ -6,7 +6,7 @@ characters = "ABCDEF"
 character_goal = "FEDCBA"
 
 def reverse_characters(characters):
-    result = characters[::-1]
+    result = characters[::-1] # This trick doesn't work in other languages
     return result
 
 print(reverse_characters(characters))
@@ -20,10 +20,19 @@ word_goal = "time the is now"
 
 def reverse_words(words):
     list_of_words = words.split(' ')
+    # can also do word_list.reverse()
     reversed_list = list(reversed(list_of_words))
     result = ' '.join(reversed_list)
     return result
 print(reverse_words(words))
+
+# EXTRA CREDIT: Reverse it in place. Use Python's ability to
+# assign two variables at once?
+
+def reverse_in_place(words):
+    return ' '.join(reversed(words.split(' ')))
+
+print(reverse_in_place(words))
 
 # Finally EXTRA CREDIT do the same with words
 # and DO NOT use built in function
@@ -63,3 +72,4 @@ def reverse_words_hard(words):
 
 print(reverse_words_hard(words))
 
+print words
