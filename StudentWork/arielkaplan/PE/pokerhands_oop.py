@@ -36,6 +36,8 @@ class Hand(object):
     # score dict:
 
     def __init__(self, hand):
+
+        self.card_order = ["2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"]
         self.hand = hand # string
         self.cards = hand.split(' ')
         self.values = self.values() # list of cards in high-->low order
@@ -44,8 +46,6 @@ class Hand(object):
         self.flush = self.flush() # boolean
         self.high = self.high_card() # list high-->low
 
-        self.card_order = ["2", "3", "4", "5", "6", "7",
-            "8", "9", "T", "J", "Q", "K", "A"]
         self.score = {
             # [0] is if hand is present
             # [1] and optional [2] is value of cards
