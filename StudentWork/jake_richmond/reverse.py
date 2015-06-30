@@ -5,15 +5,20 @@
 
 characters = "ABCDEF"
 character_goal = "FEDCBA"
+c = characters
+c = c[::-1]
+print c
 
-def reverse_characters(characters):
-    output_str = ''
-    for c in characters:
-        output_str = c + output_str
-    output = ''
-    return output_str
 
-print(reverse_characters(characters))
+#######KEVIN'S ANSWER#######
+#def reverse_characters(characters):
+#    output_str = ''
+#    for c in characters:
+#        output_str = c + output_str
+#    output = ''
+#    return output_str
+
+#print(reverse_characters(characters))
 
 # now do the same with words
 # and use built in function
@@ -23,9 +28,9 @@ words = "now is the time"
 word_goal = "time the is now"
 
 def reverse_words(words):
-    input_list = words.split()
+    input_list = words.split(" ")
     input_list.reverse()
-    return ' '.join(input_list)
+    return " " .join(input_list)
 
 print(reverse_words(words))
 
@@ -50,6 +55,6 @@ def reverse_words_hard(words):
 
     return output_str[1:]
 
-print("this is the hard way ")
+print "this is the hard way "
 print(reverse_words_hard(words))
 

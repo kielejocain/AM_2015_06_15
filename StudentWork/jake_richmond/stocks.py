@@ -12,41 +12,47 @@ test_data = [
 
 # CREATE TWO NEW LISTS ONE FOR EACH STOCK TICKER SYMBOL e.g. APPL and MSFT
 
-appl = [test_data[i] for i in range(4)]
-msft = [test_data[i] for i in range(4, 8)]
-#
-print "appl:",appl
-print "msft:",msft
+APPL = []
+MSFT = []
+
+for row in test_data:
+    ticker_symbol = row[1]
+    if ticker_symbol == "APPL":
+        APPL.append(row)
+    elif ticker_symbol == "MSFT":
+        MSFT.append(row)
+print(APPL)
+print(MSFT)
 
 # result example
 
-appl = [
+APPL = [
     ["2014-06-01", "APPL", 100.11],
     ["2014-06-02", "APPL", 110.61],
     ["2014-06-03", "APPL", 120.22],
     ["2014-06-04", "APPL", 100.54],
 ]
 
-msft = [
+MSFT = [
     ["2014-06-01", "MSFT", 20.46],
     ["2014-06-02", "MSFT", 21.25],
     ["2014-06-03", "MSFT", 32.53],
     ["2014-06-04", "MSFT", 40.71],
 ]
 
-print appl
-print msft
+# print(APPL)
+# print(MSFT)
 
 # result example
 
-appl = [
+APPL = [
     ["2014-06-01", "APPL", 100.11],
     ["2014-06-02", "APPL", 110.61],
     ["2014-06-03", "APPL", 120.22],
     ["2014-06-04", "APPL", 100.54],
 ]
 
-msft = [
+MSFT = [
     ["2014-06-01", "MSFT", 20.46],
     ["2014-06-02", "MSFT", 21.25],
     ["2014-06-03", "MSFT", 32.53],
@@ -56,13 +62,13 @@ msft = [
 # Example Output to eliminate redundant data
 
 stocks = {
-    "appl": [
+    "APPL": [
         ["2014-06-01", "APPL", 100.11],
         ["2014-06-02", "APPL", 110.61],
         ["2014-06-03", "APPL", 120.22],
         ["2014-06-04", "APPL", 100.54],
     ],
-    "msft": [
+    "MSFT": [
         ["2014-06-01", "MSFT", 20.46],
         ["2014-06-02", "MSFT", 21.25],
         ["2014-06-03", "MSFT", 32.53],
@@ -70,34 +76,29 @@ stocks = {
     ]
 }
 
-print stocks
 
-stocks2 = list(stocks)
+
 #ONCE THAT WORKS THEN what would need to change to copy with an unknown number of stock ticker symbols?
-print 2 * "\n"
+def list_to_dict(test_data):
+    FIELD_POSITION_INDEX = 1
+    output_dict = {}
+    for now in test_data:
+        column_value = row[FIELD_POSITION_INDEX]
+        keys = output_dict.keys()
+        if column_value not in keys:
+            output_dict[column_value] = []
+        list = output_dict[column_value]
+        # row.pop(FIELD_POSITION_INDEX)
+        # item = [row[0],  row[2]]
+        item = []
+        for f in range(0,len(row)):
+            if f == FIELD_POSITION_INDEX:
+                pass
+            else:
+                item.append(row[f])
+        list.append(item)
+    return output_dict
 
-for stock, tickets in stocks.items():
-    for ticket in tickets:
-        del ticket[1]
-
-print stocks
-
-from collections import defaultdict
-def list_to_dict(stock_list, key_field_index=None):
-    stock_dict = defaultdict(list)
-    for ticket in stock_list:
-        if key_field_index < 0 or key_field_index > len(ticket):
-            print "invalid field to remove."
-        #stock_name = ticket[1]
-        key_field = ticket[key_field_index]
-        ticket_fields = []
-        for i, field in enumerate(ticket):
-            if i != key_field_index:
-                ticket_fields.append(field)
-        stock_dict[key_field].append(ticket_fields)
-    return stock_dict
-
-st = list_to_dict(test_data, 1)
-
-print st
+result = list_to_dict(test_data)
+print result
 print test_data

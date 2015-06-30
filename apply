@@ -1,0 +1,329 @@
+[33mcommit a2e935be6368b3eb0641b0362dbe57113192789e[m
+Merge: 555aa91 ed4b422
+Author: OrionBuyukas <orionbuyukas@gmail.com>
+Date:   Tue Jun 30 10:51:15 2015 -0700
+
+    WIP on master: 555aa91 Merge branch 'master' of github.com:kielejocain/AM_2015_06_15
+
+[1mdiff --cc StudentWork/orionbuyukas/week_3/review.txt[m
+[1mindex 0000000,d3e3909..eef3b69[m
+mode 000000,100644..100644[m
+[1m--- a/StudentWork/orionbuyukas/week_3/review.txt[m
+[1m+++ b/StudentWork/orionbuyukas/week_3/review.txt[m
+[36m@@@ -1,0 -1,118 +1,120 @@@[m
+[32m+ [m
+[32m+ 1. Variable:[m
+[32m+     -   What is it?[m
+[32m+ 		A variable is a placeholder for a value.[m
+[32m+ [m
+[32m+     -   What real life thing is it similar to?[m
+[32m+ 		A variable is similar to a label on a folder.[m
+[32m+ [m
+[32m+     -   When would you use it (what problem does it solve?)[m
+[32m+ 		It enables the assignment of data/value to an identity.[m
+[32m+ [m
+[32m+ 2. Operator:[m
+[32m+     -   What is it?[m
+[32m+ 		It performs operations on the opperands.[m
+[32m+ [m
+[32m+     -   What real life thing is it similar to?[m
+[32m+ 		+, -, *, /, %, ==, >=, <=, !=.[m
+[32m+ [m
+[32m+     -   When would you use it (what problem does it solve?)[m
+[32m+ 		Basic math, comparisons, telling the compiler what to tell the computer to do.[m
+[32m+ [m
+[32m+ 3. Assignment Operator:[m
+[32m+     -   What is it?[m
+[32m+ 	 It assigns values from the right side of an operand to the left side. In some cases it performs a function then assigns the result to value on the left of the operand.[m
+[32m+ [m
+[32m+ [m
+[32m+     -   What real life thing is it similar to?[m
+[32m+ 		The equals sign in algebra.[m
+[32m+ [m
+[32m+ [m
+[32m+     -   When would you use it (what problem does it solve?)[m
+[32m+ 		Assigning values, counters. It can be used to perform math operations on right side operands and assigns them to left side operads. +=, -=, *=...etc.[m
+[32m+ [m
+[32m+ [m
+[32m+ 4. String:[m
+[32m+     -   What is it?[m
+[31m -		A continous set of characters.[m
+[32m++		A continous set of characters. A python datatype.[m
+[32m+ [m
+[32m+     -   What real life thing is it similar to?[m
+[32m+ 		A sentence.[m
+[32m+ [m
+[32m+     -   When would you use it (what problem does it solve?)[m
+[32m+ 		If you want to have a value for a variable that is not necessarly a number.[m
+[32m+ [m
+[32m+ 5. Float:[m
+[32m+     -   What is it?[m
+[32m+ 		A decimal number.[m
+[32m+ [m
+[32m+     -   What real life thing is it similar to?[m
+[32m+ 			Pi, or the speed of light, or Avogadro's number, cents, anytime you need to measure something that isn't whole number/integer. [m
+[32m+ [m
+[32m+     -   When would you use it (what problem does it solve?)[m
+[32m+ 			If you want to know the product of an equation that is not an integer. ie. float 5 divided by 2 = 2.5[m
+[32m+ [m
+[32m+ 6. Boolean:[m
+[32m+     -   What is it?[m
+[32m+ 		A True False logical operation.[m
+[32m+ [m
+[32m+     -   What real life thing is it similar to?[m
+[32m+ 		If you asked if I am at my computer right now, I could only answer True.[m
+[32m+ [m
+[32m+     -   When would you use it (what problem does it solve?)[m
+[32m+ 		When you want to test the condition of something. Such as stopping a loop when you have found the answer or prompting someone until the correct answer is given.[m
+[32m+ [m
+[32m+ [m
+[32m+ 7. List:[m
+[32m+     -   What is it?[m
+[32m+ 		It is an addressable, numerically ordered, and mutable set of values. [m
+[32m+ [m
+[32m+     -   What real life thing is it similar to?[m
+[32m+ 		A numerically ordered folder set.[m
+[32m+ [m
+[32m+     -   When would you use it (what problem does it solve?)[m
+[32m+ 		Storing sequentially oredered data sets.[m
+[32m+ 8. Dict:[m
+[32m+     -   What is it?[m
+[32m+ 			It's an unordered "list" delineated by keywords. More like a list of keys and values seperated by a colon inside curly braces.[m
+[32m+ 	dictionary_name={key_1:valueofkey1, key_2:valuekey2} [m
+[32m+ [m
+[32m+     -   What real life thing is it similar to?[m
+[32m+ 		A dictionary where the words aren't ordered.[m
+[32m+ [m
+[32m+     -   When would you use it (what problem does it solve?)[m
+[32m+ 		When you want to sort and search values by keyword instead of memorizing the object's value or position.[m
+[32m+ [m
+[32m+ 9. Conditional Expression/Operator:[m
+[32m+     -   What is it?[m
+[32m+ 		Usually a boolean expression. Often an "if", "else" or "While" statement.[m
+[32m+ [m
+[32m+     -   What real life thing is it similar to?[m
+[32m+ 		A thermostat. while heat: if the temperature in the house is less than 70 degrees: turn heater on, else: turn heater off.[m
+[32m+ [m
+[32m+     -   When would you use it (what problem does it solve?)[m
+[32m+ 	 It allows for controlled looping, and logical decision automation.[m
+[32m+ [m
+[32m+ 10. Function:[m
+[32m+     -   What is it?[m
+[31m -[m
+[32m++		A series of statemtents that can be called and accept zero or more arguments and return a value to the caller.[m
+[32m+     -   What real life thing is it similar to?[m
+[32m+ 		Putting ingredients into a blender and coming out with food.[m
+[32m+     -   When would you use it (what problem does it solve?)[m
+[32m+ 		Reducing redundancy in code/code reuse.[m
+[32m+ [m
+[32m+ 11. Argument:[m
+[32m+     -   What is it?[m
+[32m++	It is a value or values passed into a method or function. There are two kinds of arguments: "keyword arguments" are named arguments passed as a value in a dictionary; [m
+[32m++and "positional arguments" are not preceded by keywords. Arguments are passed into a function to take the place of their respective named variables within the function.[m
+[32m+ [m
+[32m+     -   What real life thing is it similar to?[m
+[32m+ [m
+[32m+     -   When would you use it (what problem does it solve?)[m
+[32m+ [m
+[32m+ 12. Return Value:[m
+[32m+     -   What is it?[m
+[32m+ [m
+[32m+     -   What real life thing is it similar to?[m
+[32m+ [m
+[32m+     -   When would you use it (what problem does it solve?)[m
+[32m+ [m
+[32m+ BONUS: What other python keywords can you answer these questions for?[m
+[1mdiff --cc StudentWork/orionbuyukas/week_3/stocks.py[m
+[1mindex 0000000,e0b55c6..e6c6d16[m
+mode 000000,100644..100644[m
+[1m--- a/StudentWork/orionbuyukas/week_3/stocks.py[m
+[1m+++ b/StudentWork/orionbuyukas/week_3/stocks.py[m
+[36m@@@ -1,0 -1,68 +1,74 @@@[m
+[32m+ # GIVEN THE FOLLOWING LIST OF LIST[m
+[32m+ test_data = [[m
+[32m+     ["2014-06-01", "APPL", 100.11],[m
+[32m+     ["2014-06-02", "APPL", 110.61],[m
+[32m+     ["2014-06-03", "APPL", 120.22],[m
+[32m+     ["2014-06-04", "APPL", 100.54],[m
+[32m+     ["2014-06-01", "MSFT", 20.46],[m
+[32m+     ["2014-06-02", "MSFT", 21.25],[m
+[32m+     ["2014-06-03", "MSFT", 32.53],[m
+[32m+     ["2014-06-04", "MSFT", 40.71],[m
+[32m+ ][m
+[32m+ [m
+[32m+ # CREATE TWO NEW LISTS ONE FOR EACH STOCK TICKER SYMBOL e.g. APPL and MSFT[m
+[32m+ [m
+[32m+ # appl = [][m
+[32m+ [m
+[32m+ appl = [][m
+[32m+ msft = [][m
+[32m+ [m
+[32m+ for set in test_data:[m
+[32m+ [m
+[32m+     if "APPL" in set:[m
+[32m+         appl.append(set)[m
+[32m+     elif "MSFT" in set:[m
+[32m+         msft.append(set)[m
+[32m+ print msft[m
+[32m+ print appl[m
+[32m+ [m
+[32m+ # Example Output to ** eliminate ** redundant data[m
+[32m+ stocks = {}[m
+[32m+ apple = [][m
+[32m+ for dataset in appl:[m
+[32m+ [m
+[32m+     dataset.remove("APPL")[m
+[32m+     apple.append(dataset)[m
+[32m+     stocks["appl"] = apple[m
+[32m+ [m
+[32m+ [m
+[32m+ microsoft = [][m
+[32m+ for dataset in msft:[m
+[32m+     dataset.remove("MSFT")[m
+[32m+     microsoft.append(dataset)[m
+[32m+     stocks["msft"] = microsoft[m
+[32m+ [m
+[32m+ print stocks[m
+[32m+ [m
+[32m+ [m
+[32m+ def stock_dict(stock_symbol, stock_name):[m
+[32m+     stock_name=[][m
+[32m+     for dataset in stock_symbol:[m
+[32m+         dataset.remove(stock_symbol)[m
+[32m+         stock_name.append(dataset)[m
+[32m+         stocks[stock_symbol] = stock_name[m
+[32m+ [m
+[32m+ [m
+[32m+ def list_to_dict(test_data):[m
+[32m+     field_position_index =1[m
+[32m+     output_dict = {}[m
+[32m+     for row in test_data = row[field_position_index]:[m
+[32m+         keys = output_dict.keys()[m
+[32m+         if column_value not in keys:[m
+[32m+             output_dict[column_value] = [] #empty list to be added to[m
+[32m+         list = output_dict[column_value][m
+[31m -        row.pop(field_position_index)[m
+[31m -        item = [row[0], row[2]][m
+[32m++        #row.pop(field_position_index)[m
+[32m++        #item = [row[0], row[2]][m
+[32m++        item = [][m
+[32m++        for f in range(0, len(row+1)): # creates a list with eveything but key field[m
+[32m++            if f == field_position_index:[m
+[32m++                pass[m
+[32m++            else:[m
+[32m++                item.append(row[f])[m
+[32m+         list.append(item)[m
+[32m+     return output_dict[m
+[32m+ [m
+[1mdiff --cc Week_3/review.txt[m
+[1mindex 38c3338,e29a4ff..8399cbd[m
+[1m--- a/Week_3/review.txt[m
+[1m+++ b/Week_3/review.txt[m
+[36m@@@ -1,51 -1,116 +1,1015 @@@[m
+[31m--We will:[m
+[31m--[m
+[31m--    Review Basics.[m
+[31m--[m
+[31m--    Revisit core concepts.[m
+[31m--[m
+[31m--Fog is normal.[m
+[31m--[m
+[31m--Clarity comes in waves and levels.[m
+[31m--[m
+[31m--[m
+[31m--Key concepts and their application is priority.[m
+[31m--[m
+[31m--Memorization of syntax comes last and only with practice.[m
+  [m
+  [m
+  [m
+[32m++<!DOCTYPE html>[m
+[32m++<html lang="en" class=" is-copy-enabled">[m
+[32m++  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">[m
+[32m++    <meta charset='utf-8'>[m
+[32m++    <meta http-equiv="X-UA-Compatible" content="IE=edge">[m
+[32m++    <meta http-equiv="Content-Language" content="en">[m
+[32m++    [m
+[32m++    [m
+[32m++    <title>AM_2015_06_15/review.txt at master · kielejocain/AM_2015_06_15</title>[m
+[32m++    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">[m
+[32m++    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">[m
+[32m++    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114.png">[m
+[32m++    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114.png">[m
+[32m++    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144.png">[m
+[32m++    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144.png">[m
+[32m++    <meta property="fb:app_id" content="1401488693436528">[m
+[32m++[m
+[32m++      <meta content="@github" name="twitter:site" /><meta content="summary" name="twitter:card" /><meta content="kielejocain/AM_2015_06_15" name="twitter:title" /><meta content="AM_2015_06_15 - PDX Code Guild June Day Class" name="twitter:description" /><meta content="https://avatars1.githubusercontent.com/u/7525352?v=3&amp;s=400" name="twitter:image:src" />[m
+[32m++      <meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="https://avatars1.githubusercontent.com/u/7525352?v=3&amp;s=400" property="og:image" /><meta content="kielejocain/AM_2015_06_15" property="og:title" /><meta content="https://github.com/kielejocain/AM_2015_06_15" property="og:url" /><meta content="AM_2015_06_15 - PDX Code Guild June Day Class" property="og:description" />[m
+[32m++      <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">[m
+[32m++    <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">[m
+[32m++    <link rel="assets" href="https://assets-cdn.github.com/">[m
+[32m++    <link rel="web-socket" href="wss://live.github.com/_sockets/MTI4OTg5NjA6ZGE1YTdhNTU0YWE4OTVlZjI1N2NiNzI4NWZlZDFjODE6ZjYwNDY2NWNiZGY3ZjdkMmIwYWJjMzA5YTUzOGJmOTJjM2U1N2FiMjJjNWEzNjA0NjEwZTRmYjM4MTkzMWE4Mg==--41876549a16735b8ad9a01db5bec8eccef0be5ae">[m
+[32m++    <meta name="pjax-timeout" content="1000">[m
+[32m++    <link rel="sudo-modal" href="/sessions/sudo_modal">[m
+[32m++    <meta name="features-enabled" content="41,8946,110">[m
+[32m++[m
+[32m++    <meta name="msapplication-TileImage" content="/windows-tile.png">[m
+[32m++    <meta name="msapplication-TileColor" content="#ffffff">[m
+[32m++    <meta name="selected-link" value="repo_source" data-pjax-transient>[m
+[32m++[m
+[32m++        <meta name="google-analytics" content="UA-3769691-2">[m
+[32m++[m
+[32m++    <meta content="collector.githubapp.com" name="octolytics-host" /><meta content="collector-cdn.github.com" name="octolytics-script-host" /><meta content="github" name="octolytics-app-id" /><meta content="2664D32E:461E:8E38F01:5592D6D7" name="octolytics-dimension-request_id" /><meta content="12898960" name="octolytics-actor-id" /><meta content="OrionBuyukas" name="octolytics-actor-login" /><meta content="f696e8a53ea79770ac599c9cf053206e5d9eeee16c09facecb1e344805694bf2" name="octolytics-actor-hash" />[m
+[32m++    [m
+[32m++    <meta content="Rails, view, blob#show" name="analytics-event" />[m
+[32m++    <meta class="js-ga-set" name="dimension1" content="Logged In">[m
+[32m++    <meta name="is-dotcom" content="true">[m
+[32m++      <meta name="hostname" content="github.com">[m
+[32m++    <meta name="user-login" content="OrionBuyukas">[m
+[32m++[m
+[32m++      <link rel="icon" sizes="any" mask href="https://assets-cdn.github.com/pinned-octocat.svg">[m
+[32m++      <meta name="theme-color" content="#4078c0">[m
+[32m++      <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">[m
+  [m
+  [m
+[31m--For each of the following words; please answer the following three questions using your own words.[m
+[32m++    <meta content="authenticity_token" name="csrf-param" />[m
+[32m++<meta content="XniYoPtgk7hlwKmEcCln8NkdC8+AZY6tIJmmtp+QcMExUXLfnu93nCNXyRA9bdYu5KBHHO0v6EwAB5qDeaXgKw==" name="csrf-token" />[m
+  [m
+[31m -    -   What is it?[m
+[31m -[m
+[31m -    -   What real life thing is it similar to?[m
+[31m -[m
+[31m -    -   When would you use it (what problem does it solve?)[m
+[31m -1. Variable:[m
+[31m -    -   What is it?[m
+[31m -[m
+[31m -    -   What real life thing is it similar to?[m
+[31m -[m
+[31m -    -   When would you use it (what problem does it solve?)[m
+[31m -[m
+[31m -2. Operator:[m
+[31m--    -   What is it?[m
+[31m -[m
+[31m -    -   What real life thing is it similar to?[m
+[31m -[m
+[31m -    -   When would you use it (what problem does it solve?)[m
+[32m++    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github/index-232355eb24f646c56e2cef71efc9093523c9a76ad362429a9da14b5d6f60c0e0.css" media="all" rel="stylesheet" />[m
+[32m++    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github2/index-53b81bbd58011083c0ec0ad891de925f2dc177a927a56ebeed25af072f386e72.css" media="all" rel="stylesheet" />[m
+[32m++    [m
+[32m++    [m
+  [m
+[31m-     -   What real life thing is it similar to?[m
+  [m
+[31m-     -   When would you use it (what problem does it solve?)[m
+[31m- 1. Variable:[m
+[31m -3. Assignment Operator:[m
+[31m -    -   What is it?[m
+[32m++    <meta http-equiv="x-pjax-version" content="779859bda716293a0d07912639f33250">[m
+  [m
+[31m- 2. Operator[m
+[31m -    -   What real life thing is it similar to?[m
+[32m++      [m
+[32m++  <meta name="description" content="AM_2015_06_15 - PDX Code Guild June Day Class">[m
+[32m++  <meta name="go-import" content="github.com/kielejocain/AM_2015_06_15 git https://github.com/kielejocain/AM_2015_06_15.git">[m
+  [m
+[31m- 3. Assignment Operator[m
+[31m -    -   When would you use it (what problem does it solve?)[m
+[32m++  <meta content="7525352" name="octolytics-dimension-user_id" /><meta content="kielejocain" name="octolytics-dimension-user_login" /><meta content="37479388" name="octolytics-dimension-repository_id" /><meta content="kielejocain/AM_2015_06_15" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public"
