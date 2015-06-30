@@ -97,7 +97,7 @@ class Hand(object):
 
 
 	def of_a_kind(self):
-		"""Returns # of occurrances of each value in a dict"""
+		"""Returns # of occurrences of each value in a dict"""
 		# list?
 		how_many = {
 			"2": self.cards.count("2"),
@@ -114,7 +114,15 @@ class Hand(object):
 			"K": self.cards.count("K"),
 			"A": self.cards.count("A"),
 		}
-		pass
+        ordered_values = []
+	    ordered_index = []
+
+        for i in range(len(how_many)):
+            if how_many[i] != 0:
+                ordered_values.append(self.card_order[i])
+                ordered_index.append(i)
+        score["high card"] = ordered_values[::-1]
+        # print ordered_values
 
 	def high_card(self):
 		"""Returns list of cards from high to low"""

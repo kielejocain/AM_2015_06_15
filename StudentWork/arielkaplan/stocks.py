@@ -87,18 +87,49 @@ stocks[msft[0][1].lower()] = msft
 #ONCE THAT WORKS THEN what would need to change to copy with an unknown number
 # of stock ticker symbols?
 
-stocks = {}
+def sort_stocks_by_name():
+    stocks = {}
 
-for entry in test_data:
-    # create key from entry[1]
-    current_stock = entry[1].lower()
-    if current_stock not in stocks:
-        stocks[current_stock] = []
-    # remove stock name from entry to eliminate redundant data
-    mod_entry = [entry[0], entry[2]]
-    stocks[current_stock].append(mod_entry)
+    for entry in test_data:
+        # create key from entry[1]
+        current_stock = entry[1].lower()
+        if current_stock not in stocks:
+            stocks[current_stock] = []
+        # remove stock name from entry to eliminate redundant data
+        mod_entry = [entry[0], entry[2]]
+        stocks[current_stock].append(mod_entry)
 
-for key in stocks.keys():
-    print key
-    for list in stocks[key]:
-        print list
+    for key in stocks.keys():
+        print key
+        for list in stocks[key]:
+            print list
+
+# sort_stocks_by_name()
+
+# EXTRA CREDIT: Take as a parameter which field to use as the id
+
+def sort_stocks(id): # id is 0, 1, 2 for index of list
+    stocks = {}
+    for entry in test_data:
+        # create key from entry[id], lowercase if possible
+        try:
+            current_stock = entry[id].lower()
+        except:
+            current_stock = entry[id]
+
+        # set value to empty list if key not there
+        if current_stock not in stocks:
+            stocks[current_stock] = []
+        # remove stock name from entry to eliminate redundant data
+        mod_entry = entry[:]
+        del mod_entry[id]
+        stocks[current_stock].append(mod_entry)
+
+    for key in stocks.keys():
+        print key
+        for list in stocks[key]:
+            print list
+
+sort_stocks(0)
+sort_stocks(1)
+sort_stocks(2)
