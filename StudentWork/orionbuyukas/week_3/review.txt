@@ -1,0 +1,120 @@
+
+1. Variable:
+    -   What is it?
+		A variable is a placeholder for a value.
+
+    -   What real life thing is it similar to?
+		A variable is similar to a label on a folder.
+
+    -   When would you use it (what problem does it solve?)
+		It enables the assignment of data/value to an identity.
+
+2. Operator:
+    -   What is it?
+		It performs operations on the opperands.
+
+    -   What real life thing is it similar to?
+		+, -, *, /, %, ==, >=, <=, !=.
+
+    -   When would you use it (what problem does it solve?)
+		Basic math, comparisons, telling the compiler what to tell the computer to do.
+
+3. Assignment Operator:
+    -   What is it?
+	 It assigns values from the right side of an operand to the left side. In some cases it performs a function then assigns the result to value on the left of the operand.
+
+
+    -   What real life thing is it similar to?
+		The equals sign in algebra.
+
+
+    -   When would you use it (what problem does it solve?)
+		Assigning values, counters. It can be used to perform math operations on right side operands and assigns them to left side operads. +=, -=, *=...etc.
+
+
+4. String:
+    -   What is it?
+		A continous set of characters. A python datatype.
+
+    -   What real life thing is it similar to?
+		A sentence.
+
+    -   When would you use it (what problem does it solve?)
+		If you want to have a value for a variable that is not necessarly a number.
+
+5. Float:
+    -   What is it?
+		A decimal number.
+
+    -   What real life thing is it similar to?
+			Pi, or the speed of light, or Avogadro's number, cents, anytime you need to measure something that isn't whole number/integer. 
+
+    -   When would you use it (what problem does it solve?)
+			If you want to know the product of an equation that is not an integer. ie. float 5 divided by 2 = 2.5
+
+6. Boolean:
+    -   What is it?
+		A True False logical operation.
+
+    -   What real life thing is it similar to?
+		If you asked if I am at my computer right now, I could only answer True.
+
+    -   When would you use it (what problem does it solve?)
+		When you want to test the condition of something. Such as stopping a loop when you have found the answer or prompting someone until the correct answer is given.
+
+
+7. List:
+    -   What is it?
+		It is an addressable, numerically ordered, and mutable set of values. 
+
+    -   What real life thing is it similar to?
+		A numerically ordered folder set.
+
+    -   When would you use it (what problem does it solve?)
+		Storing sequentially oredered data sets.
+8. Dict:
+    -   What is it?
+			It's an unordered "list" delineated by keywords. More like a list of keys and values seperated by a colon inside curly braces.
+	dictionary_name={key_1:valueofkey1, key_2:valuekey2} 
+
+    -   What real life thing is it similar to?
+		A dictionary where the words aren't ordered.
+
+    -   When would you use it (what problem does it solve?)
+		When you want to sort and search values by keyword instead of memorizing the object's value or position.
+
+9. Conditional Expression/Operator:
+    -   What is it?
+		Usually a boolean expression. Often an "if", "else" or "While" statement.
+
+    -   What real life thing is it similar to?
+		A thermostat. while heat: if the temperature in the house is less than 70 degrees: turn heater on, else: turn heater off.
+
+    -   When would you use it (what problem does it solve?)
+	 It allows for controlled looping, and logical decision automation.
+
+10. Function:
+    -   What is it?
+		A series of statemtents that can be called and accept zero or more arguments and return a value to the caller.
+    -   What real life thing is it similar to?
+		Putting ingredients into a blender and coming out with food.
+    -   When would you use it (what problem does it solve?)
+		Reducing redundancy in code/code reuse.
+
+11. Argument:
+    -   What is it?
+	It is a value or values passed into a method or function. There are two kinds of arguments: "keyword arguments" are named arguments passed as a value in a dictionary; 
+and "positional arguments" are not preceded by keywords. Arguments are passed into a function to take the place of their respective named variables within the function.
+
+    -   What real life thing is it similar to?
+
+    -   When would you use it (what problem does it solve?)
+
+12. Return Value:
+    -   What is it?
+
+    -   What real life thing is it similar to?
+
+    -   When would you use it (what problem does it solve?)
+
+BONUS: What other python keywords can you answer these questions for?
