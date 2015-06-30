@@ -1,0 +1,232 @@
+We will:
+
+    Review Basics.
+
+    Revisit core concepts.
+
+Fog is normal.
+
+Clarity comes in waves and levels.
+
+
+Key concepts and their application is priority.
+
+Memorization of syntax comes last and only with practice.
+
+
+
+
+
+For each of the following words; please answer the following three questions using your own words.
+
+    -   What is it?
+
+    -   What real life thing is it similar to?
+
+    -   When would you use it (what problem does it solve?)
+1. Variable:
+    -   What is it?
+			A variable is a name that holds a value. 
+			my_cat (<--variable) =  "Shelby"
+    -   What real life thing is it similar to?
+			As it was explained to me, a variable is a box. The box can 
+			be called anything you want (for the most part), you can put
+			things in the box, and change what's in the box, but the box
+			itself doesn't change. 
+    -   When would you use it (what problem does it solve?)
+			Variables can be used to name functions, hold data, hold the 
+			response from a user, etc. in a way that we can accses later.
+2. Operator
+    -   What is it?
+			An operator tells the computer what to do. In "3 + 4", the + 
+			is the operator that tells the computer to add the numbers 
+			3 and 4.
+			The operators are:
+				[+] addition
+				[-] minus
+				[/] divide
+				[*] mutiply
+				[%] modulus (divides two numbers and gives the remainder, 
+					12 % 8 = 4)
+				[<] less than
+				[>] greater than
+				[<=] less than or equal to
+				[>=] greater than or equal to
+				[==] equal to
+    -   What real life thing is it similar to?
+			These are very similar to mathamatical operators; some of 
+			them look different but they function in the same way as 
+			those we learned about in 4th grade
+    -   When would you use it (what problem does it solve?)
+			We use operators when we need to compare two values
+3. Assignment Operator
+    -   What is it?
+			the single equals sign is the assignment operator (double 
+			equals is used for comparison). 
+			my_cat = (<--assignment operator) "Shelby"
+    -   What real life thing is it similar to?
+			I like to think of the assignment operator as the wrd 'is'. 
+			gives something value. My cat is Shelby. In that sentence 
+			the wird 'is' assigns the Shelby as my cat.
+    -   When would you use it (what problem does it solve?)
+			We use the assignment operator to give a value to something.
+			I assigned the value 'Shelby' to variable my_cat. If I call
+			my_cat later in the script the computer will return the 
+			value 'Shelby'. 
+4. String
+    -   What is it?
+			A string is usually a word or words contained in either 
+			single or double quotes. Numbers would be considered strings 
+			if they are contained in quotes.
+    -   What real life thing is it similar to?
+			In real life, I would compare this to speaking, or reading 
+			from a book. 
+    -   When would you use it (what problem does it solve?)
+			Printing strings can be used to make a script more user 
+			friendly by providing instructions. Strings can also be used 
+			with the raw_input() function to add user interactivity in 
+			the script. 
+5. Float
+    -   What is it?
+			A float is a non-integer.
+    -   What real life thing is it similar to?
+			A float is a number with a decimal place, such as $5.25;
+			the number 5.25 is a float
+    -   When would you use it (what problem does it solve?)
+			You can use floats if you are working with numbers that may
+			not be whole numbers, such as "7 / 3" In python, this would 
+			return 2, because python drops everything after the decimal 
+			point unless you tell it specifically not to by using "7.0 / 3, 
+			or 7.0 / 3.0, or 7 / 3.0." 
+6. Boolean
+    -   What is it?
+			Booleans are "True" and "False."
+    -   What real life thing is it similar to?
+			In real life, Booleans are like a lie detector in a crime drama, 
+			the results are either True or False with no in between or grey area.
+    -   When would you use it (what problem does it solve?)
+			Booleans are great for making functions. You can say that 
+			while something is True do this thing; if it's False, don't 
+			do it. So:
+					while (car is dirty):
+						wash car
+					In this function the car being dirty is True (because
+					my car is always dirty) so you wash the car until 
+					(car is dirty) becomes False.
+7. List
+    -   What is it?
+			A list is a set of values that are stored at particular 
+			indices.
+			the_list = ['Bagels', 'Cream cheese', 'Kiwis', 'Ice cream'] 
+			has 'Bagels' stored at index [0], 'Cream cheese' at index [1]
+			and so on. 
+    -   What real life thing is it similar to?
+			In real life, a list could take the form of a shopping list.
+			The shopping list I'd write:
+				1. Bagels
+				2. Cream Cheese
+				3. Kiwis
+				4. Ice cream
+			becomes:
+			['Bagels', 'Cream cheese', 'Kiwis', 'Ice cream']
+			where each item is stored at an index beginning with 0.
+    -   When would you use it (what problem does it solve?)
+			You could use a list when you need to store values in order 
+			and have them be easily accessible.
+8. Dict
+    -   What is it?
+			A 'dict' is short for dictionary. A dictionary is an unordered 
+			list, where each value is stored by a 'key'. A set of 
+			key-value pairs
+    -   What real life thing is it similar to?
+			A simple dictionary could be thought of as a list of 
+			nicknames for your friends. Each nickname holds the value of
+			your friend's name. When you say "Benny the Jet" the thing(in
+			this case, person) you're referring to is "Benjamin Franklin 
+			Rodriguez"
+			{ "Squints" :"Michael Palledorous", "Yeah-Yeah": "Alan McClennan",
+			"The Beast": "Hercules" }
+    -   When would you use it (what problem does it solve?)
+			Dictionaries are great for holding information that you want 
+			to be able to access with a word rather than an index. So far,
+			they have also been great at confusing me. 
+9. Conditional Expression/Operator
+    -   What is it?
+			In python the conditional expression is 'if/elif/else'. 
+			if(the first thing) is True do it;
+			elif ('else/if') the first thing is False but (the second thing)
+				is True, do it;
+			else do this last thing.
+    -   What real life thing is it similar to?
+			In real life, this is decision making.
+			if (I went grocery shopping):
+				I will make a delicious meal
+			elif (I have frozen pizza):
+				I will enjoy an okay meal
+			else:
+				I eat take away and feel like I failed at adulting
+    -   When would you use it (what problem does it solve?)
+			In programming, we can use conditional expressions when we 
+			want to go through and check if the conditions have been met.
+			It provides options of different outcome when writing a script.
+10. Function
+    -   What is it?
+			A set of directions to do something.
+			def add_stuff(x,y):
+				return x + y
+			The function add_stuff will add whatever you put in place of 
+			x and y. Thus, add_stuff(1,2) will return 3, and add_stuff("Ram", "bo")
+			will return "Rambo"
+    -   What real life thing is it similar to?
+			A function is a set of directions, for how to do something, 
+			such as a recipe.
+				def make_a_cake(box of cake mix, eggs, oil):
+					pour cake mix in bowl
+					add eggs and oil
+					mix well
+					pour into pan
+					lick bowl
+					bake cake
+					eat cake
+    -   When would you use it (what problem does it solve?)
+			We write a function when we want the program to remember 
+			how to do something. We don't have to tell the computer 
+			every time how to make a cake, we can just call the make_a_cake()
+			function and the program recalls the function.
+11. Argument
+    -   What is it?
+			Arguments are the values we pass into parameters when we 
+			call functions. In the example add_stuff(1,2) the arguments 
+			I used 1 and 2. Similarly, add_stuff("Ram", "bo") has the 
+			arguments "Ram" and "bo". 
+    -   What real life thing is it similar to?
+			Arguments can be thought of as the 'type' of something.
+			In the function:
+			def eat_cake(type):
+				return "enjoy eating the %s cake!" % type
+			We could pass in any flavour of cake, but the function of 
+			the function is the same; it's going to wish us well as we 
+			eat the delciously flavoured cake. 
+    -   When would you use it (what problem does it solve?)
+			Arguments make functions versatile. If the function eat_cake()
+			only ever returned "enjoy eating the carrot cake!" it wouldn't
+			be very useful in the long term because it would only provide
+			us with the one flavour of cake, and nobody like carrot cake.
+12. Return Value
+    -   What is it?
+			The return value comes at the end of a function. It returns 
+			the value of a function. For example:
+			def add_stuff(x, y):
+				return x + y
+			This function will give you back the value of x + y.
+			add_stuff(5, 6) will return the value 11
+    -   What real life thing is it similar to?
+			This is the result of doing something. In the previous 
+			example the result of adding 5 and 6 is 11.
+    -   When would you use it (what problem does it solve?)
+			Storing the return value of a function in a variable, allows
+			you to use the value later. The return value can also help 
+			you to debug the function and make sure it's working properly.
+			Return values can return Booleans, strings, numbers, or even 
+			other functions.
+BONUS: What other python keywords can you answer these questions for?
