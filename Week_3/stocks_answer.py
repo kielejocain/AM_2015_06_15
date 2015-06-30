@@ -1,13 +1,13 @@
 # GIVEN THE FOLLOWING LIST OF LIST
 test_data = [
-    ["2014-06-01", "APPL", 100.11],
-    ["2014-06-02", "APPL", 110.61],
-    ["2014-06-03", "APPL", 120.22],
-    ["2014-06-04", "APPL", 100.54],
-    ["2014-06-01", "MSFT", 20.46],
-    ["2014-06-02", "MSFT", 21.25],
-    ["2014-06-03", "MSFT", 32.53],
-    ["2014-06-04", "MSFT", 40.71],
+    ["2014-06-01", "APPL", 100.11, 1111],
+    ["2014-06-02", "APPL", 110.61, 2222],
+    ["2014-06-03", "APPL", 120.22, 3333],
+    ["2014-06-04", "APPL", 100.54, 4444],
+    ["2014-06-01", "MSFT", 20.46, 2222],
+    ["2014-06-02", "MSFT", 21.25, 4444],
+    ["2014-06-03", "MSFT", 32.53, 5555],
+    ["2014-06-04", "MSFT", 40.71, 6666],
 ]
 
 # CREATE TWO NEW LISTS ONE FOR EACH STOCK TICKER SYMBOL e.g. APPL and MSFT
@@ -103,8 +103,15 @@ def list_to_dict(test_data):
         if column_value not in keys:
             output_dict[column_value] = []
         list = output_dict[column_value]
-        row.pop(FIELD_POSITION_INDEX)
-        list.append(row)
+        # row.pop(FIELD_POSITION_INDEX)
+        # item = [row[0], row[2]]
+        item=[]
+        for f in range(0,len(row)):
+            if f == FIELD_POSITION_INDEX:
+                pass
+            else:
+                item.append(row[f])
+        list.append(item)
     return output_dict
 
 
