@@ -34,6 +34,7 @@ def transform(input_list, key_field):
 
 field_key = "id"
 result = transform(data, field_key)
-print (result)
 
-
+print result
+print (result[123])
+print (result[73])
