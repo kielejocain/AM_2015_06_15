@@ -16,6 +16,24 @@ def reverse_characters(characters):
 
 print(reverse_characters(characters))
 
+
+def reverse_s(s):
+    length = len(s)
+    limit = int(length / 2)
+    for i in range(0, limit):
+        back = length - i - 1
+        s[i], s[back] = s[back], s[i]
+        # left = s[i]
+        # right = s[back]
+        # s[i] = right
+        # s[back] = left
+    return s
+
+
+s = list("ABCDEF")
+
+print(reverse_s(s))
+
 # now do the same with words
 # and use built in function
 # like split join and reverse
