@@ -37,9 +37,23 @@ def reverse_words_hard(words):
         if c == " ":
             spot = words.index(c)
             sentence = " " + words[:spot] +  sentence
-            words = words[spot+1:]
+            words = words[spot + 1:]
     sentence = words + sentence
     return sentence
 
+def reverse_words_hard_with_counter(words):
+    sentence = ""
+    counter = -1
+    for c in words:
+        counter += 1
+        if c == " ":
+            spot = counter
+            sentence = words[:spot +1] + sentence
+            words = words[spot + 1:]
+            counter = -1
+    sentence = words + " " +  sentence
+    return sentence
+
 print(reverse_words_hard(words))
+print(reverse_words_hard_with_counter(words))
 
