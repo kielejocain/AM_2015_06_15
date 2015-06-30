@@ -72,7 +72,7 @@ for character in [65, 66, 13, 10, 67, 68]:
     result = result + chr(character)
 print(result)
 
-print( "11. pull ones and zeros out of a string one byte(8 bits) at a time")
+print("11. pull ones and zeros out of a string one byte(8 bits) at a time")
 result = ""
 string = "010000010100001000001101000010100100001101000100"
 for index in range(0, len(string), 8):
