@@ -12,9 +12,9 @@ test_data = [
 
 # CREATE TWO NEW LISTS ONE FOR EACH STOCK TICKER SYMBOL e.g. APPL and MSFT
 
-APPL = []
-MSFT = []
-
+# appl = []
+# msft = []
+#
 
 # result example
 
@@ -31,9 +31,11 @@ msft = [
     ["2014-06-03", "MSFT", 32.53],
     ["2014-06-04", "MSFT", 40.71],
 ]
-sort(APPL, MSFT)
-print appl
-print msft
+
+print
+appl
+print
+msft
 
 # result example
 

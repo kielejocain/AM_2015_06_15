@@ -1,0 +1,68 @@
+For each of the following words; please answer the following three questions using your own words.
+    -   What is it?
+    -   What real life thing is it similar to?
+    -   When would you use it (what problem does it solve?)
+
+1. Variable:
+    A variable is a name given to a certain value.
+    Variables allow you to give meaningful names to values, so you can ask for them by name,
+      rather than having to remember them directly. You can also assign a variable to the result
+      of an expression.
+
+2. Operator:
+    An operator takes a number of inputs (operands) and produces some output.
+    Similar to functions in some ways, but different syntactically.
+
+3. Assignment Operator:
+   The assignment operator, written '=' in most languages, including Python,
+     takes the value on the right and assigns it to the name (really an address in memory)
+     on the left. Not to be confused with '==', which tests for equality.
+
+4. String:
+    A string is a sequence of characters enclosed in quotes. In Python,
+      either double or single quotes can be used. Character sets and encodings can vary.
+      In Python, strings are a built-in type with many useful methods on them.
+
+5. Float:
+    A float (short for floating-point number) is a number with an integer part and a fractional
+      part after the decimal point. These are only accurate to a certain number of places because
+      of the way some decimal fractions are approximated in binary.
+
+6. Boolean:
+   A Boolean value is either True or False. The comparison operators '==', '<', '>', etc. return
+      a boolean value. In Python, zero and empty sequences evaluate to False, while non-zero and
+      non-empty sequences evaluate to True. Boolean expressions can be chained together with 'and'
+      and 'or'.
+
+7. List:
+   A list is a mutable sequence of ordered values, represented by [] in Python. A list can hold
+     any number of values of any type. List items are ordered, and indexed by integers, so they
+     are useful for numbered collections.
+
+8. Dict:
+    A dictionary, or dict, {} in Python, is a mutable container that maps keys to corresponding
+    values. Dicts are iterable, but the order of elements is not guaranteed. Dicts are useful for
+    for creating collections that aren't indexed by integers.
+
+9. Conditional Expression/Operator:
+   Including if, elif, else. Used to control the flow of execution. The if and elif accept a
+     condition that evaluates to a Boolean value. The code in the if (or elif) block only runs if
+     the given condition evaluates to True. An elif can only follow an if, and an else must follow
+     an if, with any number of option elifs between them.
+
+10. Function:
+    A function is a piece of code that performs some action. A function may return some value or
+    if no value is given, return None. Often functions take input and return output. They are often
+    named and declared separately with 'def'. Variables created inside functions are local to the
+    function are de-allocated when the function ends.
+
+11. Argument:
+    Arguments are values passed to functions. This makes data/values from other parts
+    of the program usable inside the scope of the function.
+
+12. Return Value:
+    A return value is a value that a function (or operator in some cases) gives back
+    to the part of the program that called it. This allows values to be passed between
+    scopes.
+
+BONUS: What other python keywords can you answer these questions for?
