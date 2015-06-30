@@ -30,3 +30,7 @@ f.close()
 #   d. also indicate the selected position e.g. "J" with another color
 
 # OUTPUT html for "J" and 5 would show R D N U and T highlighted.
+
+#CLUES - Ways of calculating distance between two points.
+# dist = sqrt( (x2 - x1)**2 + (y2 - y1)**2 )
+# dist = math.hypot(x2 - x1, y2 - y1)
