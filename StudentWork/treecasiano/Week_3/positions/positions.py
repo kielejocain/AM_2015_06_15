@@ -46,7 +46,7 @@ for item in output:
 # HTML OUTPUT
 f = open("positions.html", "w")
 f.write(style)
-f.write('<div id="box" style="width:{0}px;height:{0}px;">\n'.format(square_size))
+f.write('<div id="box" style="width:{0}px;height:{0}px; font-weight: bold;">\n'.format(square_size))
 for item in data:
     if item[2] == "J":
         f.write('<span style="left:{x}px; top:{y}px; color: #FF0000;"> {v} </span>'.format(x=item[0], y=item[1], v=item[2]))
