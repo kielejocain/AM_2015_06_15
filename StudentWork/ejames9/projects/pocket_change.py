@@ -14,7 +14,13 @@ quantities = {
 
 
 def calc_total():
-    total = (quantities[0] * values[0]) + (quantities[1] * values[1]) + (quantities[2] * values[2]) + (quantities[3] * values[3])
-    return total
+    total = (quantities["pennies"] * values["pennies"]) + (quantities["nickels"] * values["nickels"]) + (quantities["dimes"] * values["dimes"]) + (quantities["quarters"] * values["quarters"])
+    print "$%f"   % (total / 100.0)
 
 calc_total()
+
+
+
+
+
+# TODO calculate total dollar amount
