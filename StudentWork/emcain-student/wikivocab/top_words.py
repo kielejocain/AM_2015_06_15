@@ -31,7 +31,7 @@ def top_words_tuples(topic, number):
 	topic_freq = {}
 
 	for word in topic_words:
-		if word not in top100 and word is not '':
+		if word not in top100 and len(word) > 1:
 			if word in topic_freq.keys():
 				topic_freq[word] = topic_freq[word] + 1
 			else:
@@ -69,7 +69,10 @@ while input_needed:
 	except DisambiguationError as de:
 		print "-----> ~", subj, "~ could refer to any of these articles:"
 		for item in de.options:
-			print str(item)
+			try:
+				print str(item)
+			except UnicodeEncodeError:
+				pass
 		print "Please type the name of the article you would like to use exactly as it appears above."
 		
 print "How many words would you like to see?"
