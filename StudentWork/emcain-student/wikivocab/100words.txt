@@ -84,6 +84,8 @@
 81 	back
 82 	after
 83 	use
+83b used
+83c using
 84 	two
 85 	how
 86 	our
@@ -114,3 +116,5 @@
 111 whose
 112 whom
 113 theirs
+114 been
+115 may
