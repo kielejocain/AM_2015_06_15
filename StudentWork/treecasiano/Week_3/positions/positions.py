@@ -13,7 +13,7 @@ style = """
 </style>
 """
 
-def find_nearest(origin, list_of_locations):
+def find_nearest(origin, list_of_locations,top_of_list):
     # calculate distance to each neighbor
     for location in list_of_locations:
         for sublist in data:
@@ -32,15 +32,16 @@ def find_nearest(origin, list_of_locations):
     # sort the list by that distance
     sorted_list = sorted(list_of_closest_locations)
     #  return the top N items from the list
-    return sorted_list[1:6]
+    return sorted_list[1:top_of_list + 1]
+
 # OUTPUT html for "J" and 5 would show R D N U and T highlighted.
-output = find_nearest("J", data)
-print "\n\nTOP FIVE CLOSEST:  \n", output
+output = find_nearest("J", data, 5)
+print "\n\nTOP CLOSEST:  \n", output
 
 # LIST OF TOP FIVE LOCATION LETTERS
-top_five = []
+top_items = []
 for item in output:
-    top_five.append(item[1])
+    top_items.append(item[1])
 
 # HTML OUTPUT
 f = open("positions.html", "w")
@@ -49,7 +50,7 @@ f.write('<div id="box" style="width:{0}px;height:{0}px;">\n'.format(square_size)
 for item in data:
     if item[2] == "J":
         f.write('<span style="left:{x}px; top:{y}px; color: #FF0000;"> {v} </span>'.format(x=item[0], y=item[1], v=item[2]))
-    elif item[2] in top_five:
+    elif item[2] in top_items:
         f.write('<span style="left:{x}px; top:{y}px; color: #FFA500;"> {v} </span>'.format(x=item[0], y=item[1], v=item[2]))
     else:
         f.write('<span style="left:{x}px; top:{y}px;"> {v} </span>'.format(x=item[0], y=item[1], v=item[2]))
