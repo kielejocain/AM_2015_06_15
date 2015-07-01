@@ -1,0 +1,41 @@
+DNS -- domain name service/server
+
+a physical machine initially
+when you connect to a machine it gives you yr local address and tells you who to talk to
+
+return ip: a.b.c.d:e where all the letters is an 8 bit number (255 or less)
+"e" is port which is analogous to a telephone extn. 80 is the default. 
+
+look up UML sequence diagram
+
+most common request type is GET
+
+go to inspect element
+look at network
+Status beginning with 2 means "ok"
+look at "headers" for various settings 
+
+run "ipconfig" in shell to see this info about my computer. 
+
+tcp/ip transmission control protocol/internet protocol "are you ready?" conversation at network level. 
+
+ethernet just goes for it at random times until it works.
+
+everything on the Internet is strings going back and forth. 
+
+dom = document object model
+
+don't have to type the whole <html><body> thing--html5 implies them. can put some and not others based on what you need. 
+
+<!DOCTYPE html> -- means this is html5
+<html lang="en">
+<head>
+	<meta charset="UTF-8"> --going to use 8 bit ASCII
+	<title>
+		My Page
+	</title>
+</head>
+<body>
+	<em> -- it's good to know formatting like <i> for email purposes even tho we aren't supposed to use them in browser. 
+</body>
+</html>
