@@ -58,6 +58,7 @@ def nearest_starbucks(current_pos_letter, data, how_many):
 
 # print nearest_starbucks("J", data, 5)
 
+
 square_size = 600
 style = """
 <style>
@@ -65,15 +66,17 @@ style = """
     #box span { color:white; position:absolute; }
 </style>
 """
+top_locs = nearest_starbucks("J", data, 5)
 f = open("positions.html", "w")
 f.write(style)
 f.write('<div id="box" style="width:{0}px;height:{0}px;">\n'.format(square_size))
 for item in data:
-    for tup in nearest_starbucks("J", data, 5):
+    for tup in top_locs:
         if item[2] == tup[1]:
-            f.write('<span style="left:{x}px; top:{y}px;"> {v} </span>'.format(x=item[0], y=item[1], v=item[2]))
+            c = "color:yellow"
         else:
-            f.write('<span style="left:{x}px; top:{y}px;"> {v} </span>'.format(x=item[0], y=item[1], v=item[2]))
+            c = ''
+        f.write('<span style="left:{x}px; top:{y}px; {c};"> {v} </span>'.format(x=item[0], y=item[1], v=item[2], c=c))
 f.write("</div>\n")
 f.close()
 
