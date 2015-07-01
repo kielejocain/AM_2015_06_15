@@ -113,17 +113,6 @@ class Person(object):
         self.first_name = first_name
         self.last_name = last_name
 
-# class Grouplist():
-#     def __init__(self):
-#         self._list = []
-#     def append(self person):
-#         self._list.append(person)
-#     def getByIndex(self, index):
-#         return self._list[index]
-#     def show(self):
-#         for person_object in self:
-#             print(person_object.first_name + " " + person_object.last_name)
-
 class Group(list):
     def show(self):
         for person_object in self:
