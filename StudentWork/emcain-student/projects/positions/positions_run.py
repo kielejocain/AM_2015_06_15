@@ -26,7 +26,8 @@ f.close()
 
 def calc_distances(my_position, vals):
     pyth = pythagoras.Pythagoras()
-    dists = {}
+    # dists = {}
+    distuples = []
     my_x = my_position[0]
     my_y = my_position[1]
     for coordinate in vals:
@@ -34,12 +35,42 @@ def calc_distances(my_position, vals):
     return dists
 
 print "distances for point A"
-print calc_distances(data[0], data)
+dists_a = calc_distances(data[0], data)
+print dists_a
 
 print "distances for point B"
-print calc_distances(data[1], data)
+dists_b = calc_distances(data[1], data)
+print dists_b
 
 #   b. sort the list by that distance
+
+# def dist_sort(distance_dict, num=None):
+#     if num is None:
+#         num = len(distance_dict)
+#     distuples = [(distance_dict['A'], 'A')]
+#     print "added tuple", (distance_dict['A'], 'A'), "to distuples."
+#     for point in distance_dict:
+#         #create a tuple
+#         tup = (distance_dict[point], point)
+#         #insert into list based on its sort order
+#         for entry in distance_dict:
+#             tup = (distance_dict[entry], entry)
+#             for item in distuples:
+#                 if tup[0] < item[0]:
+#                     distuples.insert(distuples.index(entry), tup)
+#                 print "added tuple", tup, "to distuples at index", distuples.index(item)
+#             else:
+#                 distuples.append(tup)
+#                 print "added tuple", tup, "to end of distuples."
+#     distuples = distuples[:num]
+#     return distuples
+
+print "sorted list for a"
+print dist_sort(dists_a)
+
+print "top 5 for b"
+print dist_sort(dists_b, 5)
+
 #   c. return the top N from the sorted list
 # 2. Modify the draw code to highlight "top" items
 #   a. add a style property for color
