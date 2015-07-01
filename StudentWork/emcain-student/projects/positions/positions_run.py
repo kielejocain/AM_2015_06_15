@@ -1,3 +1,5 @@
+from positions import pythagoras
+
 data = [[531, 408, 'A'], [225, 52, 'B'], [594, 242, 'C'], [351, 102, 'D'], [371, 15, 'E'], [569, 353, 'F'],
         [342, 39, 'G'], [218, 304, 'H'], [428, 260, 'I'], [329, 158, 'J'], [585, 530, 'K'], [71, 114, 'L'],
         [587, 88, 'M'], [347, 180, 'N'], [180, 332, 'O'], [250, 522, 'P'], [88, 475, 'Q'], [260, 128, 'R'],
@@ -21,6 +23,22 @@ f.close()
 # TODO NEAREST "STARBUCKS"
 # 1. Define a function that for arbitrary value e.g. "J" find the nearest N items e.g. 5
 #   a. calculate the distance to each neighbor
+
+def calc_distances(my_position, vals):
+    pyth = pythagoras.Pythagoras()
+    dists = {}
+    my_x = my_position[0]
+    my_y = my_position[1]
+    for coordinate in vals:
+        dists[coordinate[2]] = pyth.distance(my_x, my_y, coordinate[0], coordinate[1])
+    return dists
+
+print "distances for point A"
+print calc_distances(data[0], data)
+
+print "distances for point B"
+print calc_distances(data[1], data)
+
 #   b. sort the list by that distance
 #   c. return the top N from the sorted list
 # 2. Modify the draw code to highlight "top" items

@@ -1,0 +1,92 @@
+kevin ernest long
+@kevinelong
+kevin@cleverclever.com
+503.888.6879
+
+agile/scrum/kanban/manifesto
+
+IDEs--textastic--has multiple platforms support (only for apple--DroidEdit, 920 for androids?)
+
+vim, emacs--old skool
+
+pico/nano--server people
+
+ide --integrated development environments--e.g. eclipse, pycharm
+
+debugging 
+
+learning keywords
+
+Program -- script, code, executeable, binary
+
+Variable -- parameter, argument, property, field, column, $, input, output, attribute, view (type of output)
+
+Function -- Routine, sub-routine, procedure, def/sub, (), method, controller, urls.py
+
+Object -- class, table, row, dict, {}, model, struct, workbook tab (excel)
+
+.gitignore--make sure things like temporary files aren't addded. 
+
+---
+
+Agile-- project management technique, some say it replaces Waterfall. 
+
+waterfall--work on one part of a project at a time, used for most non-software projects
+
+software is different
+-it's ok to fail
+-things change so fast you need to keep up
+
+Agile methodology--
+rather than planning --> execution for whole project...
+...do this every couple weeks in a cycle
+
+plan, execute, deliver in cycle; go back into analysis over and over. 
+
+scrum--daily "huddle" / meeting
+
+kanban -- task board-- to do list with 2 columns. to do and done. 
+
+http://agilemanifesto.org/
+
+ux
+user interface-- now used to mean "what does it look like?"
+
+uml-- way of diagramming/drawing things
+
+class diagramming/drawing--ERD is similar 
+
+cpu -- an actor/worker--dumb and fast
+ram -- desk where they are working--they can put stuff on and take it off the desk
+
+hard drive--file cabinet for storage
+
+on/off switches:
+relay
+latch
+
+can use transistor instead of electromagnet to control each other 
+
+American Standard Code for Information Interchange
+
+computer only knows how to write ones and zeroes to memory and do math to them. everything else is an abstraction we have to teach it. 
+
+asm -- assembly language
+machine language 
+
+asm -> machine 
+
+lna 1001
+lnb 1009
+add 2300
+prn 3400
+
+class = recipe
+object/instance = an actual food item
+
+recipe takes up no room in your kitchen
+class takes up no room in memory 
+
+join--similar to concatinate--put together separated by string
+
+'separator'.join(['A', 'B']) ---> AseparatorB
