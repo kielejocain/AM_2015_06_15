@@ -3,5 +3,5 @@ def initial_finder(str):
 		print c,
 		print ord(c),
 		print bin(ord(c))
-	
+
 initial_finder("KAP")
