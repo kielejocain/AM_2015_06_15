@@ -12,26 +12,8 @@ style = """
     #box span { color:white; position:absolute; }
 </style>
 """
-f = open("positions.html", "w")
-f.write(style)
-f.write('<div id="box" style="width:{0}px;height:{0}px;">\n'.format(square_size))
-for item in data:
-    f.write('<span style="left:{x}px; top:{y}px;"> {v} </span>'.format(x=item[0], y=item[1], v=item[2]))
-f.write("</div>\n")
-f.close()
 
-# TODO NEAREST "STARBUCKS"
-# 1. Define a function that for arbitrary value e.g. "J" find the nearest N items e.g. 5
-#   a. calculate the distance to each neighbor
-#   b. sort the list by that distance
-#   c. return the top N from the sorted list
-# 2. Modify the draw code to highlight "top" items
-#   a. add a style property for color
-#   b. determine if this item is in the top 5
-#   c. conditionally set the color bases on if its the top 5
-#   d. also indicate the selected position e.g. "J" with another color
-
-def find_nearest(origin, list_of_locations):
+def find_nearest(origin, list_of_locations,top_of_list):
     # calculate distance to each neighbor
     for location in list_of_locations:
         for sublist in data:
@@ -50,7 +32,38 @@ def find_nearest(origin, list_of_locations):
     # sort the list by that distance
     sorted_list = sorted(list_of_closest_locations)
     #  return the top N items from the list
-    return sorted_list[1:6]
+    return sorted_list[1:top_of_list + 1]
+
 # OUTPUT html for "J" and 5 would show R D N U and T highlighted.
-output = find_nearest("J", data)
-print output
+output = find_nearest("J", data, 5)
+print "\n\nTOP CLOSEST:  \n", output
+
+# LIST OF TOP FIVE LOCATION LETTERS
+top_items = []
+for item in output:
+    top_items.append(item[1])
+
+# HTML OUTPUT
+f = open("positions.html", "w")
+f.write(style)
+f.write('<div id="box" style="width:{0}px;height:{0}px; font-weight: bold;">\n'.format(square_size))
+for item in data:
+    if item[2] == "J":
+        f.write('<span style="left:{x}px; top:{y}px; color: #FF0000;"> {v} </span>'.format(x=item[0], y=item[1], v=item[2]))
+    elif item[2] in top_items:
+        f.write('<span style="left:{x}px; top:{y}px; color: #FFA500;"> {v} </span>'.format(x=item[0], y=item[1], v=item[2]))
+    else:
+        f.write('<span style="left:{x}px; top:{y}px;"> {v} </span>'.format(x=item[0], y=item[1], v=item[2]))
+f.write("</div>\n")
+f.close()
+
+# TODO NEAREST "STARBUCKS"
+# 1. Define a function that for arbitrary value e.g. "J" find the nearest N items e.g. 5
+#   a. calculate the distance to each neighbor
+#   b. sort the list by that distance
+#   c. return the top N from the sorted list
+# 2. Modify the draw code to highlight "top" items
+#   a. add a style property for color
+#   b. determine if this item is in the top 5
+#   c. conditionally set the color bases on if its the top 5
+#   d. also indicate the selected position e.g. "J" with another color
