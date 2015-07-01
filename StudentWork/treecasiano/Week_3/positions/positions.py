@@ -1,3 +1,5 @@
+from math import sqrt
+
 data = [[531, 408, 'A'], [225, 52, 'B'], [594, 242, 'C'], [351, 102, 'D'], [371, 15, 'E'], [569, 353, 'F'],
         [342, 39, 'G'], [218, 304, 'H'], [428, 260, 'I'], [329, 158, 'J'], [585, 530, 'K'], [71, 114, 'L'],
         [587, 88, 'M'], [347, 180, 'N'], [180, 332, 'O'], [250, 522, 'P'], [88, 475, 'Q'], [260, 128, 'R'],
@@ -29,4 +31,26 @@ f.close()
 #   c. conditionally set the color bases on if its the top 5
 #   d. also indicate the selected position e.g. "J" with another color
 
+def find_nearest(origin, list_of_locations):
+    # calculate distance to each neighbor
+    for location in list_of_locations:
+        for sublist in data:
+            if sublist[2] == origin:
+                origin_x_value = sublist[0]
+                origin_y_value = sublist[1]
+        list_of_closest_locations = []
+        for item in list_of_locations:
+            location_x_value = item[0]
+            location_y_value = item[1]
+            location_name = item[2]
+            distance_from_origin = sqrt(((location_x_value - origin_x_value) ** 2) + ((location_y_value - origin_y_value) ** 2))
+            list_of_closest_locations += [(distance_from_origin, location_name)]
+    # print list_of_closest_locations
+    print list_of_closest_locations
+    # sort the list by that distance
+    sorted_list = sorted(list_of_closest_locations)
+    #  return the top N items from the list
+    return sorted_list[1:6]
 # OUTPUT html for "J" and 5 would show R D N U and T highlighted.
+output = find_nearest("J", data)
+print output
