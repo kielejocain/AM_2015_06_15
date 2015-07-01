@@ -15,13 +15,15 @@ def basic_count(sentence):
     return letter_count
 
 def fancy_count(sentence):
-    """returns dict of all possible letters and no punctuation"""
+    """returns dict of all letters and no spaces or punctuation"""
     sentence = sentence.lower()
     alphabet = string.lowercase
-    letter_count = {}
+
     # create dictionary of all letters set to 0
+    letter_count = {}
     for char in alphabet:
         letter_count[char] = 0
+
     for char in sentence:
         if char in letter_count.keys():
             letter_count[char] += 1
