@@ -83,7 +83,8 @@ def nearest_starbucks(current_pos_letter, data, how_many):
 # print nearest_starbucks("J", data, 5)
 
 # output to html file
-top_locations = nearest_starbucks("J", data, 5)
+my_location = "J"
+top_locations = nearest_starbucks(my_location, data, 5)
 print top_locations
 
 f = open("positions.html", "w")
@@ -91,10 +92,16 @@ f.write(style)
 f.write('<div id="box" style="width:{0}px;height:{0}px;">\n'.format(square_size))
 for item in data:
     if item[2] in top_locations.keys():
-        color = "color:yellow"
+        color = "color:white;"
+        border = "border:1px solid white;"
+    elif item[2] == my_location:
+        color = "color:red; background-color:white;"
+        border = "border:3px solid white;"
     else:
         color = ""
-    f.write('<span style="left:{x}px; top:{y}px; {c}"> {v} </span>'.format(x=item[0], y=item[1], v=item[2], c=color))
+        border = ""
+    f.write('<span style="left:{x}px; top:{y}px; {c} {b}"> {v} </span>'.format(
+            x=item[0], y=item[1], v=item[2], c=color, b=border))
 f.write("</div>\n")
 f.close()
 
