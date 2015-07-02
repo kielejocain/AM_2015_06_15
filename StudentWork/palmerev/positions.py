@@ -1,5 +1,6 @@
-def hyp(x, y):
-    from math import sqrt
+from math import sqrt
+
+def distance(x, y):
     return sqrt((x*x + y*y))
 
 def find_nearest(location_ltr, locations, n):
@@ -12,7 +13,7 @@ def find_nearest(location_ltr, locations, n):
         letter = loc[2]
         x_diff = abs(loc[0] - curr_location[0])
         y_diff = abs(loc[1] - curr_location[1])
-        relative_distance = hyp(x_diff, y_diff)
+        relative_distance = distance(x_diff, y_diff)
         results.append((relative_distance, letter))
 
     results.sort()

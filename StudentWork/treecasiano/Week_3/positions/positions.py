@@ -13,7 +13,7 @@ style = """
 </style>
 """
 
-def find_nearest(origin, list_of_locations,top_of_list):
+def find_nearest(origin, list_of_locations, top_locations):
     # calculate distance to each neighbor
     for location in list_of_locations:
         for sublist in data:
@@ -32,7 +32,7 @@ def find_nearest(origin, list_of_locations,top_of_list):
     # sort the list by that distance
     sorted_list = sorted(list_of_closest_locations)
     #  return the top N items from the list
-    return sorted_list[1:top_of_list + 1]
+    return sorted_list[1:top_locations + 1]
 
 # OUTPUT html for "J" and 5 would show R D N U and T highlighted.
 output = find_nearest("J", data, 5)
