@@ -68,7 +68,7 @@ def letter_count(sentence, alphabet, frequency):
     sentence = sentence.lower()
 
     # create dictionary of all letters set to 0
-    letter_count = {}
+    letter_count = []
     for char in some_letters:
         letter_count[char] = 0
 

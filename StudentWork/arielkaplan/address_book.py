@@ -12,82 +12,65 @@
 
 class Person(object):
 
-    def __init__(self, first_name, last_name, phone, email):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.phone = phone
-        self.email = email
+    def __init__(self):
         self.id = None
+        self.first_name = ""
+        self.last_name = ""
+        self.phone = ""
+        self.email = ""
 
     def __str__(self):
-        return ("Name: " + self.first_name + " " + self.last_name +
-                "\nPhone: " + self.phone +
-                "\nEmail: " + self.email
-        )
+        # print self.first_name + " " + self.last_name
+        output = ""
+        for attr, value in self.__dict__.iteritems():
+            if value != "":
+                output += str(attr) + ": " + str(value) + "\n"
+        # output = "{id: " + str(self.id) + ", name: " + self.first_name + " " + self.last_name + "}"
+        return output
+
 
 class AddressBook(object):
 
     def __init__(self):
-        self.people = {} # list of people objects, index is id
-        self.ids = sorted(self.people.keys())
+        self.people = {} # key is id, starting at 1
+        self.last_id = 0
 
-    def create(self, first_name, last_name, phone, email):
-        new_person = Person(first_name, last_name, phone, email)
-        if len(self.ids) == 0:
-            unique_id = 1
-        else:
-            # find last element of sorted id # and add one
-            unique_id = self.ids[-1] + 1
-        new_person.id = unique_id
-        self.people[unique_id] = new_person
-        print ("You have added " + new_person.first_name + " " + new_person.last_name +
-               " to your address book.")
-        print new_person
+    def add(self, person):
+        unique_id = self.last_id + 1
+        # Add attr to Person
+        person.id = unique_id
+        # Add person to book
+        self.people[unique_id] = person
+        # increment id counter
+        self.last_id += 1
 
-    def read(self, parameter): # for now, assume parameter is id
-        # for person in self.people:
-        #     try:
-        #         parameter.lower()
-        #
-        #     except:
-        #         (person.first_name.lower() == parameter.lower()) or
-        #         (person.last_name.lower() == parameter.lower()) or
-        #         (person.phone == parameter) or
-        #         (person.email.lower() == parameter.lower()) or
-        #         (person.id == parameter)
-        #         return person
+    def read(self, id):
         return self.people[id]
 
-    def update(self, id, parameter):
+    def update(self, id, parameter, new_input):
         update_person = self.people[id]
-        update_person.parameter = raw_input("Input new " + parameter + ": ")
+        update_person.parameter = new_input
         return self.people[id]
 
-    def delete(self, parameter): # for now, assume parameter is id
-        id = parameter
+    def delete(self, id):
         delete_person = self.people[id]
-        print delete_person
-        confirm = raw_input("Are you sure you want to delete this person? y/n ")
-        if confirm.lower() == 'y':
-            del delete_person
-            print "Entry deleted."
-        else:
-            print "Delete aborted."
+        del delete_person
 
-    def find_id(self, parameter):
-        # check if
-        if parameter in self.people.keys():
-            return parameter
+    def get_all(self):
+        id_list = sorted(self.people.keys())
+        output = ""
+        for id in id_list:
+            output += str(self.read(id)) + "\n"
+        return output
 
 
-test_first = "Jane"
-test_last = "Doe"
-test_phone = "555-123-4567"
-test_email = "jane@example.com"
-update_first = "John"
+# Using the classes the following test code should work
+def test_book():
+    book = AddressBook()
+    person = Person()
+    person.first_name = "Kevin"
+    person.last_name = "Long"
+    book.add(person)
+    print(book.get_all())
 
-my_addresses = AddressBook()
-my_addresses.create(test_first, test_last, test_phone, test_email)
-my_addresses.update(1, "first_name")
-
-
+test_book()
