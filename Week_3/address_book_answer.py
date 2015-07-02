@@ -57,14 +57,17 @@ def test_book():
     person = Person()
     person.first_name = "Kevin"
     person.last_name = "Long"
+
     id = book.add(person)
-    for item in book.get_all().items():
+
+    for i, item in book.get_all().items():
         print(item)
+
     p = book.get(id)
     p.first_name = "Nemo"
     book.update(p)
-    all = book.get_all()
-    for i, item in all.items():
+
+    for i, item in book.get_all().items():
         print(item.id)
         print(item.first_name)
         print(item.last_name)
