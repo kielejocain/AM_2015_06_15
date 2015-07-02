@@ -19,3 +19,27 @@
 #     book.add(person)
 #     print(book.get_all())
 # test_book()
+
+class AddressBook():
+    def __init__(self):
+        self.people = {}
+        self.last_id = 1
+
+    def add(self, person):
+        person.id = self.last_id
+        self.people[person.id] = person
+
+    def get_all(self):
+        return self.people
+
+
+class Person(object):
+    def __init__(self):
+        self.first_name = ""
+        self.last_name = ""
+
+    def __repr__(self):
+        return "{id:" + str(self.id) + ", name: '" + self.first_name + " " + self.last_name + "'}"
+
+
+test_book()

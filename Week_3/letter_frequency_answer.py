@@ -25,6 +25,32 @@ for c in sentence:
 print(output)
 
 #  What if we only want to track A-Z and not punctuation?
+#  What if we wanted to know about letters that occurred zero times?
+
+output = {}
+for i in range(ord("A"), ord("Z") + 1):
+    letter = chr(i)
+    output[letter] = 0
+
+for c in sentence:
+    uc = c.upper()
+    if uc in output.keys():
+        output[uc] += 1
+print(output)
+
+#  What if we only want to report on a given set of letters?
+output = {}
+wanted = "AEIOU"
+for c in sentence:
+    uc = c.upper()
+    if uc in wanted:
+        if uc not in output.keys():
+            output[uc] = 0
+        output[uc] += 1
+print(output)
+
+#  How could we order these by frequency?
+
 output = {}
 output_list = []
 for i in range(ord("A"), ord("Z") + 1):
@@ -40,19 +66,74 @@ for c in sentence:
 print(output_list)
 print(sorted(output_list))
 
-#  What if we only want to report on a given set of letters?
+#  How could we do this with words?
 output = {}
-wanted = "AEIOU"
-for c in sentence:
-    uc = c.upper()
-    if uc in wanted:
-        if uc not in output.keys():
-            output[uc] = 0
-        output[uc] += 1
+words = sentence.split(" ")
+for w in words:
+    uc = w.upper()
+    if uc not in output.keys():
+        output[uc] = 0
+    output[uc] += 1
 print(output)
 
-#  What if we wanted to know about letters that occured zero times?
-#  How could we order these by frequency?
-#  How could we do this with words?
 #  How could we visualize the counts in a horizontal bar chart?
-#  How can we organize out code better to support reuse?
+output = {}
+output_list = []
+for i in range(ord("A"), ord("Z") + 1):
+    letter = chr(i)
+    item = [0, letter]
+    output[letter] = item
+    output_list.append(item)
+
+for c in sentence:
+    uc = c.upper()
+    if uc in output.keys():
+        output[uc][0] += 1
+ranked = sorted(output_list, reverse=True)
+
+for item in ranked:
+    print("{:<2} {:<4} {}".format(item[1], item[0], "X" * item[0]))
+
+# How can we organize out code better to support reuse?
+def get_alphabet():
+    output_list = []
+
+    for i in range(ord("A"), ord("Z") + 1):
+        letter = chr(i)
+        output_list.append(letter)
+    return output_list
+
+
+def key_list_to_dict(key_list, default_value):
+    output = {}
+    for key in key_list:
+        output[key] = default_value
+    return output
+
+
+def dict_to_list(input_dict):
+    output_list = []
+    for k in input_dict.keys():
+        item_list = [input_dict[k], k]
+        output_list.append(item_list)
+    return output_list
+
+
+def count_letters(sentence):
+    output = key_list_to_dict(get_alphabet(), 0)
+    for c in sentence:
+        uc = c.upper()
+        if uc in output.keys():
+            i = ord(uc)
+            output[uc] += 1
+    return output
+
+
+def print_letters(output):
+    output_list = dict_to_list(output)
+    ranked = sorted(output_list, reverse=True)
+    for item in ranked:
+        print("{:<2} {:<4} |{}".format(item[1], item[0], "X " * item[0]))
+
+
+print_letters(count_letters(sentence))
