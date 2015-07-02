@@ -1,14 +1,3 @@
-#  1. Create a Person class
-#       Include properties/attributes for
-#       a phone number, email address,
-#       and separate first and last name fields
-#  2. Create an address book class
-#       Initialize it with an empty dict of people
-#       Add methods to create, read, update, and delete.
-#       Each person added should be assigned a unique id.
-#       THe ID should be a simple number that gets incremented.
-#       e.g. 1, 2 , 3 etc
-
 class AddressBook():
     def __init__(self):
         self.people = {}
@@ -45,11 +34,14 @@ class AddressBook():
                 output.append(p)
         return output
 
-    def fuzzy_find_all_matches(self, property_name, property_value):
+    def fuzzy_find_all_matches(self, property_name, sought):
         output = []
         for i, p in self.people.items():
             # if property_value in p.__dict__[property_name]:
-            if p.__dict__[property_name].find(property_value) != -1:
+            property_value = p.__dict__[property_name].upper()
+            sought = sought.upper()
+            found = (property_value.find(sought) != -1)
+            if found:
                 output.append(p)
         return output
 
@@ -83,6 +75,8 @@ def test_book():
     person.last_name = "Smith"
     id3 = book.add(person)
 
+    print("\nALL BEFORE Nemo change:")
+
     for i, item in book.get_all().items():
         print(item)
 
@@ -95,7 +89,7 @@ def test_book():
     # update person to change name
     book.update(p)
 
-    print("\nALL:")
+    print("\nALL after change to Nemo:")
     for i, item in book.get_all().items():
         print(item.id, item.first_name, item.last_name)
 
