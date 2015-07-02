@@ -1,12 +1,10 @@
 # Concatenate (Join together) two strings in various ways.
 
 print("1. Use the Plus Operator to create an expression to concatenate two string constants.")
-# TWO LINES
 print("A" + "B")
 print("C" + "D")
 
 print("2. Declare two variables and assign them values and then concatenate them.")
-# SIX LINES
 x = "A"
 y = "B"
 print(x + y)
@@ -14,9 +12,9 @@ v1 = "C"
 v2 = "D"
 print(v1 + v2)
 
-print("3. Define a Function that takes two Parameters/Arguments", )
+print("3. Define a Function that takes two Parameters/Arguments",)
 print("call the function twice to show code reuse.")
-# FOUR LINES
+
 
 def concatenate(x, y):
     return x + y
@@ -25,12 +23,12 @@ def concatenate(x, y):
 print(concatenate("A", "B"))
 print(concatenate("C", "D"))
 
-print("4. Declare a class object with a concatenate method,", )
-print("create two instance objects by calling the constructor method twice", )
-print("assign the instances to a variables,", )
+print("4. Declare a class object with a concatenate method,",)
+print("create two instance objects by calling the constructor method twice",)
+print("assign the instances to a variables,",)
 print("call the concatenate method")
 
-# 12 LINES
+
 class Builder(object):
     def __init__(self, x, y):
         self.x = x
@@ -42,12 +40,8 @@ class Builder(object):
 
 builder1 = Builder("A", "B")
 builder2 = Builder("C", "D")
-
 print(builder1.concatenate())
 print(builder2.concatenate())
-
-
-# BEGIN THE WEIRD STUFF
 
 print("5. use join on empty delimiter string")
 print("".join(["A", "B"]))

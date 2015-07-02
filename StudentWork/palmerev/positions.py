@@ -1,5 +1,6 @@
+from math import sqrt
+
 def distance(x, y):
-    from math import sqrt
     return sqrt((x*x + y*y))
 
 def find_nearest(location_ltr, locations, n):
