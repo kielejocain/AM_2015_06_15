@@ -28,6 +28,7 @@ print(output)
 #  What if we wanted to know about letters that occurred zero times?
 
 output = {}
+
 for i in range(ord("A"), ord("Z") + 1):
     letter = chr(i)
     output[letter] = 0

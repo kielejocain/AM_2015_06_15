@@ -21,7 +21,6 @@ print("call the function twice to show code reuse.")
 def concatenate(x, y):
     return x + y
 
-
 print(concatenate("A", "B"))
 print(concatenate("C", "D"))
 
@@ -38,7 +37,6 @@ class Builder(object):
 
     def concatenate(self):
         return self.x + self.y
-
 
 builder1 = Builder("A", "B")
 builder2 = Builder("C", "D")
