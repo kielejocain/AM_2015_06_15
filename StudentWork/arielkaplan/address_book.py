@@ -19,13 +19,13 @@ class Person(object):
         self.phone = ""
         self.email = ""
 
-    def __str__(self):
+    def __repr__(self):
         # print self.first_name + " " + self.last_name
-        output = ""
-        for attr, value in self.__dict__.iteritems():
-            if value != "":
-                output += str(attr) + ": " + str(value) + "\n"
-        # output = "{id: " + str(self.id) + ", name: " + self.first_name + " " + self.last_name + "}"
+        # output = ""
+        # for attr, value in self.__dict__.iteritems():
+        #     if value != "":
+        #         output += str(attr) + ": " + str(value) + "\n"
+        output = "{id: " + str(self.id) + ", name: " + self.first_name + " " + self.last_name + "}"
         return output
 
 
@@ -44,23 +44,24 @@ class AddressBook(object):
         # increment id counter
         self.last_id += 1
 
-    def read(self, id):
-        return self.people[id]
+    def read(self, person):
+        return self.people[person.id]
 
-    def update(self, id, parameter, new_input):
-        update_person = self.people[id]
-        update_person.parameter = new_input
-        return self.people[id]
+    def update(self, person):
+        if person.id in self.people.keys():
+            self.people[person.id] = person
+        return person
 
-    def delete(self, id):
-        delete_person = self.people[id]
-        del delete_person
+    def delete(self, person):
+        if person.id in self.people.keys():
+            del self.people[person.id]
 
     def get_all(self):
         id_list = sorted(self.people.keys())
         output = ""
         for id in id_list:
-            output += str(self.read(id)) + "\n"
+            current_person = self.people[id]
+            output += str(self.read(current_person)) + "\n"
         return output
 
 
