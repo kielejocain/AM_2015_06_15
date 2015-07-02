@@ -45,6 +45,14 @@ class AddressBook():
                 output.append(p)
         return output
 
+    def fuzzy_find_all_matches(self, property_name, property_value):
+        output = []
+        for i, p in self.people.items():
+            # if property_value in p.__dict__[property_name]:
+            if p.__dict__[property_name].find(property_value) != -1:
+                output.append(p)
+        return output
+
 
 class Person(object):
     def __init__(self):
@@ -71,7 +79,7 @@ def test_book():
     id2 = book.add(person)
 
     person = Person()
-    person.first_name = "John"
+    person.first_name = "Kayla"
     person.last_name = "Smith"
     id3 = book.add(person)
 
@@ -87,12 +95,16 @@ def test_book():
     # update person to change name
     book.update(p)
 
+    print("\nALL:")
     for i, item in book.get_all().items():
-        print(item.id)
-        print(item.first_name)
-        print(item.last_name)
+        print(item.id, item.first_name, item.last_name)
 
+    print("\nFIND last_name == 'Long':")
     for item in book.find_all_matches("last_name", "Long"):
+        print(item.id, item.first_name, item.last_name)
+
+    print("\nFUZZY FIND first_name like '%a%' :")
+    for item in book.fuzzy_find_all_matches("first_name", "a"):
         print(item.id, item.first_name, item.last_name)
 
 
