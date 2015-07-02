@@ -10,14 +10,6 @@
 #       THe ID should be a simple number that gets incremented.
 #       e.g. 1, 2 , 3 etc
 
-# Using the classes the following test code should work
-def test_book():
-    book = AddressBook()
-    person = Person()
-    person.first_name = "Kevin"
-    person.last_name = "Long"
-    book.add(person)
-    print(book.get_all())
 
 class AddressBook():
     def __init__(self):
@@ -28,6 +20,18 @@ class AddressBook():
         person.id = self.last_id
         self.people[person.id] = person
         self.last_id += 1
+        return person.id
+
+    def update(self, person):
+        if person.id in self.people:
+            self.people[person.id] = person
+        return person
+
+    def get(self, id):
+        if id in self.people:
+            return self.people[id]
+        else:
+            return None
 
     def remove(self, person):
         if person.id in self.people:
@@ -45,6 +49,25 @@ class Person(object):
 
     def __repr__(self):
         return "{id:" + str(self.id) + ", name: '" + self.first_name + " " + self.last_name + "'}"
+
+
+# Using the classes the following test code should work
+def test_book():
+    book = AddressBook()
+    person = Person()
+    person.first_name = "Kevin"
+    person.last_name = "Long"
+    id = book.add(person)
+    for item in book.get_all().items():
+        print(item)
+    p = book.get(id)
+    p.first_name = "Nemo"
+    book.update(p)
+    all = book.get_all()
+    for i, item in all.items():
+        print(item.id)
+        print(item.first_name)
+        print(item.last_name)
 
 
 test_book()
