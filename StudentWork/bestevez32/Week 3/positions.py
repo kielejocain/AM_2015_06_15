@@ -63,6 +63,8 @@ def locations(data):
         x = longitude[0]
         y = latitude[1]
 
+KEVIN BACON
+
 
 
 def calculateDistance(x1,y1,x2,y2):
