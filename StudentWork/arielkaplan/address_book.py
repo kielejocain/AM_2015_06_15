@@ -68,10 +68,22 @@ class AddressBook(object):
 # Using the classes the following test code should work
 def test_book():
     book = AddressBook()
+
     person = Person()
     person.first_name = "Kevin"
     person.last_name = "Long"
-    book.add(person)
+    id = book.add(person)
+
+    person = Person()
+    person.first_name = "Kay"
+    person.last_name = "Long"
+    id2 = book.add(person)
+
+    person = Person()
+    person.first_name = "Kayla"
+    person.last_name = "Smith"
+    id3 = book.add(person)
+
     print(book.get_all())
 
 test_book()
