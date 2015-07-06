@@ -52,6 +52,8 @@ class Timer(object):
             self.seconds = self.SECONDS_IN_MINUTE - remainder_seconds
             if minutes > 0:
                 self.decrement_minutes(minutes)
+        if self.hours < 0:
+            print "Time's up!"
 
     def decrement_minutes(self, removed_minutes=1):
         total_minutes = self.minutes - removed_minutes
@@ -67,8 +69,6 @@ class Timer(object):
 
     def decrement_hours(self, removed_hours=1):
         self.hours -= removed_hours
-        if self.hours < 0:
-            return "Time's up!"
 
 
 def test_timer():
