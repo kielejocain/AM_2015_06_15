@@ -50,7 +50,10 @@ class Timer(object):
 
 	# remove one hour
     def decrement_hour(self):
-        self.hours -= 1
+		if self.hours <= 0:
+			print "You've run out of time!"
+			exit()
+		self.hours -= 1
 
 def test_timer():
     t = Timer()
@@ -60,7 +63,7 @@ def test_timer():
     print('hours: %d, minutes: %d, seconds: %d' %(t.hours, t.minutes, t.seconds))
     t.decrement_minute(3)
     print('hours: %d, minutes: %d, seconds: %d' %(t.hours, t.minutes, t.seconds))
-    t.decrement(9)
+    t.decrement_minute(80)
     print('hours: %d, minutes: %d, seconds: %d' %(t.hours, t.minutes, t.seconds))
 
 
