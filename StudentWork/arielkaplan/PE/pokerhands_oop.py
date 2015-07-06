@@ -20,6 +20,7 @@ class Round(object):
         self.winner = self.compare()
 
     def compare(hand1, hand2):
+        """takes two strings, returns [0, 1] or [1, 0]"""
         pass
 
 
@@ -111,14 +112,16 @@ class Hand(object):
             "A": self.cards.count("A"),
         }
         ordered_values = []
+        ordered_index = []
 
-        for i in range(len(self.card_order)):
-            current_card_value = self.card_order[i]
-            count = how_many[current_card_value]
-            while count > 0:
-                ordered_values.append(self.card_order[i])
-                count -= 1
-        return ordered_values[::-1]
+        for i in self.card_order:
+            print i
+            while how_many[i] != 0:
+                print how_many[i]
+                ordered_values.insert(0, card_order[i])
+                ordered_index.append(i)
+                how_many[i] -= 1
+        return ordered_values
 
     def high_card(self):
         """Returns list of cards from high to low"""
@@ -151,4 +154,62 @@ for hand in two_hands:
     break
 
 
+#############
 
+# score1 = [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+# score2 = [0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+
+# compare(score1, score2)
+# print "Player 1 should win.\n"
+
+# score1 = [0, 0, 0, 0, 0, 1, 0, 0, 0, 974]
+# score2 = [0, 0, 0, 0, 0, 1, 0, 0, 0, 976]
+
+# compare(score1, score2)
+# print "Player 2 should win.\n"
+
+test_hand1 = Hand('5H 5C 6S 7S KD')
+test_hand2 = Hand('2C 3S 8S 8D TD')
+
+print test_hand1.hand
+print test_hand1.cards
+print test_hand1.values
+print test_hand1.straight
+print test_hand1.flush
+print test_hand1.high
+
+# find_score(test_hand1) # should be one pair
+# find_score(test_hand2) # should be one pair
+
+# test_hand4 = '6S QH 6D 6H QD'
+# find_score(test_hand4)
+# print "^^ should be full house"
+
+# test_hand5 = 'AH 7S AS 9D 9H'
+# find_score(test_hand5)
+# print "^^ should be two pair"
+
+# test_hand6 = '6S KS 2S 9D TH'
+# find_score(test_hand6)
+# print "^^ should be nothing. High card only. Should lose to next hand."
+
+# test_hand7 = '6D KH 8S 9C TD'
+# find_score(test_hand7)
+# print "^^ should be nothing. High card only. Should win over previous hand."
+
+# test_hand3 = '6S 7S 8S 9D TH'
+# find_score(test_hand3)
+# print "^^ should be straight"
+
+# test_hand8 = '6S 7S 8S 9S TS'
+# find_score(test_hand8)
+# print "^^ should be straight flush"
+
+# test_hand9 = 'TS JS QS KS AS'
+# find_score(test_hand9)
+# print "^^ should be royal flush"
+#
+# test_hand10 = '8S 8H 8D 8C JC'
+# find_score(test_hand10)
+# print "^^ should be four of a kind"
+#
