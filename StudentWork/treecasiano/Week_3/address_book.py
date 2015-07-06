@@ -9,6 +9,7 @@ class Person(object):
         self.last_name = ''
         self.number = ''
         self.email = ''
+        self.id = None
 
     def __repr__(self):
         return "{id:" + str(self.id) + ", name: '" + self.first_name + " " + self.last_name + "'}"
@@ -44,6 +45,7 @@ class AddressBook(object):
     def update(self, person):
         if person.id in self.people:
             self.people[person.id] = person
+        return person
 
     def get_all(self):
         return self.people
