@@ -39,3 +39,5 @@ don't have to type the whole <html><body> thing--html5 implies them. can put som
 	<em> -- it's good to know formatting like <i> for email purposes even tho we aren't supposed to use them in browser. 
 </body>
 </html>
+
+range creates list, xrange iterates without creating list. 

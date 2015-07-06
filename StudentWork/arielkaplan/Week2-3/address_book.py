@@ -47,6 +47,10 @@ class AddressBook(object):
     def read(self, person):
         return self.people[person.id]
 
+    def get(self, id):
+        print id
+        return self.people[id]
+
     def update(self, person):
         if person.id in self.people.keys():
             self.people[person.id] = person
@@ -58,11 +62,30 @@ class AddressBook(object):
 
     def get_all(self):
         id_list = sorted(self.people.keys())
-        output = ""
+        output = {}
         for id in id_list:
             current_person = self.people[id]
-            output += str(self.read(current_person)) + "\n"
+            output[id] = (self.read(current_person))
         return output
+
+    def find_all_matches(self, parameter, searched_term):
+        matches = []
+        searched_term = searched_term.lower()
+        # or key, value in dict.items()
+        for person in self.people.values():
+            if person.__dict__[parameter].lower() == searched_term:
+                matches.append(person)
+        return matches
+
+    def fuzzy_find_all_matches(self, parameter, searched_term):
+        matches = []
+        searched_term = searched_term.lower()
+        for person in self.people.values():
+            possible_match = person.__dict__[parameter].lower()
+            if possible_match.find(searched_term) != -1:
+                matches.append(person)
+        return matches
+
 
 
 # Using the classes the following test code should work
@@ -84,6 +107,31 @@ def test_book():
     person.last_name = "Smith"
     id3 = book.add(person)
 
-    print(book.get_all())
+    print("\nALL BEFORE Nemo change:")
+
+    for i, item in book.get_all().items():
+        print(item)
+
+    # retrieve person by id
+    p = book.get(1)
+
+    # change persons name
+    p.first_name = "Nemo"
+
+    # update person to change name
+    book.update(p)
+
+    print("\nALL after change to Nemo:")
+    for i, item in book.get_all().items():
+        print(item.id, item.first_name, item.last_name)
+
+    print("\nFIND last_name == 'Long':")
+    for item in book.find_all_matches("last_name", "Long"):
+        print(item.id, item.first_name, item.last_name)
+
+    print("\nFUZZY FIND first_name like '%a%' :")
+    for item in book.fuzzy_find_all_matches("first_name", "a"):
+        print(item.id, item.first_name, item.last_name)
+
 
 test_book()

@@ -20,11 +20,11 @@ data = [
 expected = {73: ['Bob', 'Student'], 123: ['Kevin', 'Instructor']}
 
 
-def transform(input_list, key_field):
+def transform(input_list):
     output = {}
     for item in data:
-        output[item["id"]]: [data[0]["name"], data[0]["role"]],
+        output[item['id']] = [item['name'], item['role']]
     return output
 
 
-print(transform(data,"id"))
+print(transform(data))
