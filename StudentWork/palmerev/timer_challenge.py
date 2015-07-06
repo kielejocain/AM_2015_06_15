@@ -15,41 +15,27 @@ class Timer(object):
         self.minutes = 0
         self.seconds = 0
 
-    # add one second
-    def increment_seconds(self):
-        self.seconds += 1
-        if self.seconds == Timer.SECONDS_IN_MINUTE:
-            self.increment_minutes()
-            self.seconds = 0
-
-    def increment_minutes(self):
-        self.minutes += 1
-        if self.minutes == Timer.MINUTES_IN_HOUR:
-            self.increment_hours()
-            self.minutes = 0
-
-    def increment_hours(self):
-        self.hours += 1
-
-    # remove one second
-    def decrement_seconds(self):
-        self.seconds -= 1
-        if self.seconds <= 0:
-            self.decrement_minutes()
-            self.seconds = Timer.SECONDS_IN_MINUTE - 1
-
-    def decrement_minutes(self):
-        self.minutes -= 1
-        if self.minutes <= 0:
-            self.decrement_hours()
-            self.minutes = Timer.MINUTES_IN_HOUR - 1
-
-    def decrement_hours(self):
-        if self.hours > 0:
-            self.hours -= 1
-        else:
+    def change_time(self, num_seconds=None):
+        if num_seconds is None:
+            num_seconds = 0
+        total_seconds = num_seconds + self.time_to_int()
+        if total_seconds < 0:
             raise ValueError("attempted to create negative time")
+        self.int_to_time(total_seconds)
 
+    def int_to_time(self, num_seconds):
+        self.hours = num_seconds / (Timer.SECONDS_IN_MINUTE * Timer.MINUTES_IN_HOUR)
+        num_seconds -= self.hours * (Timer.SECONDS_IN_MINUTE * Timer.MINUTES_IN_HOUR)
+        self.minutes = num_seconds / Timer.SECONDS_IN_MINUTE
+        num_seconds -= self.minutes * Timer.SECONDS_IN_MINUTE
+        self.seconds = num_seconds
+
+    def time_to_int(self):
+        total_seconds = 0
+        total_seconds += self.seconds
+        total_seconds += self.minutes * Timer.SECONDS_IN_MINUTE
+        total_seconds += self.hours * Timer.SECONDS_IN_MINUTE * Timer.MINUTES_IN_HOUR
+        return total_seconds
 
 def test_timer():
     t = Timer()
@@ -70,5 +56,21 @@ def test_timer():
     t.increment_seconds()
     print(t, t.hours, t.minutes, t.seconds)
 
+def test_change_time():
+    t = Timer()
+    print(t, t.hours, t.minutes, t.seconds)
+    t.change_time(5)
+    print(t, t.hours, t.minutes, t.seconds)
+    t.change_time(55)
+    print(t, t.hours, t.minutes, t.seconds)
+    t.change_time(3600)
+    print(t, t.hours, t.minutes, t.seconds)
+    t.change_time(-75)
+    print(t, t.hours, t.minutes, t.seconds)
+    t.seconds = 59
+    print(t, t.hours, t.minutes, t.seconds)
+    t.change_time(1)
+    print(t, t.hours, t.minutes, t.seconds)
+#test_timer()
 
-test_timer()
+test_change_time()
