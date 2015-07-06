@@ -53,7 +53,7 @@ class Timer(object):
         self.seconds -= 1
 
         if self.seconds < 1:
-            return "Do you Einstein much?"
+            print "Do you Einstein much?"
 
 
 def test_timer():
@@ -61,6 +61,7 @@ def test_timer():
     t.minutes = 59
     t.seconds = 59
     t.increment()
+    t.decrement()
     print(t.hours, t.minutes, t.seconds)
     # Should get one hour zero minutes and zero seconds
 
