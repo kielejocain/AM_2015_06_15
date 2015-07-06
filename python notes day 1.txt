@@ -1,0 +1,39 @@
+notes week 4
+
+web api --rest api
+api = application programmer's interface (app programmer = web dev)
+
+system programming is the opposite of web dev. have to be smart about systems, not people
+have to dumb it down so the dumb application programmers can understand it. 
+
+we will be learning to produce apis so front end people can do stuff. 
+
+http verbs
+GET eg url
+POST form submit, modification
+PUT insert data
+DELETE	remove data
+
+rest api only uses get and post
+
+xhr in developer -> inspect -> network is an xml/http request. 
+
+static, restful, dynamic pages
+
+haml, rhtml-- oter markup languages.
+
+client/controller/model/view diagrams--look up
+this is what a web architect does. 
+
+ajax -- can continue to work with the page while other info is being collected.  
+
+rest, ajax, spa -- all basically the same/ really close. 
+
+rest url is called an end point 
+
+e.g. /shoes/123
+
+single page application
+
+different from a regular dynamic page in that you are talking to the server to change the page. 
+#all or #inbox or whatever is indicative of either scrolling to a section (thing.com/#header3) or of a rest page. 
