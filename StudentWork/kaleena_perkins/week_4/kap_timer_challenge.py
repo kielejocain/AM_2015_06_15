@@ -16,32 +16,32 @@ class Timer(object):
         self.seconds = 0
 
     # add one second
-    def increment(self):
-        self.seconds += 1
-        if self.seconds == 60:
-			self.increment_minute()
-			self.seconds = 0
+    def increment(self, num):
+        self.seconds += num
+        while self.seconds >= 60:
+			self.increment_minute(1)
+			self.seconds -= 60
 
     # remove one second
-    def decrement(self):
-        self.seconds -= 1
-        if self.seconds < 0:
-			self.decrement_minute()
-			self.seconds = 59
+    def decrement(self, num):
+        self.seconds -= num
+        while self.seconds < 0:
+			self.decrement_minute(1)
+			self.seconds = (60-num)
         
     # # add one minute
-    def increment_minute(self):
-        self.minutes += 1
-        if self.minutes == 60:
+    def increment_minute(self, num):
+        self.minutes += num
+        while self.minutes >= 60:
 			self.increment_hour()
-			self.minutes = 0
+			self.minutes -= 60
 			
         
     # remove one minute
-    def decrement_minute(self):
-        self.minutes -= 1
-        if self.minutes < 0:
-			self.minutes = 59
+    def decrement_minute(self, num):
+        self.minutes -= num
+        while self.minutes < 0:
+			self.minutes = (60-num)
 			self.decrement_hour()
         
     # add one hour
@@ -56,11 +56,11 @@ def test_timer():
     t = Timer()
     t.minutes = 59
     t.seconds = 59
-    t.increment()
+    t.increment(120)
     print('hours: %d, minutes: %d, seconds: %d' %(t.hours, t.minutes, t.seconds))
-    t.decrement_minute()
+    t.decrement_minute(3)
     print('hours: %d, minutes: %d, seconds: %d' %(t.hours, t.minutes, t.seconds))
-    t.decrement()
+    t.decrement(9)
     print('hours: %d, minutes: %d, seconds: %d' %(t.hours, t.minutes, t.seconds))
 
 
