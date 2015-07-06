@@ -15,9 +15,33 @@ class Timer(object):
         self.minutes = 0
         self.seconds = 0
 
+    # add one hour
+    def increment_hours(self):
+        self.hours += 1
+        if self.hours > 99:
+            self.hours = 0
+
+    # remove one hour
+    def decrement_hours(self):
+        self.hours -= 1
+
+    # add one minute
+    def increment_minutes(self):
+        self.minutes += 1
+        if self.minutes > 59:
+            self.increment_hours()
+            self.minutes = 0
+
+    # remove one minute
+    def decrement_minutes(self):
+        self.minutes -= 1
+
     # add one second
     def increment(self):
         self.seconds += 1
+        if self.seconds > 59:
+            self.increment_minutes()
+            self.seconds = 0
 
     # remove one second
     def decrement(self):
