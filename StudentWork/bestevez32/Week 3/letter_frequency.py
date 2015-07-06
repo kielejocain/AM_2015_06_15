@@ -11,6 +11,7 @@ sentence = "Now is the time for all good people to come to the aid of their plan
 # Define a function for the letters in sentence
 
 def histograms(sentence):
+
     # Creates an Empty Dictionary
     d = dict()
     # The for loop goes over the string.
@@ -25,6 +26,18 @@ def histograms(sentence):
 
     return d
 
+def invert_dict(d):
+    inverse = dict()
+    for key in d:
+        val = d[key]
+        if val not in inverse:
+            inverse[val] = [key]
+        else:
+            inverse[val].append(key)
+    return inverse
+
 print histograms(sentence)
+
+
 
 

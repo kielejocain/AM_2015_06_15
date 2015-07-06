@@ -1,10 +1,12 @@
 # Concatenate (Join together) two strings in various ways.
 
 print("1. Use the Plus Operator to create an expression to concatenate two string constants.")
+# Two lines
 print("A" + "B")
 print("C" + "D")
 
 print("2. Declare two variables and assign them values and then concatenate them.")
+#
 x = "A"
 y = "B"
 print(x + y)
