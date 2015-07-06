@@ -1,4 +1,4 @@
-__author__ = 'Brandon'
+# this was a fun project
 
 
 
