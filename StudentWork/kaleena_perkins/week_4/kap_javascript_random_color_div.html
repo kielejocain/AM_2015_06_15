@@ -1,0 +1,52 @@
+<script>
+    /****
+     * TODO: randomize width, height and border width
+     *****/
+    function randomByte() {
+        return Math.round(Math.random() * 255)
+    }
+    function randomInt(max) {
+        return Math.round(Math.random() * max)
+    }
+    function randomColor() {
+        var r = randomByte();
+        var g = randomByte();
+        var b = randomByte();
+        var a = Math.random();
+        return {
+            "r": r,
+            "g": g,
+            "b": b,
+            "a": a
+        };
+    }
+    function randomRGBA() {
+        var c = randomColor();
+        var s = "rgba(" + c.r + "," + c.g + "," + c.b + "," + c.a + ")";
+        console.log(s);
+        return s;
+    }
+    function init() {
+        var limit = 99;
+        for (var i = 0; i < limit; i++) {
+            var div = document.createElement("div");
+            div.innerHTML = "#" + i;
+
+            div.style.position = "absolute";
+            div.style.top = randomInt(1000) + "px";
+            div.style.left = randomInt(1000) + "px";
+
+            div.style.border =  randomInt(5)+ "px solid " + randomRGBA();
+            div.style.borderRadius = randomInt(50) + "px"
+            div.style.height = randomInt(40);
+            div.style.width = randomInt(50);
+            div.style.backgroundColor = randomRGBA();
+            document.body.appendChild(div);
+        }
+    }
+    document.addEventListener("DOMContentLoaded", init)
+
+</script>
+<body>
+I exist!
+</body>
