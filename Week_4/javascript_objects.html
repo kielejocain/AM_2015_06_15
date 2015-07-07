@@ -1,0 +1,37 @@
+<body>
+<script>
+    function print(item) {
+        document.write(item + "<br>");
+//        console.log(item);
+//        alert(item);
+    }
+    // create a new empty object
+    me = {};
+    // annother way to do the same
+    me = Object();
+
+    //define two new keys for first and last name
+    me["first"] = "Kevin";
+    me["last"] = "Long";
+
+    //we often see this done in short hand all at once e.g.:
+    me = {"first": "Kevin", "last": "Long"};
+
+    //print first name
+    print(me["first"]);
+
+    //print last name
+    print(me["last"]);
+
+    //print full name
+    print(me["first"] + " " + me["last"]);
+
+    //define two new keys for first and last name with dot notation
+    me.first = "Kevin";
+    me.last = "Long";
+
+    //print full name with dot notation
+    print(me.first + " " + me.last);
+
+</script>
+</body>
