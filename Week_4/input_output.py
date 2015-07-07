@@ -1,7 +1,7 @@
 #  TODO: ADVANCED
 #  This reads lines from the input file reverses their order and writes them into the output file.
 # How could we do this without the "all" variable,
-#  so we do not wast ram memory by loading hte whole file.
+#  so we do not waste ram memory by loading the whole file.
 
 input_file = open("input_data.txt", "r")
 

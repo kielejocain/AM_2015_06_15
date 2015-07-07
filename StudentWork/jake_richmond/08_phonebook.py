@@ -8,13 +8,13 @@ phonebook = {
 def add():
     # add an entry to your phonebook.
 	last_name = raw_input("What's the last name of the contact? ")
-	first_name = raw_input("What's the first name of the contact? ")
-	phone = raw_input("What's the phone number? ")
-	entry = {
+    first_name = raw_input("What's the first name of the contact? ")
+    phone = raw_input("What's the phone number? ")
+    entry = {
 	'name': first_name + " " + last_name,
 	}
-	phonebook[last_name.lower()] = entry
-	print entry['name']
+    phonebook[last_name.lower()] = entry
+    print entry['name']
 
 def edit():
     # change an entry in your phonebook.  Use del if necessary!
@@ -24,10 +24,10 @@ def edit():
 def delete():
     # delete an entry from the phonebook if it exists.
 	last_name = ("What contact would you like to delete? ")
-	if name in phonebook:
-		del entry ['name']
-	else:
-		print name, " not found"
+    if name in phonebook:
+        del entry ['name']
+    else:
+        print name, " not found"
 
 
 def search():
