@@ -7,12 +7,12 @@ input_file = open("input_data.txt", "r")
 
 line = input_file.readlines()
 all = []
-for i in range(len(1)-1, -1, -1):
+for i in range(len(line)-1, -1, -1):
     all.append(line)
     line = input_file.readline()
 all.append(line)
 input_file.close()
-print l[1]
+print line[i]
 
 # reverse the order
 all.reverse()
