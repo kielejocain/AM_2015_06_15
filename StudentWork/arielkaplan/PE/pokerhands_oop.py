@@ -67,23 +67,24 @@ class Hand(object):
 
     def straight(self):
         """Are card values consecutive? Returns boolean."""
+        HAND_LENGTH = 5
+        LOW_HAND_VALUE = 0
+        card_order_start = 0
 
-        # consecutive = True
-        # i = 0
-        # while (i < 4) and (consecutive == True):
-        # 	# check if difference between indices is 1
-        # 	if ordered_index[i] == (ordered_index[i + 1] - 1):
-        # 		i += 1
-        # 	else:
-        # 		consecutive = False
-        # 		break
-        card_order_index = 0
-        for i in range(self.values):
-            # find lowest card matched to card order
-            if self.values[i] == self.card_order[card_order_index]:
-                sel
-            # see if next card == next in card order
+        # find lowest card matched to card order
+        while self.values[LOW_HAND_VALUE] != self.card_order[card_order_start]:
+            card_order_start += 1
 
+        # see if next card == next in card order
+        for i in range(HAND_LENGTH):
+            current_value = self.values[i]
+            compare_value = self.card_order[card_order_start]
+            if current_value != compare_value:
+                return False
+                break
+            i += 1
+            card_order_start += 1
+        return True
 
 
     def flush(self):
@@ -121,7 +122,6 @@ class Hand(object):
         ordered_values = []
 
         for i in self.card_order:
-            print how_many[i]
             while how_many[i] != 0:
                 ordered_values.append(i)
                 how_many[i] -= 1
