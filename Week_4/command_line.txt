@@ -1,0 +1,16 @@
+mkdir mydata
+cd mydata
+echo one > data.txt
+cat data.txt
+echo two >> data.txt
+cat data.txt
+echo three >> data.txt
+cat data.txt
+echo one > data.txt
+cat data.txt
+cat data.txt | sort
+cat data.txt | sort | uniq
+cat data.txt | grep o
+cat data.txt | grep -i ON
+cat data.txt | head -2
+cat data.txt | tail -2
