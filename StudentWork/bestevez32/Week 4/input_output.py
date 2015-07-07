@@ -5,13 +5,19 @@
 
 import fileinput
 
+output_file =open("output_data.txt", 'w')
+
 for line in fileinput.input("input_data.txt"):
 
     line = open("input_data.txt").read().splitlines()
 
     line = line[::-1]
 
-    print line
+    line =''.join(line)
+
+    print(line)
+
+output_file.write(line + "\n")
 
 
 
@@ -19,7 +25,7 @@ for line in fileinput.input("input_data.txt"):
 
 
     # input_file = open("input_data.txt", "r")
-    # output_file = open("input_data.txt", "w")
+    # output_file = open("output_data.txt", "w")
     #
     # End_of_file = 2
     #
