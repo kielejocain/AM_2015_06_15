@@ -28,9 +28,9 @@ class Timer(object):
     # add one minute
     def increment_minutes(self, amount):
         self.minutes += amount
-        if self.minutes > 59:
-            self.increment_hours(1)
-            self.minutes = 0
+        hours = int(self.minutes / self.MINUTES_IN_HOUR)
+        self.increment_hours(hours)
+        self.minutes = self.minutes % self.MINUTES_IN_HOUR
 
     # remove one minute
     def decrement_minutes(self, amount):
@@ -50,9 +50,9 @@ class Timer(object):
 
 def test_timer():
     t = Timer()
-    t.minutes = 59
-    t.seconds = 59
-    t.increment(120)
+    t.minutes = 0
+    t.seconds = 0
+    t.increment(3661)
     print(t.hours, t.minutes, t.seconds)
     # Should get one hour zero minutes and zero seconds
 
