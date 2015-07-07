@@ -22,8 +22,11 @@ word_goal = "time the is now"
 
 def reverse_words(words):
     # DO WORK HERE ...
+    # The .split function separates the words at the "spaces"
     word_arrangement = words.split(" ")
+    # The .reverse function switches the letters around
     word_arrangement.reverse()
+    # The next line joins the words back at the "spaces"
     new_arrangement = " ".join(word_arrangement)
     return new_arrangement
 
