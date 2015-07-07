@@ -73,15 +73,20 @@ output_file = open("output_data.txt", "w")
 file_info = os.stat("input_data.txt")
 file_size = file_info.st_size
 
+# ### Better alternative:
+# input_file.seek(0, END_OF_FILE)
+# file_size = input_file.tell()
+
 # go to end of file
+END_OF_FILE = 2
 location = -1
 current_line = ""
 
-for byte in range(file_size):
-    input_file.seek(location, 2)
-    current_byte = input_file.read(1)
-    if current_byte != "\n":
-        current_line = current_byte + current_line
+for char in range(file_size):
+    input_file.seek(location, END_OF_FILE)
+    current_char = input_file.read(1)
+    if current_char != "\n":
+        current_line = current_char + current_line
     else:
         output_file.write(current_line + "\n")
         current_line = ""
