@@ -79,21 +79,21 @@ def test_timer():
     t = Timer()
     t.minutes = 59
     t.seconds = 59
-    print (t, t.hours, t.minutes, t.seconds)
+    print (t.hours, t.minutes, t.seconds) # 0, 59, 59
     t.increment()
-    print(t, t.hours, t.minutes, t.seconds)
+    print(t.hours, t.minutes, t.seconds) # 1, 0, 0
     t.decrement()
-    print(t, t.hours, t.minutes, t.seconds)
+    print(t.hours, t.minutes, t.seconds) # 0, 59, 59
     t.increment(120)
-    print(t, t.hours, t.minutes, t.seconds)
+    print(t.hours, t.minutes, t.seconds) # 1, 1, 59
     t.decrement(30)
-    print(t, t.hours, t.minutes, t.seconds)
-    t.increment(6000)
-    print(t, t.hours, t.minutes, t.seconds)
+    print(t.hours, t.minutes, t.seconds) # 1, 1, 29
+    t.increment(3600) # 1 hour
+    print(t.hours, t.minutes, t.seconds) # 2, 1, 29
     t.decrement(10800) # 3 hours
-    print(t, t.hours, t.minutes, t.seconds)
+    print(t.hours, t.minutes, t.seconds) # below 0 --> Time's up
     t.decrement(300)
-    print(t, t.hours, t.minutes, t.seconds)
+    print(t.hours, t.minutes, t.seconds)
 
 
 test_timer()

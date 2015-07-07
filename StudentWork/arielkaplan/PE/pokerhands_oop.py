@@ -41,7 +41,7 @@ class Hand(object):
         self.card_order = ["2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"]
         self.hand = hand # string
         self.cards = hand.split(' ')
-        self.values = self.values() # list of cards in high-->low order
+        self.values = self.values() # list of cards in low-->high order
 
         self.straight = self.straight() # boolean
         self.flush = self.flush() # boolean
@@ -77,7 +77,13 @@ class Hand(object):
         # 	else:
         # 		consecutive = False
         # 		break
-        pass
+        card_order_index = 0
+        for i in range(self.values):
+            # find lowest card matched to card order
+            if self.values[i] == self.card_order[card_order_index]:
+                sel
+            # see if next card == next in card order
+
 
 
     def flush(self):
@@ -95,33 +101,32 @@ class Hand(object):
 
 
     def values(self):
-        """returns list of card values high --> low"""
+        """returns list of card values low-->high"""
         how_many = {
-            "2": self.cards.count("2"),
-            "3": self.cards.count("3"),
-            "4": self.cards.count("4"),
-            "5": self.cards.count("5"),
-            "6": self.cards.count("6"),
-            "7": self.cards.count("7"),
-            "8": self.cards.count("8"),
-            "9": self.cards.count("9"),
-            "T": self.cards.count("T"),
-            "J": self.cards.count("J"),
-            "Q": self.cards.count("Q"),
-            "K": self.cards.count("K"),
-            "A": self.cards.count("A"),
+            "2": self.hand.count("2"),
+            "3": self.hand.count("3"),
+            "4": self.hand.count("4"),
+            "5": self.hand.count("5"),
+            "6": self.hand.count("6"),
+            "7": self.hand.count("7"),
+            "8": self.hand.count("8"),
+            "9": self.hand.count("9"),
+            "T": self.hand.count("T"),
+            "J": self.hand.count("J"),
+            "Q": self.hand.count("Q"),
+            "K": self.hand.count("K"),
+            "A": self.hand.count("A"),
         }
+        print how_many
         ordered_values = []
-        ordered_index = []
 
         for i in self.card_order:
-            print i
+            print how_many[i]
             while how_many[i] != 0:
-                print how_many[i]
-                ordered_values.insert(0, card_order[i])
-                ordered_index.append(i)
+                ordered_values.append(i)
                 how_many[i] -= 1
         return ordered_values
+
 
     def high_card(self):
         """Returns list of cards from high to low"""
@@ -156,6 +161,20 @@ for hand in two_hands:
 
 #############
 
+def test_hand_values(hand):
+    test_hand = Hand(hand)
+    print "hand: " + str(test_hand.hand)
+    print "cards: " + str(test_hand.cards)
+    print "values: " + str(test_hand.values)
+    print "straight: " + str(test_hand.straight)
+    print "flush: " + str(test_hand.flush)
+    print "high: " + str(test_hand.high) + "\n"
+
+test_hand_values('5H 5C 6S 7S KD') # one pair, K high
+test_hand_values('2C 3S 8S 8D TD') # one pair, T high
+test_hand_values('6S 7S 8S 9S TS') # straight flush
+
+
 # score1 = [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
 # score2 = [0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
 
@@ -168,15 +187,8 @@ for hand in two_hands:
 # compare(score1, score2)
 # print "Player 2 should win.\n"
 
-test_hand1 = Hand('5H 5C 6S 7S KD')
-test_hand2 = Hand('2C 3S 8S 8D TD')
-
-print test_hand1.hand
-print test_hand1.cards
-print test_hand1.values
-print test_hand1.straight
-print test_hand1.flush
-print test_hand1.high
+# test_hand1 = Hand('5H 5C 6S 7S KD')
+# test_hand2 = Hand('2C 3S 8S 8D TD')
 
 # find_score(test_hand1) # should be one pair
 # find_score(test_hand2) # should be one pair
