@@ -24,11 +24,14 @@
     function randomRGBA() {
         var c = randomColor();
         var s = "rgba(" + c.r + "," + c.g + "," + c.b + "," + c.a + ")";
-        console.log(s);
+//        console.log(s);
         return s;
     }
+    function randomSize(min, max) {
+        return Math.random() * (max-min) + min
+    }
     function init() {
-        var limit = 99;
+        var limit = 999;
         for (var i = 0; i < limit; i++) {
             var div = document.createElement("div");
             div.innerHTML = "#" + i;
@@ -37,9 +40,11 @@
             div.style.top = randomInt(1000) + "px";
             div.style.left = randomInt(1000) + "px";
 
-            div.style.border = "2px solid black";
-            div.style.height = 20;
-            div.style.width = 30;
+            div.style.border = randomInt(10) + "px solid " + randomRGBA();
+            div.style.borderRadius = randomInt(20) + "px";
+            div.style.boxShadow = randomInt(10) + "px " + randomInt(20) + "px " + randomInt(50) + "px " + randomRGBA();
+            div.style.height = randomSize(20, 100);
+            div.style.width = randomSize(30, 140);
             div.style.backgroundColor = randomRGBA();
             document.body.appendChild(div);
         }
