@@ -34,47 +34,62 @@ output_file.close()
 
 #####
 
-input_file = open("input_data.txt", "r")
-last_line = 0
-
-# Find total number of lines
-for i, line in enumerate(input_file):
-    last_line = i
-    print i
-total_lines = last_line
-
-# Generate lines back-to-front
-def generate_line(input_file, last_line):
-    for i, line in enumerate(input_file):
-        if i == last_line:
-            last_line -= 1
-            print line
-            yield line
-
-# write lines
-output_file = open("output_data.txt", "w")
-for i in range(total_lines + 1):
-    line = generate_line(input_file, last_line)
-    output_file.write(str(line))
-
-# Close files
-input_file.close()
-output_file.close()
+# input_file = open("input_data.txt", "r")
+# last_line = 0
+#
+# # Find total number of lines
+# for i, line in enumerate(input_file):
+#     last_line = i
+#     print i
+# total_lines = last_line
+#
+# # Generate lines back-to-front
+# def generate_line(input_file, last_line):
+#     for i, line in enumerate(input_file):
+#         if i == last_line:
+#             last_line -= 1
+#             print line
+#             yield line
+#
+# # write lines
+# output_file = open("output_data.txt", "w")
+# for i in range(total_lines + 1):
+#     line = generate_line(input_file, last_line)
+#     output_file.write(str(line))
+#
+# # Close files
+# input_file.close()
+# output_file.close()
 
 ###### Readline reversed
 
 import os
 
+# Open both files
 input_file = open("input_data.txt", "r")
+output_file = open("output_data.txt", "w")
+
+# Find file size
+file_info = os.stat("input_data.txt")
+file_size = file_info.st_size
+
 # go to end of file
 location = -1
 current_line = ""
-not_done = True
 
-while not_done:
-    current_byte = input_file.seek(location, 2)
-    print current_byte
+for byte in range(file_size):
+    input_file.seek(location, 2)
+    current_byte = input_file.read(1)
     if current_byte != "\n":
-        current_line += str(current_byte)
+        current_line = current_byte + current_line
+    else:
+        output_file.write(current_line + "\n")
+        current_line = ""
     location -= 1
 
+# add last line, as it doesn't have a \n
+output_file.write(current_line)
+
+# close files
+input_file.close()
+output_file.close()
