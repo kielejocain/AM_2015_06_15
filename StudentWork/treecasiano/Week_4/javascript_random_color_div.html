@@ -1,0 +1,57 @@
+<script>
+    /****
+     * TODO: randomize width, height and border width
+     *****/
+    function randomByte() {
+        return Math.round(Math.random() * 255)
+    }
+    function randomInt(max) {
+        return Math.round(Math.random() * max)
+    }
+    function randomColor() {
+        var r = randomByte();
+        var g = randomByte();
+        var b = randomByte();
+        var a = Math.random();
+        return {
+            "r": r,
+            "g": g,
+            "b": b,
+            "a": a
+        };
+    }
+    function randomRGBA() {
+        var c = randomColor();
+        var s = "rgba(" + c.r + "," + c.g + "," + c.b + "," + c.a + ")";
+        console.log(s);
+        return s;
+    }
+    function init() {
+        var limit = randomInt(200);
+        for (var i = 0; i < limit; i++) {
+            var div = document.createElement("div");
+
+
+            div.style.position = "absolute";
+            div.style.top = randomInt(1000) + "px";
+            div.style.left = randomInt(1000) + "px";
+
+            div.style.border = randomInt(20) +"px solid " + randomRGBA();
+            div.style.height = 20 + randomInt(75);
+            div.style.width = 20 + randomInt(75);
+            div.style.backgroundColor = randomRGBA();
+            div.style.borderRadius = randomInt(75) + "px";
+            div.innerHTML = "#" + i;
+            div.style.textAlign = "center";
+            div.style.transform = "rotate(" + randomInt(180) + "deg)";
+            div.style.boxShadow = "5px 5px 5px " + randomRGBA();
+            div.style.zIndex = -10 + randomInt(10);
+            document.body.appendChild(div);
+        }
+    }
+    document.addEventListener("DOMContentLoaded", init)
+
+</script>
+<body>
+So many squares!!!!
+</body>
