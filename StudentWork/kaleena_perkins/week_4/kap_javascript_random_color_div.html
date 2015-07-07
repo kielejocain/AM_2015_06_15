@@ -27,7 +27,7 @@
         return s;
     }
     function init() {
-        var limit = 99;
+        var limit = 250;
         for (var i = 0; i < limit; i++) {
             var div = document.createElement("div");
             div.innerHTML = "#" + i;
@@ -36,14 +36,18 @@
             div.style.top = randomInt(1000) + "px";
             div.style.left = randomInt(1000) + "px";
 
-            div.style.border =  randomInt(5)+ "px solid " + randomRGBA();
-            div.style.borderRadius = randomInt(50) + "px"
-            div.style.height = randomInt(40);
-            div.style.width = randomInt(50);
+            div.style.border =  randomInt(10)+ "px solid " + randomRGBA();
+            div.style.borderTopLeftRadius = randomInt(50) + "px"; 
+            div.style.borderToprightRadius = randomInt(50) + "px"; 
+            div.style.borderBottomRightRadius = randomInt(50) + "px"; 
+            div.style.borderBottomLeftRadius = randomInt(50) + "px"; 
+            div.style.height = randomInt(100);
+            div.style.width = randomInt(100);
             div.style.backgroundColor = randomRGBA();
             document.body.appendChild(div);
         }
     }
+    
     document.addEventListener("DOMContentLoaded", init)
 
 </script>
