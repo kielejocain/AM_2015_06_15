@@ -30,28 +30,30 @@
         var limit = randomInt(200);
         for (var i = 0; i < limit; i++) {
             var div = document.createElement("div");
+            var s = div.style;
 
+            s.position = "absolute";
+            s.top = randomInt(1000) + "px";
+            s.left = randomInt(1000) + "px";
 
-            div.style.position = "absolute";
-            div.style.top = randomInt(1000) + "px";
-            div.style.left = randomInt(1000) + "px";
-
-            div.style.border = randomInt(20) +"px solid " + randomRGBA();
-            div.style.height = 20 + randomInt(75);
-            div.style.width = 20 + randomInt(75);
-            div.style.backgroundColor = randomRGBA();
-            div.style.borderRadius = randomInt(75) + "px";
+            s.border = randomInt(20) +"px solid " + randomRGBA();
+            s.height = 20 + randomInt(75);
+            s.width = 20 + randomInt(75);
+            s.backgroundColor = randomRGBA();
+            s.borderRadius = randomInt(75) + "px";
             div.innerHTML = "#" + i;
-            div.style.textAlign = "center";
-            div.style.transform = "rotate(" + randomInt(180) + "deg)";
-            div.style.boxShadow = "5px 5px 5px " + randomRGBA();
-            div.style.zIndex = -10 + randomInt(10);
+            s.textAlign = "center";
+            s.transform = "rotate(" + randomInt(180) + "deg)";
+            s.boxShadow = "5px 5px 5px " + randomRGBA();
+            s.zIndex = -10 + randomInt(10);
             document.body.appendChild(div);
         }
+
+        setTimeout(init, 5000);
     }
     document.addEventListener("DOMContentLoaded", init)
 
 </script>
 <body>
-So many squares!!!!
+
 </body>

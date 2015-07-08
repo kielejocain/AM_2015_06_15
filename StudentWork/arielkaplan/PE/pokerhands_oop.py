@@ -63,7 +63,7 @@ class Hand(object):
         }
 
     def __repr__(self):
-        return str(self.cards)
+        return str(self.hand)
 
     def straight(self):
         """Are card values consecutive? Returns boolean."""

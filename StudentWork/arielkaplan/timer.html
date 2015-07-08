@@ -1,0 +1,30 @@
+<body>
+Loading ...
+</body>
+<script>
+    //TODO: count down to zero from a specific value.
+    // e.g. From 10 ... 9,8,7,6,5,4,3,2,1,0
+    // When zero is reached use the
+    // alert method to show a message.
+
+//    function showTime() {
+//        var d = newDate();
+//        document.body.innerHTML = d;
+//        setTimeout(showTime, 1000);
+//    }
+//    showTime();
+
+    var startCount = 10;
+
+    function countDown() {
+        counter = startCount
+        document.body.innerHTML = counter;
+        if (counter > 0) {
+            setTimeout(countDown, 1000);
+        } else if (counter == 0) {
+            alert("Time's up!");
+        }
+        startCount -= 1;
+    }
+    countDown();
+</script>
