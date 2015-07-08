@@ -6,14 +6,18 @@ body {
 
 /* comment */
 
+p {
+    text-decoration: underline;
+}
+
 #content {
     font-size: 1.5em;
 }
 
 .cool {
-    color: green;
+    color: greenyellow;
 }
 
-.awesome {
+.awesome{
     font-size: 4em;
 }
