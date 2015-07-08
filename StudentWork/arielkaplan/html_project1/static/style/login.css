@@ -1,0 +1,18 @@
+body {
+    background-color: bisque;
+    color: darkslategray;
+    font-family: sans-serif;
+}
+
+form {
+    float: left;
+    background-color: white;
+    border: 1px solid gray;
+    padding: 1.5em;
+}
+
+label {
+    display: inline-block;
+    padding: 0.25em;
+}
+

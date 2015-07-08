@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
-
+    <title>
+        Login
+    </title>
+    <link href="static/style/login.css" rel="stylesheet">
 <script>
 
     function isValid(username_text, password_text) {
@@ -40,12 +42,22 @@
         return false;
     }
 
+    // Event listener:
+    var submitButton = document.getElementsByClassName("submit");
+    submitButton.addEventListener("click", validate);
+
 </script>
 
 </head>
 <body>
+<pre>
+    1. Finish validation code
+    2. Make prettier with CSS
+    3. Use addEventListener instead of inline onsubmit attribute.
+</pre>
+
 <div id="login">
-    <form onsubmit="return validate()" method="post">
+    <form method="post"> <!-- onsubmit="return validate()"-->
         <label>
             <span>
                 Username
@@ -59,7 +71,7 @@
             </span>
             <input type="password" id="password" name="password">
         </label>
-        <input type="submit" value="Login">
+        <input class="submit" type="submit" value="Login">
     </form>
 </div>
 </body>
