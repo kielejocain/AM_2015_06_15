@@ -4,3 +4,16 @@ body {
     font-family: sans-serif;
 }
 
+/* comment */
+
+#content {
+    font-size: 1.5em;
+}
+
+.cool {
+    color: green;
+}
+
+.awesome {
+    font-size: 4em;
+}
