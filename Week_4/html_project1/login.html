@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="login">
+    <form onsubmit="onsubmit">
+        <label>
+        <span>
+            Username
+        </span>
+            <input id="username" name="username">
+        </label>
+        <br>
+        <label>
+        <span>
+            Password
+        </span>
+            <input type="password" id="password" name="password">
+        </label>
+        <input type="button">
+    </form>
+</div>
+<script>
+
+    function isValid(username_text, password_text) {
+        // TODO: Test username and password are correct
+        // this is not a real world ready secure solution
+        // this is just an exercise.
+        // make up a user name and password of your choice here.
+
+        return false;
+    }
+
+    function onsubmit() {
+        var username_element = document.getElementById("username");
+        var password_element = document.getElementById("password");
+        var username_text = username_element.value;
+        var password_text = password_element.value;
+
+        if (isValid(username_text, password_text)) {
+            alert("SUCCESS: The form is valid.")
+        } else {
+            alert("FAIL: The form is *not* valid.")
+        }
+    }
+
+</script>
+</body>
+</html>
