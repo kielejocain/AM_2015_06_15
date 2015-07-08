@@ -1,0 +1,15 @@
+questions for Kevin 7/7/15
+
+1) Is this:
+
+****
+    document.addEventListener("DOMContentLoaded", function () {
+        var div = document.createElement("div");
+        div.innerHTML = "this is some more div content";
+        document.body.appendChild(div);
+    });
+****
+
+...an example of a lambda/anonymous function? 
+
+2) 

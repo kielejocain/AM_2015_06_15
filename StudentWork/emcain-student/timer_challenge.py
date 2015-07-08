@@ -61,13 +61,13 @@ class Timer(object):
             self.minutes += amount
 
         print "Printing unchecked time."
-        print self.current_time()
+        self.current_time()
 
         self.incr_check(self.seconds, 'seconds')
         self.incr_check(self.minutes, 'minutes')
 
         print "printing checked time."
-        print self.current_time()
+        self.current_time()
 
     # remove one second
     def decrement(self):

@@ -31,7 +31,7 @@
         return Math.random() * (max-min) + min
     }
     function init() {
-        var limit = 999;
+        var limit = 50;
         for (var i = 0; i < limit; i++) {
             var div = document.createElement("div");
             div.innerHTML = "#" + i;
@@ -43,11 +43,15 @@
             div.style.border = randomInt(10) + "px solid " + randomRGBA();
             div.style.borderRadius = randomInt(20) + "px";
             div.style.boxShadow = randomInt(10) + "px " + randomInt(20) + "px " + randomInt(50) + "px " + randomRGBA();
+            div.style.transform = "rotate(" + randomInt(360) + "deg)";
+
             div.style.height = randomSize(20, 100);
             div.style.width = randomSize(30, 140);
+
             div.style.backgroundColor = randomRGBA();
             document.body.appendChild(div);
         }
+        setTimeout(init, 1000);
     }
     document.addEventListener("DOMContentLoaded", init)
 
