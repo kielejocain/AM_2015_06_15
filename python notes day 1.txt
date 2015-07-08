@@ -37,3 +37,4 @@ single page application
 
 different from a regular dynamic page in that you are talking to the server to change the page. 
 #all or #inbox or whatever is indicative of either scrolling to a section (thing.com/#header3) or of a rest page. 
+

@@ -1,0 +1,45 @@
+<body>
+What color is it?
+<div id="time"></div>
+</body>
+<script>
+	
+	var counter = 10
+	
+	function showTime(){
+		var d = new Date();
+		console.log(d);
+		var timeString = 
+			"It is now " + d.getHours().toString() + ":" + d.getMinutes().toString() + ":" + d.getSeconds().toString();
+			
+
+		
+		document.body.innerHTML = timeString + ".<br>" + counter + " seconds to blast off.";
+		
+		
+		document.body.style.backgroundColor = 'rgb(' + d.getHours().toString() + ',' + d.getMinutes().toString() + ',' + d.getMinutes().toString() + ')';
+		
+		document.body.style.color = 'rgb(' + (225 - d.getHours()).toString() + ',' + (225 -  d.getMinutes()).toString() + ',' + (225 - d.getMinutes()).toString() + ')';
+		
+		document.body.style.fontSize = (counter-1)%10 + 15
+		
+		if (counter > 0){ 
+			counter --
+		}
+		else {
+			alert("Liftoff! We have liftoff! *FWOOOOOOOSH*")
+			counter = 10 
+
+		}
+		
+		setTimeout(showTime, 1000)
+
+		
+	
+	}
+	showTime()
+	
+</script>
+<style>
+
+</style>
