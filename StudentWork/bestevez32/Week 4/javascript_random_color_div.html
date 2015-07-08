@@ -47,11 +47,15 @@
             div.style.left = randomInt(1000) + "px";
 
             div.style.border = randomBorder();
-            div.style.height = randomHeight();
-            div.style.width = randomWidth();
+            div.style.height = randomHeight(100);
+            div.style.width = randomWidth(100);
             div.style.backgroundColor = randomRGBA();
+
+
             document.body.appendChild(div);
         }
+
+        setInterval(init,5000)
     }
     document.addEventListener("DOMContentLoaded", init)
 
