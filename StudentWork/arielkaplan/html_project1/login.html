@@ -43,8 +43,11 @@
     }
 
     // Event listener:
-    var submitButton = document.getElementsByClassName("submit");
-    submitButton.addEventListener("click", validate);
+    function init() {
+        var login = document.getElementById("login_form");
+        login.addEventListener("submit", validate);
+    }
+    document.addEventListener("DOMContentLoaded", init);
 
 </script>
 
@@ -56,8 +59,8 @@
     3. Use addEventListener instead of inline onsubmit attribute.
 </pre>
 
-<div id="login">
-    <form method="post"> <!-- onsubmit="return validate()"-->
+<section id="login">
+    <form id="login_form" method="post"> <!-- onsubmit="return validate()"-->
         <label>
             <span>
                 Username
@@ -71,8 +74,8 @@
             </span>
             <input type="password" id="password" name="password">
         </label>
-        <input class="submit" type="submit" value="Login">
+        <input type="submit" value="Login">
     </form>
-</div>
+</section>
 </body>
 </html>
