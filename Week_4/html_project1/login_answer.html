@@ -32,7 +32,11 @@
             }
             return false;
         }
-
+        function init() {
+            var login = document.getElementById("login_form");
+            login.addEventListener("submit", validate);
+        }
+        document.addEventListener("DOMContentLoaded", init);
     </script>
 
 </head>
@@ -43,7 +47,7 @@
     3. Use addEventListener instead of inline onsubmit attribute.
 </pre>
 <div id="login">
-    <form onsubmit="return validate()">
+    <form id="login_form" method="post">
         <label>
         <span>
             Username
