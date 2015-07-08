@@ -1,12 +1,12 @@
 <script>
     /****
-     * TODO: randomize width, height and border width, and anything else you like!
+     * TODO: randomize width, height and border width
      *****/
     function randomByte() {
         return Math.round(Math.random() * 255)
     }
-    function randomInt(max) {
-        return Math.round(Math.random() * max)
+    function randomInt(min, max) {
+        return Math.round(Math.random() * max) + min
     }
     function randomColor() {
         var r = randomByte();
@@ -23,8 +23,11 @@
     function randomRGBA() {
         var c = randomColor();
         var s = "rgba(" + c.r + "," + c.g + "," + c.b + "," + c.a + ")";
-//        console.log(s);
+        //console.log(s);
         return s;
+    }
+    function randomDimension(min, max) {
+        return (Math.random() * max) + min
     }
     function init() {
         var limit = 99;
@@ -33,25 +36,22 @@
             div.innerHTML = "#" + i;
             var s = div.style;
             s.position = "absolute";
-            s.top = randomInt(1000) + "px";
-            s.left = randomInt(1000) + "px";
-
-            s.height = randomInt(100);
-            s.width = randomInt(100);
-
-            s.border = randomInt(50) + "px solid " + randomRGBA();
-            s.borderRadius = randomInt(50);
-
+            s.top = randomInt(0,1000) + "px";
+            s.left = randomInt(0,1000) + "px";
+            s.border = randomInt(1, 15) + "px solid black";
+            s.borderRadius = randomInt(5, 100) + "px";
+            s.borderColor = randomRGBA();
+            s.height = randomInt(8, 100);
+            s.lineHeight = s.height;
+            s.width = s.height;
+            s.textAlign = "center";
+            s.fontSize = Math.round(s.height / 5);
+            //s.fontSize = Math.round((Math.random() * s.height * s.width) + 5) + "px";
             s.backgroundColor = randomRGBA();
-            s.transform = "rotate(" + randomInt(360) + "deg)";
-
             document.body.appendChild(div);
         }
-        setTimeout(init, 1000);
-
     }
     document.addEventListener("DOMContentLoaded", init)
-
 </script>
 <body>
 I exist!
