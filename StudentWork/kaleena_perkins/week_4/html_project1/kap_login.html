@@ -11,9 +11,15 @@
         // this is not a real world ready secure solution
         // this is just an exercise.
         // make up a user name and password of your choice here.
-        console.log(username_text);
-        console.log(password_text);
-        return false;
+        var user_name = "kaperkin";
+        var password = "Bunnies"
+        if (user_name === username_text && password === password_text) {
+			return true;
+		} else {
+			return false;
+	}
+	 console.log(username_text);
+      console.log(password_text);
     }
 
     function validate(e) {
@@ -31,15 +37,9 @@
     }
 
 </script>
-
+<link type="text/css" rel="stylesheet" href="kap_login.css"/>
 </head>
 <body>
-<pre>
-    1. Finish validation code
-    2. Make prettier with CSS
-    3. Use addEventListener instead of inline onsubmit attribute.
-</pre>
-
 <div id="login">
     <form onsubmit="return validate()" method="post">
         <label>
