@@ -1,0 +1,40 @@
+<script>
+    function init() {
+        var div = document.createElement("div");
+        div.innerHTML = "<h1>this is different div content<h1>";
+        document.body.appendChild(div);
+    }
+    document.addEventListener("DOMContentLoaded", init)
+
+    //***ALTERNATE
+    document.addEventListener("DOMContentLoaded", function () {
+        var div = document.createElement("div");
+        div.innerHTML = "this is some more div content";
+        document.body.appendChild(div);
+    });
+	
+	var phrases = ['woo, another thing!', 'yet another thing', "you just don't get tired of things do you?"]
+	i = 0 
+	function newfunct() {
+		n = i%3
+		var phrase = phrases[n]
+	
+		document.getElementById("first-thing").innerHTML=phrase
+		
+		i++
+	}
+	
+	
+</script>
+<body>
+I exist!
+
+<button onclick="newfunct()">See what the button does!</button>
+
+counter:
+<p id = "first-thing">This is a thing!</p>
+
+
+
+</body>
+
