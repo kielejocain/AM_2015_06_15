@@ -50,16 +50,16 @@ class Hand(object):
         self.score = {
             # [0] is if hand is present
             # [1] and optional [2] is value of cards
-            "royal flush": [False, None],
+            "royal flush": [False],
             "straight flush": [False, None], # high card of straight
-            "four of a kind": [False, None],
+            "four of a kind": [False, None], # value of four of a kind
             "full house": [False, None, None], # 3x value, 2x value
-            "flush": [False, None],
+            "flush": [False],
             "straight": [False, None], # high card of straight
-            "three of a kind": [False, None],
+            "three of a kind": [False, None], # value of three of a kind
             "two pairs": [False, None, None], # value of each pair
-            "one pair": [False, None],
-            "high card": []
+            "one pair": [False, None], # value of pair
+            "high card": [] # unused cards
         }
 
     def __repr__(self):
@@ -103,6 +103,8 @@ class Hand(object):
 
     def values(self):
         """returns list of card values low-->high"""
+
+        # vv This is not very efficient. Easier way in calc_multiples
         how_many = {
             "2": self.hand.count("2"),
             "3": self.hand.count("3"),
@@ -133,10 +135,42 @@ class Hand(object):
         # Remove those already used???
         pass
 
+
+    def calc_flush(self):
+        HIGHEST_CARD = -1
+        if self.flush and self.straight and (self.values[HIGHEST_CARD] == "A"):
+            self.score["royal flush"] = [True]
+        elif self.flush and self.straight:
+            high_card = self.values[HIGHEST_CARD]
+            self.score["straight flush"] = [True, high_card]
+        else:
+            self.score["flush"] = [True]
+
+
+    def calc_multiples(self):
+        of_a_kind = {}
+        for value in self.values:
+            if value not in of_a_kind.keys():
+                of_a_kind[value] = 0
+            else:
+                of_a_kind[value] += 1
+
+        for card, count in of_a_kind.items():
+            # copy value list
+            self.high = self.values[:]
+
+            if count == 4:
+                # remove used cards
+                four_of_value = self.high.pop(card)
+                self.score["four of a kind"] = [True, four_of_value]
+            elif count == 3:
+                three_of_value = self.high.pop(card)
+
     def calculate(self):
         """Returns dict score: """
         # needs more arguments, probably
-        pass
+        calc_flush()
+
 
 
 p1 = Player("Player 1")
@@ -168,7 +202,8 @@ def test_hand_values(hand):
     print "values: " + str(test_hand.values)
     print "straight: " + str(test_hand.straight)
     print "flush: " + str(test_hand.flush)
-    print "high: " + str(test_hand.high) + "\n"
+    print "high: " + str(test_hand.high)
+    print "score: " + str(test_hand.score) + "\n"
 
 test_hand_values('5H 5C 6S 7S KD') # one pair, K high
 test_hand_values('2C 3S 8S 8D TD') # one pair, T high
