@@ -39,6 +39,6 @@ body {
     text-transform: uppercase;
 }
 
-#login input[type="submit"]:hover {
+#login .button:hover {
     background-color: orangered;
 }
