@@ -1,0 +1,23 @@
+body {
+    background-color: gray;
+    color: yellow;
+    font-family: sans-serif;
+}
+
+/* comment */
+
+p {
+    text-decoration: underline;
+}
+
+#content {
+    font-size: 1.5em;
+}
+
+.cool {
+    color: greenyellow;
+}
+
+.awesome{
+    font-size: 4em;
+}
