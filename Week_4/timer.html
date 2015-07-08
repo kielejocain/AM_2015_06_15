@@ -1,0 +1,15 @@
+<body>
+Loading ...
+</body>
+<script>
+    //TODO: count down to zero from a specific value.
+    // e.g. From 10 ... 9,8,7,6,5,4,3,2,1,0
+    // When zero is reached use the
+    // alert method to show a message.
+    function showTime() {
+        var d = Date();
+        document.body.innerHTML = "The time is now: <b>" + d + "</b>";
+        setTimeout(showTime, 1000);
+    }
+    showTime();
+</script>

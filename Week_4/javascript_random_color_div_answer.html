@@ -1,6 +1,6 @@
 <script>
     /****
-     * TODO: randomize width, height and border width
+     * TODO: randomize width, height and border width, and anything else you like!
      *****/
     function randomByte() {
         return Math.round(Math.random() * 255)
@@ -27,7 +27,7 @@
         return s;
     }
     function init() {
-        var limit = 9999;
+        var limit = 99;
         for (var i = 0; i < limit; i++) {
             var div = document.createElement("div");
             div.innerHTML = "#" + i;
@@ -40,12 +40,15 @@
             s.width = randomInt(100);
 
             s.border = randomInt(50) + "px solid " + randomRGBA();
-            s.borderRadius = randomInt(5);
+            s.borderRadius = randomInt(50);
 
             s.backgroundColor = randomRGBA();
+            s.transform = "rotate(" + randomInt(360) + "deg)";
 
             document.body.appendChild(div);
         }
+        setTimeout(init, 1000);
+
     }
     document.addEventListener("DOMContentLoaded", init)
 
