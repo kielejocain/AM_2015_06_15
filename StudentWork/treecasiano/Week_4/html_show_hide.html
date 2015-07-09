@@ -21,30 +21,35 @@
     }
 
     function categoryClick(event) {
-        var category = document.getElementsByName("category");
-        var animals = document.getElementById("animals");
-        var vegetables = document.getElementById("vegetables");
-        var minerals = document.getElementById("minerals");
-        console.log(event.target.value);
-        console.log(this.value);
-        if (this.value === 'animals') {
-            console.log('The Animals category has been selected.');
-            animals.style.display = "inline-block";
-            vegetables.style.display = "none";
-            minerals.style.display = "none";
-        } else if (this.value === 'vegetables') {
-            console.log('The Vegetables category has been selected.');
-            vegetables.style.display = "inline-block";
-            animals.style.display = "none";
-            minerals.style.display = "none";
-        } else if (this.value === 'minerals') {
-            console.log('The Minerals category has been selected.');
-            minerals.style.display = "inline-block";
-            animals.style.display = "none";
-            vegetables.style.display = "none";
-        } else {
-            filter.style.display = "none";
+        var categories = document.getElementsByClassName('category');
+        for (var i = 0, max = categories.length; i < max; i++) {
+            categories[i].style.display = "none";
         }
+        var subcategory = document.getElementById(this.value);
+        subcategory.style.display = "inline-block";
+
+
+//        console.log(subcategory);
+//        var animals = document.getElementById("animals");
+//        var vegetables = document.getElementById("vegetables");
+//        var minerals = document.getElementById("minerals");
+//        console.log(event.target.value);
+//        console.log(this.value);
+//        if (this.value === 'animals') {
+//            animals.style.display = "inline-block";
+//            vegetables.style.display = "none";
+//            minerals.style.display = "none";
+//        } else if (this.value === 'vegetables') {
+//            vegetables.style.display = "inline-block";
+//            animals.style.display = "none";
+//            minerals.style.display = "none";
+//        } else if (this.value === 'minerals') {
+//            minerals.style.display = "inline-block";
+//            animals.style.display = "none";
+//            vegetables.style.display = "none";
+//        } else {
+//            filter.style.display = "none";
+//        }
     }
 
     function init() {
