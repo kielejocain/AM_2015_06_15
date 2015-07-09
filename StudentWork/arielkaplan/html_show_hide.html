@@ -1,13 +1,9 @@
 <style>
     #filter {
         display: none;
-    }
-
-    .category {
-        display: none;
+        display: block;
     }
 </style>
-
 <script>
 
     function showAll(event) {
@@ -21,35 +17,20 @@
     }
 
     function categoryClick(event) {
-        var categories = document.getElementsByClassName('category');
-        for (var i = 0, max = categories.length; i < max; i++) {
-            categories[i].style.display = "none";
+        // console.log(event.target.value);
+        // console.log(this.value);
+
+        // make list of all subcategories of buttons
+        var elements = document.getElementsByClassName("category");
+        // loop through subcategories
+        for (var i = 0, max = elements.length; i < max; i++) {
+            // check if the subcategory's id matches current category value
+            if (elements[i].id == this.value) {
+                elements[i].style.display = "block";
+            } else {
+                elements[i].style.display = "none";
+            }
         }
-        var subcategory = document.getElementById(this.value);
-        subcategory.style.display = "inline-block";
-
-
-//        console.log(subcategory);
-//        var animals = document.getElementById("animals");
-//        var vegetables = document.getElementById("vegetables");
-//        var minerals = document.getElementById("minerals");
-//        console.log(event.target.value);
-//        console.log(this.value);
-//        if (this.value === 'animals') {
-//            animals.style.display = "inline-block";
-//            vegetables.style.display = "none";
-//            minerals.style.display = "none";
-//        } else if (this.value === 'vegetables') {
-//            vegetables.style.display = "inline-block";
-//            animals.style.display = "none";
-//            minerals.style.display = "none";
-//        } else if (this.value === 'minerals') {
-//            minerals.style.display = "inline-block";
-//            animals.style.display = "none";
-//            vegetables.style.display = "none";
-//        } else {
-//            filter.style.display = "none";
-//        }
     }
 
     function init() {

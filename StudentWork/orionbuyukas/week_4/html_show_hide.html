@@ -2,12 +2,7 @@
     #filter {
         display: none;
     }
-
-    .category {
-        display: none;
-    }
 </style>
-
 <script>
 
     function showAll(event) {
@@ -20,46 +15,26 @@
         }
     }
 
-    function categoryClick(event) {
-        var categories = document.getElementsByClassName('category');
-        for (var i = 0, max = categories.length; i < max; i++) {
-            categories[i].style.display = "none";
-        }
-        var subcategory = document.getElementById(this.value);
-        subcategory.style.display = "inline-block";
+    function showMinerals(event) {
+      var filter = document.getElementsById("animals", "vegetables");
+      console.log(event);
+      if (event.target.checked) {
+          filter.style.display = "none";
+      }
 
-
-//        console.log(subcategory);
-//        var animals = document.getElementById("animals");
-//        var vegetables = document.getElementById("vegetables");
-//        var minerals = document.getElementById("minerals");
-//        console.log(event.target.value);
-//        console.log(this.value);
-//        if (this.value === 'animals') {
-//            animals.style.display = "inline-block";
-//            vegetables.style.display = "none";
-//            minerals.style.display = "none";
-//        } else if (this.value === 'vegetables') {
-//            vegetables.style.display = "inline-block";
-//            animals.style.display = "none";
-//            minerals.style.display = "none";
-//        } else if (this.value === 'minerals') {
-//            minerals.style.display = "inline-block";
-//            animals.style.display = "none";
-//            vegetables.style.display = "none";
-//        } else {
-//            filter.style.display = "none";
-//        }
     }
 
     function init() {
         var element = document.getElementById("show_all");
         element.addEventListener("click", showAll);
         element.style.display = "inline-block";
+        element.addEventListener("click", showMinerals);
 
         var categories = document.getElementsByName("category");
         for (var i = 0, max = categories.length; i < max; i++) {
-            categories[i].addEventListener("click", categoryClick);
+            categories[i].addEventListener("click", function () {
+                console.log(this.value);
+            });
         }
     }
     document.addEventListener("DOMContentLoaded", init);
@@ -96,7 +71,6 @@
         <label><input name="category" type="radio" value="vegetables"> Vegetables </label>
         <label><input name="category" type="radio" value="minerals"> Minerals </label>
     </div>
-
     <div id="animals" class="category animal">
         <label><input name="animal" type="radio" value="Lion">Lion</label>
         <label><input name="animal" type="radio" value="Tiger">Tiger</label>

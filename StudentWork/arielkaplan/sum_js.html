@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Sum function in Javascript</title>
+    <script>
+        function sum() {
+            length = arguments.length;
+            total = 0;
+            for (i=0; i<length; i++) {
+                total += arguments[i];
+            }
+            document.write(total + "<br>");
+            //document.body.innerHTML = total;
+        }
+        sum(1, 2, 3);
+        sum(6);
+        sum(1, 1, 1, 1, 1, 1);
+        //document.addEventListener("DOMContentLoaded", sum);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>
-        Login
-    </title>
+    <title></title>
     <link href="static/style/login.css" rel="stylesheet">
 <script>
 
@@ -13,18 +11,12 @@
         // this is not a real world ready secure solution
         // this is just an exercise.
         // make up a user name and password of your choice here.
-        var username = "admin";
-        var password = "pass";
+        var username = "Bob"
+        var password =  "bobis30"
         console.log(username_text);
         console.log(password_text);
-
-        var valid_user = (username_text == username);
-        var valid_pass = (password_text == password);
-
-        if (valid_user && valid_pass) {
-            return true;
-        } else {
-            return false;
+        if (username == username_text && password == password_text){
+          return true;
         }
     }
 
@@ -33,7 +25,7 @@
         var password_element = document.getElementById("password");
         var username_text = username_element.value;
         var password_text = password_element.value;
-
+        console.log(e)
         if (isValid(username_text, password_text)) {
             alert("SUCCESS: The form is valid.")
         } else {
@@ -41,8 +33,6 @@
         }
         return false;
     }
-
-    // Event listener:
     function init() {
         var login = document.getElementById("login_form");
         login.addEventListener("submit", validate);
@@ -53,29 +43,23 @@
 
 </head>
 <body>
-<pre>
-    1. Finish validation code
-    2. Make prettier with CSS
-    3. Use addEventListener instead of inline onsubmit attribute.
-</pre>
-
-<section id="login">
-    <form id="login_form" method="post"> <!-- onsubmit="return validate()"-->
+<div id="login">
+    <form id="login_form" method="post">
         <label>
-            <span>
+            <div>
                 Username
-            </span>
-            <input id="username" name="username">
+            </div>
+            <input id="username" name="username" placeholder="ie. John Doe">
         </label>
         <br>
         <label>
-            <span>
+            <div>
                 Password
-            </span>
-            <input type="password" id="password" name="password">
+            </div>
+            <input type="password" id="password" name="password" placeholder="******">
         </label>
-        <input class="button" type="submit" value="Login">
+        <input type="submit" value="Login">
     </form>
-</section>
+</div>
 </body>
 </html>

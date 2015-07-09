@@ -2,55 +2,68 @@
     #filter {
         display: none;
     }
-
-    .category {
-        display: none;
+    #categories {
+      display: none;
     }
-</style>
+    #animals {
+      display: none;
+    }
+    #minerals {
+      display: none;
+    }
 
+    #vegetables {
+      display: none;
+    }
+
+</style>
 <script>
 
     function showAll(event) {
-        var filter = document.getElementById("filter");
+        var filter = document.getElementById("categories");
+        var filterAll = document.getElementById("filter");
         console.log(event);
         if (event.target.checked) {
             filter.style.display = "inline-block";
+            filterAll.style.display = "inline-block";
+
+
         } else {
             filter.style.display = "none";
         }
     }
 
+
+
     function categoryClick(event) {
-        var categories = document.getElementsByClassName('category');
-        for (var i = 0, max = categories.length; i < max; i++) {
-            categories[i].style.display = "none";
+      var filterAnimals = document.getElementById("animals");
+      var filterVegetables = document.getElementById("vegetables");
+      var filterMinerals = document.getElementById("minerals");
+        console.log(event.target.value);
+        console.log(this.value);
+        if (event.target.value == "minerals"){
+          filterAnimals.style.display = "none";
+          filterVegetables.style.display = "none";
+          filterMinerals.style.display = "block";
         }
-        var subcategory = document.getElementById(this.value);
-        subcategory.style.display = "inline-block";
-
-
-//        console.log(subcategory);
-//        var animals = document.getElementById("animals");
-//        var vegetables = document.getElementById("vegetables");
-//        var minerals = document.getElementById("minerals");
-//        console.log(event.target.value);
-//        console.log(this.value);
-//        if (this.value === 'animals') {
-//            animals.style.display = "inline-block";
-//            vegetables.style.display = "none";
-//            minerals.style.display = "none";
-//        } else if (this.value === 'vegetables') {
-//            vegetables.style.display = "inline-block";
-//            animals.style.display = "none";
-//            minerals.style.display = "none";
-//        } else if (this.value === 'minerals') {
-//            minerals.style.display = "inline-block";
-//            animals.style.display = "none";
-//            vegetables.style.display = "none";
-//        } else {
-//            filter.style.display = "none";
-//        }
+        else if (event.target.value == "vegetables") {
+          filterAnimals.style.display = "none";
+          filterMinerals.style.display = "none";
+          filterVegetables.style.display = "block";
+        }
+        else if (event.target.value == "animals") {
+          filterMinerals.style.display = "none";
+          filterVegetables.style.display = "none";
+          filterAnimals.style.display = "block";
+        }
     }
+
+    function subCategoryClick(event) {
+      console.log(event.target.value);
+    }
+
+
+
 
     function init() {
         var element = document.getElementById("show_all");
@@ -61,8 +74,25 @@
         for (var i = 0, max = categories.length; i < max; i++) {
             categories[i].addEventListener("click", categoryClick);
         }
+
+        var subAnimals = document.getElementsByName("animal");
+        for (var i = 0, max = subAnimals.length; i < max; i++) {
+          subAnimals[i].addEventListener("click", subCategoryClick);
+        }
+
+        var subVegetables = document.getElementsByName("vegetable");
+        for (var i = 0, max = subVegetables.length; i < max; i++) {
+          subVegetables[i].addEventListener("click", subCategoryClick);
+        }
+
+        var subMinerals = document.getElementsByName("mineral");
+        for (var i = 0, max = subMinerals.length; i < max; i++) {
+          subMinerals[i].addEventListener("click", subCategoryClick);
+        }
+
     }
     document.addEventListener("DOMContentLoaded", init);
+
 
 </script>
 <body>
@@ -88,7 +118,7 @@
 <br>
 
 <div id="filter">
-    Show:
+    Categories:
     <br>
 
     <div id="categories">
@@ -96,7 +126,6 @@
         <label><input name="category" type="radio" value="vegetables"> Vegetables </label>
         <label><input name="category" type="radio" value="minerals"> Minerals </label>
     </div>
-
     <div id="animals" class="category animal">
         <label><input name="animal" type="radio" value="Lion">Lion</label>
         <label><input name="animal" type="radio" value="Tiger">Tiger</label>
