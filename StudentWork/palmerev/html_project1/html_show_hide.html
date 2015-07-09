@@ -8,6 +8,10 @@
     #animals, #vegetables, #minerals {
       display: none;
     }
+
+    #image-container {
+      display: block;
+    }
 </style>
 <script>
 
@@ -30,27 +34,34 @@
                 categoryDivs[i].style.display = "inline-block";
             }
         }
+        document.getElementById("pic").style.display = "none";
         console.log(event.target.value);
         //console.log(this.value);
     }
-
+    function showImage(event) {
+        var pic = document.getElementById("pic");
+        pic.style.display = "block";
+        pic.src = "static/image/" + event.target.value.toLowerCase() + ".jpeg";
+        pic.alt = event.target.value.toLowerCase();
+        console.log(event.target.value);
+    }
 
     function init() {
         var element = document.getElementById("show_all");
         element.addEventListener("click", showAll);
         element.style.display = "inline-block";
         element.checked = false;
-        /*
-        var animalButtons = getElementsByName("animal");
-        var vegetableButtons = getElementsByName("vegetable");
-        var mineralButtons = getElementsByName("mineral");
+
+        var animalButtons = document.getElementsByName("animal");
+        var vegetableButtons = document.getElementsByName("vegetable");
+        var mineralButtons = document.getElementsByName("mineral");
         var allButtons = [animalButtons, vegetableButtons, mineralButtons];
         for(var i = 0; i < allButtons.length; i++) {
             for(var j = 0; j < allButtons[i].length; j++) {
-                allButtons[i][j].checked = false;
+                allButtons[i][j].addEventListener("click", showImage);
             }
         }
-        */
+
         var categories = document.getElementsByName("category");
         for (var i = 0, max = categories.length; i < max; i++) {
             categories[i].addEventListener("click", categoryClick);
@@ -107,5 +118,7 @@
         <label><input name="mineral" type="radio" value="Ruby">Ruby</label>
         <label><input name="mineral" type="radio" value="Sapphire">Sapphire</label>
     </div>
+    <div id="image-container"><img id="pic" src="" alt=""></div>
 </div>
+
 </body>
