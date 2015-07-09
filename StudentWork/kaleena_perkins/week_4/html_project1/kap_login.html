@@ -35,13 +35,19 @@
         }
         return false;
     }
+    function init() {
+            var login = document.getElementById("login_form");
+            login.addEventListener("submit", validate);
+        }
+        document.addEventListener("DOMContentLoaded", init);
 
 </script>
+<link href='http://fonts.googleapis.com/css?family=Scada:400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <link type="text/css" rel="stylesheet" href="kap_login.css"/>
 </head>
 <body>
 <div id="login">
-    <form onsubmit="return validate()" method="post">
+    <form method="post" id = "login_form">
         <label>
             <span>
                 Username

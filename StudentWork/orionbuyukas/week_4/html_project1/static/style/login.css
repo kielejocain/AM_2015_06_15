@@ -1,0 +1,25 @@
+body {
+    background-color: gray;
+    color: yellow;
+    font-family: sans-serif;
+}
+
+
+#login {
+  width: 400px;
+  height: 100px;
+
+  background-color: black;
+  border: 2px solid red;
+  border-radius: 25px 0px;
+  padding: 4em;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#login label div{
+
+}
