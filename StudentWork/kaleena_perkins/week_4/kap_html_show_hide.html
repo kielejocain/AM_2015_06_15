@@ -1,28 +1,52 @@
 <style>
+	body {
+		color: #BFBFBF;
+		background: #001851;
+		
+		}
+		
     #filter {
         display: none;
     }
+    
 </style>
 <script>
 
     function showAll(event) {
         var filter = document.getElementById("filter");
-        console.log(event);
+        var animals = document.getElementById("animals");
+        var vegetables = document.getElementById("vegetables");
+        var minerals = document.getElementById("minerals");
+
         if (event.target.checked) {
             filter.style.display = "inline-block";
+            animals.style.display = "none";
+            vegetables.style.display = "none";
+            minerals.style.display = "none";    
         } else {
             filter.style.display = "none";
         }
     }
     function categoryClick(event) {
+		var catagory = event.target.value;
+		var types = document.getElementById(catagory);
+		var animals = document.getElementById("animals");
+        var vegetables = document.getElementById("vegetables");
+        var minerals = document.getElementById("minerals");
+        animals.style.display = "none";
+        vegetables.style.display = "none";
+        minerals.style.display = "none";  
+		types.style.display = "block";
+			
         console.log(event.target.value);
         console.log(this.value);
     }
 
+
+
     function init() {
         var element = document.getElementById("show_all");
         element.addEventListener("click", showAll);
-        element.style.display = "inline-block";
 
         var categories = document.getElementsByName("category");
         for (var i = 0, max = categories.length; i < max; i++) {
@@ -65,19 +89,19 @@
     </div>
 
     <div id="animals" class="category animal">
-        <label><input name="animal" type="radio" value="lion">Lion</label>
-        <label><input name="animal" type="radio" value="tiger">Tiger</label>
-        <label><input name="animal" type="radio" value="bear">Bear</label>
+        <label><input name="animal" type="radio" value="Lion">Lion</label>
+        <label><input name="animal" type="radio" value="Tiger">Tiger</label>
+        <label><input name="animal" type="radio" value="Bear">Bear</label>
     </div>
     <div id="vegetables" class="category vegetable">
-        <label><input name="vegetable" type="radio" value="apple">Apple</label>
-        <label><input name="vegetable" type="radio" value="orange">Orange</label>
-        <label><input name="vegetable" type="radio" value="banana">Banana</label>
+        <label><input name="vegetable" type="radio" value="Apple">Apple</label>
+        <label><input name="vegetable" type="radio" value="Orange">Orange</label>
+        <label><input name="vegetable" type="radio" value="Banana">Banana</label>
     </div>
-    <div id="minerals" class="category mineral">
-        <label><input name="mineral" type="radio" value="diamond">Diamond</label>
-        <label><input name="mineral" type="radio" value="ruby">Ruby</label>
-        <label><input name="mineral" type="radio" value="sapphire">Sapphire</label>
+    <div id="minerals" class="category Mineral">
+        <label><input name="mineral" type="radio" value="Diamond">Diamond</label>
+        <label><input name="mineral" type="radio" value="Ruby">Ruby</label>
+        <label><input name="mineral" type="radio" value="Sapphire">Sapphire</label>
     </div>
 </div>
 </body>

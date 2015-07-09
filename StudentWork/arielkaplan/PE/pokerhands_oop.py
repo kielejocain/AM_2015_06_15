@@ -120,9 +120,7 @@ class Hand(object):
             "K": self.hand.count("K"),
             "A": self.hand.count("A"),
         }
-        print how_many
         ordered_values = []
-
         for i in self.card_order:
             while how_many[i] != 0:
                 ordered_values.append(i)
@@ -143,12 +141,16 @@ class Hand(object):
         elif self.flush and self.straight:
             high_card = self.values[HIGHEST_CARD]
             self.score["straight flush"] = [True, high_card]
-        else:
+        elif self.flush:
             self.score["flush"] = [True]
+        else:
+            print "No flush"
 
 
     def calc_multiples(self):
         of_a_kind = {}
+        pair = 0
+        # create dict {value: frequency}
         for value in self.values:
             if value not in of_a_kind.keys():
                 of_a_kind[value] = 0
@@ -165,11 +167,18 @@ class Hand(object):
                 self.score["four of a kind"] = [True, four_of_value]
             elif count == 3:
                 three_of_value = self.high.pop(card)
+                three = True
+            elif count == 2:
+                pair += 1
+
+                self.score["three of a kind"] = [True, three_of_value]
+
 
     def calculate(self):
         """Returns dict score: """
         # needs more arguments, probably
-        calc_flush()
+        self.calc_flush()
+        self.calc_multiples()
 
 
 
@@ -195,20 +204,25 @@ for hand in two_hands:
 
 #############
 
-def test_hand_values(hand):
+def test_hand_values(hand, outcome):
     test_hand = Hand(hand)
-    print "hand: " + str(test_hand.hand)
-    print "cards: " + str(test_hand.cards)
+    test_hand.calculate()
+    print "hand: " + str(test_hand.hand) + " = " + str(outcome)
+    # print "cards: " + str(test_hand.cards)
     print "values: " + str(test_hand.values)
     print "straight: " + str(test_hand.straight)
     print "flush: " + str(test_hand.flush)
     print "high: " + str(test_hand.high)
-    print "score: " + str(test_hand.score) + "\n"
+    print "Score: "
+    for key, value in test_hand.score.items():
+        print str(key) + ": " + str(value)
+    print "-" * 10
 
-test_hand_values('5H 5C 6S 7S KD') # one pair, K high
-test_hand_values('2C 3S 8S 8D TD') # one pair, T high
-test_hand_values('6S 7S 8S 9S TS') # straight flush
-
+test_hand_values('5H 5C 6S 7S KD', 'one pair, K high') # one pair, K high
+test_hand_values('2C 3S 8S 8D TD', 'one pair, T high') # one pair, T high
+test_hand_values('6S 7S 8S 9S TS', 'straight flush ') # straight flush
+test_hand_values('6S QH 6D 6H QD', 'full house')
+test_hand_values('AH 7S AS 9D 9H', 'two pair, A & 9')
 
 # score1 = [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
 # score2 = [0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
