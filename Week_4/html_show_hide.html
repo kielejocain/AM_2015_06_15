@@ -1,0 +1,80 @@
+<style>
+    #filter {
+        display: none;
+    }
+</style>
+<script>
+
+    function showAll(event) {
+        var filter = document.getElementById("filter");
+        console.log(event);
+        if (event.target.checked) {
+            filter.style.display = "inline-block";
+        } else {
+            filter.style.display = "none";
+        }
+    }
+
+    function init() {
+        var element = document.getElementById("show_all");
+        element.addEventListener("click", showAll);
+        element.style.display = "inline-block";
+
+        var categories = document.getElementsByName("category");
+        for (var i = 0, max = categories.length; i < max; i++) {
+            categories[i].addEventListener("click", function () {
+                console.log(this.value);
+            });
+        }
+    }
+    document.addEventListener("DOMContentLoaded", init);
+
+</script>
+<body>
+<pre>
+    TODO:
+        Hide and then show sub-categories based on the category selection
+        in a similar way to how the categories are shown and hidden based on the check box.
+
+        Note the values logged from the category correspond to the id of each div subcategory.
+
+    For a thorough understanding of forms please see the beginning of
+    Chapter 7 in HTML&CSS
+    Chapter 13 in JAVASCRIPT&JQUERY
+
+    Note that we do not use the helper function here that wraps addEventListener;
+    as Microsoft Internet Explorer has had support for the standard addEventListener syntax since ie8 on March 2009.
+
+</pre>
+<label>
+    Show All
+    <input id="show_all" type="checkbox">
+</label>
+<br>
+
+<div id="filter">
+    Show:
+    <br>
+
+    <div id="categories">
+        <label><input name="category" type="radio" value="animals"> Animals </label>
+        <label><input name="category" type="radio" value="vegetables"> Vegetables </label>
+        <label><input name="category" type="radio" value="minerals"> Minerals </label>
+    </div>
+    <div id="animals" class="category animal">
+        <label><input name="animal" type="radio" value="Lion">Lion</label>
+        <label><input name="animal" type="radio" value="Tiger">Tiger</label>
+        <label><input name="animal" type="radio" value="Bear">Bear</label>
+    </div>
+    <div id="vegetables" class="category vegetable">
+        <label><input name="vegetable" type="radio" value="Apple">Apple</label>
+        <label><input name="vegetable" type="radio" value="Orange">Orange</label>
+        <label><input name="vegetable" type="radio" value="Banana">Banana</label>
+    </div>
+    <div id="minerals" class="category Mineral">
+        <label><input name="mineral" type="radio" value="Diamond">Diamond</label>
+        <label><input name="mineral" type="radio" value="Ruby">Ruby</label>
+        <label><input name="mineral" type="radio" value="Sapphire">Sapphire</label>
+    </div>
+</div>
+</body>
