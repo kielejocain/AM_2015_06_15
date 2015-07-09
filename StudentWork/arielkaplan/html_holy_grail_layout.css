@@ -1,0 +1,63 @@
+body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: blanchedalmond;
+    padding: 0;
+    margin: 0;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 1em;
+    padding: 1.5em 4em;
+    color: white;
+    background-color: black;
+}
+
+nav {
+    position: absolute;
+    top: 4em;
+    width: 100%;
+    background-color: pink;
+    padding: 0.25em 4em;
+}
+
+nav > a {
+    display: inline-block;
+    margin-left: 2em;
+}
+
+main {
+    position: relative;
+    top: 6em;
+    margin-left: 100px;
+    margin-right: 300px;
+    background-color: cornsilk;
+}
+
+section {
+    background-color: white;
+}
+
+article {
+    float: left;
+}
+
+aside {
+    float: right;
+    width: 30%;
+    background-color: green;
+}
+
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: 0.5em 4em;
+    color: white;
+    background-color: black;
+}
