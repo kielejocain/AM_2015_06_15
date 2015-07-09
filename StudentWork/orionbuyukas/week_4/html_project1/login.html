@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-
+    <link href="static/style/login.css" rel="stylesheet">
 <script>
 
     function isValid(username_text, password_text) {
@@ -11,15 +11,13 @@
         // this is not a real world ready secure solution
         // this is just an exercise.
         // make up a user name and password of your choice here.
-        var user_name = "kaperkin";
-        var password = "Bunnies"
-        if (user_name === username_text && password === password_text) {
-			return true;
-		} else {
-			return false;
-	}
-	 console.log(username_text);
-      console.log(password_text);
+        var username = "Bob"
+        var password =  "bobis30"
+        console.log(username_text);
+        console.log(password_text);
+        if (username == username_text && password == password_text){
+          return true;
+        }
     }
 
     function validate(e) {
@@ -27,7 +25,7 @@
         var password_element = document.getElementById("password");
         var username_text = username_element.value;
         var password_text = password_element.value;
-
+        console.log(e)
         if (isValid(username_text, password_text)) {
             alert("SUCCESS: The form is valid.")
         } else {
@@ -36,30 +34,29 @@
         return false;
     }
     function init() {
-            var login = document.getElementById("login_form");
-            login.addEventListener("submit", validate);
-        }
-        document.addEventListener("DOMContentLoaded", init);
+        var login = document.getElementById("login_form");
+        login.addEventListener("submit", validate);
+    }
+    document.addEventListener("DOMContentLoaded", init);
 
 </script>
-<link href='http://fonts.googleapis.com/css?family=Scada:400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-<link type="text/css" rel="stylesheet" href="kap_login.css"/>
+
 </head>
 <body>
 <div id="login">
-    <form method="post" id = "login_form">
+    <form id="login_form" method="post">
         <label>
-            <span>
+            <div>
                 Username
-            </span>
-            <input id="username" name="username">
+            </div>
+            <input id="username" name="username" placeholder="ie. John Doe">
         </label>
         <br>
         <label>
-            <span>
+            <div>
                 Password
-            </span>
-            <input type="password" id="password" name="password">
+            </div>
+            <input type="password" id="password" name="password" placeholder="******">
         </label>
         <input type="submit" value="Login">
     </form>

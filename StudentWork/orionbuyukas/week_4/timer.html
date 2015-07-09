@@ -1,0 +1,25 @@
+<body>
+  Loading...
+</body>
+<script>
+  var isCool = true;
+  var count = 0;
+  var d = "bob"; /* this d is differnt from the one in the function*/
+  var limit = 5;
+  function showTime(){
+      var d = Date();
+      document.body.innerHTML = d + count;
+      count ++;
+      if (count > limit ) {
+          isCool = false;
+          alert(d)
+      }
+        if(isCool){
+        setTimeout(showTime, 1000);
+      }
+  }
+
+  showTime();
+
+
+</script>

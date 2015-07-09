@@ -14,5 +14,6 @@ form {
 	border-radius: 0px 20px 0px 20px;
 	display: block;
 	margin: 150px auto;
-	
+	font-family: 'Scada', sans-serif;
+	font-size: 1.5em;
 }
