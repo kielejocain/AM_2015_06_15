@@ -1,6 +1,7 @@
 <style>
     #filter {
         display: none;
+        display: block;
     }
 </style>
 <script>
@@ -14,6 +15,10 @@
             filter.style.display = "none";
         }
     }
+    function categoryClick(event) {
+        console.log(event.target.value);
+        console.log(this.value);
+    }
 
     function init() {
         var element = document.getElementById("show_all");
@@ -22,9 +27,7 @@
 
         var categories = document.getElementsByName("category");
         for (var i = 0, max = categories.length; i < max; i++) {
-            categories[i].addEventListener("click", function () {
-                console.log(this.value);
-            });
+            categories[i].addEventListener("click", categoryClick);
         }
     }
     document.addEventListener("DOMContentLoaded", init);
@@ -61,6 +64,7 @@
         <label><input name="category" type="radio" value="vegetables"> Vegetables </label>
         <label><input name="category" type="radio" value="minerals"> Minerals </label>
     </div>
+
     <div id="animals" class="category animal">
         <label><input name="animal" type="radio" value="Lion">Lion</label>
         <label><input name="animal" type="radio" value="Tiger">Tiger</label>
