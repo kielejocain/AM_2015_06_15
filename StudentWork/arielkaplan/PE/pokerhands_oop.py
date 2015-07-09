@@ -141,13 +141,16 @@ class Hand(object):
         elif self.flush and self.straight:
             high_card = self.values[HIGHEST_CARD]
             self.score["straight flush"] = [True, high_card]
-        else:
+        elif self.flush:
             self.score["flush"] = [True]
+        else:
+            print "No flush"
 
 
     def calc_multiples(self):
         of_a_kind = {}
         pair = 0
+        # create dict {value: frequency}
         for value in self.values:
             if value not in of_a_kind.keys():
                 of_a_kind[value] = 0
@@ -174,8 +177,8 @@ class Hand(object):
     def calculate(self):
         """Returns dict score: """
         # needs more arguments, probably
-        calc_flush()
-        calc_multiples()
+        self.calc_flush()
+        self.calc_multiples()
 
 
 
@@ -201,9 +204,10 @@ for hand in two_hands:
 
 #############
 
-def test_hand_values(hand):
+def test_hand_values(hand, outcome):
     test_hand = Hand(hand)
-    print "hand: " + str(test_hand.hand)
+    test_hand.calculate()
+    print "hand: " + str(test_hand.hand) + " = " + str(outcome)
     # print "cards: " + str(test_hand.cards)
     print "values: " + str(test_hand.values)
     print "straight: " + str(test_hand.straight)
@@ -214,10 +218,11 @@ def test_hand_values(hand):
         print str(key) + ": " + str(value)
     print "-" * 10
 
-test_hand_values('5H 5C 6S 7S KD') # one pair, K high
-test_hand_values('2C 3S 8S 8D TD') # one pair, T high
-test_hand_values('6S 7S 8S 9S TS') # straight flush
-
+test_hand_values('5H 5C 6S 7S KD', 'one pair, K high') # one pair, K high
+test_hand_values('2C 3S 8S 8D TD', 'one pair, T high') # one pair, T high
+test_hand_values('6S 7S 8S 9S TS', 'straight flush ') # straight flush
+test_hand_values('6S QH 6D 6H QD', 'full house')
+test_hand_values('AH 7S AS 9D 9H', 'two pair, A & 9')
 
 # score1 = [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
 # score2 = [0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
