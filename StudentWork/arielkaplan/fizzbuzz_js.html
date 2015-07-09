@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>FizzBuzz in Javascript</title>
+    <script>
+        function fizzbuzz() {
+            for (var count = 1; count <= 100; count++) {
+                var fizz = (count % 3 == 0);
+
+                var buzz = (count % 5 == 0);
+                if (fizz && buzz) {
+                    document.body.innerHTML += "FizzBuzz <br>";
+                } else if (buzz) {
+                    document.body.innerHTML += "Buzz <br>";
+                } else if (fizz) {
+                    document.body.innerHTML += "Fizz <br>";
+                } else {
+                    document.body.innerHTML += count.toString() + "<br>";
+                }
+            }
+        }
+        document.addEventListener("DOMContentLoaded", fizzbuzz);
+    </script>
+</head>
+<body>
+    <h1>FizzBuzz!</h1>
+</body>
+</html>
