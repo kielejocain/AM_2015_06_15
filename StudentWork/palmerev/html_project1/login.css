@@ -1,0 +1,27 @@
+body {
+  background-color: #DDDDDD;
+}
+
+form {
+  background-color: #888888;
+  border: 3px solid black;
+  display: inline-block;
+  padding: 40px;
+  margin: auto 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+}
+
+label {
+  /*padding: 5px;*/
+}
+input#login-button {
+  position: absolute;
+  display: block;
+  left: 65%;
+}
+
+input#login
