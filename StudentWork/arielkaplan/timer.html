@@ -20,7 +20,7 @@ Loading ...
         counter = startCount
         document.body.innerHTML = counter;
         if (counter > 0) {
-            setTimeout(countDown, 1000);
+            setTimeout(countDown, 1000); // Better practice to have recursive call at end
         } else if (counter == 0) {
             alert("Time's up!");
         }
