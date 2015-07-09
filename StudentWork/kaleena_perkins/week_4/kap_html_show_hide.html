@@ -11,39 +11,31 @@
     
 </style>
 <script>
-
+	
+   
     function showAll(event) {
         var filter = document.getElementById("filter");
-        var animals = document.getElementById("animals");
-        var vegetables = document.getElementById("vegetables");
-        var minerals = document.getElementById("minerals");
-
         if (event.target.checked) {
             filter.style.display = "inline-block";
-            animals.style.display = "none";
-            vegetables.style.display = "none";
-            minerals.style.display = "none";    
+            var catagories = document.getElementsByClassName("category");
+			for (var i = 0, max = catagories.length; i < max; i++){
+			catagories[i].style.display = "none";
+		}
         } else {
             filter.style.display = "none";
         }
     }
+    
     function categoryClick(event) {
-		var catagory = event.target.value;
-		var types = document.getElementById(catagory);
-		var animals = document.getElementById("animals");
-        var vegetables = document.getElementById("vegetables");
-        var minerals = document.getElementById("minerals");
-        animals.style.display = "none";
-        vegetables.style.display = "none";
-        minerals.style.display = "none";  
-		types.style.display = "block";
-			
-        console.log(event.target.value);
-        console.log(this.value);
+		var catagories = document.getElementsByClassName("category");
+		for (var i = 0, max = catagories.length; i < max; i++){
+			catagories[i].style.display = "none";
+		}
+		var types = document.getElementById(this.value);
+		types.style.display = "block";	
     }
 
-
-
+       
     function init() {
         var element = document.getElementById("show_all");
         element.addEventListener("click", showAll);
