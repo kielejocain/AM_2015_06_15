@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Fade In Out CSS</title>
+    <style>
+        h1 span {
+            opacity: 0;
+            transition: all 800ms ease-in-out;
+        }
+
+        h1 span.selected,
+        h1:hover span {
+            opacity: 1;
+        }
+    </style>
+    <script>
+        function fade() {
+            var spans = document.getElementsByTagName("span");
+            for (var i = 0; i < spans.length; i++) {
+                var span = spans[i];
+                span.classList.remove("selected");
+            }
+        }
+        function fadeIn() {
+            var spans = document.getElementsByTagName("span");
+            for (var i = 0; i < spans.length; i++) {
+                var span = spans[i];
+                span.classList.add("selected");
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>
+    A <span class="selected">APPLE</span>
+</h1>
+
+<h1>
+    B <span>BUSINESS</span>
+</h1>
+
+<h1>
+    C <span class="selected">CANDY</span>
+</h1>
+<button onclick="fade()">Fade</button>
+<button onclick="fadeIn()">FadeIn</button>
+</body>
+</html>
