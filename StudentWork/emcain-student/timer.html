@@ -11,15 +11,17 @@ What color is it?
 		console.log(d);
 		var timeString = 
 			"It is now " + d.getHours().toString() + ":" + d.getMinutes().toString() + ":" + d.getSeconds().toString();
-			
-
+		hourNum = d.getHours()*18;
+		minNum = d.getMinutes()*3;
+		secNum = d.getSeconds()*3;
+		
 		
 		document.body.innerHTML = timeString + ".<br>" + counter + " seconds to blast off.";
 		
 		
-		document.body.style.backgroundColor = 'rgb(' + d.getHours().toString() + ',' + d.getMinutes().toString() + ',' + d.getMinutes().toString() + ')';
+		document.body.style.backgroundColor = 'rgb(' + hourNum.toString() + ',' + minNum.toString() + ',' + secNum.toString() + ')';
 		
-		document.body.style.color = 'rgb(' + (225 - d.getHours()).toString() + ',' + (225 -  d.getMinutes()).toString() + ',' + (225 - d.getMinutes()).toString() + ')';
+		document.body.style.color = 'rgb(' + (225 - hourNum).toString() + ',' + (225 -  minNum).toString() + ',' + (225 - secNum).toString() + ')';
 		
 		document.body.style.fontSize = (counter-1)%10 + 15
 		
