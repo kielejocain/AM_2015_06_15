@@ -20,11 +20,11 @@
         // console.log(event.target.value);
         // console.log(this.value);
 
-        // make list of all categories of buttons
+        // make list of all subcategories of buttons
         var elements = document.getElementsByClassName("category");
-        // loop through categories
+        // loop through subcategories
         for (var i = 0, max = elements.length; i < max; i++) {
-            // check if the category's id matches current selected button value
+            // check if the subcategory's id matches current category value
             if (elements[i].id == this.value) {
                 elements[i].style.display = "block";
             } else {
