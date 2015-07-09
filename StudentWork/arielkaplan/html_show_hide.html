@@ -17,10 +17,14 @@
     }
 
     function categoryClick(event) {
-        console.log(event.target.value);
-        console.log(this.value);
+        // console.log(event.target.value);
+        // console.log(this.value);
+
+        // make list of all categories of buttons
         var elements = document.getElementsByClassName("category");
+        // loop through categories
         for (var i = 0, max = elements.length; i < max; i++) {
+            // check if the category's id matches current selected button value
             if (elements[i].id == this.value) {
                 elements[i].style.display = "block";
             } else {
