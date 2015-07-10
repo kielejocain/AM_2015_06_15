@@ -1,0 +1,40 @@
+<style>
+    article {
+        background-color: darkorange;
+        clear: both;
+        width: 200px;
+        margin: 1em;
+        padding: 1em;
+    }
+    blockquote {
+        background-color: darkblue;
+        width: 30%;
+        clear: both;
+        margin: 1em;
+        padding: 1em;
+    }
+
+    article:nth-child(odd) blockquote {
+        float: left;
+    }
+
+    article:nth-child(even) blockquote {
+        float: right;
+    }
+</style>
+<body>
+<article>
+    <blockquote>
+        One
+    </blockquote>
+    Now is the time for
+    all good people...
+</article>
+<article>
+    <blockquote>
+        Two
+    </blockquote>
+    Now is the time for
+    all good people...
+</article>
+</body>
