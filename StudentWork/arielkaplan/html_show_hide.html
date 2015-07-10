@@ -26,9 +26,18 @@
         for (var i = 0, max = elements.length; i < max; i++) {
             // check if the subcategory's id matches current category value
             if (elements[i].id == this.value) {
+                elements[i].style.opacity = "1.0";
                 elements[i].style.display = "block";
+                setTimeout(function(element) {
+                    element.style.transitionTimingFunction = "ease linear";
+                }, 1000, elements[i]); // last parameter is what to pass in
             } else {
-                elements[i].style.display = "none";
+                elements[i].style.opacity = "0.0";
+                elements[i].style.transition = "opacity 1s";
+                // elements[i].addEventListener("transitionend", "opacity", true);
+                setTimeout(function(element) {
+                    element.style.display = "none";
+                }, 1000, elements[i]); // last parameter is what to pass in
             }
         }
     }
