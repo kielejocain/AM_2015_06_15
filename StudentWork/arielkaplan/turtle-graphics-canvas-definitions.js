@@ -48,7 +48,8 @@ turtle.triangle = function (length) {
 turtle.circle = function (diameter) {
     var radius = (diameter / 2);
     var draw = 0;
-    // to fill in
+
+    // to fill in the gaps
     if (diameter < 200) {
         draw = 1;
     } else if (diameter < 500) {
@@ -69,5 +70,34 @@ turtle.circle = function (diameter) {
         turtle.penDown = false;
         turtle.backward(radius);
         turtle.left(1);
+        turtle.penDown = true;
+    }
+};
+
+turtle.multiple = function (shape_function, size, how_many) {
+    for (var i = 0; i < how_many; i++) {
+        shape_function(size);
+        turtle.forward(size);
+    }
+};
+
+turtle.seed = function (diameter) {
+    radius = (diameter / 2);
+    //turtle.circle(diameter);
+    for (var i = 0; i < 6; i++) {
+        turtle.circle(diameter);
+        turtle.penDown = false;
+        turtle.forward(radius);
+        turtle.left(60);
+        turtle.penDown = true;
+    }
+};
+
+turtle.flower = function (diameter) {
+    for (var i = 0; i < 6; i++) {
+        turtle.seed(diameter);
+        turtle.penDown = false;
+        turtle.right(60);
+        turtle.penDown = true;
     }
 };
