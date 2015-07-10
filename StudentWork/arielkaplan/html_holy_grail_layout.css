@@ -47,6 +47,10 @@ nav > a {
     color: darkred;
 }
 
+nav > a:hover {
+    color: indianred;
+}
+
 nav h1, body > aside h1 {
     font-size: 1em;
     font-weight: bold;
@@ -83,7 +87,7 @@ section {
 
 article {
     padding: 1em 0;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid lightgray;
 }
 
 article:last-child {
