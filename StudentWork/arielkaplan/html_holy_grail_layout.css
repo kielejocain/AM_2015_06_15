@@ -97,6 +97,7 @@ article:last-child {
 blockquote {
     background-color: lightgray;
     padding: 1em;
+    border-left: 3px solid darkred;
 }
 
 body > aside {
