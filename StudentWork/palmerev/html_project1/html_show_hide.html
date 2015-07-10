@@ -12,6 +12,7 @@
     #image-container {
       display: block;
     }
+
 </style>
 <script>
 
@@ -27,11 +28,11 @@
     function categoryClick(event) {
         var categoryDivs = document.getElementsByClassName("category");
         for(var i = 0; i < categoryDivs.length; i++) {
-            if (categoryDivs[i].id !== event.target.value) {
-                categoryDivs[i].style.display = "none";
+            if (categoryDivs[i].id === event.target.value) {
+                categoryDivs[i].style.display = "inline-block";
             }
             else {
-                categoryDivs[i].style.display = "inline-block";
+                categoryDivs[i].style.display = "none";
             }
         }
         document.getElementById("pic").style.display = "none";
@@ -40,12 +41,22 @@
     }
     function showImage(event) {
         var pic = document.getElementById("pic");
-        pic.style.display = "block";
+        pic.style.display = "inline-block";
+        pic.style.opacity = 0;
         pic.src = "static/image/" + event.target.value.toLowerCase() + ".jpeg";
         pic.alt = event.target.value.toLowerCase();
+        fadeIn(pic, 0);
         console.log(event.target.value);
     }
-
+    function fadeIn(element, opacity) {
+        console.log(element.style.opacity);
+        console.log(opacity);
+        if (element.style.opacity < 1){
+            element.style.opacity = opacity;
+            opacity += 0.1;
+            setTimeout(fadeIn, 100, element, opacity);
+        }
+    }
     function init() {
         var element = document.getElementById("show_all");
         element.addEventListener("click", showAll);
