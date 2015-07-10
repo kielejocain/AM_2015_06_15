@@ -8,56 +8,99 @@ body {
     font-family: 'Trebuchet MS', sans-serif;
 }
 
-header {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 1em;
-    padding: 1.5em 4em;
+header, footer, nav, main, aside {
+    box-sizing: border-box;
+}
+
+header, footer {
+    position: fixed;
+    left: 0;
+    right: 0;
     color: white;
     background-color: black;
 }
 
-nav {
-    position: absolute;
+nav, body > aside {
+    position: fixed;
     top: 4em;
-    width: 100%;
-    background-color: pink;
-    padding: 0.25em 4em;
+    bottom: 0;
+    width: 200px;
+    height: 100%;
+    padding: 2em;
+    background-color: whitesmoke;
+
+}
+
+header {
+    top: 0;
+    height: 4em;
+    padding: 1.5em 2em;
+}
+
+nav {
+    left: 0;
 }
 
 nav > a {
-    display: inline-block;
-    margin-left: 2em;
+    display: block;
+    padding: 0.5em 0;
+    color: darkred;
+}
+
+nav h1, body > aside h1 {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0 0 1em 0;
 }
 
 main {
-    position: relative;
-    top: 6em;
-    margin-left: 100px;
-    margin-right: 300px;
-    background-color: cornsilk;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: whitesmoke;
+    padding-top: 4em; /* size of header */
+    padding-left: 200px; /* size of LC */
+    padding-right: 200px; /* size of RC */
+    padding-bottom: 2em; /* size of footer */
+}
+
+main h1 {
+    font-size: 1.5em;
+    padding: 0 0.75em;
+}
+
+main h2 {
+    font-size: 1.25em;
 }
 
 section {
     background-color: white;
+    padding: 1em 2em;
+    margin: 1em 0;
 }
 
 article {
-    float: left;
+    padding: 1em 0;
+    border-bottom: 1px solid gray;
 }
 
-aside {
-    float: right;
-    width: 30%;
-    background-color: green;
+article:last-child {
+    border: none;
+}
+
+blockquote {
+    background-color: lightgray;
+    padding: 1em;
+}
+
+body > aside {
+    right: 0;
 }
 
 footer {
-    position: absolute;
-    width: 100%;
     bottom: 0;
-    padding: 0.5em 4em;
-    color: white;
-    background-color: black;
+    height: 2em;
+    padding: 0.5em 2em;
 }
