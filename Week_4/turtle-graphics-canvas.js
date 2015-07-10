@@ -3,15 +3,6 @@
 
 "use strict";
 
-var color = {
-    black: "#000000",
-    red: "#ff0000",
-    green: "#00ff00",
-    blue: "#0000ff",
-    yellow: "#ffff00",
-    fuchsia: "#ff00ff",
-    aqua: "#00ffff"
-};
 
 var turtle = {
     x: 0,
@@ -20,6 +11,15 @@ var turtle = {
     penDown: true,
     strokeStyle: "black",
     lineWidth: 3
+};
+turtle.colors = {
+    black: "#000000",
+    red: "#ff0000",
+    green: "#00ff00",
+    blue: "#0000ff",
+    yellow: "#ffff00",
+    fuchsia: "#ff00ff",
+    aqua: "#00ffff"
 };
 
 document.addEventListener("DOMContentLoaded", function () {
