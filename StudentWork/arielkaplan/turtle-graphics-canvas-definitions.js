@@ -47,14 +47,24 @@ turtle.triangle = function (length) {
 
 turtle.circle = function (diameter) {
     var radius = (diameter / 2);
+    var draw = 0;
+    // to fill in
+    if (diameter < 200) {
+        draw = 1;
+    } else if (diameter < 500) {
+        draw = 2;
+    } else {
+        draw = 3;
+    }
+
     for (var i = 1; i <= 360; i++) {
         turtle.penDown = false;
         turtle.forward(radius);
         turtle.penDown = true;
         turtle.left(90);
-        turtle.forward(1);
-        turtle.backward(2);
-        turtle.forward(1);
+        turtle.forward(draw);
+        turtle.backward(draw * 2);
+        turtle.forward(draw);
         turtle.right(90);
         turtle.penDown = false;
         turtle.backward(radius);
