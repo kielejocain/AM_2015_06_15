@@ -70,10 +70,25 @@ article {
 
 blockquote {
 	background-color: fuchsia;
-	left: auto;
-	right: auto;
+
 	width: 30%;
 	padding: 1em;
 	margin: 1em;
 	vertical-align: center;
+	font-size: 20;
+}
+
+blockquote:nth-child(odd) {
+	left: 0px;
+	right: auto;
+}
+
+blockquote:nth-child(even) {
+	right: 0px;
+	left: auto;
+}
+
+.section-link {
+	background-color: cornflowerblue;
+	padding: .5em;
 }
