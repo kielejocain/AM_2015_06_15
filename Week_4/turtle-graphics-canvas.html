@@ -3,7 +3,7 @@
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function () {
 
-        turtle.strokeStyle = color.blue;
+        turtle.strokeStyle = turtle.colors.blue;
 //        turtle.forward(50);
 //        turtle.drawTurtle();
 
@@ -51,9 +51,10 @@
 
         turtle.repeat(
                 function (i) {
-                    var colorKeys = Object.keys(color);
-                    var key = colorKeys[i];
-                    turtle.strokeStyle = color[key];
+                    var colorKeys = Object.keys(turtle.colors);
+                    var index = i % colorKeys.length;
+                    var key = colorKeys[index];
+                    turtle.strokeStyle = turtle.colors[key];
 
                     turtle.shape();
                     turtle.penDown = false;
