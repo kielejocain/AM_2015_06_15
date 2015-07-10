@@ -105,9 +105,8 @@ turtle.drawTurtle = function () {
 };
 
 turtle.repeat = function (callback, count) {
-    var i;
-    for (i = 1; i <= count; i++) {
-        callback();
+    for (var i = 1; i <= count; i++) {
+        callback(i);
     }
 };
 
