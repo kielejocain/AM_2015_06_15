@@ -45,10 +45,12 @@ nav > a {
     display: block;
     padding: 0.5em 0;
     color: darkred;
+    text-decoration: none;
 }
 
 nav > a:hover {
     color: indianred;
+    text-decoration: underline;
 }
 
 nav h1, body > aside h1 {
@@ -72,7 +74,7 @@ main {
 
 main h1 {
     font-size: 1.5em;
-    padding: 0 0.75em;
+    padding: 0.25em 0.75em;
 }
 
 main h2 {
@@ -97,6 +99,7 @@ article:last-child {
 blockquote {
     background-color: lightgray;
     padding: 1em;
+    border-left: 3px solid darkred;
 }
 
 body > aside {
