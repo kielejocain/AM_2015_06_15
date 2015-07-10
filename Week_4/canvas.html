@@ -1,6 +1,7 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
 
+//        <canvas width="800" height="600">
         var canvas = document.createElement('canvas');
         canvas.setAttribute("width", window.innerWidth);
         canvas.setAttribute("height", window.innerHeight);
@@ -17,6 +18,11 @@
         context.lineTo(100, 200);
         context.lineTo(100, 100);
         context.stroke();
+
+        //TODO:
+        // 1. draw a square instead of a triangle.
+        // 2. draw two separate squares
+        // 3. draw n squares in a loop
 
     });
 
