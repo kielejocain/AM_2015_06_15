@@ -3,29 +3,65 @@
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function () {
 
-        turtle.forward(50);
-        turtle.drawTurtle();
-//
-//        turtle.penDown = false;
-//        turtle.forward(50);
-//        turtle.penDown = true;
-//        turtle.drawTurtle();
-//        turtle.penDown = false;
-//        turtle.forward(50);
-//
-//        turtle.penDown = true;
+        turtle.strokeStyle = color.blue;
 //        turtle.forward(50);
 //        turtle.drawTurtle();
 
-        turtle.drawStar();
+        var length = 20;
 
-//        turtle.line = function () {
-//            turtle.forward(50);
-//        };
-//
-//        turtle.penDown = false;
-//        turtle.forward(50);
-//        turtle.penDown = true;
-//        turtle.repeat(turtle.line,6,60)
+        turtle.triangle = function () {
+            turtle.forward(length);
+            turtle.left(120);
+            turtle.forward(length);
+            turtle.left(120);
+            turtle.forward(length);
+            turtle.left(120);
+        };
+
+        turtle.triangle = function () {
+            turtle.repeat(
+                    function () {
+                        turtle.forward(length);
+                        turtle.left(120);
+                    }
+                    , 3
+            );
+        };
+
+        turtle.triangle = function (length) {
+            turtle.repeatAngle(function () {
+                        turtle.forward(length);
+                    },
+                    3,
+                    120);
+        };
+
+        turtle.shape = function () {
+            turtle.repeat(
+                    function () {
+                        turtle.penDown = true;
+                        turtle.triangle(length);
+                        turtle.penDown = false;
+                        turtle.forward(length);
+                        turtle.left(30);
+                    }
+                    , 12
+            );
+        };
+
+        turtle.repeat(
+                function (i) {
+                    var colorKeys = Object.keys(color);
+                    var key = colorKeys[i];
+                    turtle.strokeStyle = color[key];
+
+                    turtle.shape();
+                    turtle.penDown = false;
+                    turtle.forward(length * 5);
+                    turtle.left(30);
+                }
+                , 12
+        );
+
     });
 </script>

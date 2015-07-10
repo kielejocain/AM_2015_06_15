@@ -3,6 +3,15 @@
 
 "use strict";
 
+var color = {
+    black: "#000000",
+    red: "#ff0000",
+    green: "#00ff00",
+    blue: "#0000ff",
+    yellow: "#ffff00",
+    fuchsia: "#ff00ff",
+    aqua: "#00ffff"
+};
 
 var turtle = {
     x: 0,
@@ -95,11 +104,15 @@ turtle.drawTurtle = function () {
     turtle.left(150);
 };
 
-turtle.repeat = function (fn, count, angle) {
-    var i;
-    for (i = 1; i <= count; i++) {
-        console.log(i);
-        fn();
-        turtle.left(angle);
+turtle.repeat = function (callback, count) {
+    for (var i = 1; i <= count; i++) {
+        callback(i);
     }
+};
+
+turtle.repeatAngle = function (callback, count, angle) {
+    turtle.repeat(function () {
+        callback();
+        turtle.left(angle);
+    }, count);
 };
