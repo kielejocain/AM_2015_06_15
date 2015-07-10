@@ -149,7 +149,8 @@ class Hand(object):
 
     def calc_multiples(self):
         of_a_kind = {}
-        pair = 0
+        three = False
+        pairs = []
         # create dict {value: frequency}
         for value in self.values:
             if value not in of_a_kind.keys():
@@ -167,11 +168,13 @@ class Hand(object):
                 self.score["four of a kind"] = [True, four_of_value]
             elif count == 3:
                 three_of_value = self.high.pop(card)
-                three = True
-            elif count == 2:
-                pair += 1
-
                 self.score["three of a kind"] = [True, three_of_value]
+            elif count == 2:
+                two_of_value = self.high.pop(card)
+                pairs.append(two_of_value)
+            else:
+                pass
+
 
 
     def calculate(self):
