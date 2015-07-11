@@ -149,39 +149,59 @@ class Hand(object):
 
     def calc_multiples(self):
         of_a_kind = {}
-        three = False
+        self.high = list(self.values)
+        three = []
         pairs = []
         # create dict {value: frequency}
         for value in self.values:
             if value not in of_a_kind.keys():
                 of_a_kind[value] = 0
-            else:
-                of_a_kind[value] += 1
+            of_a_kind[value] += 1
 
         for card, count in of_a_kind.items():
-            # copy value list
-            self.high = self.values[:]
-
             if count == 4:
                 # remove used cards
-                four_of_value = self.high.pop(card)
+                four_of_value = card
+                self.high.remove(card)
                 self.score["four of a kind"] = [True, four_of_value]
             elif count == 3:
-                three_of_value = self.high.pop(card)
-                self.score["three of a kind"] = [True, three_of_value]
+                three.append(card)
+                # self.remove_card(card, 3)
+                self.score["three of a kind"] = [True, three[0]]
             elif count == 2:
-                two_of_value = self.high.pop(card)
-                pairs.append(two_of_value)
+                pairs.append(card)
+                # self.remove_card(card, 2)
+                print pairs
             else:
                 pass
+        self.calc_full_house(three, pairs)
+        self.score["high card"] = self.high
 
 
+    def remove_card(self, card, count):
+        i = 0
+        while i < count:
+            self.high.remove(card)
+
+
+    def calc_full_house (self, three, pairs):
+        """Takes a two lists of values; may be empty"""
+        if (len(three) == 1) and (len(pairs) == 1):
+            self.score["full house"] = [True, three[0], pairs[0]]
+            self.score["three of a kind"] = [False, None]
+        elif len(pairs) == 2:
+            self.score["two pairs"] = [True, pairs[1], pairs[0]] # higher value first
+        elif len(pairs) == 1:
+            self.score["one pair"] = [True, pairs[0]]
+        else:
+            print "Not a full house"
 
     def calculate(self):
         """Returns dict score: """
         # needs more arguments, probably
         self.calc_flush()
         self.calc_multiples()
+
 
 
 
