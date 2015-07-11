@@ -160,28 +160,19 @@ class Hand(object):
 
         for card, count in of_a_kind.items():
             if count == 4:
-                # remove used cards
                 four_of_value = card
-                self.high.remove(card)
                 self.score["four of a kind"] = [True, four_of_value]
             elif count == 3:
                 three.append(card)
-                # self.remove_card(card, 3)
                 self.score["three of a kind"] = [True, three[0]]
             elif count == 2:
                 pairs.append(card)
-                # self.remove_card(card, 2)
                 print pairs
             else:
-                pass
+                self.score["high card"].append(card)
         self.calc_full_house(three, pairs)
-        self.score["high card"] = self.high
 
-
-    def remove_card(self, card, count):
-        i = 0
-        while i < count:
-            self.high.remove(card)
+        # TODO: change iterator so high card is in value order
 
 
     def calc_full_house (self, three, pairs):
