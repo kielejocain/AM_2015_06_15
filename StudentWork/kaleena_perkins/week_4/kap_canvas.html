@@ -35,17 +35,18 @@
 
         // 3. draw n squares in a loop
         var randomNumber = Math.floor(Math.random()*550);
+       	var x = randomNumber;
+		var y = randomNumber;
         var n = 5;
 		for (i = 0; i < n; i ++){
-		var x = randomNumber;
-        var y = randomNumber; 
-		context.beginPath();
-		context.moveTo(x, y);
-		context.lineTo(x, y += 50);
-		context.lineTo(x += 50, y);
-		context.lineTo(x, y -= 50);
-		context.lineTo(x -= 50, y);
-		context.stroke();
+			context.beginPath();
+			context.moveTo(x, y);
+			context.lineTo(x, y += 50);
+			context.lineTo(x += 50, y);
+			context.lineTo(x, y -= 50);
+			context.lineTo(x -= 50, y);
+			context.stroke();
+			context.moveTo(x + 100, y +50);
 		};
     });
 
