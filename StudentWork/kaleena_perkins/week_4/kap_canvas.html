@@ -1,0 +1,52 @@
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+//        <canvas width="800" height="600">
+        var canvas = document.createElement('canvas');
+        canvas.setAttribute("width", window.innerWidth);
+        canvas.setAttribute("height", window.innerHeight);
+        document.body.appendChild(canvas);
+
+        var context = canvas.getContext("2d");
+
+        context.lineWidth = 3;
+        context.strokeStyle = "blue";
+
+        context.beginPath();
+		// 1. draw a square instead of a triangle.
+        context.moveTo(100, 100);
+        context.lineTo(100, 200);
+        context.lineTo(200, 200);
+        context.lineTo(200, 100);
+        context.lineTo(100, 100);
+
+        context.stroke();
+        
+        context.beginPath();
+        // 2. draw two separate squares        
+        context.moveTo(300, 100);
+        context.lineTo(300, 200);
+        context.lineTo(400, 200);
+        context.lineTo(400, 100);
+        context.lineTo(300, 100);
+        
+        context.stroke();
+
+        // 3. draw n squares in a loop
+        var randomNumber = Math.floor(Math.random()*550);
+        var n = 5;
+		for (i = 0; i < n; i ++){
+		var x = randomNumber;
+        var y = randomNumber; 
+		context.beginPath();
+		context.moveTo(x, y);
+		context.lineTo(x, y += 50);
+		context.lineTo(x += 50, y);
+		context.lineTo(x, y -= 50);
+		context.lineTo(x -= 50, y);
+		context.stroke();
+		};
+    });
+
+</script>
