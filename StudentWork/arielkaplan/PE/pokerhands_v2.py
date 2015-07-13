@@ -10,7 +10,6 @@ class Player(object):
         self.hands = []
 
 
-
 class Round(object):
     """Compares two hands"""
 
@@ -222,6 +221,13 @@ test_hand_values('2C 3S 8S 8D TD', 'one pair, T high') # one pair, T high
 test_hand_values('6S 7S 8S 9S TS', 'straight flush ') # straight flush
 test_hand_values('6S QH 6D 6H QD', 'full house')
 test_hand_values('AH 7S AS 9D 9H', 'two pair, A & 9')
+test_hand_values('6S 7S 8S 9D TH', 'straight')
+test_hand_values('8S 8H 8D 8C JC', 'four of a kind')
+test_hand_values('TS JS QS KS AS', 'royal flush')
+test_hand_values('6S KS 2S 9D TH', 'nothing')
+test_hand_values('6D KH 8S 9C TD', 'nothing')
+
+
 
 # score1 = [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
 # score2 = [0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
