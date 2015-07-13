@@ -1,7 +1,5 @@
 <body>
-    <div>
-        Loading ...
-
+    Loading ...
 </body>
 <script>
     //TODO: count down to zero from a specific value.
@@ -10,17 +8,13 @@
     // alert method to show a message.
     // the date object is not required
 
-    document.body.div.style.backgroundColor = "blue";
-    document.body.div.style.height = "100px";
-    document.body.div.style.width = "200px";
-
-    function initTime() {
-        var div = document.createElement("div");
-        div.style.backgroundColor = "blue";
-        div.style.height = "100px";
-        div.style.width = "200px";
-        // document.body.appendChild(div);
-    }
+//    function initTime() {
+//        var div = document.createElement("div");
+//        div.style.backgroundColor = "blue";
+//        div.style.height = "100px";
+//        div.style.width = "200px";
+//        document.body.appendChild(div);
+//    }
 
     function showTime() {
         var d = new Date();
@@ -39,13 +33,13 @@
             seconds = "0" + seconds;
         }
 
-        document.body.div.innerHTML = "The time is now: <b>" +
+        document.body.innerHTML = "The time is now: <b>" +
                 hours + ":" +
                 minutes + ":" +
                 seconds +
                 "</b>";
         setTimeout(showTime, 1000);
     }
-    initTime();
+//    initTime();
     showTime();
 </script>

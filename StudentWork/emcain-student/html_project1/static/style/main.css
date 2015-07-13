@@ -1,0 +1,9 @@
+body {
+    background-color: gray;
+    color: yellow;
+    font-family: sans-serif;
+}
+
+input {
+	margin-top: 2em;
+}

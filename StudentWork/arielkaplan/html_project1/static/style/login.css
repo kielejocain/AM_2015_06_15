@@ -1,0 +1,44 @@
+body {
+    background-color: bisque;
+    color: darkslategray;
+    font-family: sans-serif;
+}
+
+#login {
+    position: relative;
+    width: 15em;
+    margin: auto;
+    background-color: white;
+    border: 1px solid gray;
+    padding: 3em 3em 5em 3em;
+    box-shadow: 1em 1em 3em darkgrey;
+}
+
+#login label {
+    display: block;
+}
+
+#login label > span {
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
+#login label > input {
+    position: absolute;
+    right: 5em;
+}
+
+#login .button {
+    position: absolute;
+    right: 5em;
+    padding: 0.75em;
+    margin-top: 1.5em;
+    border: none;
+    background-color: darkorange;
+    color: white;
+    text-transform: uppercase;
+}
+
+#login .button:hover {
+    background-color: orangered;
+}

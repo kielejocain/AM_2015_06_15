@@ -1,0 +1,36 @@
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+header{
+	background: #3F5E83;
+	top: 0;
+	position: fixed;
+	width: 100%;	
+}
+
+.wrapper {
+	margin-top: 50px;
+	flex: 2;
+	display: flex;
+}
+
+article {
+	background: #6B87A0;
+	}
+
+article {
+	flex: 1;
+}
+
+nav {
+	background: #87A96B;
+	flex-align: stretch;
+	flex: 1;
+}
+
+footer {
+	flex: 1;
+	background: #A2B7CF;
+}

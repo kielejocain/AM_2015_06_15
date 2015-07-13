@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A Form for LeRoy</title>
+    <link href= "static/style/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/style/seabeck_demo_style.css">
+    <style>
+
+        #login h2 {
+/*            text-align: center;
+*/            margin: 1em .5em 1em .5em ;
+        }
+
+        #login p {
+            margin: 0em 1em .5em 1em;
+/*            text-align: center;
+*/        }
+
+
+        #submit {
+            opacity: 1.0;
+            background-color: #303457;
+            color: #ECE7E4;
+            font-style: bold;
+            padding: .25em .5em .25em .5em;
+            margin: 1em;
+        }
+
+
+
+
+    </style>
+
+
+</head>
+<body>
+<div id="login">
+    <h2>Seabeck Registration Login</h2>
+    <p>Please enter your email address and password.</p>
+    <form method="post">
+        <label>
+            <span>
+                Username
+            </span>
+            <input id="username" name="username">
+        </label>
+        <br>
+        <label>
+            <span>
+                Password
+            </span>
+            <input type="password" id="password" name="password">
+        </label>
+        <br>
+        <input id="submit" type="submit" value="Login">
+    </form>
+    <p>If you haven't signed up yet, create a <a href=#>new account</a>. If you have forgotten your username and/or password, <a href=#>click here</a>.</p>
+</div>
+</body>
+<script>
+
+    function isValid(username_text, password_text) {
+        // TODO: Test username and password are correct
+        // this is not a real world ready secure solution
+        // this is just an exercise.
+        // make up a user name and password of your choice here
+
+        if (username_text == "LeRoy Jenkins" && password_text == "opensesame") {
+            return true;
+        }
+        else if (username_text != "LeRoy Jenkins"){
+            alert("that is not a real person!")
+            return false
+        }
+        else {
+            return false;
+        }
+
+
+    }
+
+    function validate(e) {
+        var username_element = document.getElementById("username");
+        var password_element = document.getElementById("password");
+        var username_text = username_element.value;
+        var password_text = password_element.value;
+
+        if (isValid(username_text, password_text)) {
+            alert("SUCCESS: The form is valid.")
+            document.body.style.backgroundColor = "green";
+        } else {
+            alert("FAIL: The form is *not* valid.")
+            document.body.style.backgroundColor = "red";
+
+        }
+        return false;
+    }
+
+    function init () {
+        var login = document.getElementById("login");
+        login.addEventListener("submit", validate); // "submit" is in quotes, validate isn't. validate has no ()
+    }
+
+    // document.addEventListener("DOMContentLoaded", init); // call init after the page is loaded
+    init()
+</script>
+</html>

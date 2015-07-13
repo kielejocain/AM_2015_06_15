@@ -50,16 +50,16 @@ class Hand(object):
         self.score = {
             # [0] is if hand is present
             # [1] and optional [2] is value of cards
-            "royal flush": [False, None],
+            "royal flush": [False],
             "straight flush": [False, None], # high card of straight
-            "four of a kind": [False, None],
+            "four of a kind": [False, None], # value of four of a kind
             "full house": [False, None, None], # 3x value, 2x value
-            "flush": [False, None],
+            "flush": [False],
             "straight": [False, None], # high card of straight
-            "three of a kind": [False, None],
+            "three of a kind": [False, None], # value of three of a kind
             "two pairs": [False, None, None], # value of each pair
-            "one pair": [False, None],
-            "high card": []
+            "one pair": [False, None], # value of pair
+            "high card": [] # unused cards
         }
 
     def __repr__(self):
@@ -103,6 +103,8 @@ class Hand(object):
 
     def values(self):
         """returns list of card values low-->high"""
+
+        # vv This is not very efficient. Easier way in calc_multiples
         how_many = {
             "2": self.hand.count("2"),
             "3": self.hand.count("3"),
@@ -118,9 +120,7 @@ class Hand(object):
             "K": self.hand.count("K"),
             "A": self.hand.count("A"),
         }
-        print how_many
         ordered_values = []
-
         for i in self.card_order:
             while how_many[i] != 0:
                 ordered_values.append(i)
@@ -133,10 +133,53 @@ class Hand(object):
         # Remove those already used???
         pass
 
+
+    def calc_flush(self):
+        HIGHEST_CARD = -1
+        if self.flush and self.straight and (self.values[HIGHEST_CARD] == "A"):
+            self.score["royal flush"] = [True]
+        elif self.flush and self.straight:
+            high_card = self.values[HIGHEST_CARD]
+            self.score["straight flush"] = [True, high_card]
+        elif self.flush:
+            self.score["flush"] = [True]
+        else:
+            print "No flush"
+
+
+    def calc_multiples(self):
+        of_a_kind = {}
+        pair = 0
+        # create dict {value: frequency}
+        for value in self.values:
+            if value not in of_a_kind.keys():
+                of_a_kind[value] = 0
+            else:
+                of_a_kind[value] += 1
+
+        for card, count in of_a_kind.items():
+            # copy value list
+            self.high = self.values[:]
+
+            if count == 4:
+                # remove used cards
+                four_of_value = self.high.pop(card)
+                self.score["four of a kind"] = [True, four_of_value]
+            elif count == 3:
+                three_of_value = self.high.pop(card)
+                three = True
+            elif count == 2:
+                pair += 1
+
+                self.score["three of a kind"] = [True, three_of_value]
+
+
     def calculate(self):
         """Returns dict score: """
         # needs more arguments, probably
-        pass
+        self.calc_flush()
+        self.calc_multiples()
+
 
 
 p1 = Player("Player 1")
@@ -161,19 +204,25 @@ for hand in two_hands:
 
 #############
 
-def test_hand_values(hand):
+def test_hand_values(hand, outcome):
     test_hand = Hand(hand)
-    print "hand: " + str(test_hand.hand)
-    print "cards: " + str(test_hand.cards)
+    test_hand.calculate()
+    print "hand: " + str(test_hand.hand) + " = " + str(outcome)
+    # print "cards: " + str(test_hand.cards)
     print "values: " + str(test_hand.values)
     print "straight: " + str(test_hand.straight)
     print "flush: " + str(test_hand.flush)
-    print "high: " + str(test_hand.high) + "\n"
+    print "high: " + str(test_hand.high)
+    print "Score: "
+    for key, value in test_hand.score.items():
+        print str(key) + ": " + str(value)
+    print "-" * 10
 
-test_hand_values('5H 5C 6S 7S KD') # one pair, K high
-test_hand_values('2C 3S 8S 8D TD') # one pair, T high
-test_hand_values('6S 7S 8S 9S TS') # straight flush
-
+test_hand_values('5H 5C 6S 7S KD', 'one pair, K high') # one pair, K high
+test_hand_values('2C 3S 8S 8D TD', 'one pair, T high') # one pair, T high
+test_hand_values('6S 7S 8S 9S TS', 'straight flush ') # straight flush
+test_hand_values('6S QH 6D 6H QD', 'full house')
+test_hand_values('AH 7S AS 9D 9H', 'two pair, A & 9')
 
 # score1 = [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
 # score2 = [0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
