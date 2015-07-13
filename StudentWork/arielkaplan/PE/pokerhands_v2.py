@@ -179,6 +179,8 @@ class Hand(object):
         # needs more arguments, probably
         self.calc_flush()
         self.calc_multiples()
+        if self.score == {}:
+            self.score["high card"] = self.high_cards
 
 p1 = Player("Player 1")
 p2 = Player("Player 2")
