@@ -23,10 +23,7 @@ class View(object):
             item_template = self.template
             for field in self.model.fields:
                 if field in item.keys():
-                    clean_field = item[field]
-                    if type(clean_field) == list:
-                        clean_field = ", ".join(clean_field)
-                    item_template = item_template.replace("{{" + field + "}}", str(clean_field))
+                    item_template = item_template.replace("{{" + field + "}}", item[field])
             output += item_template
         return output
 
@@ -54,7 +51,7 @@ app = Application()
 # define models (
 app.models["user"] = Model("user", ["name", "score"])
 app.models["game"] = Model("game", ["game_name", "description"])
-app.models["team"] = Model("team", ["coach", "win_loss", "team_members"])
+app.models["team"] = Model("team", ["coach", "win_loss"])
 
 # load model objects form database tables
 app.models["user"].objects = [
@@ -64,17 +61,15 @@ app.models["user"].objects = [
     {"name": "Alice", "score": "13"}]
 
 app.models["team"].objects = [
-    {"coach": "Mr. Green", "win_loss": "4/1", "team_members": ["Alice", "Bob", "Carol"]},
-    {"coach": "Ms. Scarlet", "win_loss": "3/2", "team_members": ["David", "Eve", "Frank"]},
-    {"coach": "Col. Mustard", "win_loss": "2/3", "team_members": ["George", "Hannah", "Isabelle"]},
+    {"coach": "Mr. Green", "win_loss": "4/1"},
+    {"coach": "Ms. Scarlet", "win_loss": "3/2"},
+    {"coach": "Col. Mustard", "win_loss": "2/3"},
 ]
 
 score_template = "\nHello <em>{{name}}</em>, your score is <strong>{{score}}</strong>.<br>\n"
 scores_view = View(score_template, app.models["user"])
 
-team_template = "Coach: <em>{{coach}}</em>.\n" \
-                "Win/Loss Record: <strong>{{win_loss}}</strong>." \
-                "Team Members: <strong>{{team_members}}</strong><br>\n"
+team_template = "Coach: <em>{{coach}}</em>.\nWin/Loss Record: <strong>{{win_loss}}</strong>.<br>\n"
 team_view = View(team_template, app.models["team"])
 
 app.controller.routes = {
@@ -88,10 +83,7 @@ request_path = "/scores/"
 print(app.controller.route(request_path))
 
 request_path = "/teams/"
-output = app.controller.route(request_path)
-f = open('mvc_output.html', "w")
-f.write(output)
-f.close()
+print(app.controller.route(request_path))
 
 # TODO:
 # 1. Add a new model, view/template and route)
