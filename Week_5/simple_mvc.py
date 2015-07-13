@@ -34,7 +34,9 @@ class Controller(object):
         self.routes = {}
 
     def route(self, path):
-        return self.routes[path].render()
+        view = self.routes[path]
+        output = view.render()
+        return output
 
 
 # CONTAINS THE SINGLE CONTROLLER AND ALL MODEL AND VIEW INSTANCES
@@ -61,12 +63,14 @@ app.models["user"].objects = [
 
 score_template = "\nHello <em>{{name}}</em>, your score is <strong>{{score}}</strong>.<br>\n"
 scores_view = View(score_template, app.models["user"])
-# Controller
+
+#  Controller
 app.controller.routes = {
     "/scores/": scores_view,
     "/score/": scores_view,
 }
-# TEST
+
+#  TEST
 request_path = "/scores/"
 print(app.controller.route(request_path))
 

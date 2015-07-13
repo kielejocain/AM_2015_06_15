@@ -1,4 +1,5 @@
 <body>
+Loading...
 </body>
 <script>
     // MVC: A GENERIC ARCHITECTURE FOR MAKING APPS THAT DISPLAY DATA
@@ -8,11 +9,11 @@
         this.name = name;
         this.fields = fields;
         this.objects = [];
-
-//        function create(item) {
-//            this.objects.append(item);
-//        }
     }
+    Model.prototype.create = function (item) {
+        this.objects.push(item);
+    };
+
 
     // VIEW: A TEMPLATE FOR A PAGE OR PAGE FRAGMENT
     function View(template, model) {
@@ -21,10 +22,10 @@
     }
     View.prototype.render = function () {
         var output = "";
-        for (var i in this.model.objects) {
-            var item = this.model.objects[i]
+        for (var i = 0; i < this.model.objects.length; i++) {
+            var item = this.model.objects[i];
             var item_template = this.template;
-            for (var f in this.model.fields) {
+            for (var f = 0; f < this.model.fields.length; f++) {
                 var field = this.model.fields[f];
                 if (item.hasOwnProperty(field)) {
                     item_template = item_template.replace("{{" + field + "}}", item[field])
@@ -34,16 +35,15 @@
         }
         return output;
     };
+
     // CONTROLLER: Routes messages
     function Controller() {
         this.routes = {};
     }
     Controller.prototype.route = function (path) {
         var view = this.routes[path];
-        var output = view.render();
-        return output;
+        return view.render();
     };
-
 
     // CONTAINS THE SINGLE CONTROLLER AND ALL MODEL AND VIEW INSTANCES
     function Application() {
@@ -52,34 +52,15 @@
         this.controller = new Controller()
     }
 
+    //END APP FRAMEWORK DEFINITION
+
+    //BEGIN EXAMPLE APP
+
     // CREATE AN APPLICATION INSTANCE
     var app = new Application();
 
     // functionine models (
     app.models["user"] = new Model("user", ["name", "score"]);
-    app.models["game"] = new Model("game", ["game_name", "description"]);
-
-    // load model objects form database tables
-    //    app.models["user"].objects = [
-    //        {"name": "Bob", "score": "9"},
-    //        {"name": "Carol", "score": "11"},
-    //        {"name": "Ted", "score": "15"},
-    //        {"name": "Alice", "score": "13"}
-    //    ];
-
-    var url = "./simple_mvc_javascript_data.json";
-    var request = new XMLHttpRequest();
-    request.open("GET", url);
-
-    //For older browsers use onstatuschanged
-    request.onloadend = function (e) {
-        app.models["user"].objects = JSON.parse(e.currentTarget.responseText);
-        //  TEST
-        request_path = "/scores/";
-        document.body.innerHTML = app.controller.route(request_path);
-    };
-
-    request.send();
 
     score_template = "\nHello <em>{{name}}</em>, your score is <strong>{{score}}</strong>.<br>\n";
     scores_view = new View(score_template, app.models["user"]);
@@ -87,12 +68,34 @@
     //  Controller
     app.controller.routes = {
         "/scores/": scores_view,
-        "/score/": scores_view,
     };
 
+    // Draw Loaded Data
+    function draw(data) {
+        app.models["user"].objects = data;
+        //  TEST
+        request_path = "/scores/";
+        document.body.innerHTML = app.controller.route(request_path);
+
+    }
+
+    // BEGIN WEB REST API CALL TO GET JSON DATA
+    var url = "./simple_mvc_javascript_data.json";
+    var request = new XMLHttpRequest();
+    request.open("GET", url);
+
+    //For pre html5 browsers use onstatuschanged
+    request.onloadend = function (e) {
+        var json_string = e.currentTarget.responseText;
+        var data = JSON.parse(json_string);
+        draw(data);
+    };
+
+    request.send();
 
     // TODO:
-    // 1. Add a new model, view/template and route)
-    // 2. call your new route and write output to a file
-    // 3. open file in your browser
+    // 1. Add a new second json model file source
+    // 2. create templates ad views to consume them.
+    // 3. Make the data source and the view change based on the url bookmark
+    //      using the window's hash change event. e.g. /#shoes vs /#pants
 </script>
