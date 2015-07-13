@@ -10,7 +10,6 @@ class Player(object):
         self.hands = []
 
 
-
 class Round(object):
     """Compares two hands"""
 
@@ -38,36 +37,40 @@ class Hand(object):
 
     def __init__(self, hand):
 
+        self.HAND_LENGTH = 5
         self.card_order = ["2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"]
+        self.score_order = [
+            "royal flush",
+            "straight flush",
+            "four of a kind",
+            "full house",
+            "flush",
+            "straight",
+            "three of a kind",
+            "two pairs",
+            "one pair",
+            "high card"
+        ]
+
         self.hand = hand # string
         self.cards = hand.split(' ')
         self.values = self.values() # list of cards in low-->high order
+        self.how_many = self.how_many()  # {'card': frequency}
 
         self.straight = self.straight() # boolean
         self.flush = self.flush() # boolean
-        self.high = self.high_card() # list high-->low
+        self.high_cards = self.high_card() # unused card list low-->high
 
-        self.score = {
-            # [0] is if hand is present
-            # [1] and optional [2] is value of cards
-            "royal flush": [False],
-            "straight flush": [False, None], # high card of straight
-            "four of a kind": [False, None], # value of four of a kind
-            "full house": [False, None, None], # 3x value, 2x value
-            "flush": [False],
-            "straight": [False, None], # high card of straight
-            "three of a kind": [False, None], # value of three of a kind
-            "two pairs": [False, None, None], # value of each pair
-            "one pair": [False, None], # value of pair
-            "high card": [] # unused cards
-        }
+        self.score = {}
+        # e.g. "straight flush": [high card value, []]
+        # e.g. "full house": [pair value, three of a kind value, []]
+        # e.g. "three of a kind": [three of a kind value, [A, 4] <-- unused cards
 
     def __repr__(self):
         return str(self.hand)
 
     def straight(self):
         """Are card values consecutive? Returns boolean."""
-        HAND_LENGTH = 5
         LOW_HAND_VALUE = 0
         card_order_start = 0
 
@@ -76,7 +79,7 @@ class Hand(object):
             card_order_start += 1
 
         # see if next card == next in card order
-        for i in range(HAND_LENGTH):
+        for i in range(self.HAND_LENGTH):
             current_value = self.values[i]
             compare_value = self.card_order[card_order_start]
             if current_value != compare_value:
@@ -86,104 +89,88 @@ class Hand(object):
             card_order_start += 1
         return True
 
-
     def flush(self):
         """Are all cards same suit? Returns boolean."""
-        suits = [
-            self.hand.count("S"),
-            self.hand.count("H"),
-            self.hand.count("D"),
-            self.hand.count("C")
-        ]
-        if max(suits) == 5:
-            return True
-        else:
-            return False
+        SUIT_INDEX = 1
+        for i in range(self.HAND_LENGTH):
+            current_suit = self.cards[i][SUIT_INDEX]
+            prev_suit = self.cards[i - 1][SUIT_INDEX]
+            if current_suit != prev_suit:
+                return False
+        return True
 
-
-    def values(self):
-        """returns list of card values low-->high"""
-
-        # vv This is not very efficient. Easier way in calc_multiples
-        how_many = {
-            "2": self.hand.count("2"),
-            "3": self.hand.count("3"),
-            "4": self.hand.count("4"),
-            "5": self.hand.count("5"),
-            "6": self.hand.count("6"),
-            "7": self.hand.count("7"),
-            "8": self.hand.count("8"),
-            "9": self.hand.count("9"),
-            "T": self.hand.count("T"),
-            "J": self.hand.count("J"),
-            "Q": self.hand.count("Q"),
-            "K": self.hand.count("K"),
-            "A": self.hand.count("A"),
-        }
-        ordered_values = []
-        for i in self.card_order:
-            while how_many[i] != 0:
-                ordered_values.append(i)
-                how_many[i] -= 1
-        return ordered_values
-
-
-    def high_card(self):
-        """Returns list of cards from high to low"""
-        # Remove those already used???
-        pass
-
-
-    def calc_flush(self):
-        HIGHEST_CARD = -1
-        if self.flush and self.straight and (self.values[HIGHEST_CARD] == "A"):
-            self.score["royal flush"] = [True]
-        elif self.flush and self.straight:
-            high_card = self.values[HIGHEST_CARD]
-            self.score["straight flush"] = [True, high_card]
-        elif self.flush:
-            self.score["flush"] = [True]
-        else:
-            print "No flush"
-
-
-    def calc_multiples(self):
+    def how_many(self):
         of_a_kind = {}
-        self.high = list(self.values)
-        three = []
-        pairs = []
-        # create dict {value: frequency}
         for value in self.values:
             if value not in of_a_kind.keys():
                 of_a_kind[value] = 0
             of_a_kind[value] += 1
+        return of_a_kind
 
-        for card, count in of_a_kind.items():
+    def values(self):
+        """returns list of card values low-->high"""
+        VALUE_INDEX = 0
+        values = []
+        for card in self.cards:
+            values.append(card[VALUE_INDEX])
+
+        ordered_values = []
+        for i in self.card_order:
+            for j in values:
+                if i == j:
+                    ordered_values.append(i)
+        return ordered_values
+
+    def high_card(self):
+        """Returns list of unused cards from low-->high"""
+        high_cards = []
+        if self.straight:
+            return []
+        else:
+            for card in self.card_order:
+                if card in self.how_many.keys() and self.how_many[card] == 1:
+                    high_cards.append(card)
+            return high_cards
+
+    def calc_flush(self):
+        HIGHEST_CARD_INDEX = -1
+        highest_card = self.values[HIGHEST_CARD_INDEX]
+        if self.flush and self.straight and (highest_card == "A"):
+            self.score["royal flush"] = [highest_card, self.high_cards]
+        elif self.flush and self.straight:
+            self.score["straight flush"] = [highest_card, self.high_cards]
+        elif self.flush:
+            self.score["flush"] = [highest_card, self.high_cards]
+        else:
+            pass
+
+    def calc_multiples(self):
+        three = None
+        pairs = []
+
+        for card, count in self.how_many.items():
             if count == 4:
                 four_of_value = card
-                self.score["four of a kind"] = [True, four_of_value]
+                self.score["four of a kind"] = [four_of_value, self.high_cards]
             elif count == 3:
-                three.append(card)
-                self.score["three of a kind"] = [True, three[0]]
+                three = card
+                self.score["three of a kind"] = [three, self.high_cards]
             elif count == 2:
+                # TODO: Order pairs high-->low
                 pairs.append(card)
-                print pairs
             else:
-                self.score["high card"].append(card)
+                pass
         self.calc_full_house(three, pairs)
-
-        # TODO: change iterator so high card is in value order
-
 
     def calc_full_house (self, three, pairs):
         """Takes a two lists of values; may be empty"""
-        if (len(three) == 1) and (len(pairs) == 1):
-            self.score["full house"] = [True, three[0], pairs[0]]
-            self.score["three of a kind"] = [False, None]
+        if (three != None) and (len(pairs) == 1):
+            self.score["full house"] = [three, pairs[0], self.high_cards]
+            del(self.score["three of a kind"])
         elif len(pairs) == 2:
-            self.score["two pairs"] = [True, pairs[1], pairs[0]] # higher value first
+            self.score["two pairs"] = [pairs[1], pairs[0], self.high_cards] # higher value first
         elif len(pairs) == 1:
-            self.score["one pair"] = [True, pairs[0]]
+            self.score["one pair"] = [pairs[0], self.high_cards]
         else:
             print "Not a full house"
 
@@ -192,9 +179,6 @@ class Hand(object):
         # needs more arguments, probably
         self.calc_flush()
         self.calc_multiples()
-
-
-
 
 p1 = Player("Player 1")
 p2 = Player("Player 2")
@@ -226,7 +210,7 @@ def test_hand_values(hand, outcome):
     print "values: " + str(test_hand.values)
     print "straight: " + str(test_hand.straight)
     print "flush: " + str(test_hand.flush)
-    print "high: " + str(test_hand.high)
+    print "high: " + str(test_hand.high_cards)
     print "Score: "
     for key, value in test_hand.score.items():
         print str(key) + ": " + str(value)
@@ -237,6 +221,13 @@ test_hand_values('2C 3S 8S 8D TD', 'one pair, T high') # one pair, T high
 test_hand_values('6S 7S 8S 9S TS', 'straight flush ') # straight flush
 test_hand_values('6S QH 6D 6H QD', 'full house')
 test_hand_values('AH 7S AS 9D 9H', 'two pair, A & 9')
+test_hand_values('6S 7S 8S 9D TH', 'straight')
+test_hand_values('8S 8H 8D 8C JC', 'four of a kind')
+test_hand_values('TS JS QS KS AS', 'royal flush')
+test_hand_values('6S KS 2S 9D TH', 'nothing')
+test_hand_values('6D KH 8S 9C TD', 'nothing')
+
+
 
 # score1 = [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
 # score2 = [0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
