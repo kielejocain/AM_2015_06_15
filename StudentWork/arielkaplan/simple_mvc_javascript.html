@@ -6,32 +6,33 @@ Loading...
 
     // MODEL: A LIST OF OBJECTS. TYPICALLY FROM A DATABASE
     function Model(name, fields) {
-        this.name = name;
-        this.fields = fields;
-        this.objects = [];
+        this.name = name; // name of model
+        this.fields = fields;  // keys in {field: field_value}??
+        this.objects = []; // list of objects pulled from JSON
     }
-    Model.prototype.create = function (item) {
-        this.objects.push(item);
+    Model.prototype.create = function (item) { // builtin prototype method:
+        // sets "create" method to be inherited by all objects
+        this.objects.push(item); // define create function to add item to list of objects
     };
 
 
     // VIEW: A TEMPLATE FOR A PAGE OR PAGE FRAGMENT
-    function View(template, model) {
+    function View(template, model) { // takes a template and some data
         this.template = template;
         this.model = model;
     }
-    View.prototype.render = function () {
-        var output = "";
-        for (var i = 0; i < this.model.objects.length; i++) {
-            var item = this.model.objects[i];
-            var item_template = this.template;
-            for (var f = 0; f < this.model.fields.length; f++) {
-                var field = this.model.fields[f];
-                if (item.hasOwnProperty(field)) {
-                    item_template = item_template.replace("{{" + field + "}}", item[field])
+    View.prototype.render = function () { // sets "render" function for all views
+        var output = ""; // html??
+        for (var i = 0; i < this.model.objects.length; i++) { // for each object in the imported data
+            var item = this.model.objects[i]; // item is current object
+            var item_template = this.template;  // template for item pulled from what was passed to View
+            for (var f = 0; f < this.model.fields.length; f++) {  // for each field possible fields
+                var field = this.model.fields[f]; // field is current field in list of all fields
+                if (item.hasOwnProperty(field)) { // if this object has this field
+                    item_template = item_template.replace("{{" + field + "}}", item[field]); // fill in field in template for this object
                 }
             }
-            output += item_template;
+            output += item_template; // add each item onto total output
         }
         return output;
     };
@@ -40,13 +41,13 @@ Loading...
     function Controller() {
         this.routes = {};
     }
-    Controller.prototype.route = function (path) {
-        var view = this.routes[path];
-        return view.render();
+    Controller.prototype.route = function (path) {  // sets "route" function for controller
+        var view = this.routes[path]; // looks up which view corresponds to the requested path in routes dict
+        return view.render(); // renders requested path's view
     };
 
     // CONTAINS THE SINGLE CONTROLLER AND ALL MODEL AND VIEW INSTANCES
-    function Application() {
+    function Application() { // sets up application to tie MVC together
         this.models = {};
         this.views = {};
         this.controller = new Controller()
@@ -60,38 +61,38 @@ Loading...
     var app = new Application();
 
     // functionine models (
-    app.models["user"] = new Model("user", ["name", "score"]);
+    app.models["user"] = new Model("user", ["name", "score"]); // creates new model called "user" in this app's models dict. Contains "name" and "score" fields
 
-    score_template = "\nHello <em>{{name}}</em>, your score is <strong>{{score}}</strong>.<br>\n";
-    scores_view = new View(score_template, app.models["user"]);
+    score_template = "\nHello <em>{{name}}</em>, your score is <strong>{{score}}</strong>.<br>\n"; // sets html display template
+    scores_view = new View(score_template, app.models["user"]); // creates new view with the template and model of what type of data
 
     //  Controller
-    app.controller.routes = {
-        "/scores/": scores_view,
+    app.controller.routes = { // access routes dict of controller
+        "/scores/": scores_view // add new route and associated view
     };
 
     // Draw Loaded Data
     function draw(data) {
-        app.models["user"].objects = data;
+        app.models["user"].objects = data; // select "user" model. set its empty objects list to imported data
         //  TEST
         request_path = "/scores/";
-        document.body.innerHTML = app.controller.route(request_path);
+        document.body.innerHTML = app.controller.route(request_path); // call controller: from routes dict, render view corresponding to requested path key
 
     }
 
     // BEGIN WEB REST API CALL TO GET JSON DATA
-    var url = "./simple_mvc_javascript_data.json";
-    var request = new XMLHttpRequest();
-    request.open("GET", url);
+    var url = "./simple_mvc_javascript_data.json"; // set path to variable "url"
+    var request = new XMLHttpRequest(); // "I'm gonna request something from the server"
+    request.open("GET", url); // "here's my request: pls open the file at "url" via the GET method"
 
     //For pre html5 browsers use onstatuschanged
-    request.onloadend = function (e) {
-        var json_string = e.currentTarget.responseText;
-        var data = JSON.parse(json_string);
-        draw(data);
+    request.onloadend = function (e) { // when all data is loaded after request is sent
+        var json_string = e.currentTarget.responseText; // the element the event handler has been attached to (data being loaded)... get its data as a string
+        var data = JSON.parse(json_string);  // parses string into data
+        draw(data); // draws according to draw function with passed in data
     };
 
-    request.send();
+    request.send(); // request data from server
 
     // TODO:
     // 1. Add a new second json model file source
