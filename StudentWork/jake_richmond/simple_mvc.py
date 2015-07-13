@@ -34,8 +34,9 @@ class Controller(object):
         self.routes = {}
 
     def route(self, path):
-        return self.routes[path].render()
-
+        view = self.routes[path]
+        output =  view.render()
+        return output
 
 # CONTAINS THE SINGLE CONTROLLER AND ALL MODEL AND VIEW INSTANCES
 class Application():
@@ -49,22 +50,31 @@ class Application():
 app = Application()
 
 # define models (
-app.models["user"] = Model("user", ["name", "score"])
+app.models["user"] = Model("user", ["name", "score", "DNA"])
 app.models["game"] = Model("game", ["game_name", "description"])
+app.models["type"] = Model("type", ["type_name", "DNA"])
 
 # load model objects form database tables
 app.models["user"].objects = [
-    {"name": "Bob", "score": "9"},
-    {"name": "Carol", "score": "11"},
-    {"name": "Ted", "score": "15"},
-    {"name": "Alice", "score": "13"}]
+    {"name": "Bob", "score": "9", "DNA": "Monster"},
+    {"name": "Carol", "score": "11", "DNA": "Hobbit"},
+    {"name": "Ted", "score": "15", "DNA": "Dinosaur"},
+    {"name": "Alice", "score": "13", "DNA": "Troll"}]
+app.models["type"].objects = [
+    {"type_name": "Monster", "DNA": "Hobbit"},
+    {"type_name": "Dinosaur", "DNA": "Troll"},
+    ]
 
-score_template = "\nHello <em>{{name}}</em>, your score is <strong>{{score}}</strong>.<br>\n"
+score_template = "\nHello <em>{{name}}</em>, your score is <strong>{{score}}</strong>, and you are a {{DNA}}!<br>\n"
 scores_view = View(score_template, app.models["user"])
+
+
 # Controller
 app.controller.routes = {
     "/scores/": scores_view,
     "/score/": scores_view,
+
+
 }
 # TEST
 request_path = "/scores/"
