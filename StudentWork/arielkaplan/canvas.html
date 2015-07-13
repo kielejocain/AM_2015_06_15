@@ -12,12 +12,28 @@
         context.lineWidth = 3;
         context.strokeStyle = "blue";
 
-        context.beginPath();
-        context.moveTo(100, 100);
-        context.lineTo(200, 200);
-        context.lineTo(100, 200);
-        context.lineTo(100, 100);
-        context.stroke();
+        function drawSquare (size) {
+            // context.beginPath();
+            // context.moveTo(size, size);
+            context.lineTo(size * 2, size);
+            context.lineTo(size * 2, size * 2);
+            context.lineTo(size, size * 2);
+            context.lineTo(size, size);
+            // context.stroke();
+        }
+
+        function drawNSquares (size, n) {
+            current_size = size;
+            for (i = 1; i <= n; i++) {
+                context.beginPath();
+                context.moveTo(size * i, size);
+                drawSquare(current_size);
+                context.stroke();
+                current_size += i;
+            }
+        }
+
+        drawNSquares(100, 3);
 
         //TODO:
         // 1. draw a square instead of a triangle.
