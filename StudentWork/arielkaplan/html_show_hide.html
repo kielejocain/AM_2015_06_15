@@ -6,6 +6,37 @@
 </style>
 <script>
 
+//    function showElement (element) {
+//        element.style.opacity = "1.0";
+//        element.style.height = "1em";
+//        element.style.display = "inline-block";
+//    }
+//
+//    function hideElement (element) {
+//        element.style.opacity = "0.0";
+//        element.style.height = "0em";
+//        element.style.display = "none";
+//    }
+//
+//    function showAllChildren(event) {
+//        var filter = document.getElementById("filter");
+//        var children = filter.childNodes;
+//        console.log(event);
+//        if (event.target.checked) {
+//            filter.style.display = "inline-block";
+//            for (i=0; i < children.length; i++) {
+//                showElement(children[i]);
+//            }
+//
+//        } else {
+//            filter.style.display = "none";
+//            for (i=0; i < children.length; i++) {
+//                console.log(children[i])
+//                hideElement(children[i]);
+//            }
+//        }
+//    }
+
     function showAll(event) {
         var filter = document.getElementById("filter");
         console.log(event);
@@ -17,9 +48,6 @@
     }
 
     function categoryClick(event) {
-        // console.log(event.target.value);
-        // console.log(this.value);
-
         // make list of all subcategories of buttons
         var elements = document.getElementsByClassName("category");
         // loop through subcategories
@@ -27,20 +55,37 @@
             // check if the subcategory's id matches current category value
             if (elements[i].id == this.value) {
                 elements[i].style.opacity = "1.0";
-                elements[i].style.display = "block";
-                setTimeout(function(element) {
-                    element.style.transitionTimingFunction = "ease linear";
-                }, 1000, elements[i]); // last parameter is what to pass in
+                elements[i].style.height = "1em";
             } else {
                 elements[i].style.opacity = "0.0";
-                elements[i].style.transition = "opacity 1s";
-                // elements[i].addEventListener("transitionend", "opacity", true);
-                setTimeout(function(element) {
-                    element.style.display = "none";
-                }, 1000, elements[i]); // last parameter is what to pass in
+                elements[i].style.height = "0em";
             }
+            elements[i].style.transitionProperty = "opacity height";
+            elements[i].style.transitionDuration = "1s";
         }
     }
+
+    // Original variation: hide/show without transitions
+//    function categoryClickBlock(event) {
+//        // console.log(event.target.value);
+//        // console.log(this.value);
+//
+//        // make list of all subcategories of buttons
+//        var elements = document.getElementsByClassName("category");
+//        // loop through subcategories
+//        for (var i = 0, max = elements.length; i < max; i++) {
+//            // check if the subcategory's id matches current category value
+//            if (elements[i].id == this.value) {
+//                elements[i].style.opacity = "1.0";
+//                elements[i].style.display = "block";
+//            } else {
+//                setTimeout(function(element) { // call on this line
+//                    elements[i].style.opacity = "0.0";
+//                     element.style.display = "none";
+//                }, 1000, elements[i]); // last parameter is what to pass in
+//            }
+//        }
+//    }
 
     function init() {
         var element = document.getElementById("show_all");
