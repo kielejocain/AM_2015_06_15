@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-
+    <link href="login.css" rel="stylesheet">
 <script>
 
     function isValid(username_text, password_text) {
         // TODO: Test username and password are correct
         // this is not a real world ready secure solution
         // this is just an exercise.
-        // make up a user name and password of your choice here.
-        var username = "Jake"
-        var password = "1234"
-
+        var username = "evan";
+        var password = "codeiscool";
         console.log(username_text);
         console.log(password_text);
-        return false;
+        if(username_text == username && password_text == password) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     function validate(e) {
@@ -26,25 +29,26 @@
         var password_text = password_element.value;
 
         if (isValid(username_text, password_text)) {
-            alert("SUCCESS: The form is valid.")
+            document.body.style.backgroundColor = "#22CC11";
+            alert("SUCCESS: The form is valid.");
         } else {
-            alert("FAIL: The form is *not* valid.")
+            document.body.style.backgroundColor = "#EE0000";
+            alert("FAIL: Incorrect username or password.");
         }
         return false;
     }
 
+    function init() {
+        var login = document.getElementById("login-form");
+        login.addEventListener("submit", validate);
+    }
+    document.addEventListener("DOMContentLoaded", init);
 </script>
 
 </head>
 <body>
-<pre>
-    1. Finish validation code
-    2. Make prettier with CSS
-    3. Use addEventListener instead of inline onsubmit attribute.
-</pre>
-
 <div id="login">
-    <form onsubmit="return validate()" method="post">
+    <form id="login-form" method="post">
         <label>
             <span>
                 Username
@@ -58,7 +62,7 @@
             </span>
             <input type="password" id="password" name="password">
         </label>
-        <input type="submit" value="Login">
+        <input id="login-button" type="submit" value="Login">
     </form>
 </div>
 </body>

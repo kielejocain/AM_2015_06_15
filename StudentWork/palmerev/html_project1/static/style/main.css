@@ -1,0 +1,21 @@
+body {
+    background-color: gray;
+    color: yellow;
+    font-family: sans-serif;
+}
+
+p {
+  text-decoration: underline;
+}
+
+#content {
+  font-size: 1.5em;
+}
+
+.cool {
+  color: green;
+}
+
+.awesome {
+  font-weight: bold;
+}
