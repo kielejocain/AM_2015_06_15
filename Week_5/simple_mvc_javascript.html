@@ -1,0 +1,98 @@
+<body>
+</body>
+<script>
+    // MVC: A GENERIC ARCHITECTURE FOR MAKING APPS THAT DISPLAY DATA
+
+    // MODEL: A LIST OF OBJECTS. TYPICALLY FROM A DATABASE
+    function Model(name, fields) {
+        this.name = name;
+        this.fields = fields;
+        this.objects = [];
+
+//        function create(item) {
+//            this.objects.append(item);
+//        }
+    }
+
+    // VIEW: A TEMPLATE FOR A PAGE OR PAGE FRAGMENT
+    function View(template, model) {
+        this.template = template;
+        this.model = model;
+    }
+    View.prototype.render = function () {
+        var output = "";
+        for (var i in this.model.objects) {
+            var item = this.model.objects[i]
+            var item_template = this.template;
+            for (var f in this.model.fields) {
+                var field = this.model.fields[f];
+                if (item.hasOwnProperty(field)) {
+                    item_template = item_template.replace("{{" + field + "}}", item[field])
+                }
+            }
+            output += item_template;
+        }
+        return output;
+    };
+    // CONTROLLER: Routes messages
+    function Controller() {
+        this.routes = {};
+    }
+    Controller.prototype.route = function (path) {
+        var view = this.routes[path];
+        var output = view.render();
+        return output;
+    };
+
+
+    // CONTAINS THE SINGLE CONTROLLER AND ALL MODEL AND VIEW INSTANCES
+    function Application() {
+        this.models = {};
+        this.views = {};
+        this.controller = new Controller()
+    }
+
+    // CREATE AN APPLICATION INSTANCE
+    var app = new Application();
+
+    // functionine models (
+    app.models["user"] = new Model("user", ["name", "score"]);
+    app.models["game"] = new Model("game", ["game_name", "description"]);
+
+    // load model objects form database tables
+    //    app.models["user"].objects = [
+    //        {"name": "Bob", "score": "9"},
+    //        {"name": "Carol", "score": "11"},
+    //        {"name": "Ted", "score": "15"},
+    //        {"name": "Alice", "score": "13"}
+    //    ];
+
+    var url = "./simple_mvc_javascript_data.json";
+    var request = new XMLHttpRequest();
+    request.open("GET", url);
+
+    //For older browsers use onstatuschanged
+    request.onloadend = function (e) {
+        app.models["user"].objects = JSON.parse(e.currentTarget.responseText);
+        //  TEST
+        request_path = "/scores/";
+        document.body.innerHTML = app.controller.route(request_path);
+    };
+
+    request.send();
+
+    score_template = "\nHello <em>{{name}}</em>, your score is <strong>{{score}}</strong>.<br>\n";
+    scores_view = new View(score_template, app.models["user"]);
+
+    //  Controller
+    app.controller.routes = {
+        "/scores/": scores_view,
+        "/score/": scores_view,
+    };
+
+
+    // TODO:
+    // 1. Add a new model, view/template and route)
+    // 2. call your new route and write output to a file
+    // 3. open file in your browser
+</script>
