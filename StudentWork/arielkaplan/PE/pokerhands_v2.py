@@ -151,7 +151,7 @@ class Hand(object):
         for card, count in self.how_many.items():
             if count == 4:
                 four_of_value = card
-                self.score["four of a kind"] = [True, four_of_value]
+                self.score["four of a kind"] = [four_of_value, self.high_cards]
             elif count == 3:
                 three = card
                 self.score["three of a kind"] = [three, self.high_cards]
