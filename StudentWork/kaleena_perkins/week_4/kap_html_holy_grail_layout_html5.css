@@ -1,36 +1,58 @@
-body {
-	display: flex;
-	flex-direction: column;
-}
 
 header{
-	background: #3F5E83;
 	top: 0;
+	left: 0;
+	display: absolute;
 	position: fixed;
-	width: 100%;	
+	width: 100%;
+	height: 150px;
+	background: #fff	
 }
 
-.wrapper {
-	margin-top: 50px;
-	flex: 2;
-	display: flex;
+
 }
 
-article {
+main {
+	margin-top: 150px;
+}
+
+
+main {
 	background: #6B87A0;
+	margin-top: 150px;
+	margin-left: 200px;
+	margin-right: 200px;
 	}
 
-article {
-	flex: 1;
+aside {
+	position: fixed;
+	display: absolute;
+	right: 0;
+	top: 150;
+	width: 200px;
+	height: 800px;
+	background: #3F5E83;
+
 }
 
 nav {
 	background: #87A96B;
-	flex-align: stretch;
-	flex: 1;
+	display: absolute;
+	position: fixed;
+	left: 0;
+	top: 150;
+	height: 800px;
+	width: 200px;
 }
 
+
+
 footer {
-	flex: 1;
 	background: #A2B7CF;
+	display: absolute;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 50px; 
 }
