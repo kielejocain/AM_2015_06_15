@@ -1,20 +1,45 @@
-data = [[531, 408, 'A'], [225, 52, 'B'], [594, 242, 'C'], [351, 102, 'D'], [371, 15, 'E'], [569, 353, 'F'],
+from math import sqrt
+
+Latitude = 0
+Longitude = 1
+Letter = 2
+
+location_list = [[531, 408, 'A'], [225, 52, 'B'], [594, 242, 'C'], [351, 102, 'D'], [371, 15, 'E'], [569, 353, 'F'],
         [342, 39, 'G'], [218, 304, 'H'], [428, 260, 'I'], [329, 158, 'J'], [585, 530, 'K'], [71, 114, 'L'],
         [587, 88, 'M'], [347, 180, 'N'], [180, 332, 'O'], [250, 522, 'P'], [88, 475, 'Q'], [260, 128, 'R'],
         [328, 505, 'S'], [381, 201, 'T'], [360, 192, 'U'], [414, 313, 'V'], [525, 293, 'W'], [240, 563, 'X'],
         [117, 546, 'Y'], [507, 127, 'Z']]
 
+# def calculateDistance(x1,y1,x2,y2):
+#     dist = math.sqrt((x2-x1)**2 + (y2-y1)**2)
+#     return dist
+
+def distance(point_from, point_to):
+    lateral_distance = point_from[Latitude] - point_from[Latitude]
+    longitudinal_distance = point_to[Longitude] - point_to[Longitude]
+    return sqrt(lateral_distance **2 + longitudinal_distance **2)
+
 letter_dictionary = {}
+for location in location_list:
+    letter = location(2)
+    letter_dictionary[letter] = location
 
-for item in data:
-    letter = item[2]
-    x = item[0]
-    y = item[1]
-    letter_dictionary = [x,y]
+def get_top(data, letter, top_n):
+    selected = letter_dictionary[letter]
 
-print letter_dictionary
+    for location in data:
+        dist = distance(location, selected)
+        location.append(dist)
 
+    s = sorted(location_list, key = lambda item:item[3])
+    return s[0:top_n + 1]
+
+
+output = []
+top = get_top(location_list, "N", 5)
 square_size = 600
+
+
 style = """
 <style>
     #box { background:blue; position:relative; }
@@ -50,7 +75,13 @@ f.close()
 
 
 
-
+# for item in data:
+#     letter = item[2]
+#     x = item[0]
+#     y = item[1]
+#     letter_dictionary = [x,y]
+#
+# print letter_dictionary
 # import math
 #
 # def new_dictionary(data):
