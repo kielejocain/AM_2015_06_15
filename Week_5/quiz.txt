@@ -35,7 +35,7 @@ B. What is it for?
     -   JavaScript (classic for loop, differences)
 
     -   OOP Object Oriented Programming
-    -   Model View Controller (MVC) - Design Patterm
+    -   Model View Controller (MVC) - Design Patterns
         -   Model
         -   View
         -   Controller
