@@ -28,11 +28,11 @@ B. What is it for?
 
     -   Computers (CPU, RAM, DRIVES)
     -   Programming (Variables, Loops, Ifs, functions, modules)
-    -   Python (list, dict, string, int, float
+    -   Python (list, dict, string, int, float)
 
     -   Html (tags/elements, attributes, DOM)
     -   Css selectors #id .class
-    -   JavaScript (classic for loop, differences)
+    -   JavaScript (arrays, objects, classic for loop, differences)
 
     -   OOP Object Oriented Programming
     -   Model View Controller (MVC) - Design Patterns
