@@ -1,0 +1,49 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+//        <canvas width="800" height="600">
+        var canvas = document.createElement('canvas');
+        canvas.setAttribute("width", window.innerWidth);
+        canvas.setAttribute("height", window.innerHeight);
+        document.body.appendChild(canvas);
+
+        var context = canvas.getContext("2d");
+
+        context.lineWidth = 3;
+        context.strokeStyle = "blue";
+
+        function drawSquare (size) {
+            context.beginPath();
+            context.moveTo(size, size);
+            context.lineTo(size * 2, size);
+            context.lineTo(size * 2, size * 2);
+            context.lineTo(size, size * 2);
+            context.lineTo(size, size);
+            context.stroke();
+        }
+
+        function drawNSquares (size, n) {
+            x_offset = size;
+            y_offset = size;
+            for (i = 0; i < n; i++) {
+                context.beginPath();
+                context.moveTo(x_offset, y_offset);
+                context.lineTo(x_offset, size + y_offset); // Lower Left
+                context.lineTo(size + x_offset, size + y_offset); // Lower Right
+                context.lineTo(size + x_offset, y_offset); // Upper Right
+                context.lineTo(x_offset, y_offset); // Upper Left
+                context.stroke();
+                x_offset += (size * 1.5);
+            }
+        }
+
+        drawNSquares(100, 4);
+
+        //TODO:
+        // 1. draw a square instead of a triangle.
+        // 2. draw two separate squares
+        // 3. draw n squares in a loop
+
+    });
+
+</script>
