@@ -76,27 +76,27 @@
         UX - User Experience Expert
 
     Django Site Creation
-        1.  Create Project
+        1.  Create Project:
                 django-admin startproject my_site
             Change Directory
                 cd my_site
-        2.  Create App
+        2.  Create App:
                 python manage.py startapp my_app
-        3.  Create Models
+        3.  Create Models:
             A.  Edit models.py
             B.  Make Migrations and Migrate
                     python manage.py makemigrations my_app
                     python manage.py migrate
-        5.  Configure Admin
+        5.  Configure Admin:
             A.  Create SuperUser
                     python manage.py createsuperuser
-            B.  Import and Register models in admin.py
+            B.  Import and Register models in admin.py e.g.:
                     from .models import MyModel
                     admin.site.register(MyModel)
-        4.  Create App Folders
-            templates
-            static
-        5.  Create Pages
+        4.  Create App Folders:
+                templates
+                static
+        5.  Create Pages:
             A.  Add url to urls.py
             B.  Add view to views.py
             C.  Add template to templates folder
