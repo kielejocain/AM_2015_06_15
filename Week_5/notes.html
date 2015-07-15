@@ -81,7 +81,14 @@
             Change Directory
                 cd my_site
         2.  Create App:
-                python manage.py startapp my_app
+            A.  Start App
+                    python manage.py startapp my_app
+            B.  Edit settings.py add app to INSTALLED_APPS. e.g.
+                    INSTALLED_APPS = (
+                        ...
+                        'polls',
+                    )
+
         3.  Create Models:
             A.  Edit models.py
             B.  Make Migrations and Migrate
