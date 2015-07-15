@@ -78,26 +78,31 @@
     Django Site Creation
         1.  Create Project
                 django-admin startproject my_site
+            Change Directory
+                cd my_site
         2.  Create App
-            python manage.py startapp my_app
+                python manage.py startapp my_app
         3.  Create Models
             A.  Edit models.py
-            B.  python manage.py makemigrations my_app
-            C.  python manage.py migrate
+            B.  Make Migrations and Migrate
+                    python manage.py makemigrations my_app
+                    python manage.py migrate
         5.  Configure Admin
-                python manage.py createsuperuser
-                Import and Register models in admin.py
+            A.  Create SuperUser
+                    python manage.py createsuperuser
+            B.  Import and Register models in admin.py
                     from .models import MyModel
-                    e.g. admin.site.register(MyModel)
-        4.  python manage.py runserver
-                http://localhost:8000/admin/
-        5.  Create App Folders
+                    admin.site.register(MyModel)
+        4.  Create App Folders
             templates
             static
-        6.  Create Pages
+        5.  Create Pages
             A.  Add url to urls.py
             B.  Add view to views.py
             C.  Add template to templates folder
+        6.  Run the Server and open in browser to create and view data
+                python manage.py runserver
+                http://localhost:8000/admin/
 
 
 </pre>
