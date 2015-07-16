@@ -6,7 +6,7 @@ from . import views
 urlpatterns = [
     # ex: /polls/
     url(r'^$', views.index, name='index'),
-    # ex: /edit/5/
+    # ex: /polls/edit/5/
     url(r'^edit/(?P<question_id>[0-9]+)/$', views.edit, name='edit'),
     # ex: /polls/5/
     url(r'^(?P<question_id>[0-9]+)/$', views.detail, name='detail'),
