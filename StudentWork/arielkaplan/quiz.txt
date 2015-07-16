@@ -1,0 +1,44 @@
+"QUIZ"
+===
+At this point  you are expected to know very little,
+and have mastered nothing.
+
+You are meant to have been:
+    -   exposed to concepts
+    -   experienced exercises
+    -   Learned some new words
+
+You should be:
+    -   practicing
+        -   breaking the world down into smaller and smaller parts
+        -   breaking tasks down into smaller and smaller steps
+        -   thinking critically, logically,
+    We are building up to a greater set of experiences while you are slowly but
+surely absorbing a new way thinking and a new set of
+problem solving skills.
+
+You should be able to talk about what each of the
+following items are and what each is for and a bit
+about how they all fit together.
+
+For each of the following answer these questions:
+
+A. What is it?
+B. What is it for?
+
+    -   Computers (CPU, RAM, DRIVES)
+    -   Programming (Variables, Loops, Ifs, functions, modules)
+    -   Python (list, dict, string, int, float)
+
+    -   Html (tags/elements, attributes, DOM)
+    -   Css selectors #id .class
+    -   JavaScript (arrays, objects, classic for loop, differences)
+
+    -   OOP Object Oriented Programming
+    -   Model View Controller (MVC) - Design Patterns
+        -   Model
+        -   View
+        -   Controller
+
+
+
