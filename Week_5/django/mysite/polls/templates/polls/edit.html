@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <h1>
+        Edit Question:
+    </h1>
+    <input value="{{ question.question_text }}" name="question_text">
+    <br>
+    <input value="{{ question.pub_date | date:" Y-m-d" }}" name="pub_date" type="date">
+    <br>
+    <input type="submit" value="SAVE"/>
+</form>
+
+<br><br>
+{% for choice in question.choice_set.all %}
+{{ choice.choice_text }}
+<a href="/edit/choice/{{ choice.id }}/">
+    edit
+</a>
+<br/>
+{% endfor %}
+
+{% endblock %}

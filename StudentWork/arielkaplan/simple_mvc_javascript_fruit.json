@@ -1,0 +1,18 @@
+[
+  {
+    "fruit": "apple",
+    "price": 2.45
+  },
+  {
+    "fruit": "banana",
+    "price": 1.19
+  },
+  {
+    "fruit": "cantaloupe",
+    "price": 0.99
+  },
+  {
+    "fruit": "dragonfruit",
+    "price": 3.39
+  }
+]
