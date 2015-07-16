@@ -40,7 +40,19 @@ def detail(request, question_id):
 
 
 def edit(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
+    # question = Question.objects.get(pk=question_id)
+
+    # question = get_object_or_404(Question, pk=question_id)
+
+    # question = Question.objects.filter(id=question_id)[0]
+
+    filtered_question_list = Question.objects.filter(id=question_id)
+    question = filtered_question_list[0]
+
+    if len(filtered_question_list) > 0:
+        question = filtered_question_list[0]
+    else:
+        question = Question()
 
     if request.POST:
         print(request.POST)
