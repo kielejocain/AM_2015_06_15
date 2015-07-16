@@ -15,8 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from dancematch_app import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    # ex. /
     url(r'^$', views.index, name='index'),
+    # ex. /profile/5/
+    url(r'^profile/(?P<dancer_id>[0-9]+)/$', views.profile, name='profile'),
+    # ex. /edit/5/
+    url(r'^edit/(?P<dancer_id>[0-9]+)/$', views.edit, name='edit'),
+    # ex. /dances/
+    url(r'^dances/', views.dances, name='dances'),
 ]
