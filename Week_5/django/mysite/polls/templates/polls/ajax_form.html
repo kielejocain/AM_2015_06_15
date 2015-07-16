@@ -1,0 +1,40 @@
+{% extends "base_generic.html" %}
+{% load staticfiles %}
+{% block content %}
+<script>
+    document.write("test");
+    // Draw Loaded Data
+    function draw(data) {
+        alert("Vote Sent! Total Votes:" + data.votes);
+    }
+
+    // BEGIN WEB REST API CALL TO GET JSON DATA
+    var url = "/polls/api_vote/";
+    var request = new XMLHttpRequest();
+    request.open("GET", url);
+
+    //For pre html5 browsers use onstatuschanged
+    request.onloadend = function (e) {
+        var json_string = e.currentTarget.responseText;
+        var data = JSON.parse(json_string);
+        draw(data);
+    };
+
+    request.send();
+
+</script>
+<h1>{{ question.question_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form onsubmit="vote()">
+    {% csrf_token %}
+    {% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"/>
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br/>
+    {% endfor %}
+    <input type="submit" value="Vote"/>
+</form>
+{% endblock %}
+
+{% endblock %}
