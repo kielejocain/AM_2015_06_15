@@ -35,7 +35,25 @@ def index(request):
 
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
+
     return render(request, 'polls/detail.html', {'question': question})
+
+
+def edit(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+
+    if request.POST:
+        print(request.POST)
+        question.question_text = request.POST["question_text"]
+        question.save()
+        return HttpResponseRedirect("/polls/")
+
+    return render(request, 'polls/edit.html', {'question': question})
+
+
+def ajax_form(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, 'polls/ajax_form.html', {'question': question})
 
 
 # def results(request, question_id):
@@ -90,9 +108,12 @@ def data(request):
 
 
 def api_vote(request):
-    question_id = request.POST["question_id"]
-    p = get_object_or_404(Question, pk=question_id)
-    selected_choice = p.choice_set.get(pk=request.POST['choice'])
-    selected_choice.votes += 1
-    selected_choice.save()
-    return HttpResponse('{"votes":' + selected_choice.votes + '}', content_type='application/json')
+    votes = "undefined"
+    if request.POST:
+        question_id = request.POST["question_id"]
+        p = get_object_or_404(Question, pk=question_id)
+        selected_choice = p.choice_set.get(pk=request.POST['choice'])
+        selected_choice.votes += 1
+        selected_choice.save()
+        votes = selected_choice.votes
+    return HttpResponse('{"votes":' + votes + '}', content_type='application/json')
