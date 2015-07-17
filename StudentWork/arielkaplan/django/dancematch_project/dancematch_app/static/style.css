@@ -5,3 +5,7 @@ body {
 a {
     color: darkred;
 }
+
+form label {
+    display: block;
+}

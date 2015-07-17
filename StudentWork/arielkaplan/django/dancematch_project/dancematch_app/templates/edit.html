@@ -2,59 +2,64 @@
 {% load staticfiles %}
 
 {% block content %}
-<h1>{{ dancer.name }}</h1>
+    <h1>{{ dancer.name }}</h1>
 
-<strong>Edit your profile:</strong><br><br>
-
-{% if dancer.active_member %}
-    {{ dancer.name }} is looking for a buddy!
-{% else %}
-    {{ dancer.name }} is not currently looking for a buddy.
-{% endif %}
-
-<div class="bio">
-    <textarea name="bio">
-        {{ dancer.bio }}
-    </textarea>
-</div>
-<div class="contact">
-    {{ dancer.email }}
-</div>
-    <h2>{{ dancer.name }}'s Dances</h2>
-<div class="prefs">
-
-{% for dance_pref in dance_prefs %}
+    <strong>Edit your profile:</strong><br><br>
 
     <form method="post">
-    {% csrf_token %}
-    <h1>
-        Edit Dance:
-    </h1>
-    <input value="{{ dance_pref.dance }}" name="dance">
-    <br>
-    <input type="submit" value="SAVE"/>
-</form>
+        {% csrf_token %}
+        <label>
+            Display Name:
+            <input value="{{ dancer.name }}" name="name">
+        </label>
+        <label>
+            Find me a buddy!
+            <input type="checkbox" name="active_member" {% if dancer.active_member %}checked{% endif %} />
+        </label>
+        <label>
+            My bio:
+            <textarea name="bio">{{ dancer.bio }}</textarea>
+        </label>
+        <label>
+            Email:
+            <input value="{{ dancer.email }}" name="email">
+        </label>
+        <input type="submit" value="SAVE"/>
+    </form>
 
-    <h3>{{ dance_pref.dance }}: {{ dance_pref.role }}</h3>
-    <ul>
-        {% if dance_pref.activity %}
-            <li>Status: {{ dance_pref.activity }}</li>
-        {% endif %}
-        {% if dance_pref.skill_level %}
-            <li>Self-assessment: {{ dance_pref.skill_level }}</li>
-        {% endif %}
-        {%  if dance_pref.goal %}
-            <li>Goal: {{ dance_pref.goal }}</li>
-        {% endif %}
-        {% if dance_pref.notes != '' %}
-            <li>Notes: {{ dance_pref.notes }}</li>
-        {% endif %}
-    </ul>
-{% empty %}
-    {{ dancer.name }} has not added any dances.
-{% endfor %}
-</div>
+        <h2>{{ dancer.name }}'s Dances</h2>
+    <div class="prefs">
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% for dance_pref in dance_prefs %}
+
+    <form method="post">
+        {% csrf_token %}
+        <input value="{{ dance_pref.dance }}" name="dance">
+        <br>
+        <input type="submit" value="SAVE"/>
+
+    </form>
+
+        <h3>{{ dance_pref.dance }}: {{ dance_pref.role }}</h3>
+        <ul>
+            {% if dance_pref.activity %}
+                <li>Status: {{ dance_pref.activity }}</li>
+            {% endif %}
+            {% if dance_pref.skill_level %}
+                <li>Self-assessment: {{ dance_pref.skill_level }}</li>
+            {% endif %}
+            {%  if dance_pref.goal %}
+                <li>Goal: {{ dance_pref.goal }}</li>
+            {% endif %}
+            {% if dance_pref.notes != '' %}
+                <li>Notes: {{ dance_pref.notes }}</li>
+            {% endif %}
+        </ul>
+    {% empty %}
+        {{ dancer.name }} has not added any dances.
+    {% endfor %}
+    </div>
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 {% endblock %}

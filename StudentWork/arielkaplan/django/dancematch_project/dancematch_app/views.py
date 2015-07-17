@@ -41,6 +41,13 @@ def dances(request):
 def edit(request, dancer_id):
     dancer = get_object_or_404(Dancer, pk=dancer_id)
     dance_prefs = get_list_or_404(DancePrefs, dancer=dancer)
+    if request.POST:
+        print(request.POST)
+        dancer.name = request.POST["name"]
+        dancer.email = request.POST["email"]
+        dancer.bio = request.POST["bio"]
+        dancer.active_member = request.POST.get("active_member", False)
+        dancer.save()
     return render(request, 'edit.html', {'dancer': dancer,
                                          'dance_prefs': dance_prefs,
                                          })
