@@ -115,6 +115,15 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
 
 
+# def edit_shirt(request, camper_id, attend_id):
+#     if request.POST:
+#         shirt_id = request.POST["shirt_id"]
+#         order = ShirtOrder()
+#         order.camper = Camper.objects.get(pk=camper_id)
+#         order.attend = Camper.objects.get(pk=attend_id)
+#         order.shirt = Shirt.objects.get(pk=shirt_id)
+#         order.save()
+
 def data(request):
     question_list = Question.objects.all()
     json_data = "[]"
