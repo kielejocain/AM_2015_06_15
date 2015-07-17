@@ -1,6 +1,8 @@
 {% extends "base_generic.html" %}
 {% load staticfiles %}
-
+{% block title %}
+Edit Question
+{% endblock %}
 {% block content %}
 
 <form method="post">
@@ -8,7 +10,8 @@
     <h1>
         Edit Question:
     </h1>
-    <input value="{{ question.question_text }}" name="question_text">
+    <!--<input value="{{ question.question_text }}" name="question_text">-->
+    <textarea name="question_text">{{ question.question_text }}</textarea>
     <br>
     <input value="{{ question.pub_date | date:" Y-m-d" }}" name="pub_date" type="date">
     <br>
