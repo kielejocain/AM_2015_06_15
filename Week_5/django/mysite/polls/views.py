@@ -52,17 +52,15 @@ def save_question(request, question):
 
 def edit(request, question_id):
     # question = Question.objects.get(pk=question_id)
-
     # question = get_object_or_404(Question, pk=question_id)
-
     # question = Question.objects.filter(id=question_id)[0]
-
     filtered_question_list = Question.objects.filter(id=question_id)
-    question = filtered_question_list[0]
 
     if len(filtered_question_list) > 0:
+        print("FOUND")
         question = filtered_question_list[0]
     else:
+        print("NEW")
         question = Question()
 
     if request.POST:
@@ -72,14 +70,15 @@ def edit(request, question_id):
     return render(request, 'polls/edit.html', {'question': question})
 
 
-def add(request):
-    question = Question()
-
-    if request.POST:
-        save_question(request, question)
-        return HttpResponseRedirect("/polls/")
-
-    return render(request, 'polls/edit.html', {'question': question})
+#
+# def add(request):
+#     question = Question()
+#
+#     if request.POST:
+#         save_question(request, question)
+#         return HttpResponseRedirect("/polls/")
+#
+#     return render(request, 'polls/edit.html', {'question': question})
 
 
 def ajax_form(request, question_id):
