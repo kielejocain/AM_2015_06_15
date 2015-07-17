@@ -3,7 +3,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>
+        {% block title %}
+            My Site
+        {% endblock %}
+    </title>
     <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"/>
 </head>
 <body>
