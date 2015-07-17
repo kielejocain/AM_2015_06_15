@@ -8,7 +8,11 @@ Edit Question
 <form method="post">
     {% csrf_token %}
     <h1>
+        {% if question.id %}
         Edit Question:
+        {% else %}
+        New Question
+        {% endif %}
     </h1>
     <!--<input value="{{ question.question_text }}" name="question_text">-->
     <textarea name="question_text">{{ question.question_text }}</textarea>

@@ -1,0 +1,28 @@
+<style>
+    body {
+        color: white;
+        font-family: "Lucida Console", Monaco, monospace;
+        background-image: url('/static/polls/image/background.png');
+        background-size: 100% ;
+        height: 100%;
+        padding: 12em 15em 2em 12em;
+    }
+
+    a {
+        color: white;
+        font-style: italic;
+        text-decoration: none;
+    }
+</style>
+
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{  choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    {% endfor %}
+</ul>
+
+<a href="{%  url 'polls:detail' question.id %}">Vote again?</a>
+<br><br>
+<a href="/polls">Return to OVC Terminal</a>

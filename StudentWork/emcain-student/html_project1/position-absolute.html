@@ -1,0 +1,169 @@
+<style>
+
+
+    .tile {
+        width: 200px;
+        height: 200px;
+        background-size: contain;
+        border: 1px solid black;
+        display: inline-block;
+        position: relative;
+        box-shadow: 0 0 9px 5px rgba(0, 0, 0, 0.2);
+        position: absolute;
+
+    }
+
+    #africa {
+        background-image: url("static/image/africa.jpg");
+        left: 0;
+        top: 0;
+    }
+
+    #americas {
+        background-image: url("static/image/americas.jpg");
+        left: 250px;
+        top: 0;
+    }
+
+    #antarctica {
+        background-image: url("static/image/antarctica.jpg");
+        left: 500px;
+        top: 0;
+    }
+
+    #asia {
+        background-image: url("static/image/asia.jpg");
+        left: 0;
+        top: 250px;
+    }
+
+    #europe {
+        background-image: url("static/image/europe.jpg");
+        left: 250px;
+        top: 250px;
+    }
+    #australia {
+        background-image: url("static/image/australia.jpg");
+        left: 500px;
+        top: 250;
+    }
+
+    .icon {
+        width: 30px;
+        border: 1px solid black;
+    }
+
+    .n, .ne, .e, .se, .s, .sw, .w, .nw {
+        position: absolute;
+    }
+
+    .n {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .nw {
+        top: 0;
+        left: 0;
+    }
+    .w {
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+    .sw {
+        bottom: 0;
+        left: 0;
+    }
+    .s {
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .se {
+        bottom: 0;
+        right: 0;
+    }
+    .e {
+        top: 50%;
+        right: 0;
+    }
+    .ne {
+        top: 0;
+        right: 0;
+    }
+</style>
+
+<div class="tile" id="africa">
+    <div class="icon n">N</div>
+    <div class="icon ne">NE</div>
+    <div class="icon e">E</div>
+    <div class="icon se">SE</div>
+    <div class="icon s">S</div>
+    <div class="icon sw">SW</div>
+    <div class="icon w">W</div>
+    <div class="icon nw">NW</div>
+
+     <div class="content center"></div>
+ 
+</div>
+<div class="tile" id="americas">
+    <div class="icon n">N</div>
+    <div class="icon ne">NE</div>
+    <div class="icon e">E</div>
+    <div class="icon se">SE</div>
+    <div class="icon s">S</div>
+    <div class="icon sw">SW</div>
+    <div class="icon w">W</div>
+    <div class="icon nw">NW</div>
+
+    <div class="content center"></div>
+</div>
+<div class="tile" id="antarctica">
+    <div class="icon n">N</div>
+    <div class="icon ne">NE</div>
+    <div class="icon e">E</div>
+    <div class="icon se">SE</div>
+    <div class="icon s">S</div>
+    <div class="icon sw">SW</div>
+    <div class="icon w">W</div>
+    <div class="icon nw">NW</div>
+
+    <div class="content center">content</div>
+</div>
+<div class="tile" id="asia">
+    <div class="icon n">N</div>
+    <div class="icon ne">NE</div>
+    <div class="icon e">E</div>
+    <div class="icon se">SE</div>
+    <div class="icon s">S</div>
+    <div class="icon sw">SW</div>
+    <div class="icon w">W</div>
+    <div class="icon nw">NW</div>
+
+    <div class="content center">content</div>
+</div>
+<div class="tile" id="europe">
+    <div class="icon n">N</div>
+    <div class="icon ne">NE</div>
+    <div class="icon e">E</div>
+    <div class="icon se">SE</div>
+    <div class="icon s">S</div>
+    <div class="icon sw">SW</div>
+    <div class="icon w">W</div>
+    <div class="icon nw">NW</div>
+
+    <div class="content center">content</div>
+</div>
+<div class="tile" id="australia">
+    <div class="icon n">N</div>
+    <div class="icon ne">NE</div>
+    <div class="icon e">E</div>
+    <div class="icon se">SE</div>
+    <div class="icon s">S</div>
+    <div class="icon sw">SW</div>
+    <div class="icon w">W</div>
+    <div class="icon nw">NW</div>
+
+    <div class="content center">content</div>
+</div>
