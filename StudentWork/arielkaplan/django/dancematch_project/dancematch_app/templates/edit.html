@@ -13,30 +13,45 @@
 {% endif %}
 
 <div class="bio">
-    {{ dancer.bio }}
+    <textarea name="bio">
+        {{ dancer.bio }}
+    </textarea>
 </div>
 <div class="contact">
     {{ dancer.email }}
 </div>
     <h2>{{ dancer.name }}'s Dances</h2>
 <div class="prefs">
+
 {% for dance_pref in dance_prefs %}
-    <h3>{{ dance_pref.dance }}</h3>
+
+    <form method="post">
+    {% csrf_token %}
+    <h1>
+        Edit Dance:
+    </h1>
+    <input value="{{ dance_pref.dance }}" name="dance">
+    <br>
+    <input type="submit" value="SAVE"/>
+</form>
+
+    <h3>{{ dance_pref.dance }}: {{ dance_pref.role }}</h3>
     <ul>
-        <li>Status: {{ dance_pref.activity }}</li>
-        {%  if dance_pref.lead %}
-            <li>Leader: {{ dance_pref.lead_level }}</li>
+        {% if dance_pref.activity %}
+            <li>Status: {{ dance_pref.activity }}</li>
         {% endif %}
-        {% if dance_pref.follow %}
-            <li>Follower: {{ dance_pref.follow_level }}</li>
+        {% if dance_pref.skill_level %}
+            <li>Self-assessment: {{ dance_pref.skill_level }}</li>
         {% endif %}
-        <li>Goal: {{ dance_pref.goals }}</li>
+        {%  if dance_pref.goal %}
+            <li>Goal: {{ dance_pref.goal }}</li>
+        {% endif %}
         {% if dance_pref.notes != '' %}
             <li>Notes: {{ dance_pref.notes }}</li>
         {% endif %}
     </ul>
 {% empty %}
-    No dances available.
+    {{ dancer.name }} has not added any dances.
 {% endfor %}
 </div>
 
