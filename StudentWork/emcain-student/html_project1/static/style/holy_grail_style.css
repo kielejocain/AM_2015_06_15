@@ -23,7 +23,6 @@ main {
 	vertical-align: right;
 	margin-left: 5%;
 	width: 60%;
-	position: static;
 	top: 5%;
 }
 
@@ -66,26 +65,32 @@ article {
 	background-color: orange;
 	padding: 1em;
 	margin: 1em;
+	clear: both;
+	min-height: 200px;
+	overflow: auto;
 }
 
-blockquote {
+blockquote{
+	clear: both;
+}
+
+aside {
+	display: block;
 	background-color: fuchsia;
-
-	width: 30%;
-	padding: 1em;
+	width: 40%;
+	padding: .25em;
 	margin: 1em;
-	vertical-align: center;
 	font-size: 20;
+	clear: both;
+
 }
 
-blockquote:nth-child(odd) {
-	left: 0px;
-	right: auto;
+article:nth-child(odd) aside  {
+	float: left;
 }
 
-blockquote:nth-child(even) {
-	right: 0px;
-	left: auto;
+article:nth-child(even) aside  {
+	float: right;
 }
 
 .section-link {
