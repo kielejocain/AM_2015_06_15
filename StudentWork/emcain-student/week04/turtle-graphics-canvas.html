@@ -1,0 +1,66 @@
+<script src="turtle-graphics-canvas.js"></script>
+<!--<script src="turtle-graphics-canvas-definitions.js"></script>-->
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+
+        turtle.forward(50);
+        turtle.drawTurtle();
+
+//        turtle.penDown = false;
+//        turtle.forward(50);
+//        turtle.drawTurtle();
+
+//        turtle.penDown = true;
+//        turtle.forward(50);
+//        turtle.drawTurtle();
+
+       turtle.line = function () {
+           turtle.forward(50);
+       };
+
+       turtle.smalline = function () {
+       		turtle.forward(5);
+       }
+
+    	turtle.move = function () {
+	       turtle.penDown = false;
+	       turtle.forward(50);
+		}
+
+	    turtle.star = function () {
+	    	turtle.penDown = true;
+		    turtle.repeat(turtle.line, 5, 144);
+	    }
+
+	    turtle.triangle = function () {
+	    	turtle.penDown = true;
+	    	turtle.repeat(turtle.line, 3, 120);
+	    }
+
+	    turtle.circle = function () {
+	    	turtle.penDown = true;
+	    	turtle.repeat(turtle.smalline, 36, 10);
+	    }
+
+	    turtle.partial_circle = function (section) {
+	    	turtle.penDown = true;
+	    	var section = section;
+	    	turtle.repeat(turtle.smalline, section, 10);
+	    }
+
+	    // turtle.move();
+	    // turtle.star();
+	    // turtle.move();
+	    // turtle.triangle();
+
+	    // turtle.move();
+	    // turtle.move();
+	    // turtle.partial_circle(30);
+
+	    
+
+
+
+
+    });
+</script>

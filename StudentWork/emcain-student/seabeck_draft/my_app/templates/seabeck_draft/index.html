@@ -1,0 +1,11 @@
+<h1>The following people have registered for camp:</h1>
+
+{%  if registrants_list %}
+    <ul>
+    {%  for registrant in registrants_list %}
+        <li><a href="/detail/{{ registrant.id }}">{{ registrant }}</a></li>
+    {%  endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
