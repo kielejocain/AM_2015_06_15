@@ -23,7 +23,7 @@ class Registrant(models.Model):
 
 # Campers
 class Camper(models.Model):
-    registrant = models.ForeignKey(Registrant)
+    registrant = models.ForeignKey(Registrant)  # recursion
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     under_18 = models.BooleanField()
@@ -36,38 +36,27 @@ class Camper(models.Model):
         return self.first_name + " " + self.last_name
 
 class Attendance(models.Model):  # i.e. Campers by year
-    year = models.IntegerField(max_length=4)
-    camper = models.ForeignKey(Camper)
+    year = models.IntegerField()
+    camper = models.ForeignKey(Camper)  # recursion
     grade = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
-        return self.camper.first_name + " " + self.camper.last_name
+        return self.camper.first_name + " " + self.camper.last_name + " - " + str(self.year)
 
     def __unicode__(self):
-        return self.camper.first_name + " " + self.camper.last_name
+        return self.camper.first_name + " " + self.camper.last_name + " - " + str(self.year)
 
 class Shirt(models.Model):
-    shirt_size_key = models.IntegerField(max_length=2)
-    number_required = models.IntegerField(max_length=4)
+    size_name = models.CharField(max_length=10)
 
-    shirt_sizes = {
-        1: "no shirt",
-        2: "Small",
-        4: "Medium",
-        5: "Large",
-        6: "Extra Large"
-    }
-
-    def size(self):
-        return self.shirt_sizes[self.shirt_size_key]
 
     # instead make 6 instances of shirt with size assigned
 
 
 
 class ShirtOrder(models.Model):
-    attendance = models.ForeignKey(Attendance)
-    shirt = models.ForeignKey(Shirt)
+    attendance = models.ForeignKey(Attendance)  # recursion
+    shirt = models.ForeignKey(Shirt)  # recursion
 
     def __str__(self):
         return "Camper: " + str(self.attendance.camper) \
@@ -78,7 +67,7 @@ class ShirtOrder(models.Model):
                + " shirt order: " + self.shirt.size_name
 
 class FoodPreference(models.Model):
-    camper = models.ForeignKey(Camper)
+    camper = models.ForeignKey(Camper)  # recursion
     meat_preference = models.TextField()  # limited options --change eventually to new table
     gluten_free = models.BooleanField()
     dairy_free = models.BooleanField()

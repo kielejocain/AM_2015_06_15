@@ -19,8 +19,7 @@ from django.contrib import admin
 from my_app import views
 
 urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index, name='index'),
     url(r'(?P<registrant_id>[0-9]+)/$', views.detail, name='detail'),
-    url(r'^seabeck_draft/', include('seabeck_draft.urls', namespace="seabeck_draft")),
-    url(r'^seabeck_draft/', include('seabeck_draft.urls',)),
-    url(r'^admin/', include(admin.site.urls)), ]
+    ]
