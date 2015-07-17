@@ -8,6 +8,10 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     # ex: /polls/edit/5/
     url(r'^edit/(?P<question_id>[0-9]+)/$', views.edit, name='edit'),
+
+    # ex: /polls/add/
+    url(r'^add/$', views.add, name='add'),
+
     # ex: /polls/5/
     url(r'^(?P<question_id>[0-9]+)/$', views.detail, name='detail'),
     # ex: /polls/5/results/
