@@ -1,0 +1,68 @@
+<script src="turtle-graphics-canvas.js"></script>
+<script src="turtle-graphics-canvas-definitions.js"></script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+
+        turtle.strokeStyle = turtle.colors.blue;
+//        turtle.forward(50);
+//        turtle.drawTurtle();
+
+        var length = 20;
+
+        turtle.triangle = function () {
+            turtle.forward(length);
+            turtle.left(120);
+            turtle.forward(length);
+            turtle.left(120);
+            turtle.forward(length);
+            turtle.left(120);
+        };
+
+        turtle.triangle = function () {
+            turtle.repeat(
+                    function () {
+                        turtle.forward(length);
+                        turtle.left(120);
+                    }
+                    , 3
+            );
+        };
+
+        turtle.triangle = function (length) {
+            turtle.repeatAngle(function () {
+                        turtle.forward(length);
+                    },
+                    3,
+                    120);
+        };
+
+        turtle.shape = function () {
+            turtle.repeat(
+                    function () {
+                        turtle.penDown = true;
+                        turtle.triangle(length);
+                        turtle.penDown = false;
+                        turtle.forward(length);
+                        turtle.left(30);
+                    }
+                    , 12
+            );
+        };
+
+        turtle.repeat(
+                function (i) {
+                    var colorKeys = Object.keys(turtle.colors);
+                    var index = i % colorKeys.length;
+                    var key = colorKeys[index];
+                    turtle.strokeStyle = turtle.colors[key];
+
+                    turtle.shape();
+                    turtle.penDown = false;
+                    turtle.forward(length * 5);
+                    turtle.left(30);
+                }
+                , 12
+        );
+
+    });
+</script>
