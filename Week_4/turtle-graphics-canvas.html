@@ -18,14 +18,13 @@
             turtle.left(120);
         };
 
+        function triangle_leg() {
+            turtle.forward(length);
+            turtle.left(120);
+        }
+
         turtle.triangle = function () {
-            turtle.repeat(
-                    function () {
-                        turtle.forward(length);
-                        turtle.left(120);
-                    }
-                    , 3
-            );
+            turtle.repeat(triangle_leg, 3);
         };
 
         turtle.triangle = function (length) {

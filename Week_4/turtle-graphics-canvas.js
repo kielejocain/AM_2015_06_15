@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
     //<canvas id="canvas" width="800" height="600"></canvas>
 
     var canvas = document.createElement('canvas');
-    canvas.setAttribute("width", window.innerWidth);
-    canvas.setAttribute("height", window.innerHeight);
+    canvas.setAttribute("width", window.innerWidth.toString());
+    canvas.setAttribute("height", window.innerHeight.toString());
 
     turtle.x = window.innerWidth / 2;
     turtle.y = window.innerHeight / 2;
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     turtle.lineWidth = 3;
     turtle.left(180);
 
-    document.body.appendChild(canvas)
+    document.body.appendChild(canvas);
     if (canvas && canvas.getContext) { // does the browser support 'canvas'?
         turtle.ct = canvas.getContext("2d"); // get drawing context
     } else {

@@ -1,6 +1,6 @@
 # create a new empty list
 me = []
-# annother way to do the same
+# another way to do the same
 me = list()
 
 # add two new items to the list
