@@ -11,8 +11,15 @@
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
 </head>
 <body>
-{% block content %}
-Content will be placed here
-{% endblock %}
+<header>
+    <a href="/">DanceMatch Home</a>
+</header>
+<main>
+    {% block content %}
+    Content will be placed here
+    {% endblock %}
+</main>
+<footer>
+</footer>
 </body>
 </html>
