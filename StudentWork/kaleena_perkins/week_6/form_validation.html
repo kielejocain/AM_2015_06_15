@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Form Validator</title>
+    <script>
+
+
+        //DOM fully loaded and parsed
+        document.addEventListener("DOMContentLoaded", function (event) {
+
+            /**
+             * TODO:
+             * 1. Add Validation to other inputs
+             * Extra Credit
+             * 2. Add a phone input
+             * 3. Display Errors
+             * 4. Make sure phone number has at least 10 digits but ignore dashes and dots
+             *    e.g. 503.555.1212 or 503-555-1212 or 5035551212 or 503 555 1212 are all valid.
+             * 5. EXTRA CREDIT
+             *      How would you place the errors next to the individual inputs?
+             * */
+            var f = document.getElementById('registration');
+            f.onsubmit = function (e) {
+
+                var errors = [];
+                var email = document.getElementById('email');
+                var firstName = document.getElementById('first_name');
+                var lastName = document.getElementById("last_name");
+                var phone = document.getElementById("phone");
+                var re = /\d{3}.?-?\s?\d{3}.?-?\s?\d{4}/
+
+                if ((email.value.length < 1) ||(email.value.indexOf("@") == -1)) {
+                    email.classList.add("error");
+                    document.getElementById("emailError").innerHTML = "Email is a required field and must contain an @ symbol.";
+                    errors.push("Email is a required field.");
+                } else{
+                    document.getElementById("emailError").innerHTML = "";
+                    email.classList.add("valid");
+                }
+
+               /* if (email.value.indexOf("@") == -1) {
+                    email.classList.add("error");
+                    document.getElementById("emailError2").innerHTML = " Email must contain an @ symbol.";
+                    errors.push("Email must contain an @ symbol.");
+                } else{
+                    document.getElementById("emailError2").innerHTML = "";
+                    email.classList.add("valid");
+                } */
+
+                 /*function for name validation here */
+                if (firstName.value.length < 2) {
+                    firstName.classList.add("error");
+                    document.getElementById("firstNameError").innerHTML = "First name is a required field.";
+                    errors.push("First name is a required field.");
+                }else {
+                    document.getElementById("firstNameError").innerHTML = "";
+                    firstName.classList.add("valid");
+                }
+
+                if (lastName.value.length < 2) {
+                    lastName.classList.add("error");
+                    document.getElementById("lastNameError").innerHTML = "Last name is a required field.";
+                    errors.push("last name is a required field.");
+                }else {
+                    document.getElementById("lastNameError").innerHTML = "";
+                    lastName.classList.add("valid");
+                }
+
+                /*phone number validation*/
+                if (!phone.value.match(re)){
+                    phone.classList.add("error");
+                    document.getElementById("phoneError").innerHTML = "That is not a valid phone number format.";
+                    errors.push("That is not a valid phone number format.");
+                } else {
+                    document.getElementById("phoneError").innerHTML = "";
+                    phone.classList.add("valid");
+                }
+
+                if (errors.length > 0) {
+                    e.preventDefault();
+                    console.log(errors);
+                }
+
+
+
+            }
+        });
+    </script>
+    <style>
+        .error {
+            border: 2px solid red;
+            /*background-color: #ffcccc;*/
+        }
+
+        .valid {
+            border: 2px solid green;
+        }
+    </style>
+</head>
+<body>
+<form id="registration">
+    <fieldset>
+
+        <label for="email">
+            Email:
+        </label>
+        <br>
+        <input name="email" id="email"><label id="emailError"></label><label id="emailError2"></label>
+        <br>
+        <label for="first_name">
+            First Name:
+        </label>
+        <br>
+        <input name="first_name" id="first_name"><label id="firstNameError"></label>
+        <br>
+        <label for="last_name">
+            Last Name:
+        </label>
+        <br>
+        <input name="last_name" id="last_name"><label id="lastNameError"></label>
+        <br>
+        <label for="phone">
+            Phone Number:
+        </label>
+        <br>
+        <input name="phone" id="phone"><label id="phoneError"></label>
+        <br>
+        <input type="submit" value="Register">
+    </fieldset>
+</form>
+
+</body>
+</html>
