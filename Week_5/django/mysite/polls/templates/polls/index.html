@@ -6,11 +6,28 @@
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
-        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+        <li>
+            {{ question.question_text }}
+            &nbsp;
+            <a href="/polls/{{ question.id }}/">
+                vote
+            </a>
+            &nbsp;
+            <a href="/polls/edit/{{ question.id }}/">
+                edit
+            </a>
+        </li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+
+<!--<a href="/polls/add/">-->
+<a href="/polls/edit/0/">
+    Add a New Question
+</a>
+<br>
+&copy; 2015
 
 {% endblock %}

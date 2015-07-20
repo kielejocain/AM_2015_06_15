@@ -1,0 +1,10 @@
+<h1>Campers registered by {{ registrant.first_name }} {{ registrant.last_name }}</h1>
+
+<ul>
+    {% for camper in registrant.camper_set.all %}
+        <li>{{ camper.first_name }} {{ camper.last_name }}</li>
+    {% endfor %}
+</ul>
+
+<br><br>
+<a href="/seabeck_draft">Return to main page</a>

@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 
 import json
+from datetime import datetime
 
 
 # def index(request):
@@ -35,7 +36,54 @@ def index(request):
 
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
+
     return render(request, 'polls/detail.html', {'question': question})
+
+
+def save_question(request, question):
+    question.question_text = request.POST["question_text"]
+
+    pub_date_string = request.POST["pub_date"]
+    pub_date = datetime.strptime(pub_date_string, '%Y-%m-%d')
+    question.pub_date = pub_date
+
+    question.save()
+
+
+def edit(request, question_id):
+    # question = Question.objects.get(pk=question_id)
+    # question = get_object_or_404(Question, pk=question_id)
+    # question = Question.objects.filter(id=question_id)[0]
+    filtered_question_list = Question.objects.filter(id=question_id)
+
+    if len(filtered_question_list) > 0:
+        print("FOUND")
+        question = filtered_question_list[0]
+    else:
+        print("NEW")
+        question = Question()
+
+    if request.POST:
+        save_question(request, question)
+        return HttpResponseRedirect("/polls/")
+
+    return render(request, 'polls/edit.html', {'question': question})
+
+
+#
+# def add(request):
+#     question = Question()
+#
+#     if request.POST:
+#         save_question(request, question)
+#         return HttpResponseRedirect("/polls/")
+#
+#     return render(request, 'polls/edit.html', {'question': question})
+
+
+def ajax_form(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, 'polls/ajax_form.html', {'question': question})
 
 
 # def results(request, question_id):
@@ -67,6 +115,15 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
 
 
+# def edit_shirt(request, camper_id, attend_id):
+#     if request.POST:
+#         shirt_id = request.POST["shirt_id"]
+#         order = ShirtOrder()
+#         order.camper = Camper.objects.get(pk=camper_id)
+#         order.attend = Camper.objects.get(pk=attend_id)
+#         order.shirt = Shirt.objects.get(pk=shirt_id)
+#         order.save()
+
 def data(request):
     question_list = Question.objects.all()
     json_data = "[]"
@@ -90,9 +147,12 @@ def data(request):
 
 
 def api_vote(request):
-    question_id = request.POST["question_id"]
-    p = get_object_or_404(Question, pk=question_id)
-    selected_choice = p.choice_set.get(pk=request.POST['choice'])
-    selected_choice.votes += 1
-    selected_choice.save()
-    return HttpResponse('{"votes":' + selected_choice.votes + '}', content_type='application/json')
+    votes = "undefined"
+    if request.POST:
+        question_id = request.POST["question_id"]
+        p = get_object_or_404(Question, pk=question_id)
+        selected_choice = p.choice_set.get(pk=request.POST['choice'])
+        selected_choice.votes += 1
+        selected_choice.save()
+        votes = selected_choice.votes
+    return HttpResponse('{"votes":' + votes + '}', content_type='application/json')
