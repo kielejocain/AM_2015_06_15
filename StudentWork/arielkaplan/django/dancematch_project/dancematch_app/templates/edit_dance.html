@@ -14,7 +14,12 @@
                 Dance Style:
                 <select name="dance">
                     {% for dance in dances %}
-                        <option value="{{ dance.name }}" name="dance">{{ dance.name }}</option>
+                        <option value="{{ dance.id }}"
+                            {% if dance.name == dance_pref.dance.name %}
+                                selected="selected"
+                            {% endif %}>
+                            {{ dance.name }}
+                        </option>
                     {% endfor %}
                 </select>
             </label>
@@ -22,7 +27,12 @@
                 Role:
                 <select name="role">
                     {% for role in roles %}
-                        <option value="{{ role.name }}" name="role">{{ role.name }}</option>
+                        <option value="{{ role.id }}"
+                            {% if role.name == dance_pref.role.name %}
+                                selected="selected"
+                            {% endif %}>
+                            {{ role.name }}
+                        </option>
                     {% endfor %}
                 </select>
             </label>
@@ -30,7 +40,12 @@
                 Skill Level:
                 <select name="skill_level">
                     {% for level in skill_levels %}
-                        <option value="{{ level.name }}" name="skill_level">{{ level.name }}</option>
+                        <option value="{{ level.id }}" name="skill_level"
+                            {% if level.name == dance_pref.skill_level.name %}
+                                selected="selected"
+                            {% endif %}>
+                            {{ level.name }}
+                        </option>
                     {% endfor %}
                 </select>
             </label>
@@ -38,9 +53,9 @@
                 Status:
                 <select name="activity">
                     {% for activity in activities %}
-                        <option value="{{ activity.name }}" name="activity"
-                            {% if activity.name == dance_pref.activity %}
-                                selected
+                        <option value="{{ activity.id }}" name="activity"
+                            {% if activity.name == dance_pref.activity.name %}
+                                selected="selected"
                             {% endif %}>
                             {{ activity.name }}
                         </option>
@@ -51,9 +66,9 @@
                 Goal:
                 <select name="goal">
                     {% for goal in goals %}
-                        <option value="{{ goal.name }}" name="goal"
-                            {% if goal.name == dance_pref.goal %}
-                                selected
+                        <option value="{{ goal.id }}" name="goal"
+                            {% if goal.name == dance_pref.goal.name %}
+                                selected="selected"
                             {% endif %}>
                             {{ goal.name }}
                         </option>

@@ -56,18 +56,32 @@ def edit_profile(request, dancer_id):
 def edit_dance(request, dancer_id, dance_pref_id):
     dancer = get_object_or_404(Dancer, pk=dancer_id)
     dance_pref = get_object_or_404(DancePrefs, id=dance_pref_id)
-    dances = Dance.objects.all()
+    dances = Dance.objects.order_by("name")
     roles = DanceRole.objects.all()
     activities = Activity.objects.all()
     goals = Goals.objects.all()
     skill_levels = SkillLevel.objects.all()
     if request.POST:
         print(request.POST)
-        dance_pref.dance = request.POST.get("dance")
-        dance_pref.role = request.POST.get("role")
-        dance_pref.skill_level = request.POST.get("skill_level")
-        dance_pref.activity = request.POST.get("activity")
-        dance_pref.goal = request.POST.get("goal")
+        dance_id = request.POST.get("dance")
+        dance = get_object_or_404(Dance, pk=dance_id)
+        dance_pref.dance = dance
+
+        role_id = request.POST.get("role")
+        role = get_object_or_404(DanceRole, pk=role_id)
+        dance_pref.role = role
+
+        skill_level_id = request.POST.get("skill_level")
+        skill_level = get_object_or_404(SkillLevel, pk=skill_level_id)
+        dance_pref.skill_level = skill_level
+
+        activity_id = request.POST.get("activity")
+        activity = get_object_or_404(Activity, pk=activity_id)
+        dance_pref.activity = activity
+
+        goal_id = request.POST.get("goal")
+        goal = get_object_or_404(Goals, pk=goal_id)
+        dance_pref.goal = goal
         dance_pref.save()
     return render(request, 'edit_dance.html', {'dancer': dancer,
                                                'dance_pref': dance_pref,

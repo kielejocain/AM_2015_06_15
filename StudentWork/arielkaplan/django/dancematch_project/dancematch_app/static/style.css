@@ -1,12 +1,23 @@
+/*http://coolors.co/e88d67-ba444e-fff6f4-fcfcfc-a5dfef*/
+/*rust: #e88d67*/
+/*cranberry: #ba444e*/
+/*warm cream: #fff6f4*/
+/*off-white: #fcfcfc*/
+/*turquoise: #a5dfef*/
+
 body {
-    background-color: blanchedalmond;
+    background: #fff6f4;
     padding: 0;
     margin: 0;
     font-family: "Trebuchet MS", sans-serif;
 }
 
+header, footer, nav, main, aside {
+    box-sizing: border-box;
+}
+
 a {
-    color: darkred;
+    color: #ba444e;
 }
 
 header {
@@ -14,6 +25,15 @@ header {
     height: 4em;
     padding: 1.5em 2em;
 }
+
+header, footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    color: white;
+    background-color: #a5dfef;
+}
+
 
 main {
     position: absolute;
@@ -28,19 +48,21 @@ main {
 }
 
 form {
-    background-color: white;
-    margin: 1.5em;
+    background-color: #fcfcfc;
+    padding: 1.5em;
 }
 
 form label {
     display: block;
     padding-bottom: 1.5em;
+    font-size: 1em;
 }
 
 form input,
 form textarea {
     position: absolute;
     left: 200px;
+    font-size: 1em;
 }
 
 footer {
