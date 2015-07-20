@@ -32,14 +32,6 @@
 
     {% for dance_pref in dance_prefs %}
 
-    <form method="post">
-        {% csrf_token %}
-        <input value="{{ dance_pref.dance }}" name="dance">
-        <br>
-        <input type="submit" value="SAVE"/>
-
-    </form>
-
         <h3>{{ dance_pref.dance }}: {{ dance_pref.role }}</h3>
         <ul>
             {% if dance_pref.activity %}
@@ -54,9 +46,12 @@
             {% if dance_pref.notes != '' %}
                 <li>Notes: {{ dance_pref.notes }}</li>
             {% endif %}
+            <li>{{ dance_pref.id }}</li>
         </ul>
+        <a href="/edit/{{ dancer.id }}/{{ dance_pref.id }}/">Edit</a>
     {% empty %}
         {{ dancer.name }} has not added any dances.
+        Add a new dance.
     {% endfor %}
     </div>
 

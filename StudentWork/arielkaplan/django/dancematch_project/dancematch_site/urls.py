@@ -24,7 +24,9 @@ urlpatterns = [
     # ex. /profile/5/
     url(r'^profile/(?P<dancer_id>[0-9]+)/$', views.profile, name='profile'),
     # ex. /edit/5/
-    url(r'^edit/(?P<dancer_id>[0-9]+)/$', views.edit, name='edit'),
+    url(r'^edit/(?P<dancer_id>[0-9]+)/$', views.edit_profile, name='edit_profile'),
+    # ex. /edit/5/13
+    url(r'^edit/(?P<dancer_id>[0-9]+)/(?P<dance_pref_id>[0-9]+)/$', views.edit_dance, name='edit_dance'),
     # ex. /dances/
     url(r'^dances/', views.dances, name='dances'),
 ]
