@@ -1,0 +1,11 @@
+{% if location_text %}
+    <ul>
+    {% for location in location_list %}
+        <li><a href="/details/{{ location.id }}/">
+            {{ location }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Locations have been added.</p>
+    <p>Please enter a new Location.</p>
+{% endif %}

@@ -1,0 +1,18 @@
+{{ patient }}
+
+<h1>reminders;</h1>
+
+{% for reminder in patient.reminder_set.all %}
+{{ reminder.reminder_text }}
+<br/>
+{% endfor %}
+
+
+{{ patient }}
+
+<h1>reminders;</h1>
+
+{% for reminder in patient.reminder_set.all %}
+{{ reminder.reminder_text }}
+<br/>
+{% endfor %}
