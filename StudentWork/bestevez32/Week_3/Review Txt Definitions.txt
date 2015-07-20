@@ -1,0 +1,110 @@
+For each define the following:
+	a. What is it?
+	b. What real life thing is it similar to?
+	c. When would you use it (what problem does it solve?)
+	
+
+1. Variable:
+	a. A variable is a place to store values.
+	b. It is similar to a shopping cart.
+	c. When assigning different data types to variables, integers, decimals and
+		characters can be stored. 
+			counter = 100 # an integer
+			miles = 1000.0 # a float
+			name = "Brandon" # a string 
+
+2: Operator:
+	a. An operator manipulates operands. There are many different types of
+		operators including Arithmetic, Assignment, and Identity.
+	b. The plus sign or multiplication symbol is an example of an operator.
+	c. It allows operands in an expression to be evaluated. 4 + 1 = 5. 
+		4,1,5 are the operands and the + is the operator.
+
+3. Assignment Operator:
+	a.These operators assign commands to the operands.
+	b. Like in algebraic functions it performs order of operation tasks.
+		(+= Add) Would add the right and left operands and assign the result
+		to the left operand.
+		(** =) This would be an exponent command that would assign the values
+		to the left operand. 
+	c.It allows for mathematical functionality in python.
+
+4. String:
+	a. A string is a python type enclosed in "" or ''.
+	b. It is similar to an expression, example: "My Day!".
+	c. It acts as a variable that can be manipulated in python
+		code.
+
+5. Float:
+	a. A float is a type of variable that takes a decimal point.
+	b. In real life it is similar to a percentage or a number that has 
+		a value less than 1.
+	c. It allows for for decimal values to be manipulated. 
+
+6. Boolean:
+	a. Boolean's are operations that produce true or false statements through
+		"or", "and", "not". 
+	b. This is similar to the idea of inputs and outputs in mathematics. 
+	c. The operations are ordered by priority, much like order of operations
+		in mathematics. 
+		1st not: Give the opposite of the statement (not x = y)
+		2nd and: Check to see if both statements are True (x and y)
+		3rd or: Checks is at least one statement is True (x or y)
+
+7. List:
+	a. A datatype in python that is separated by commas.
+		list1 = ['bacon', 'candy', 'car']
+		list 2 = [1, 2, 3]
+		list 3 = ["a", "b", "c"]
+	b. A grocery list is an example of a real world example.
+	c. A list is useful in python because it's values can be accessed when 
+		the appropriate code is executed. 
+
+8. Dict:
+	a. A dictionary allows items and values to be assigned. 
+		dict = {'Name' : 'Bacon', 'Type' : 'Candy', 'Awesome_rating' : 100}
+	b. A phone book in a cell phone is an example of a dictionary.
+	c. It allows values and items to be linked together in one data set.
+
+9. Conditional Expression / Operator:
+	a. A conditional expression is a statement that only executes under a 
+		specific condition. 
+	b. When a car's wheel is turned to the right the car moves right. This 
+		is a conditional statement because a car will never move to the left
+		when the wheel is turned to the right.
+	c. It is used during if, elif and else statements in python.
+		if condition_right
+			car turns right
+		elif condition_left
+			car turns left
+		else
+			car goes straight
+
+10. Function:
+	a. A function is organized, reusable code used to perform an action. They allow
+		for code to be reused. 
+	b. Much like a function in math, the variables can be changed and manipulated
+		while the skeleton on operations stays the same.
+	c. The input parameters are placed within parenthesis in a function.
+		This allows them to be manipulated within "for loops", without having
+		to retype them over and over.
+
+11. Argument:
+	a. An argument provides a value to a function when it is called.
+		x = foo(3) # 3 is the argument for foo
+		y = bar( 4, "str") # 4 and "str" and two arguments for bar 
+	b. In mathematics x and y values are arguments. 
+	c. def foo (x,y):
+		return x + y 
+		z = foo( 3, 6)
+		# This statement defines a function of foo.  x and y are the arguments.
+			
+12. Return Value:
+	a. The return value executes the function based on the arguments.
+	b. Return value is like the = sign in math. It executes the formula.
+	c. def foo (x,y):
+		return x+y 
+		z= foo ( 3, 6)
+		return = 9
+Bonus: What other python keywords can you answer these for?
+	

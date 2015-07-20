@@ -1,0 +1,46 @@
+<style>
+    article {
+        background-color: darkorange;
+        clear: both;
+        width: 200px;
+        margin: 0.2em;
+        padding: 1em;
+        overflow: auto;
+    }
+
+    aside {
+        width: 30%;
+        margin: 0.2em;
+        padding: 1em;
+        background-color: darkblue;
+    }
+
+    article:nth-child(odd) aside {
+        float: right;
+    }
+
+    article:nth-child(even) aside {
+        float: left;
+    }
+</style>
+<body>
+<article>
+    <p>
+        Now is the time for all good people to come to the aid of their party.
+    </p>
+    <aside>
+        <blockquote>
+            One
+        </blockquote>
+    </aside>
+</article>
+<article>
+    Now is the time for all good people to come to the aid of their party.
+    <aside>
+        <blockquote>
+            One
+        </blockquote>
+    </aside>
+    Now is the time for all good people to come to the aid of their party.
+</article>
+</body>

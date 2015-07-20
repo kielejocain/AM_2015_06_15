@@ -1,0 +1,15 @@
+<body>
+This will take a second.
+</body>
+<script>
+    function showTime(){
+        var d = Date();
+        document.body.innerHTML = d;
+        setTimeout(showTime, 1000);
+    }
+
+
+
+    setTimeout(showTime, 5000);
+</script>
+
