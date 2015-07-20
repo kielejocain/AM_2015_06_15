@@ -1,0 +1,38 @@
+<body>
+<script>
+    function print(item) {
+        document.write(item + "<br>");
+//        console.log(item);
+//        alert(item);
+    }
+    // create a new empty array
+    me = [];
+    // another way to do the same
+    me = Array();
+
+    // add two new items to the array
+    me.push("Kevin");
+    me.push("Long");
+
+    // we often see this done in short hand all at once e.g.:
+    me = ["Kevin", "Long"];
+
+    // print first name which is the first item
+    // the first item is at array index zero
+    print(me[0]);
+
+    // print last name which is the second item
+    // the second item is at array index 1
+    print(me[1]);
+
+    // print full name
+    print(me[0] + " " + me[1]);
+
+    // We often define constants to make this more clear
+    // print full name using constants
+    FIRST_NAME = 0;
+    LAST_NAME = 1;
+    print(me[FIRST_NAME] + " " + me[LAST_NAME]);
+
+</script>
+</body>

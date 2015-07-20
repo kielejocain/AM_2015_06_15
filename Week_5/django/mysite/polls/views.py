@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 
 import json
+from datetime import datetime
 
 
 # def index(request):
@@ -39,28 +40,45 @@ def detail(request, question_id):
     return render(request, 'polls/detail.html', {'question': question})
 
 
+def save_question(request, question):
+    question.question_text = request.POST["question_text"]
+
+    pub_date_string = request.POST["pub_date"]
+    pub_date = datetime.strptime(pub_date_string, '%Y-%m-%d')
+    question.pub_date = pub_date
+
+    question.save()
+
+
 def edit(request, question_id):
     # question = Question.objects.get(pk=question_id)
-
     # question = get_object_or_404(Question, pk=question_id)
-
     # question = Question.objects.filter(id=question_id)[0]
-
     filtered_question_list = Question.objects.filter(id=question_id)
-    question = filtered_question_list[0]
 
     if len(filtered_question_list) > 0:
+        print("FOUND")
         question = filtered_question_list[0]
     else:
+        print("NEW")
         question = Question()
 
     if request.POST:
-        print(request.POST)
-        question.question_text = request.POST["question_text"]
-        question.save()
+        save_question(request, question)
         return HttpResponseRedirect("/polls/")
 
     return render(request, 'polls/edit.html', {'question': question})
+
+
+#
+# def add(request):
+#     question = Question()
+#
+#     if request.POST:
+#         save_question(request, question)
+#         return HttpResponseRedirect("/polls/")
+#
+#     return render(request, 'polls/edit.html', {'question': question})
 
 
 def ajax_form(request, question_id):
@@ -96,6 +114,15 @@ def vote(request, question_id):
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
 
+
+# def edit_shirt(request, camper_id, attend_id):
+#     if request.POST:
+#         shirt_id = request.POST["shirt_id"]
+#         order = ShirtOrder()
+#         order.camper = Camper.objects.get(pk=camper_id)
+#         order.attend = Camper.objects.get(pk=attend_id)
+#         order.shirt = Shirt.objects.get(pk=shirt_id)
+#         order.save()
 
 def data(request):
     question_list = Question.objects.all()

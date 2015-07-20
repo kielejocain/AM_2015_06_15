@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Camp Registration</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/custom-sample-form.css">
+</head>
+
+<style>
+    #filter {
+        display: none;
+        display: block;
+    }
+
+    body {
+        background-image: url("image/camp_entrance.jpg")
+    }
+
+    .row {
+        padding: 0;
+        width: 100%
+    }
+
+
+    #emergency input {
+        width: 7em;
+        padding: 0;
+    }
+
+
+    .category {
+        display: none;
+    }
+
+</style>
+<script>
+
+    function showAll(event) {
+        var filter = document.getElementById("filter");
+        console.log(event);
+        if (event.target.checked) {
+            filter.style.display = "inline-block";
+        } else {
+            filter.style.display = "none";
+        }
+    }
+
+    function hideSubtypes(event){
+        var emergency = document.getElementById("emergency");
+        emergency.style.display = 'none';
+        var vegetables = document.getElementById("vegetables");
+        vegetables.style.display = 'none';
+        var minerals = document.getElementById("minerals");
+        minerals.style.display = 'none';
+    }
+
+
+    // function showSubtype(event){
+    //     var item = document.getElementById(this.value)
+    //     item.style.display = "inline-block"
+    //}
+
+    function fadeIn(el, display){
+      if (el.classList.contains('is-hidden')){
+        el.classList.remove('is-hidden');
+      }
+      el.style.opacity = 0;
+      el.style.display = display || "block";
+
+      (function fade() {
+        var val = parseFloat(el.style.opacity);
+        if (!((val += .1) > 1)) {
+          el.style.opacity = val;
+          requestAnimationFrame(fade);
+        }
+      })();
+    }
+
+    function categoryClick(event) {
+        console.log(event.target.value);
+        console.log(this.value);
+        var categories = document.getElementById("categories");
+        hideSubtypes();
+        // showSubtype(categories);
+        var item = document.getElementById(this.value);//what is 'this'
+        //same as: var item = document.getElementById(event.target.value) --determined by eventlistener. 
+        item.style.display = "inline-block";
+        fadeIn(item, item.style.display);
+
+        
+    }
+    function init() {
+        // var element = document.getElementById("show_all");
+        hideSubtypes();
+        // element.addEventListener("click", showAll);
+        // element.style.display = "inline-block";
+
+        var categories = document.getElementsByName("category");
+        for (var i = 0, max = categories.length; i < max; i++) {
+            categories[i].addEventListener("click", categoryClick);
+        }
+    }
+    document.addEventListener("DOMContentLoaded", init);
+
+</script>
+<body>
+<div class="outer-div">
+
+<h1>Camper info form</h1>
+
+<p>Please pick a category of information to edit.</p>
+
+<!-- <label>
+    Show All
+    <input id="show_all" type="checkbox">
+</label> -->
+
+<div id="filter">
+
+
+    <div id="categories">
+        <label><input name="category" type="radio" value="emergency"> Emergency Contact </label>
+        <label><input name="category" type="radio" value="vegetables"> Dietary Needs </label>
+        <label><input name="category" type="radio" value="minerals"> Shirt Size </label>
+    </div>
+
+    <div id="emergency" class="category animal row" display= inline>
+        <div class="col-md-4"><label>Name <input name="animal" type="text"></label></div>
+        <div class="col-md-4"><label>Phone <input name="animal" type="text"></label></div>
+        <div class="col-md-4"><label>Relation <input id ="relationship" name="animal" type="text"></label></div>
+    </div>
+    <div id="vegetables" class="category vegetable">
+        Please check all that apply.<br> 
+        <label><input name="vegetable" type="checkbox" value="Apple">Vegetarian   </label> 
+        <label><input name="vegetable" type="checkbox" value="Orange">Vegan   </label> 
+        <label><input name="vegetable" type="checkbox" value="Banana">No Red Meat   </label>
+        <label><input name="vegetable" type="checkbox" value="Banana">No Gluten   </label><br>
+        <label>Other (please explain) <input name="vegetable" type="text"></label>
+    </div>
+    <div id="minerals" class="category Mineral">
+        <label><input name="mineral" type="radio" value="Diamond">Small</label>
+        <label><input name="mineral" type="radio" value="Ruby">Medium</label>
+        <label><input name="mineral" type="radio" value="Sapphire">Large</label>
+    </div>
+</div>
+</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+

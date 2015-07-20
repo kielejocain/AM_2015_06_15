@@ -108,6 +108,9 @@ file_string = """
     <head></head>
         <body bgcolor='""" + bgcolor + """'>
 """ + game_view.render() + """
+    <script>alert("now adding stuff...");
+    (".body").append("<p>this is some stuff we are adding</p>");
+    </script>
     </body>
 </html>
 """
