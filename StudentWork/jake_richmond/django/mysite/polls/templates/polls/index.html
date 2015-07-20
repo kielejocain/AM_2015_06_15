@@ -1,5 +1,9 @@
+{% extends "base_generic.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
 {% if latest_question_list %}
-{% load staticfiles%}
     <ul>
     {% for question in latest_question_list %}
         <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
