@@ -2,44 +2,59 @@
 {% load staticfiles %}
 
 {% block content %}
-<h1>{{ dancer.name }}</h1>
+    <h1>{{ dancer.name }}</h1>
 
-<strong>Edit your profile:</strong><br><br>
+    <strong>Edit your profile:</strong><br><br>
 
-{% if dancer.active_member %}
-    {{ dancer.name }} is looking for a buddy!
-{% else %}
-    {{ dancer.name }} is not currently looking for a buddy.
-{% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label>
+            Display Name:
+            <input value="{{ dancer.name }}" name="name">
+        </label>
+        <label>
+            Find me a buddy!
+            <input type="checkbox" name="active_member" {% if dancer.active_member %}checked{% endif %} />
+        </label>
+        <label>
+            My bio:
+            <textarea name="bio">{{ dancer.bio }}</textarea>
+        </label>
+        <label>
+            Email:
+            <input value="{{ dancer.email }}" name="email">
+        </label>
+        <input type="submit" value="SAVE"/>
+    </form>
 
-<div class="bio">
-    {{ dancer.bio }}
-</div>
-<div class="contact">
-    {{ dancer.email }}
-</div>
-    <h2>{{ dancer.name }}'s Dances</h2>
-<div class="prefs">
-{% for dance_pref in dance_prefs %}
-    <h3>{{ dance_pref.dance }}</h3>
-    <ul>
-        <li>Status: {{ dance_pref.activity }}</li>
-        {%  if dance_pref.lead %}
-            <li>Leader: {{ dance_pref.lead_level }}</li>
-        {% endif %}
-        {% if dance_pref.follow %}
-            <li>Follower: {{ dance_pref.follow_level }}</li>
-        {% endif %}
-        <li>Goal: {{ dance_pref.goals }}</li>
-        {% if dance_pref.notes != '' %}
-            <li>Notes: {{ dance_pref.notes }}</li>
-        {% endif %}
-    </ul>
-{% empty %}
-    No dances available.
-{% endfor %}
-</div>
+        <h2>{{ dancer.name }}'s Dances</h2>
+    <div class="prefs">
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% for dance_pref in dance_prefs %}
+
+        <h3>{{ dance_pref.dance }}: {{ dance_pref.role }}</h3>
+        <ul>
+            {% if dance_pref.activity %}
+                <li>Status: {{ dance_pref.activity }}</li>
+            {% endif %}
+            {% if dance_pref.skill_level %}
+                <li>Self-assessment: {{ dance_pref.skill_level }}</li>
+            {% endif %}
+            {%  if dance_pref.goal %}
+                <li>Goal: {{ dance_pref.goal }}</li>
+            {% endif %}
+            {% if dance_pref.notes != '' %}
+                <li>Notes: {{ dance_pref.notes }}</li>
+            {% endif %}
+            <li>{{ dance_pref.id }}</li>
+        </ul>
+        <a href="/edit/{{ dancer.id }}/{{ dance_pref.id }}/">Edit</a>
+    {% empty %}
+        {{ dancer.name }} has not added any dances.
+        Add a new dance.
+    {% endfor %}
+    </div>
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 {% endblock %}

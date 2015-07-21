@@ -1,5 +1,9 @@
+{% extends "base_generic.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
 <h1>{{ question.question_text }}</h1>
-{% load staticfiles%}
 
 <ul>
 {% for choice in question.choice_set.all %}
@@ -8,5 +12,4 @@
 </ul>
 
 <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
-
 {% endblock %}
