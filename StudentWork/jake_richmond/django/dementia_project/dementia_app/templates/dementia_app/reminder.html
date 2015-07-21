@@ -1,0 +1,12 @@
+{% if reminder_text %}
+    <ul>
+    {% for reminder in reminder_text %}
+        <li><a href="/dementia_app/{{ reminder.id }}/">
+            <img src="/static/dementia_app/images/{{reminder.icon}}">
+            {{ reminder.reminder_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No reminders are available.</p>
+{% endif %}
+

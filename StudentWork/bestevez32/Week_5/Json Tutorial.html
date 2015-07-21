@@ -1,0 +1,27 @@
+<!--YouTube Adam Khoury: json tutorial for beginners part 1. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        var obj1 = {user:"Brandon", age:38, country:"United States"};
+        var obj2 = {user:"Emily", age:22, country:"United States"};
+        var obj3 = {user:"Ariel", age:22, country:"United States"};
+        var obj4 = {u1:obj1, u2:obj2, u3:obj3};
+        document.write(obj3.user+" is "+obj3.age+ " years old and from " +obj3.country);
+        obj3.country = "Italy";
+        document.write("<hr />");
+        document.write(obj3.user+" is "+obj3.age+ " years old and from " +obj3.country);
+        document.write("<hr />");
+        document.write(obj4.u2.user+" is from "+ obj4.u2.country);
+        document.write("<hr />");
+        document.write(obj4["u2"]["user"]);
+        var meats = ["beef","pork","lamb"];
+        var fruit = ["apple", "plumb", "grape","orange"];
+        var obj5 = {arr1:meats, arr2:fruit};
+        document.write(obj5.arr1[0]);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

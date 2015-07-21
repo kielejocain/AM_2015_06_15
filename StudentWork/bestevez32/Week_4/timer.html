@@ -1,0 +1,25 @@
+<body>
+This message will self destruct in 10 seconds.
+</body>
+<script>
+    //TODO: count down to zero from a specific value.
+    // e.g. From 10 ... 9,8,7,6,5,4,3,2,1,0
+    // When zero is reached use the
+    // alert method to show a message.
+    // the date object is not required
+    var count = 10;
+
+    function timer() {
+
+        if (count >=0) {
+            document.body.innerHTML = count;
+            count--; // This is the line for the decrement counter.. x--(subtracts) x++(adds)
+                    /* This is another way of commenting */
+            setTimeout(timer, 1000);
+        }else{
+        alert("This is the end, my only friend.")
+        }
+    }
+    timer();
+
+</script>

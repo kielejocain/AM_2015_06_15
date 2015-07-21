@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+{% load staticfiles %}
+{% block content %}
+<script>
+    document.write("test");
+    // Draw Loaded Data
+    function draw(data) {
+        for (var i = 0; i < data.length; i++) {
+
+        }
+        document.body.innerHTML = data
+    }
+
+    // BEGIN WEB REST API CALL TO GET JSON DATA
+    var url = "/polls/data/";
+    var request = new XMLHttpRequest();
+    request.open("GET", url);
+
+    //For pre html5 browsers use onstatuschanged
+    request.onloadend = function (e) {
+        var json_string = e.currentTarget.responseText;
+        var data = JSON.parse(json_string);
+        draw(data);
+    };
+
+    request.send();
+
+</script>
+{% endblock %}
