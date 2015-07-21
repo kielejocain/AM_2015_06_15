@@ -1,0 +1,74 @@
+<head>
+    <style>
+        .tab-set, tab-set * {
+            box-sizing: border-box;
+        }
+
+        .tab-set {
+            width: 320px;
+            height: 240px;
+            margin: 3em auto;
+        }
+
+        .tab {
+            display: inline-block;
+            border: 1px solid black;
+            color: black;
+            background-color: darkgray;
+        }
+
+        .tab-content {
+            /*margin-top: -2px;*/
+            border: 1px solid black;
+            /*display: none;*/
+            background-color: lightgray;
+            box-sizing: border-box;
+            min-height: 100px;
+        }
+
+        .tab.selected {
+            border-bottom: none;
+        }
+
+        .tab.selected,
+        .tab-content.selected {
+            background-color: lightgray;
+        }
+
+        .tab-content.selected {
+            display: block;
+        }
+    </style>
+    <script>
+        function showTab(index) {
+            document.getElementsByClassName()
+        }
+    </script>
+</head>
+<body>
+<div class="tab-set">
+
+    <div class="tab-container">
+        <div data-tab="tab-1" class="tab selected">
+            Tab 1
+        </div>
+        <div data-tab="tab-2" class="tab">
+            Tab 2
+        </div>
+        <div data-tab="tab-3" class="tab">
+            Tab 3
+        </div>
+    </div>
+    <div class="tab-content-container">
+        <div id="tab-1" class="tab-content selected">
+            This is Tab 1
+        </div>
+        <div id="tab-2" class="tab-content">
+            This is Tab 2
+        </div>
+        <div id="tab-3" class="tab-content">
+            This is Tab 3
+        </div>
+    </div>
+</div>
+</body>

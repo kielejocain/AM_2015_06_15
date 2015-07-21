@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Dancer(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()
@@ -14,9 +15,10 @@ class Dancer(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Dance(models.Model):
     name = models.CharField(default='', max_length=200)
-    description = models.TextField(default='')
+    description = models.TextField(blank=True)
     dance_community = models.ManyToManyField(
         Dancer,
         through='DancePrefs',
@@ -29,73 +31,66 @@ class Dance(models.Model):
     def __unicode__(self):
         return self.name
 
-class DancePrefs(models.Model):
-    dance = models.ForeignKey(Dance)
-    dancer = models.ForeignKey(Dancer)
 
-    BRAND_NEW = 'New'
-    BEGINNER = 'Beginner'
-    BEYOND_BEGINNING = 'Beyond Beginning'
-    INTERMEDIATE = 'Intermediate'
-    ADVANCED = 'Advanced'
-    EXPERT = 'Expert'
-    LEVEL_CHOICES = (
-        (BRAND_NEW, 'Brand New'),
-        (BEGINNER, 'Beginner'),
-        (BEYOND_BEGINNING, 'Beyond Beginning'),
-        (INTERMEDIATE, 'Intermediate'),
-        (ADVANCED, 'Advanced'),
-        (EXPERT, 'Expert')
-    )
-
-    DANCE_BUDDY = "Social Dance Buddy"
-    CLASS_BUDDY = "Class Buddy"
-    SOCIAL = "Social Dancing"
-    COMP_ROUTINE = "Competition Routine"
-    COMP_STRICTLY = "Competition Strictly"
-    COMP_OTHER = "Other Competition"
-    DANCE_GOALS = (
-        (DANCE_BUDDY, 'Social Dance Buddy'),
-        (CLASS_BUDDY, 'Class Buddy'),
-        (SOCIAL, 'Social Dancing'),
-        (COMP_ROUTINE, 'Competition Routine'),
-        (COMP_STRICTLY, 'Competition Strictly'),
-        (COMP_OTHER, 'Other Competition')
-    )
-
-    ACTIVE = "Active"
-    CASUAL = "Casual"
-    INACTIVE = "Inactive"
-    DANCE_ACTIVITY = (
-        (ACTIVE, 'Active'),
-        (CASUAL, 'Casual'),
-        (INACTIVE, 'Inactive')
-    )
-
-    lead = models.BooleanField()
-    lead_level = models.CharField(max_length=200,
-                                  choices=LEVEL_CHOICES,
-                                  default=BRAND_NEW)
-    follow = models.BooleanField()
-    follow_level = models.CharField(max_length=200,
-                                    choices=LEVEL_CHOICES,
-                                    default=BRAND_NEW)
-    goals = models.CharField(max_length=200,
-                             choices=DANCE_GOALS,
-                             default=SOCIAL)
-    activity = models.CharField(max_length=200,
-                                choices=DANCE_ACTIVITY,
-                                default=ACTIVE)
-    notes = models.TextField()
+class DanceRole(models.Model):
+    name = models.CharField(max_length=200)
 
     def __str__(self):
-        return str(self.dancer) + "'s " + str(self.dance) + ' prefs'
+        return self.name
 
     def __unicode__(self):
-        return str(self.dancer) + "'s " + str(self.dance) + ' prefs'
+        return self.name
+
+
+class SkillLevel(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+    def __unicode__(self):
+        return self.name
+
+
+class Activity(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+    def __unicode__(self):
+        return self.name
+
+
+class Goals(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+    def __unicode__(self):
+        return self.name
+
 
 class Schedule(models.Model):
     pass
 
+
 class Location(models.Model):
     pass
+
+
+class DancePrefs(models.Model):
+    dance = models.ForeignKey(Dance)
+    dancer = models.ForeignKey(Dancer)
+    role = models.ForeignKey(DanceRole)
+    skill_level = models.ForeignKey(SkillLevel, null=True)
+    activity = models.ForeignKey(Activity, null=True)
+    goal = models.ForeignKey(Goals, null=True)
+    notes = models.TextField(blank=True)
+
+    def __str__(self):
+        return str(self.dancer) + "'s " + str(self.dance) + ' prefs: ' + str(self.role)
+
+    def __unicode__(self):
+        return str(self.dancer) + "'s " + str(self.dance) + ' prefs' + str(self.role)

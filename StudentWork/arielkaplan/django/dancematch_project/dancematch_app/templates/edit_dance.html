@@ -1,0 +1,70 @@
+{% extends "base_generic.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <h1>{{ dancer.name }}</h1>
+
+    <div class="prefs">
+
+        <h3>{{ dance_pref.dance }}: {{ dance_pref.role }}</h3>
+
+        <form method="post">
+            {% csrf_token %}
+            <label>
+                Dance Style:
+                <select name="dance">
+                    {% for dance in dances %}
+                        <option value="{{ dance.name }}" name="dance">{{ dance.name }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>
+                Role:
+                <select name="role">
+                    {% for role in roles %}
+                        <option value="{{ role.name }}" name="role">{{ role.name }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>
+                Skill Level:
+                <select name="skill_level">
+                    {% for level in skill_levels %}
+                        <option value="{{ level.name }}" name="skill_level">{{ level.name }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>
+                Status:
+                <select name="activity">
+                    {% for activity in activities %}
+                        <option value="{{ activity.name }}" name="activity"
+                            {% if activity.name == dance_pref.activity %}
+                                selected
+                            {% endif %}>
+                            {{ activity.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>
+                Goal:
+                <select name="goal">
+                    {% for goal in goals %}
+                        <option value="{{ goal.name }}" name="goal"
+                            {% if goal.name == dance_pref.goal %}
+                                selected
+                            {% endif %}>
+                            {{ goal.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </label>
+            <input type="submit" value="SAVE"/>
+
+        </form>
+    </div>
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% endblock %}
