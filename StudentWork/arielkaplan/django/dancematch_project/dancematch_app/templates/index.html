@@ -6,8 +6,17 @@
 {% if all_dancers %}
     <ul>
     {% for dancer in all_dancers %}
-        <li><a href="/profile/{{ dancer.id }}/">{{ dancer.name }}</a></li>
-
+        <li>
+            <a href="/profile/{{ dancer.id }}/">{{ dancer.name }}</a>:
+            {% for pref in all_prefs %}
+                <ul>
+                    {% if pref.dancer.id == dancer.id %}
+                    <li>
+                        {{ pref.dance }} {{ pref.role }}
+                    </li>
+                    {% endif %}
+                </ul>
+        </li>
     {% endfor %}
     </ul>
 {% else %}

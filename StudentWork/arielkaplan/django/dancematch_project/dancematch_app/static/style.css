@@ -1,9 +1,9 @@
-/*http://coolors.co/e88d67-ba444e-fff6f4-fcfcfc-a5dfef*/
+/*http://coolors.co/e88d67-ba444e-fff6f4-fcfcfc-b1e0db*/
 /*rust: #e88d67*/
 /*cranberry: #ba444e*/
 /*warm cream: #fff6f4*/
 /*off-white: #fcfcfc*/
-/*turquoise: #a5dfef*/
+/*turquoise: #b1e0db*/
 
 body {
     background: #fff6f4;
@@ -20,20 +20,26 @@ a {
     color: #ba444e;
 }
 
-header {
-    top: 0;
-    height: 4em;
-    padding: 1.5em 2em;
-}
-
 header, footer {
     position: fixed;
     left: 0;
     right: 0;
     color: white;
-    background-color: #a5dfef;
+    background-color: #e88d67;
 }
 
+header {
+    top: 0;
+    height: 4em;
+    padding: 1.5em 2em;
+    border-bottom: 4px solid #b1e0db;
+}
+
+header a {
+    display: inline-block;
+    margin-right: 2em;
+    color: white
+}
 
 main {
     position: absolute;
@@ -63,6 +69,11 @@ form textarea {
     position: absolute;
     left: 200px;
     font-size: 1em;
+}
+
+form input:focus,
+form textarea:focus {
+    border: 2px solid #b1e0db;
 }
 
 footer {

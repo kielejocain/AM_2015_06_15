@@ -10,10 +10,12 @@ import json
 
 def index(request):
     all_dancers = Dancer.objects.all()
+    all_prefs = DancePrefs.objects.all()
     template = loader.get_template('index.html')
     context = RequestContext(request, {
-        'all_dancers': all_dancers,
-    })
+                             'all_dancers': all_dancers,
+                             'all_prefs': all_prefs,
+                             })
     return HttpResponse(template.render(context))
 
 
