@@ -1,0 +1,18 @@
+[
+  {
+    "game_name": "Go-Fish",
+    "description": "Try to match all dealt cards. First to do so wins."
+  },
+  {
+    "game_name": "War",
+    "description": "Match cards with opposing player. High card wins."
+  },
+  {
+    "game_name": "Euker",
+    "description": "Too long to explain here. Look it up."
+  },
+  {
+    "game_name": "Gin",
+    "description": "I don't know how to play this game."
+  }
+]

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    count = 10
+    function showTime() {
+       if (count <= 0) {
+           alert("Boom!");
+       }
+       else {
+           document.body.innerHTML = count;
+           count--
+           setTimeout(showTime, 1000)
+       }
+    }
+    showTime();
+    </script>
+</html>

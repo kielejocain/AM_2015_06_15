@@ -1,0 +1,141 @@
+
+<style>
+    body {
+        font-family: "Trebuchet MS", sans-serif;
+        margin: center;
+        text-align: center;
+    }
+
+    header, footer, nav, main, aside {
+        box-sizing: border-box;
+    }
+
+    header, footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        color: white;
+    }
+
+    header {
+        top: 0;
+        height: 200px;
+        background-color: royalblue;
+    }
+
+    footer {
+        bottom: 0;
+        height: 200px;
+        background-color: blueviolet;
+    }
+
+    nav {
+        padding: 2em;
+        position: fixed;
+        left: 0;
+        top: 100;
+        bottom: 0;
+        width: 200;
+        color: cornflowerblue;
+        background-color: #303457;
+    }
+
+    /*aside {
+        padding: 2em;
+        position: fixed;
+        right: 0;
+        top: 100;
+        bottom: 0;
+        width: 250;
+        background-color: aliceblue;
+        color: darkblue;
+    }*/
+
+    nav a {
+        display: block;
+        margin-top: 6em;
+        color: aliceblue;
+    }
+
+     main {
+        text-align: left;
+        margin: 200px;
+        padding: 1em;
+    }
+
+     body > aside {
+        position: fixed;
+        right: 0;
+        top: 100px;
+        bottom: 0;
+        width: 240px;
+        background-color: green;
+    }
+
+
+
+
+
+
+</style>
+
+<body>
+<main>
+    Main Content
+    <section>
+        Section One
+        <article>
+            Article A - Now is the time for all good people to come to the aid of their planet.
+
+            <aside>
+                <blockquote>
+                    Block Quote A
+                </blockquote>
+            </aside>
+        </article>
+        <article>
+            Article B - Now is the time for all good people to come to the aid of their planet.
+            <aside>
+                <blockquote>
+                    Block Quote B
+                </blockquote>
+            </aside>
+        </article>
+    </section>
+    <section>
+        Section Two
+        <article>
+            Article Two A - Now is the time for all good people to come to the aid of their planet.
+            <aside>
+                <blockquote>
+                    Block Quote Two A
+                </blockquote>
+            </aside>
+        </article>
+        <article>
+            Article Two A - Now is the time for all good people to come to the aid of their planet.
+            <aside>
+                <blockquote>
+                    Block Quote Two B
+                </blockquote>
+            </aside>
+        </article>
+    </section>
+</main>
+<nav>
+    Navigation
+    <a href="#section-one">Section One</a>
+    <br>
+    <a href="#section-two">Section Two</a>
+</nav>
+<aside>
+    Adverts for Monetization
+</aside>
+<header>
+    Header
+</header>
+<footer>
+    Footer
+</footer>
+</body>
+</html>
