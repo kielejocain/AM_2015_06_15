@@ -17,7 +17,12 @@
     {{ dancer.email }}
 </div>
 
+<br>
+<a href="/edit/{{ dancer.id }}">Edit</a>
+
 <h2>{{ dancer.name }}'s Dances</h2>
+
+<a href="/edit/{{ dancer.id }}/0/">Add a new dance</a>
 
 {% for dance_pref in dance_prefs %}
     <h3>{{ dance_pref.dance }}: {{ dance_pref.role }}</h3>
@@ -35,12 +40,11 @@
             <li>Notes: {{ dance_pref.notes }}</li>
         {% endif %}
     </ul>
+    <a href="/edit/{{ dancer.id }}/{{ dance_pref.id }}/">Edit</a>
+
 {% empty %}
     {{ dancer.name }} has not added any dances.
 {% endfor %}
-
-<br>
-<a href="/edit/{{ dancer.id }}">Edit Profile</a>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 

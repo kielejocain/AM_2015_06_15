@@ -50,6 +50,8 @@ def edit_profile(request, dancer_id):
         dancer.bio = request.POST["bio"]
         dancer.active_member = request.POST.get("active_member", False)
         dancer.save()
+        return HttpResponseRedirect("/profile/" + str(dancer.id) + "/")
+
     return render(request, 'edit.html', {'dancer': dancer,
                                          'dance_prefs': dance_prefs,
                                          })
@@ -93,7 +95,7 @@ def edit_dance(request, dancer_id, dance_pref_id):
         dance_pref.dancer = dancer
         dance_pref.save()
 
-        return HttpResponseRedirect("/edit/" + str(dancer.id) + "/")
+        return HttpResponseRedirect("/profile/" + str(dancer.id) + "/")
 
     return render(request, 'edit_dance.html', {'dancer': dancer,
                                                'dance_pref': dance_pref,

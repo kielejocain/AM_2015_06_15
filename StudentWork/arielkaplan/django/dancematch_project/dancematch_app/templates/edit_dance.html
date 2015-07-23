@@ -6,13 +6,19 @@
 
     <div class="prefs">
 
-        <h3>{{ dance_pref.dance }}: {{ dance_pref.role }}</h3>
+        {% if dance_pref.id %}
+            <h3>Edit {{ dance_pref.dance }}: {{ dance_pref.role }}</h3>
+        {% else %}
+            <h3>Add a New Dance</h3>
+        {% endif %}
 
         <form method="post">
             {% csrf_token %}
             <label>
                 Dance Style:
                 <select name="dance">
+                    <option value="">(required)</option>
+
                     {% for dance in dances %}
                         <option value="{{ dance.id }}"
                             {% if dance.name == dance_pref.dance.name %}
@@ -26,6 +32,8 @@
             <label>
                 Role:
                 <select name="role">
+                    <option value="">(required)</option>
+
                     {% for role in roles %}
                         <option value="{{ role.id }}"
                             {% if role.name == dance_pref.role.name %}
@@ -39,6 +47,8 @@
             <label>
                 Skill Level:
                 <select name="skill_level">
+                    <option value="">(optional)</option>
+
                     {% for level in skill_levels %}
                         <option value="{{ level.id }}" name="skill_level"
                             {% if level.name == dance_pref.skill_level.name %}
@@ -52,6 +62,7 @@
             <label>
                 Status:
                 <select name="activity">
+                    <option value="">(optional)</option>
                     {% for activity in activities %}
                         <option value="{{ activity.id }}" name="activity"
                             {% if activity.name == dance_pref.activity.name %}
@@ -65,6 +76,7 @@
             <label>
                 Goal:
                 <select name="goal">
+                    <option value="">(optional)</option>
                     {% for goal in goals %}
                         <option value="{{ goal.id }}" name="goal"
                             {% if goal.name == dance_pref.goal.name %}
