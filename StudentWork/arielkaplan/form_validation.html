@@ -20,25 +20,61 @@
              * 5. EXTRA CREDIT
              *      How would you place the errors next to the individual inputs?
              * */
+                    
+            function isDigit(char) {
+                return !isNaN(parseInt(char));
+            }
+
+            // Make sure 10 or 11 digits in phone
+            function isValidPhone(phone) {
+                var count = 0;
+                for (i = 0; i < phone.length; i++) {
+                    if (isDigit(i)) {
+                        count += 1;
+                    }
+                }
+                return (count == 10 || count == 11);
+            }
+
+            function addError(element, message, error_list) {
+                element.classList.add("error");
+                error_msg = document.createElement("small");
+                error_msg.textContent = message;
+                error_list.push(message);
+                element.parentElement.appendChild(error_msg);
+            }
+
             var f = document.getElementById('registration');
             f.onsubmit = function (e) {
 
-                var errors = [];
+                var error_list = [];
                 var email = document.getElementById('email');
+                var phone = document.getElementById('phone');
 
                 if (email.value.length < 1) {
-                    email.classList.add("error");
-                    errors.push("Email is a required field.");
+                    var msg_email_reqd = "Email is a required field. ";
+                    addError(email, msg_email_reqd, error_list);
+                    // errors.push("Email is a required field.");
+                    // email.parentElement.insertBefore(error_msg, email);
                 }
 
                 if (email.value.indexOf("@") == -1) {
-                    email.classList.add("error");
-                    errors.push("Email must contain an @ symbol.");
+                    var msg_email_at = "Email must contain an @ symbol. ";
+                    addError(email, msg_email_at, error_list);
                 }
 
-                if (errors.length > 0) {
+                if (!isValidPhone(phone.value)) {
+                    var msg_phone_digits = "Phone must be 10-11 digits";
+                    addError(phone, msg_phone_digits, error_list);
+                }
+
+                if (error_list.length > 0) {
                     e.preventDefault();
-                    console.log(errors);
+                    console.log(error_list);
+
+//                    var error_p = document.createElement("small");
+//                    error_p.textContent = errors;
+//                    f.appendChild(error_p);
                 }
 
             }
@@ -49,32 +85,51 @@
             border: 2px solid red;
             /*background-color: #ffcccc;*/
         }
+
+        label {
+            display: block;
+        }
+
+        input {
+            display: inline-block;
+        }
+
+        small {
+            display: inline-block;
+        }
+
+        p {
+            margin: 1em 0 0 0;
+        }
+
+        .button {
+            margin: 1em 0;
+            font-size: 1em;
+        }
+
     </style>
 </head>
 <body>
 <form id="registration">
     <fieldset>
 
-        <label for="email">
-            Email:
+        <label>
+            <p>Email:</p>
+            <input name="email" id="email">
         </label>
-        <br>
-        <input name="email" id="email">
-        <br>
-        <label for="first_name">
-            First Name:
+        <label>
+            <p>First Name:</p>
+            <input name="first_name" id="first_name">
         </label>
-        <br>
-        <input name="first_name" id="first_name">
-        <br>
-        <label for="last_name">
-            Last Name:
+        <label>
+            <p>Last Name:</p>
+            <input name="last_name" id="last_name">
         </label>
-        <br>
-        <input name="last_name" id="last_name">
-        <br>
-
-        <input type="submit" value="Register">
+        <label>
+            <p>Phone:</p>
+            <input name="phone" id="phone">
+        </label>
+        <input class="button" type="submit" value="Register">
     </fieldset>
 </form>
 
