@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
 from django.core.urlresolvers import reverse
 
-from .models import Dancer, Dance, Schedule, Location, DancePrefs, SkillLevel, Goals, Activity, DanceRole
+from .models import Dancer, Dance, Day, Time, Location, DancePrefs, SkillLevel, Goals, Activity, DanceRole
 
 import json
 
@@ -57,7 +57,12 @@ def edit_profile(request, dancer_id):
 
 def edit_dance(request, dancer_id, dance_pref_id):
     dancer = get_object_or_404(Dancer, pk=dancer_id)
-    dance_pref = get_object_or_404(DancePrefs, id=dance_pref_id)
+    dance_pref_list = DancePrefs.objects.filter(id=dance_pref_id)
+    if len(dance_pref_list) > 0:
+        dance_pref = dance_pref_list[0]
+    else:
+        dance_pref = DancePrefs()
+
     dances = Dance.objects.order_by("name")
     roles = DanceRole.objects.all()
     activities = Activity.objects.all()
@@ -84,7 +89,12 @@ def edit_dance(request, dancer_id, dance_pref_id):
         goal_id = request.POST.get("goal")
         goal = get_object_or_404(Goals, pk=goal_id)
         dance_pref.goal = goal
+
+        dance_pref.dancer = dancer
         dance_pref.save()
+
+        return HttpResponseRedirect("/edit/" + str(dancer.id) + "/")
+
     return render(request, 'edit_dance.html', {'dancer': dancer,
                                                'dance_pref': dance_pref,
                                                'dances': dances,

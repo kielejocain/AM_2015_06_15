@@ -53,6 +53,31 @@ main {
     margin-bottom: 2em; /* size of footer */
 }
 
+ul {
+    list-style-type: none;
+}
+
+li {
+    background-color: #fcfcfc;
+}
+
+.list > li {
+    padding: 0.5em 1em;
+    display: block;
+}
+
+.list > li:nth-child(odd) {
+}
+
+.list > li:nth-child(even) {
+    border-bottom: 3px solid #fff6f4;
+    color: gray;
+}
+
+.prefs > li {
+    padding: 0.5em 1em;
+}
+
 form {
     background-color: #fcfcfc;
     padding: 1.5em;

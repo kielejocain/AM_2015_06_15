@@ -19,11 +19,9 @@
 
 <h2>{{ dancer.name }}'s Dances</h2>
 
-<div class="prefs">
-
 {% for dance_pref in dance_prefs %}
     <h3>{{ dance_pref.dance }}: {{ dance_pref.role }}</h3>
-    <ul>
+    <ul class="prefs">
         {% if dance_pref.activity %}
             <li>Status: {{ dance_pref.activity }}</li>
         {% endif %}
@@ -42,9 +40,7 @@
 {% endfor %}
 
 <br>
-<a href="/edit/{{ dancer.id }}">Edit Profile
-
-</div>
+<a href="/edit/{{ dancer.id }}">Edit Profile</a>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
