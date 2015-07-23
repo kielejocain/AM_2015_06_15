@@ -1,0 +1,16 @@
+
+
+{% if object_list %}
+    <ul>
+    {% for blog in object_list %}
+    <a href="/blog/{{blog.id}}"
+        <li><h1>{{ blog.title_text }}</h1></li>
+          <ul>
+            <li><h3>{{ blog.name_text }}</h3></li>
+          </ul>
+      </a>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No blogs are available.</p>
+{% endif %}

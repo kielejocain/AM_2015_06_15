@@ -9,8 +9,6 @@ def censor(text, word):
         else:
             words2.append(w)
 
-
-
     result = " ".join(words2)
     print result
 
