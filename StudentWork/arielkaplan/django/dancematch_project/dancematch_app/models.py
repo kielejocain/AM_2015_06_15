@@ -72,13 +72,33 @@ class Goals(models.Model):
         return self.name
 
 
-class Schedule(models.Model):
-    pass
+class Day(models.Model):
+    name = models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.name
+
+    def __unicode__(self):
+        return self.name
+
+class Time(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+    def __unicode__(self):
+        return self.name
 
 class Location(models.Model):
-    pass
+    name = models.CharField(max_length=200)
+    # zip_code = models.IntegerField(min_value=00000, max_value=99999)
 
+    def __str__(self):
+        return self.name
+
+    def __unicode__(self):
+        return self.name
 
 class DancePrefs(models.Model):
     dance = models.ForeignKey(Dance)

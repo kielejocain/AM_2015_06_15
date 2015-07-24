@@ -3,17 +3,19 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
 from django.core.urlresolvers import reverse
 
-from .models import Dancer, Dance, Schedule, Location, DancePrefs, SkillLevel, Goals, Activity, DanceRole
+from .models import Dancer, Dance, Day, Time, Location, DancePrefs, SkillLevel, Goals, Activity, DanceRole
 
 import json
 
 
 def index(request):
     all_dancers = Dancer.objects.all()
+    all_prefs = DancePrefs.objects.all()
     template = loader.get_template('index.html')
     context = RequestContext(request, {
-        'all_dancers': all_dancers,
-    })
+                             'all_dancers': all_dancers,
+                             'all_prefs': all_prefs,
+                             })
     return HttpResponse(template.render(context))
 
 
@@ -48,6 +50,8 @@ def edit_profile(request, dancer_id):
         dancer.bio = request.POST["bio"]
         dancer.active_member = request.POST.get("active_member", False)
         dancer.save()
+        return HttpResponseRedirect("/profile/" + str(dancer.id) + "/")
+
     return render(request, 'edit.html', {'dancer': dancer,
                                          'dance_prefs': dance_prefs,
                                          })
@@ -55,20 +59,44 @@ def edit_profile(request, dancer_id):
 
 def edit_dance(request, dancer_id, dance_pref_id):
     dancer = get_object_or_404(Dancer, pk=dancer_id)
-    dance_pref = get_object_or_404(DancePrefs, id=dance_pref_id)
-    dances = Dance.objects.all()
+    dance_pref_list = DancePrefs.objects.filter(id=dance_pref_id)
+    if len(dance_pref_list) > 0:
+        dance_pref = dance_pref_list[0]
+    else:
+        dance_pref = DancePrefs()
+
+    dances = Dance.objects.order_by("name")
     roles = DanceRole.objects.all()
     activities = Activity.objects.all()
     goals = Goals.objects.all()
     skill_levels = SkillLevel.objects.all()
     if request.POST:
         print(request.POST)
-        dance_pref.dance = request.POST.get("dance")
-        dance_pref.role = request.POST.get("role")
-        dance_pref.skill_level = request.POST.get("skill_level")
-        dance_pref.activity = request.POST.get("activity")
-        dance_pref.goal = request.POST.get("goal")
+        dance_id = request.POST.get("dance")
+        dance = get_object_or_404(Dance, pk=dance_id)
+        dance_pref.dance = dance
+
+        role_id = request.POST.get("role")
+        role = get_object_or_404(DanceRole, pk=role_id)
+        dance_pref.role = role
+
+        skill_level_id = request.POST.get("skill_level")
+        skill_level = get_object_or_404(SkillLevel, pk=skill_level_id)
+        dance_pref.skill_level = skill_level
+
+        activity_id = request.POST.get("activity")
+        activity = get_object_or_404(Activity, pk=activity_id)
+        dance_pref.activity = activity
+
+        goal_id = request.POST.get("goal")
+        goal = get_object_or_404(Goals, pk=goal_id)
+        dance_pref.goal = goal
+
+        dance_pref.dancer = dancer
         dance_pref.save()
+
+        return HttpResponseRedirect("/profile/" + str(dancer.id) + "/")
+
     return render(request, 'edit_dance.html', {'dancer': dancer,
                                                'dance_pref': dance_pref,
                                                'dances': dances,

@@ -4,10 +4,22 @@
 {% block content %}
 
 {% if all_dancers %}
-    <ul>
+    <ul class="list">
     {% for dancer in all_dancers %}
-        <li><a href="/profile/{{ dancer.id }}/">{{ dancer.name }}</a></li>
-
+        <li>
+            <a href="/profile/{{ dancer.id }}/">{{ dancer.name }}</a>
+        </li>
+        <li>
+            <ul>
+                {% for pref in all_prefs %}
+                    {% if pref.dancer.id == dancer.id %}
+                    <li>
+                        {{ pref.dance }} {{ pref.role }}
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </li>
     {% endfor %}
     </ul>
 {% else %}
