@@ -1,0 +1,41 @@
+.container {
+	margin: 0.5em;
+	padding: 0;
+	width: 90%;
+}
+
+.row {
+	position: relative;
+	margin-top: .5em;
+}
+
+.row div {
+	padding-left: .5em;
+}
+
+.input-group-addon  {
+	border-color: blue;
+}
+
+
+
+.form-control  {
+	border-color: blue;
+}
+
+hr {
+	color: navy;
+}
+
+select {
+	position: absolute;
+	height: 100%;
+	border-color: blue;
+	margin: 0;
+}
+
+.btn {
+	border-color: blue;
+	background-color: #EEE;
+	color: navy;
+}

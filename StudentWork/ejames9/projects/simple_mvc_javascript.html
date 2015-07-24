@@ -1,0 +1,107 @@
+<body>
+Loading...
+</body>
+<script>
+    // MVC: A GENERIC ARCHITECTURE FOR MAKING APPS THAT DISPLAY DATA
+
+    // MODEL: A LIST OF OBJECTS. TYPICALLY FROM A DATABASE
+    function Model(name, fields) {
+        this.name = name;
+        this.fields = fields;
+        this.objects = [];
+    }
+    Model.prototype.create = function (item) {
+        this.objects.push(item);
+    };
+
+
+    // VIEW: A TEMPLATE FOR A PAGE OR PAGE FRAGMENT
+    function View(template, model) {
+        this.template = template;
+        this.model = model;
+    }
+    View.prototype.render = function () {
+        var output = "";
+        for (var i = 0; i < this.model.objects.length; i++) {
+            var item = this.model.objects[i];
+            var item_template = this.template;
+            for (var f = 0; f < this.model.fields.length; f++) {
+                var field = this.model.fields[f];
+                if (item.hasOwnProperty(field)) {
+                    item_template = item_template.replace("{{" + field + "}}", item[field])
+                }
+            }
+            output += item_template;
+        }
+        return output;
+    };
+
+    // CONTROLLER: Routes messages
+    function Controller() {
+        this.routes = {};
+    }
+    Controller.prototype.route = function (path) {
+        var view = this.routes[path];
+        return view.render();
+    };
+
+    // CONTAINS THE SINGLE CONTROLLER AND ALL MODEL AND VIEW INSTANCES
+    function Application() {
+        this.models = {};
+        this.views = {};
+        this.controller = new Controller()
+    }
+
+    //END APP FRAMEWORK DEFINITION
+
+    //BEGIN EXAMPLE APP
+
+    // CREATE AN APPLICATION INSTANCE
+    var app = new Application();
+
+    // functionine models (
+    app.models["user"] = new Model("user", ["name", "score"]);
+    app.models["game"] = new Model("game", ["game_name", "description"]);
+
+    game_template = "\nThe game is <strong>{{game_name}}</strong>. <em>{{description}}</em>.<br>\n";
+    game_view = new View(game_template, app.models["game"]);
+
+    score_template = "\nHello <em>{{name}}</em>, your score is <strong>{{score}}</strong>.<br>\n";
+    scores_view = new View(score_template, app.models["user"]);
+
+    //  Controller
+    app.controller.routes = {
+        "/scores/": scores_view,
+        "/game/": game_view
+    }
+
+    // Draw Loaded Data
+    function draw(data) {
+        app.models["game"].objects = data;
+        //  TEST
+        request_path = "/game/";
+        document.body.innerHTML = app.controller.route(request_path);
+
+    }
+
+    // BEGIN WEB REST API CALL TO GET JSON DATA
+    var url = "./simple_mvc_javascript_data.json";
+    var url2 = "./simple_mvc_javascript_game.json";
+    var request = new XMLHttpRequest();
+    request.open("GET", url2);
+
+    //For pre html5 browsers use onstatuschanged
+    request.onloadend = function (e) {
+        var json_string = e.currentTarget.responseText;
+        var data = JSON.parse(json_string);
+        draw(data);
+    };
+
+    request.send();
+
+    // TODO:
+    // 1. Add a new second json model file source
+    // 2. create templates ad views to consume them.
+    // 3. Make the data source and the view change based on the url bookmark
+    //      using the window's hash change event. e.g. /#shoes vs /#pants
+</script></html>

@@ -1,0 +1,243 @@
+/* My super fucking awesome CSS Stylesheet! */
+
+#top {
+
+    z-index: 1;
+    position: fixed;
+    box-sizing: border-box;
+    top: 0;
+    left: 183px;
+    height: 20px;
+    width: 900px;
+    background-color: cornsilk;
+}
+
+#heady {
+    position: relative;
+    left: 100px;
+    font-size: 26px;
+    color: lightblue;
+
+}
+
+#post {
+    font-family: HelveticaNeue-Light;
+    position: relative;
+    font-size: 38px;
+    color: blue;
+    left: 175px;
+    top: 115px;
+    background-color: #14143B;
+    opacity: .8;
+    width: 100px;
+}
+
+#post p {
+    color: cornsilk;
+}
+
+#menu {
+    font-family: HelveticaNeue-Light;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    background-color: transparent;
+    height: 70px;
+    z-index: 3;
+
+}
+
+#bro {
+    height: 30px;
+    width: 140px;
+    border: 1px solid cornsilk;
+    border-radius: 7px;
+    background-color: transparent;
+    font-family: HelveticaNeue-Light;
+    font-size: 22px;
+    color: cornsilk;
+    position: relative;
+    left: 80%;
+    top: 20px;
+    z-index: 3;
+    text-align: center;
+    opacity: .7;
+
+}
+
+#header {
+    font-family: HelveticaNeue-Light;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: .6;
+    background-color: #14143B;
+    height: 70px;
+    z-index: 2;
+    transition: 0s 5s;
+}
+
+#bro:hover {
+  border: 1px solid darkcyan;
+}
+
+#bro:hover + #header {
+    height: 450px;
+    opacity: .9;
+    background-color: #14143B;
+    transition: all .8s ease;
+
+}
+
+.content {
+    top: 105px;
+    bottom: 0;
+    position: relative;
+    width: 900px;
+    height: 1400px;
+    left: 175px;
+    border-radius: 5px;
+    background-color: black;
+    border: 8px solid black;
+    opacity: .8;
+}
+
+
+body {
+
+    background: white url("images/stained_glass3.jpg");
+
+}
+
+#footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 30px;
+        background-color: #14143B;
+        opacity: .8;
+}
+#blog_title {
+  font-family: HelveticaNeue-Light;
+  font-size: 36px;
+  width: 400px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  color: darkcyan;
+  top: 50px;
+}
+
+#blgr_name {
+  font-family: HelveticaNeue-Light;
+  margin-left: 15%;
+  position: absolute;
+
+  color: lightblue;
+  top: 5%;
+  left: 100px;
+
+}
+
+#blog_text {
+  font-family: HelveticaNeue-Light;
+  margin-top: 0px;
+  margin-left: 5px;
+  margin-right: auto;
+  color: lightblue;
+}
+
+#blog_date {
+  font-family: HelveticaNeue-Light;
+  color: darkcyan;
+  font-size: 14px;
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+#blog_post {
+  font-family: HelveticaNeue-Light;
+  color: darkcyan;
+  margin-bottom: 0;
+
+}
+
+#addc {
+  font-family: HelveticaNeue-Light;
+  color: darkcyan;
+
+}
+
+#delete {
+  background-color: darkcyan;
+  border-radius: 5px;
+  border: none;
+  color: #14143B;
+}
+#delete:hover {
+  background-color: blue;
+}
+
+#del {
+  font-family: HelveticaNeue-Light;
+  color: darkcyan;
+  margin-bottom: 0;
+}
+
+.form2 {
+  display: block;
+}
+
+#pub_time {
+  font-family: HelveticaNeue-Light;
+  color: darkcyan;
+}
+
+#cmt_name {
+  font-family: HelveticaNeue-Light;
+  color: lightblue;
+  margin-bottom: 0;
+}
+
+#cmt_txt {
+  font-family: HelveticaNeue-Light;
+  color: darkcyan;
+  margin-top: 0;
+}
+
+#post {
+  position: absolute;
+  left: 5%;
+  top: 15%;
+  height: 50px;
+}
+
+#pub_time {
+  font-family: HelveticaNeue-Light;
+  color: darkcyan;
+
+}
+
+.form  {
+  height: 150px;
+  width: 400px;
+  background-color: lightblue;
+  color: #14143B;
+  border-radius: 5px;
+}
+
+#cmtr_name {
+  width: 150px;
+  background-color: lightblue;
+  color: #14143B;
+  border-radius: 4px;
+  border: none;
+  height: 15px;
+  margin-bottom: 5px;
+}

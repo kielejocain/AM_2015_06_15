@@ -19,28 +19,51 @@ def index(request):
 
     return HttpResponse(template.render(context))
 
+
 def detail(request, registrant_id):
     registrant = get_object_or_404(Registrant, pk=registrant_id)
     return render(request, 'seabeck_draft/detail.html', {'registrant': registrant})
 
 
-def edit(request, question_id):
+def edit(request, registrant_id):
 
-    filtered_registrant_list = Question.objects.filter(id=question_id)
-    question = filtered_question_list[0]
+    # filtered_question_list = Question.objects.filter(id=question_id)
+    #
+    # if len(filtered_question_list) > 0:
+    #     print("FOUND")
+    #     question = filtered_question_list[0]
+    # else:
+    #     print("NEW")
+    #     question = Question()
+    #
+    # if request.POST:
+    #     save_question(request, question)
+    #     return HttpResponseRedirect("/polls/")
+    #
+    # return render(request, 'polls/edit.html', {'question': question})
 
-    if len(filtered_question_list) > 0:
-        question = filtered_question_list[0]
+    registrant = get_object_or_404(Registrant, pk=registrant_id)
+
+    filtered_registrant_list = Registrant.objects.filter(id=registrant_id)
+
+    if len(filtered_registrant_list) > 0:
+        registrant = filtered_registrant_list[0]
     else:
-        question = Question()
+        registrant = Registrant()
 
     if request.POST:
         print(request.POST)
-        question.question_text = request.POST["question_text"]
-        question.save()
-        return HttpResponseRedirect("/polls/")
+        registrant.first_name = request.POST["first_name"]
+        registrant.last_name = request.POST["last_name"]
+        registrant.email = request.POST["email"]
+        registrant.phone = request.POST["phone"]
+        registrant.save()
+        return HttpResponseRedirect("/")
 
-    return render(request, 'polls/edit.html', {'question': question})
+    return render(request, 'seabeck_draft/edit.html', {'registrant': registrant})
+
+
+def add_camper(request, registrant_id):
 
 
 # def detail(request, question_id):

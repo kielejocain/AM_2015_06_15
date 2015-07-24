@@ -2,9 +2,31 @@
 
 <ul>
     {% for camper in registrant.camper_set.all %}
-        <li>{{ camper.first_name }} {{ camper.last_name }}</li>
+        <li>{{ camper.first_name }} {{ camper.last_name }} --
+            {% if camper.under_18 %}
+                Child
+            {%  else %}
+                Adult
+            {% endif %}
+            --
+            {% for a in camper.attendance_set.all %}
+                {% if forloop.last %}
+                    {{ a.age_at_start }}
+                {% endif %}
+            {% endfor %}
+            --
+            {% for a in camper.food_preference_set.all %}
+
+                    {{ a.age_at_start }}
+            {% endfor %}
+
+
+
+
+
+        </li>
     {% endfor %}
 </ul>
 
 <br><br>
-<a href="/seabeck_draft">Return to main page</a>
+<a href="/">Return to main page</a>
