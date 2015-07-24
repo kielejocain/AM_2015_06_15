@@ -10,6 +10,7 @@ from django.core.urlresolvers import reverse
 
 import json
 from datetime import datetime
+from django.views.decorators.csrf import csrf_exempt
 
 
 # def index(request):
@@ -38,6 +39,16 @@ def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
 
     return render(request, 'polls/detail.html', {'question': question})
+
+
+@csrf_exempt
+def api_save_question(request):
+    print(request.POST)
+    question = Question()
+    question.question_text = request.POST["text"]
+    question.pub_date = datetime.now()
+    question.save()
+    return HttpResponse('{"id":' + str(question.id) + '}')
 
 
 def save_question(request, question):
@@ -81,9 +92,8 @@ def edit(request, question_id):
 #     return render(request, 'polls/edit.html', {'question': question})
 
 
-def ajax_form(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'polls/ajax_form.html', {'question': question})
+def ajax_form(request):
+    return render(request, 'polls/ajax_form.html')
 
 
 # def results(request, question_id):
@@ -123,6 +133,30 @@ def vote(request, question_id):
 #         order.attend = Camper.objects.get(pk=attend_id)
 #         order.shirt = Shirt.objects.get(pk=shirt_id)
 #         order.save()
+
+def api_questions(request):
+    question_list = Question.objects.all()
+    output = []
+    for q in question_list:
+        qdata = {}
+        qdata["id"] = q.id
+        qdata["text"] = q.question_text
+        output.append(qdata)
+    return HttpResponse(json.dumps(output))
+
+
+def api_get_question_name(request, question_id):
+    question = Question.objects.filter(id=question_id)[0]
+    return HttpResponse(json.dumps({"text": question.question_text}))
+
+
+def api_choices(request, question_id):
+    question = Question.objects.filter(id=question_id)[0]
+    output = []
+    for c in Choice.objects.filter(question=question):
+        output.append({"text": c.choice_text, "id": c.id})
+    return HttpResponse(json.dumps(output))
+
 
 def data(request):
     question_list = Question.objects.all()

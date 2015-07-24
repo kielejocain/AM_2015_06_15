@@ -2,14 +2,50 @@
 {% load staticfiles %}
 {% block content %}
 <script>
+    function saveQuestion() {
+        var input = document.getElementById("question_text");
+        var text = input.value;
+        var fd = new FormData();
+        fd.append("text", text);
+        request = new XMLHttpRequest();
+        url = "/polls/api_save_question/";
+        request.onloadend = function () {
+            alert("saved as id: " + this.responseText)
+        };
+        request.open("post", url);
+        request.send(fd);
+    }
+</script>
+<div>
+    <label>
+        Question Text:
+        <input id="question_text">
+    </label>
+    <button onclick="saveQuestion()">
+        SAVE
+    </button>
+</div>
+<script>
+
+
     document.write("test");
+
     // Draw Loaded Data
     function draw(data) {
-        alert("Vote Sent! Total Votes:" + data.votes);
+        console.log(data);
+        var div = document.createElement("div");
+        for (var i = 0; i < data.length; i++) {
+            var h1 = document.createElement("h1");
+            var item = data[i];
+            var text = item.text;
+            h1.innerHTML = text;
+            div.appendChild(h1);
+        }
+        document.body.appendChild(div);
     }
 
     // BEGIN WEB REST API CALL TO GET JSON DATA
-    var url = "/polls/api_vote/";
+    var url = "/polls/api_questions/";
     var request = new XMLHttpRequest();
     request.open("GET", url);
 
@@ -23,18 +59,6 @@
     request.send();
 
 </script>
-<h1>{{ question.question_text }}</h1>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-<form onsubmit="vote()">
-    {% csrf_token %}
-    {% for choice in question.choice_set.all %}
-    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"/>
-    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br/>
-    {% endfor %}
-    <input type="submit" value="Vote"/>
-</form>
-{% endblock %}
 
 {% endblock %}

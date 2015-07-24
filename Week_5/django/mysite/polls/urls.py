@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     # ex: /polls/
     url(r'^$', views.index, name='index'),
+    url(r'^api_questions/$', views.api_questions, name='questions'),
 
     # ex: /polls/edit/5/
     url(r'^edit/(?P<question_id>[0-9]+)/$', views.edit, name='edit'),
@@ -22,6 +23,7 @@ urlpatterns = [
     # ex: /data/
     url(r'^data/$', views.data, name='data'),  # ex: /data/
     url(r'^api_vote/$', views.api_vote, name='api_vote'),
-    url(r'^(?P<question_id>[0-9]+)/$', views.ajax_form, name='ajax_form'),
-    url(r'^(?P<question_id>[0-9]+)/$', views.ajax_form, name='ajax_form'),
+    url(r'^ajax_form/$', views.ajax_form, name='ajax_form'),
+    url(r'^api_save_question/$', views.api_save_question, name='ajax_form'),
+
 ]
