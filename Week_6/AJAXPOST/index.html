@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <title></title>
     <script>
-        function sendPost(formData) {
+        function sendPost(item) {
+            var form_data = new FormData();
+
+            for (var key in item) {
+                form_data.append(key, item[key]);
+            }
+
             var request = new XMLHttpRequest();
             request.open("POST", "index.html");
-            request.send(formData);
+            request.send(form_data);
         }
-        var formData = {
+        var item = {
             "key": "value",
             "status": "Eating Lunch!"
         };
