@@ -3,9 +3,17 @@
 {%  if registrants_list %}
     <ul>
     {%  for registrant in registrants_list %}
-        <li><a href="/detail/{{ registrant.id }}">{{ registrant }}</a></li>
+        <li><a href="/detail/{{ registrant.id }}">{{ registrant }}</a>
+            phone: {{ registrant.phone }}
+            email: {{ registrant.email }}
+        <a href="/edit_registrant/{{ registrant.id }}">edit</a>
+
+        </li>
+
     {%  endfor %}
     </ul>
 {% else %}
-    <p>No polls are available.</p>
+    <p>No one has registered. </p>
 {% endif %}
+
+<a href="new_registrant.html">New Registration</a>

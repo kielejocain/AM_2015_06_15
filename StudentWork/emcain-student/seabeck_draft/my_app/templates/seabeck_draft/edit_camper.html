@@ -1,0 +1,31 @@
+{% load staticfiles %}
+{% block title %}
+Edit Camper
+{% endblock %}
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <h1>
+        {% if camper.id %}
+        Edit Camper:
+        {% else %}
+        New Camper:
+        {% endif %}
+    </h1>
+
+    First name: <input value="{{ camper.first_name  }}" name="first_name" type="text">
+    Last name: <input value="{{ camper.last_name  }}" name="last_name" type="text">
+    <br>
+    Age: <select value="{{ camper.under_18  }}" name="under_18">
+        <option value="false">Adult (18+)</option>
+        <option value="true">Child (under 18)</option>
+    </select>
+    Birth date: <input value="{{ camper.dob  }}" name="dob" type="date">
+    <br>
+    <input type="submit" value="SAVE"/>
+</form>
+
+
+
+{% endblock %}
