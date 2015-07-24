@@ -1,10 +1,10 @@
 {% if medication_text %}
-    <ul>
+    <ol>
     {% for medication in medication_list %}
         <li><a href="/dementia_app/{{ medication.id }}/">
             {{ medication }}</a></li>
     {% endfor %}
-    </ul>
+    </ol>
 {% else %}
     <p>No medications are available.</p>
     <p>Please enter a new Medication.</p>

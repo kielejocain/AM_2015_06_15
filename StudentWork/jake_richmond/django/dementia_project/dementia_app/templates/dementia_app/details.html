@@ -1,18 +1,22 @@
-{{ patient }}
+<strong><h1 style="font-family: Consolas;font-size: 40xp";>{{ patient }}</h1></strong>
 
-<h1>reminders;</h1>
+<h2 style="font-family: Consolas">Reminders:</h2>
 
 {% for reminder in patient.reminder_set.all %}
 {{ reminder.reminder_text }}
 <br/>
 {% endfor %}
 
+<h2 style="font-family: Consolas">Medications:</h2>
 
-{{ patient }}
+{% for medicine in patient.medication_set.all %}
+{{ medicine.medication_text }}
+<br/>
+{% endfor %}
 
-<h1>reminders;</h1>
+<h2 style="font-family: Consolas">Locations:</h2>
 
-{% for reminder in patient.reminder_set.all %}
-{{ reminder.reminder_text }}
+{% for location in patient.location_set.all %}
+{{ location.location_text }}
 <br/>
 {% endfor %}
