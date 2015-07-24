@@ -22,4 +22,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index, name='index'),
     url(r'(?P<registrant_id>[0-9]+)/$', views.detail, name='detail'),
+#    url(r'(?P<registrant_id>[0-9]+)/$', views.edit, name='edit'),
+    url(r'^edit/(?P<question_id>[0-9]+)/$', views.edit, name='edit'),
+
     ]

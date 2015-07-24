@@ -1,6 +1,6 @@
 # This is a text based game that involves moving between interconnected boats. 
 
-# It's basically a trading sequence game; you're talking to characters to determine what they want, so you can help them and they can give you something you need to continue. It's my first Python program. I hope you like it!
+# It's basically a trading sequence game; you're talking to characters to determine what they want, so you can help them and they can give you something you need to continue. I hope you like it!
 
 # This game was written in 2015 by Emily Cain (github.com/EMCain; emcain.net) 
 
