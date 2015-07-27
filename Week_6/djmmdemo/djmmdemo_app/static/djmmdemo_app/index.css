@@ -4,21 +4,24 @@ body {
     font-family: "Trebuchet MS", "Helvetica", sans-serif;
     font-size: 100%;
 }
-#lists{
-    width:100%;
-    font-size:200%;
+
+#lists {
+    width: 100%;
+    font-size: 200%;
     background-color: transparent;
     border: none;
-
 }
-#lists:focus{
+
+#lists:focus {
     outline: 0;
 }
-#lists option{
-    margin:0.5em;
-    padding:0.5em;
+
+#lists option {
+    margin: 0.5em;
+    padding: 0.5em;
     background-color: blanchedalmond;
 }
+
 .song.tile {
     width: 120px;
     height: 120px;
