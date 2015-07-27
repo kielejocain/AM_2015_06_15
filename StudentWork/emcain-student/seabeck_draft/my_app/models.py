@@ -9,8 +9,8 @@ class Registrant(models.Model):
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
     phone = models.CharField(max_length=15)  # will create validation later
-    total_owed = models.DecimalField(max_digits=20, decimal_places=4)
-    total_paid = models.DecimalField(max_digits=20, decimal_places=4)
+    total_owed = models.DecimalField(max_digits=20, decimal_places=4, default=0)
+    total_paid = models.DecimalField(max_digits=20, decimal_places=4, default=0)
 
     def __str__(self):
         return self.first_name + " " + self.last_name

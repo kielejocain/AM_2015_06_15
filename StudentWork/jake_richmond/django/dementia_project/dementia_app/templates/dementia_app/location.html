@@ -1,10 +1,11 @@
 {% if location_text %}
-    <ul>
+    <ol>
     {% for location in location_list %}
         <li><a href="/details/{{ location.id }}/">
+            <img src="/static/dementia_app/images/{{location.icon}}">
             {{ location }}</a></li>
     {% endfor %}
-    </ul>
+    </ol>
 {% else %}
     <p>No Locations have been added.</p>
     <p>Please enter a new Location.</p>
