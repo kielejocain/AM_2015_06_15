@@ -3,9 +3,9 @@
 <ul>
     {% for camper in registrant.camper_set.all %}
         <li>{{ camper.first_name }} {{ camper.last_name }} --
-            {% if camper.under_18 %}
+            {% if camper.under_18 == True %}
                 Child
-            {%  else %}
+            {%  else%}
                 Adult
             {% endif %}
             --

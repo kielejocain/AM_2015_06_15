@@ -21,7 +21,7 @@ from my_app import views
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index, name='index'),
-    url(r'^new_registrant.html', views.new_registrant, name='new_registrant'),
+#    url(r'^new_registrant.html', views.new_registrant, name='new_registrant'),
     url(r'^edit_registrant/(?P<registrant_id>[0-9]+)/$', views.edit_registrant,
         name='edit_registrant'),
     url(r'^edit_camper/(?P<camper_id>[0-9]+)/$', views.edit_camper, name='edit_camper'),
