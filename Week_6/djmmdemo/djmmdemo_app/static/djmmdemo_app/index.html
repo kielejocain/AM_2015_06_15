@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/static/djmmdemo_app/index.css">
+    <script src="/static/djmmdemo_app/request.js"></script>
+    <script src="/static/djmmdemo_app/render_utilities.js"></script>
+    <script src="/static/djmmdemo_app/index.js"></script>
+</head>
+<body>
+<h1>Song Playlist Demo</h1>
+
+<div class="column w33">
+    <label>
+        <h2>
+            Lists:<br>
+        </h2>
+        <select id="lists" size="6">
+            <option value="0">
+                All Songs
+            </option>
+        </select>
+    </label>
+</div>
+
+<div class="column w33">
+    <h2>
+        Songs in List:
+    </h2>
+
+    <div id="songs">
+        <div class="song tile template">
+            <div class="title"></div>
+            <button class="add-to-list">Remove</button>
+        </div>
+    </div>
+</div>
+<div class="column w33">
+    <h2>
+        All Songs:
+    </h2>
+    <div id="all">
+        <div class="song tile template">
+            <div class="title">Title Goes Here</div>
+            <button class="add-to-list">
+                Add
+            </button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
