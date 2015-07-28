@@ -1,0 +1,98 @@
+Many great Python devs have their own public projects that they're working on or have worked on, so asking about projects is a sufficient but not necessary criterion. There are many great devs that are slammed with working on internal projects at their previous place, and cannot really show you any code. You would be silly to exclude those people, because my experience is that they not only know how to better work on a team and have more grounding as "software professionals", but they also tend to understand more of the full stack because they have to integrate with external technologies like .NET or Java.
+
+One thing that I've learned, however, is that you must always ask some basic technical questions. Fizzbuzz is an insult - and should feel like an insult. Oftentimes, the people I'm interviewing are seasoned enough to have interviewed plenty of other people, and know first-hand that lots of good looking resumes can't code a string reversal. So, these folks understand. Newer/younger folks will get offended by fizzbuzz, but you can explain to them that there are lots of frauds in our industry.
+
+Fizzbuzz is also a great way to explore someone's technical grasp of Python. You can go from the simple for loop & if statement, to more pythonic list comprehensions or using map and lambda. You can then ask about doing fizzbuzz driven by input from a file. "It outputs "fizz" with a variable number of Zs based on how many times the word "fizz" has been encountered in the file." etc. You can also creatively pose problems that would be idiomatically solved by sets and dicts, and and see if they know about itertools and generators.
+
+Basic topics I would expect a 3-4 year Python dev to be familiar with:
+
+    Import, modules, packages.
+    The existence of multiple interpreters, and basic strengths/weaknesses or at least rationale for each. CPython, PyPy, Jython, IronPython, Stackless... maybe Emscriptened CPython or Brython
+    Major environment variables: PYTHONPATH, PYTHONHOME, etc.
+    Libraries & tools relevant to your application domain:
+        web dev: the major popular frameworks; WSGI; templating libraries; ORM & DB layers; testing libs
+        IT/devops scripting: remote access, ssl, sys, os, datetime libraries
+        data analysis: numpy, scipy, plotting libraries, maybe pandas, Cython, etc.
+    The GIL, what it does and why it exists; why people think it sucks; does it actually suck; mitigating approaches for SIMD and task parallelism
+    Python 2 & Python 3
+    IDEs and dev tools: if emacs or vim, then knowledge & use of the popular extensions for them; if not emacs or vim, then should be conversant about the IDE field like Wing, PyCharm, PyDev, Sypder. (They will encounter other devs who use a mix of these.)
+    Ecosystem & community: conferences, thought leaders
+
+More Python specific things I would ask an architect- or lead-level developer:
+
+    Compare Python's object model against [language of their choice]. Usually this is C++, Java, or Javascript. If someone knows ObjC you can ask about dynamic dispatch and compare the two. Of course, this is predicated on the idea that you understand these well enough to at least be able to talk about them. :-)
+    Basic knowledge of Python performance: function dispatch is slow, dictionary lookup is fast, extension modules are readily available for most performance bottleneck areas, and run as fast as C/C++ equivalents. Tools like PyPy, Cython, or maybe even Numba for speeding up critical areas.
+    Development best practices with a dynamically typed & dispatched language. Tests, docs, docstrings, doctests, coverage tools, lint tools, CI tools
+
+
+	
+We have candidates debug a python program live. Find some python program you have and can have candidates view, or one that is open source. Introduce a subtle (in the source) bug that majorly breaks functionality. Something like changing one number, or adding a "not", or returning the wrong variable.
+
+Give the candidate the program and as many tools as can be reasonably supplied and then watch them debug. See how they go about it. Ask them to talk you through as they go. Do they make effective use of python debuggers? print debugging? Do they get sucked down ratholes by making too many assumptions? Can they build a mental model of that part of the program? If the code is crappy/poorly documented, do they mention this? Do they identify well written code? Can they recognize when the repr is telling them they have a reference cycle?
+
+Here's some good Python-specific interview questions:
+
+    What is, in your opinion, the most annoying part of the PEP8 standard?
+    What are new-style classes, and when should they be used? -- expect a mention of python 3 and how doing it that way isn't required; also expect that they would always use them in python 2.x.
+    How to swap 2 variables without using a temporary variable?
+    a, b = b, a
+    When should one use meta classes? -- This is sort of a trick question about complexity and keeping things simple. Answer: only when its absolutely necessary. This shows understanding of the principles behind Python: simple is better than complex and explicit is better than implicit.
+    What static code analysis tools have you used?
+
+
+	
+Good programmers can become great Python devs. Python is very much a dev friendly language so brining people up to speed is super easy. I'd be more concerned with hiring people with good practices than specific language experience.
+
+However, "what's your favorite thing about Python?" And "whats the coolest thing you've built?" Are fun questions. Python is awesome and easy to find things to love about it. A more subjective one "2.7 or 3?"
+
+My answers to the above (for fun :) )
+
+Comprehension, generators, and functional programming
+
+Web apps for data analytics
+
+2.7 Alllll the way.
+
+
+"Can you show me some code you've written?"
+
+I always ask this question, and if the code is good I don't care what languages the person has worked with before. Python is easy to learn, so it's much more important to get a good developer than to get someone who knows Python.
+
+And the only way to tell if someone's a good developer is to read their code.
+
+
+"Whats wrong with this code snippet"
+
+def test(a=[]):
+    a.append(1); return a
+
+I would check if the person knew how to handle generators and generator expressions correctly. For example, make him/her go through a large (several GB) Apache log looking for some specific information. Without generators, the entire log would uselessly be loaded in memory.
+
+I would also make him GET several hundreds of webpage, and ask him/her to full explain the chosen solution. The information you would be looking for is: does he/she knows how to handle asynchronous calls in function, and how? Using threads, greenlets, asyncio, twisted, etc? What's their respective strength? What about the GIL?
+
+Last idea, implementing a decorator. It's very zen/pythonic to use, but knowing how to actually implement is trickier.
+
+1 - do they know what generators are? i wouldn't expect everyone to know that they can be used in both directions (as coroutines), but they should at least understand how to use a generator to create a sequence of values (and what the advantages and disadvantages are of doing that relative to creating and returning a list)
+
+2 - what tools do they use when working with python? in particular how do they manage dependencies? a good python dev will know about, and use, virtualenv (or pyvenv), and be able to explain why it's a good idea. also, they should know about at least one of pip or easy_install.
+
+also the a=[] question elsewhere here is a good idea for weeding out the very worst.
+
+
+
+unix pipes
+sort and uniq 
+ssh for connecting to a server--attaching my command line to someone else's
+
+connect to my server in the cloud using ssh, do command experiments there. 
+
+ssh sends command line + results. 
+	
+python:
+lists to dicts, dicts to objects
+
+
+	
+[–]InvidFlower 2 points 1 year ago 
+
+I'd also hope they'd bring up source control. One of the first things to do if a bug is very recent is to go look and see what was changed in that timespan.

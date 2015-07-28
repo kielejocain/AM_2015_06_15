@@ -1,0 +1,798 @@
+[
+  {
+    "fields": {
+      "name": "A",
+      "octave": 3
+    },
+    "model": "ear_training_app.note",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "name": "A#",
+      "octave": 3
+    },
+    "model": "ear_training_app.note",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "name": "B",
+      "octave": 3
+    },
+    "model": "ear_training_app.note",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "name": "C",
+      "octave": 4
+    },
+    "model": "ear_training_app.note",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "name": "C#",
+      "octave": 4
+    },
+    "model": "ear_training_app.note",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "name": "D",
+      "octave": 4
+    },
+    "model": "ear_training_app.note",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "name": "E",
+      "octave": 4
+    },
+    "model": "ear_training_app.note",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "name": "F",
+      "octave": 4
+    },
+    "model": "ear_training_app.note",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "name": "F#",
+      "octave": 4
+    },
+    "model": "ear_training_app.note",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "name": "G",
+      "octave": 4
+    },
+    "model": "ear_training_app.note",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "name": "G#",
+      "octave": 4
+    },
+    "model": "ear_training_app.note",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "name": "A",
+      "octave": 4
+    },
+    "model": "ear_training_app.note",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "name": "Gb",
+      "octave": 4
+    },
+    "model": "ear_training_app.note",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "quality": "Minor second"
+    },
+    "model": "ear_training_app.intervaltype",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "quality": "Major second"
+    },
+    "model": "ear_training_app.intervaltype",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "quality": "Minor third"
+    },
+    "model": "ear_training_app.intervaltype",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "quality": "Major third"
+    },
+    "model": "ear_training_app.intervaltype",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "quality": "Perfect fourth"
+    },
+    "model": "ear_training_app.intervaltype",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "quality": "Tritone"
+    },
+    "model": "ear_training_app.intervaltype",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "quality": "Perfect fifth"
+    },
+    "model": "ear_training_app.intervaltype",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "quality": "Minor sixth"
+    },
+    "model": "ear_training_app.intervaltype",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "quality": "Major sixth"
+    },
+    "model": "ear_training_app.intervaltype",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "quality": "Minor seventh"
+    },
+    "model": "ear_training_app.intervaltype",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "quality": "Major seventh"
+    },
+    "model": "ear_training_app.intervaltype",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "quality": "Major"
+    },
+    "model": "ear_training_app.scaletype",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "quality": "Natural Minor"
+    },
+    "model": "ear_training_app.scaletype",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "quality": "Melodic Minor"
+    },
+    "model": "ear_training_app.scaletype",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "quality": "Harmonic Minor"
+    },
+    "model": "ear_training_app.scaletype",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "tonic": 5,
+      "quality": 1,
+      "name": "A-major",
+      "ascending": true
+    },
+    "model": "ear_training_app.scale",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "tonic": 8,
+      "quality": 1,
+      "name": "C-Major",
+      "ascending": true
+    },
+    "model": "ear_training_app.scale",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "quality": "Major triad"
+    },
+    "model": "ear_training_app.chordtype",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "quality": "Minor triad"
+    },
+    "model": "ear_training_app.chordtype",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "quality": "Diminished triad"
+    },
+    "model": "ear_training_app.chordtype",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "quality": "Augmented triad"
+    },
+    "model": "ear_training_app.chordtype",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "quality": 1,
+      "root": 8
+    },
+    "model": "ear_training_app.chord",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "codename": "add_logentry",
+      "name": "Can add log entry",
+      "content_type": 1
+    },
+    "model": "auth.permission",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "codename": "change_logentry",
+      "name": "Can change log entry",
+      "content_type": 1
+    },
+    "model": "auth.permission",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "codename": "delete_logentry",
+      "name": "Can delete log entry",
+      "content_type": 1
+    },
+    "model": "auth.permission",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "codename": "add_permission",
+      "name": "Can add permission",
+      "content_type": 2
+    },
+    "model": "auth.permission",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "codename": "change_permission",
+      "name": "Can change permission",
+      "content_type": 2
+    },
+    "model": "auth.permission",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "codename": "delete_permission",
+      "name": "Can delete permission",
+      "content_type": 2
+    },
+    "model": "auth.permission",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "codename": "add_group",
+      "name": "Can add group",
+      "content_type": 3
+    },
+    "model": "auth.permission",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "codename": "change_group",
+      "name": "Can change group",
+      "content_type": 3
+    },
+    "model": "auth.permission",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "codename": "delete_group",
+      "name": "Can delete group",
+      "content_type": 3
+    },
+    "model": "auth.permission",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "codename": "add_user",
+      "name": "Can add user",
+      "content_type": 4
+    },
+    "model": "auth.permission",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "codename": "change_user",
+      "name": "Can change user",
+      "content_type": 4
+    },
+    "model": "auth.permission",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "codename": "delete_user",
+      "name": "Can delete user",
+      "content_type": 4
+    },
+    "model": "auth.permission",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "codename": "add_contenttype",
+      "name": "Can add content type",
+      "content_type": 5
+    },
+    "model": "auth.permission",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "codename": "change_contenttype",
+      "name": "Can change content type",
+      "content_type": 5
+    },
+    "model": "auth.permission",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "codename": "delete_contenttype",
+      "name": "Can delete content type",
+      "content_type": 5
+    },
+    "model": "auth.permission",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "codename": "add_session",
+      "name": "Can add session",
+      "content_type": 6
+    },
+    "model": "auth.permission",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "codename": "change_session",
+      "name": "Can change session",
+      "content_type": 6
+    },
+    "model": "auth.permission",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "codename": "delete_session",
+      "name": "Can delete session",
+      "content_type": 6
+    },
+    "model": "auth.permission",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "codename": "add_note",
+      "name": "Can add note",
+      "content_type": 7
+    },
+    "model": "auth.permission",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "codename": "change_note",
+      "name": "Can change note",
+      "content_type": 7
+    },
+    "model": "auth.permission",
+    "pk": 20
+  },
+  {
+    "fields": {
+      "codename": "delete_note",
+      "name": "Can delete note",
+      "content_type": 7
+    },
+    "model": "auth.permission",
+    "pk": 21
+  },
+  {
+    "fields": {
+      "codename": "add_note",
+      "name": "Can add note",
+      "content_type": 8
+    },
+    "model": "auth.permission",
+    "pk": 22
+  },
+  {
+    "fields": {
+      "codename": "change_note",
+      "name": "Can change note",
+      "content_type": 8
+    },
+    "model": "auth.permission",
+    "pk": 23
+  },
+  {
+    "fields": {
+      "codename": "delete_note",
+      "name": "Can delete note",
+      "content_type": 8
+    },
+    "model": "auth.permission",
+    "pk": 24
+  },
+  {
+    "fields": {
+      "codename": "add_interval",
+      "name": "Can add interval",
+      "content_type": 9
+    },
+    "model": "auth.permission",
+    "pk": 25
+  },
+  {
+    "fields": {
+      "codename": "change_interval",
+      "name": "Can change interval",
+      "content_type": 9
+    },
+    "model": "auth.permission",
+    "pk": 26
+  },
+  {
+    "fields": {
+      "codename": "delete_interval",
+      "name": "Can delete interval",
+      "content_type": 9
+    },
+    "model": "auth.permission",
+    "pk": 27
+  },
+  {
+    "fields": {
+      "codename": "add_scale",
+      "name": "Can add scale",
+      "content_type": 10
+    },
+    "model": "auth.permission",
+    "pk": 28
+  },
+  {
+    "fields": {
+      "codename": "change_scale",
+      "name": "Can change scale",
+      "content_type": 10
+    },
+    "model": "auth.permission",
+    "pk": 29
+  },
+  {
+    "fields": {
+      "codename": "delete_scale",
+      "name": "Can delete scale",
+      "content_type": 10
+    },
+    "model": "auth.permission",
+    "pk": 30
+  },
+  {
+    "fields": {
+      "codename": "add_chord",
+      "name": "Can add chord",
+      "content_type": 11
+    },
+    "model": "auth.permission",
+    "pk": 31
+  },
+  {
+    "fields": {
+      "codename": "change_chord",
+      "name": "Can change chord",
+      "content_type": 11
+    },
+    "model": "auth.permission",
+    "pk": 32
+  },
+  {
+    "fields": {
+      "codename": "delete_chord",
+      "name": "Can delete chord",
+      "content_type": 11
+    },
+    "model": "auth.permission",
+    "pk": 33
+  },
+  {
+    "fields": {
+      "codename": "add_intervaltype",
+      "name": "Can add interval type",
+      "content_type": 13
+    },
+    "model": "auth.permission",
+    "pk": 34
+  },
+  {
+    "fields": {
+      "codename": "change_intervaltype",
+      "name": "Can change interval type",
+      "content_type": 13
+    },
+    "model": "auth.permission",
+    "pk": 35
+  },
+  {
+    "fields": {
+      "codename": "delete_intervaltype",
+      "name": "Can delete interval type",
+      "content_type": 13
+    },
+    "model": "auth.permission",
+    "pk": 36
+  },
+  {
+    "fields": {
+      "codename": "add_scaletype",
+      "name": "Can add scale type",
+      "content_type": 12
+    },
+    "model": "auth.permission",
+    "pk": 37
+  },
+  {
+    "fields": {
+      "codename": "change_scaletype",
+      "name": "Can change scale type",
+      "content_type": 12
+    },
+    "model": "auth.permission",
+    "pk": 38
+  },
+  {
+    "fields": {
+      "codename": "delete_scaletype",
+      "name": "Can delete scale type",
+      "content_type": 12
+    },
+    "model": "auth.permission",
+    "pk": 39
+  },
+  {
+    "fields": {
+      "codename": "add_chordtype",
+      "name": "Can add chord type",
+      "content_type": 14
+    },
+    "model": "auth.permission",
+    "pk": 40
+  },
+  {
+    "fields": {
+      "codename": "change_chordtype",
+      "name": "Can change chord type",
+      "content_type": 14
+    },
+    "model": "auth.permission",
+    "pk": 41
+  },
+  {
+    "fields": {
+      "codename": "delete_chordtype",
+      "name": "Can delete chord type",
+      "content_type": 14
+    },
+    "model": "auth.permission",
+    "pk": 42
+  },
+  {
+    "fields": {
+      "codename": "add_courseselection",
+      "name": "Can add course selection",
+      "content_type": 15
+    },
+    "model": "auth.permission",
+    "pk": 43
+  },
+  {
+    "fields": {
+      "codename": "change_courseselection",
+      "name": "Can change course selection",
+      "content_type": 15
+    },
+    "model": "auth.permission",
+    "pk": 44
+  },
+  {
+    "fields": {
+      "codename": "delete_courseselection",
+      "name": "Can delete course selection",
+      "content_type": 15
+    },
+    "model": "auth.permission",
+    "pk": 45
+  },
+  {
+    "fields": {
+      "codename": "add_courseprogress",
+      "name": "Can add course progress",
+      "content_type": 16
+    },
+    "model": "auth.permission",
+    "pk": 46
+  },
+  {
+    "fields": {
+      "codename": "change_courseprogress",
+      "name": "Can change course progress",
+      "content_type": 16
+    },
+    "model": "auth.permission",
+    "pk": 47
+  },
+  {
+    "fields": {
+      "codename": "delete_courseprogress",
+      "name": "Can delete course progress",
+      "content_type": 16
+    },
+    "model": "auth.permission",
+    "pk": 48
+  },
+  {
+    "fields": {
+      "codename": "add_coursecontents",
+      "name": "Can add course contents",
+      "content_type": 17
+    },
+    "model": "auth.permission",
+    "pk": 49
+  },
+  {
+    "fields": {
+      "codename": "change_coursecontents",
+      "name": "Can change course contents",
+      "content_type": 17
+    },
+    "model": "auth.permission",
+    "pk": 50
+  },
+  {
+    "fields": {
+      "codename": "delete_coursecontents",
+      "name": "Can delete course contents",
+      "content_type": 17
+    },
+    "model": "auth.permission",
+    "pk": 51
+  },
+  {
+    "fields": {
+      "codename": "add_exercise",
+      "name": "Can add exercise",
+      "content_type": 18
+    },
+    "model": "auth.permission",
+    "pk": 52
+  },
+  {
+    "fields": {
+      "codename": "change_exercise",
+      "name": "Can change exercise",
+      "content_type": 18
+    },
+    "model": "auth.permission",
+    "pk": 53
+  },
+  {
+    "fields": {
+      "codename": "delete_exercise",
+      "name": "Can delete exercise",
+      "content_type": 18
+    },
+    "model": "auth.permission",
+    "pk": 54
+  },
+  {
+    "fields": {
+      "codename": "add_exercisepage",
+      "name": "Can add exercise page",
+      "content_type": 19
+    },
+    "model": "auth.permission",
+    "pk": 55
+  },
+  {
+    "fields": {
+      "codename": "change_exercisepage",
+      "name": "Can change exercise page",
+      "content_type": 19
+    },
+    "model": "auth.permission",
+    "pk": 56
+  },
+  {
+    "fields": {
+      "codename": "delete_exercisepage",
+      "name": "Can delete exercise page",
+      "content_type": 19
+    },
+    "model": "auth.permission",
+    "pk": 57
+  },
+  {
+    "fields": {
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "is_active": true,
+      "is_superuser": true,
+      "is_staff": true,
+      "last_login": "2015-07-22T00:14:52.973Z",
+      "groups": [],
+      "user_permissions": [],
+      "password": "pbkdf2_sha256$20000$vsYS8wBjhLdB$flG1qQs+TJe3/FleSX2qzShZ/zEQ8CIx+nlpZZgTtsk=",
+      "email": "admin@example.com",
+      "date_joined": "2015-07-15T21:02:53.356Z"
+    },
+    "model": "auth.user",
+    "pk": 1
+  }
+]

@@ -1,0 +1,22 @@
+<p>Vote for your favorite note:</p>
+{% if note_list %}
+    <ul>
+    {% for note in note_list %}
+      <form>
+          {{ note.name }} has {{ note.votes }} votes --
+          &nbsp;
+          <a href="/note-list/results/{{ note.id }}/">
+            vote
+          </a>
+          &nbsp;
+          <a href="/note-list/{{ note.id }}/">
+            view
+          </a>
+        </li>
+      </form>
+    {% endfor %}
+        <!-- <li><a href="/note-list/">All notes</a></li> -->
+    </ul>
+{% else %}
+    <p>No notes are available.</p>
+{% endif %}

@@ -1,0 +1,24 @@
+[
+  {
+    "fields": {
+      "title": "Piano Man"
+    },
+    "model": "djmmdemo_app.song",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "name": "Piano Songs"
+    },
+    "model": "djmmdemo_app.playlist",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "song": 1,
+      "playlist": 1
+    },
+    "model": "djmmdemo_app.playlistssongs",
+    "pk": 1
+  }
+]

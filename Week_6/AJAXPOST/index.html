@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <title></title>
     <script>
-        function sendPost(item) {
-            var form_data = new FormData();
-
-            for (var key in item) {
-                form_data.append(key, item[key]);
-            }
-
-            var request = new XMLHttpRequest();
-            request.open("POST", "index.html");
-            request.send(form_data);
-        }
-        var item = {
-            "key": "value",
-            "status": "Eating Lunch!"
+        var song = {
+            "title": "Dead man's Party",
+            "Lyrics": "Its a dead mans party who could ask for more...",
         };
-        sendPost(formData);
+
+        var form_data = new FormData();
+
+        //for (var key in item) {
+        //    form_data.append(key, item[key]);
+        //}
+        form_data.append("title", song.title);
+        form_data.append("lyrics", song.lyrics);
+
+        //var data = "title=Dead%20man\'s%20party&lyrics=Its%20a%20dead...";
+        var request = new XMLHttpRequest();
+        request.open("POST", "/my_app/songs/0/");
+        request.send(form_data);
+
     </script>
 </head>
 <body>

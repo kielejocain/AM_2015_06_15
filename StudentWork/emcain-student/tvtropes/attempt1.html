@@ -1,0 +1,43 @@
+//attempt at tvtropes json
+<body>
+<script>
+    //AJAX - ASYNC JAVASCRIPT AND XML
+    //XMLHTTPRequest is the JavaScript Command
+    //NOT XML - Usually JSON
+
+    console.log("starting...")
+
+    var request = new XMLHttpRequest();
+
+    console.log("creating drawValue function")
+    function drawValue(item) {
+        console.log("drawing value")
+        document.body.innerHTML = item + "<br>\n" + document.body.innerHTML; // adds input "item" to the inner html. this is just  a display thing
+    }
+    console.log("creating onRequestChange function")
+    function onRequestChange() {
+        console.log("these are the readystate and status of request:")
+        console.log(request.readyState, request.status); //takes readystate and status as input, logs to the console
+        if ((request.readyState == 4) && (request.status == 200)) { // if the request has been completed and its status is "successful"
+            var data = JSON.parse(request.responseText); // takes attribute responseText from  request, calls JSON's parse method on it. Creates a dict/hash/obj
+            drawValue(data["label"] + " " + data["page"] + "<br>" + data["comment"] + "<br><br>"); // takes values from data object, concatenates them, calls drawValue
+        }
+    }
+
+    function fetchValue() {
+        console.log("fetching value...");
+        console.log("creating onreadystatechange")
+        request.onreadystatechange = onRequestChange; // sets the function onRequestChange to be called when readystatechange happens
+        console.log("opening request...")
+        request.open("GET", "http://dbtropes.org/resource/Main/PlotCouponThatDoesSomething/", true); //asks request to call a "GET" request on date.jsontest.com. Async = true
+        console.log("sending request...")
+        request.send(); //sends request
+        console.log("request has been sent.")
+        //setTimeout(fetchValue, 1000) //funct calls itself after 1 second
+    }
+    console.log("attempting to fetch value...");
+    fetchValue();
+
+
+</script>
+</body>

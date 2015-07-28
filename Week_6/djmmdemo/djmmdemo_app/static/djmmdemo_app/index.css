@@ -1,0 +1,80 @@
+body {
+    background-color: #eeeeee;
+    color: #333;
+    font-family: "Trebuchet MS", "Helvetica", sans-serif;
+    font-size: 100%;
+}
+
+#lists {
+    width: 100%;
+    font-size: 200%;
+    background-color: transparent;
+    border: none;
+}
+
+#lists:focus {
+    outline: 0;
+}
+
+#lists option {
+    margin: 0.5em;
+    padding: 0.5em;
+    background-color: blanchedalmond;
+}
+
+.song.tile {
+    width: 120px;
+    height: 120px;
+    display: inline-block;
+    background-color: darkgray;
+    margin: 1em;
+    padding: 1em;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.title {
+    position: absolute;
+    top: 1em;
+    bottom: 1em;
+    left: 1em;
+    right: 1em;
+    /*border: 1px solid black;*/
+}
+
+.song.tile.template {
+    display: none;
+}
+
+.song.tile a {
+    color: #ffee00;
+}
+
+.add-to-list {
+    font-size: 25%;
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+}
+
+.column {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.w33 {
+    width: 33%;
+}
+
+.w66 {
+    width: 66%;
+}
+
+#playlists select {
+    width: 90%;
+}
+
+#playlists select option {
+    text-align: center;
+    padding: 1em;
+}

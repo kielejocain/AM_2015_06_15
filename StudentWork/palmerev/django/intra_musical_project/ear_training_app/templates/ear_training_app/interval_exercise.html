@@ -1,0 +1,43 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>
+      {% block title %}
+       Intervals
+      {% endblock %}
+  </title>
+  <link rel="stylesheet" href="{% static 'ear_training_app/ear_training.css' %}">
+  <script src="{% static 'ear_training_app/tones.js' %}"></script>
+  <script src="{% static 'ear_training_app/exercise.js' %}"></script>
+</head>
+<body>
+  <h2>Exercise Page</h2>
+    <p>
+      To complete this exercise, identify the interval.
+       You may play the top or bottom note alone, or both notes together, using the buttons below.
+    </p>
+  <div id="top-note-button" class="play-button">top note</div>
+  <div id="bottom-note-button" class="play-button">bottom note</div>
+  <div id="both-notes-button" class="play-button">both notes</div>
+
+  <p>Select an interval:</p>
+  {% for i in possible_answers %}
+      {% if "correct" in i %}
+        <div id="correct-answer" class="interval-button">{{ i.interval_name }}</div>
+      {% else %}
+        <div class="interval-button">{{ i.interval_name }}</div>
+      {% endif %}
+    {% endfor %}
+  <p id="answer-result"></p>
+  <!-- <div id="maj-second" class="interval-button">major second</div>
+  <div id="maj-third" class="interval-button">major third</div>
+  <div id="per-fourth" class="interval-button">perfect fourth</div>
+  <div id="per-fifth" class="interval-button">perfect fifth</div> -->
+
+<nav>
+  <div id="courses"><a href="courses.html">Back to courses page</a></div>
+  <div id="next"><a href="#">Next Exercise</a></div>
+  <div id="previous"><a href="#">Previous Exercise</a></div>
+</nav>
+</body>

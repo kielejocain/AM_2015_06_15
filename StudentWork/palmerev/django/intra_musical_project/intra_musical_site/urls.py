@@ -1,4 +1,4 @@
-"""seabeck_draft URL Configuration
+"""intra_musical_site URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.8/topics/http/urls/
@@ -15,17 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-
-from my_app import views
+from ear_training_app import views
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index, name='index'),
-#    url(r'^new_registrant.html', views.new_registrant, name='new_registrant'),
-    url(r'^edit_registrant/(?P<registrant_id>[0-9]+)/$', views.edit_registrant,
-        name='edit_registrant'),
-    url(r'^edit_camper/(?P<camper_id>[0-9]+)/$', views.edit_camper, name='edit_camper'),
-    url(r'(?P<registrant_id>[0-9]+)/$', views.detail, name='detail'),
-#    url(r'(?P<registrant_id>[0-9]+)/$', views.edit, name='edit'),
-
-    ]
+    url(r'^admin/$', include(admin.site.urls)),
+    url(r'^courses/$', views.course_selection, name='course_selection'),
+    url(r'^courses/(?P<course_type>[A-Za-z]+)/$', views.course, name='course'),
+    url(r'^courses/progress/$', views.progress_page, name='progress_page'),
+    url(r'^courses/intervals/exercises/$', views.exercise_page, name='exercise_page'),
+    url(r'^courses/(?P<course_type>[A-Za-z]+)/exercises/(?P<exercise_id>)/$', views.exercise_page, name='exercise_page'),
+    url(r'^get-random-interval/$', views.get_interval_set, name='get_interval_set'),
+]
