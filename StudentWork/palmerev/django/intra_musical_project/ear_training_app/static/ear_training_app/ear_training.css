@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+  /*border: 1px solid red;*/
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #AAAAFF;
+  font-family: sans-serif;
+}
+
+div {
+  text-align: center;
+}
+
+body > div,
+section > div {
+  border-radius: 10%;
+  display: inline-block;
+  font-weight: bold;
+  color: white;
+  height: 30px;
+  line-height: 30px;
+  width: 130px;
+  margin: 3px;
+}
+
+body > div > a {
+  color: white;
+  text-decoration: none;
+}
+
+nav {
+  position: absolute;
+  top: 100%;
+  border: 1px solid green;
+  height: 25px;
+  width: 100%;
+  background-color: #000055;
+}
+
+nav > div {
+  position: absolute;
+  bottom: 3%;
+}
+
+nav > div > a {
+  font-size: 0.8em;
+  font-weight: bold;
+  color: white;
+}
+
+/*
+#top-note-button {
+  background-color: #AA0000;
+}
+
+#bottom-note-button {
+  background-color: #00AA00;
+}
+
+#both-notes-button {
+  background-color: #0000AA;
+}
+*/
+.play-button {
+  background-color: #112266
+}
+
+.interval-button {
+  background-color: #111155;
+}
+
+.course {
+  background-color: #444477;
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  top: 10%;
+}
+
+.course:hover {
+  background-color: #334499;
+}
+
+#scales {
+  left: 0%;
+  transform: translateX(50%);
+}
+
+#intervals {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#chords {
+  right: 0%;
+  transform: translateX(-50%);
+}
+
+#answer-result {
+  font-size: 2em;
+}
+
+#courses {
+  width: 160px;
+  height: 20px;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+}
+
+#next {
+  width: 160px;
+  height: 20px;
+  left: 90%;
+  transform: translateX(-50%);
+
+}
+
+#previous {
+  width: 160px;
+  height: 20px;
+  right: 90%;
+  transform: translateX(50%);
+}

@@ -1,0 +1,4 @@
+<strong>You voted for {{ note.name }}</strong>
+{% for n in note_list %}
+  <p>{{ n.name }} has {{ n.votes }} votes. <a href="/note-list/results/{{ note.id }}/edit/">edit</a></p>
+{% endfor %}
