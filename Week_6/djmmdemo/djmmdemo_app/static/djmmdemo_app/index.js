@@ -8,6 +8,17 @@
     function handleData(data) {
         self.models = data;
         updateViews();
+
+    }
+    function buttonClick(e){
+        console.log("button_click");
+        console.log(e)
+    }
+    function addEventListeners() {
+        var button_list = document.getElementsByTagName("button");
+        for (var i=0; i<button_list.length; i++) {
+            button_list[i].addEventListener("click",buttonClick)
+        }
     }
 
     function updateViews() {
@@ -15,6 +26,7 @@
             var view = self.views[index];
             view.draw();
         }
+        addEventListeners();
     }
 
     function init() {
@@ -51,9 +63,9 @@
 
     function songs() {
         var element = document.getElementById("songs");
-        element.addEventListener("click", function (e) {
-            console.log(e.target.value);
-        });
+        //element.addEventListener("click", function (e) {
+        //    console.log(e.target.value);
+        //});
         function draw(list_id) {
             if(list_id != undefined){
                 objectListIntoTemplateItems(element,  self.models.lists[list_id].songs);
@@ -66,9 +78,9 @@
     }
     function all() {
         var element = document.getElementById("all");
-        element.addEventListener("click", function (e) {
-            console.log(e.target.value);
-        });
+        //element.addEventListener("click", function (e) {
+        //    console.log(e.target.value);
+        //});
         function draw() {
             objectListIntoTemplateItems(element,  self.models.all);
         }
