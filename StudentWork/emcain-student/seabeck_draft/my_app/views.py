@@ -27,14 +27,19 @@ def detail(request, registrant_id):
 
 def edit_registrant(request, registrant_id):
 
-    registrant = get_object_or_404(Registrant, pk=registrant_id)
+    if registrant_id == 0:
+        print "new"
+        registrant = Registrant()
+    else:
+        print "existing"
+        registrant = get_object_or_404(Registrant, pk=registrant_id)
 
     filtered_registrant_list = Registrant.objects.filter(id=registrant_id)
 
-    if len(filtered_registrant_list) > 0:
-        registrant = filtered_registrant_list[0]
-    else:
-        registrant = Registrant()
+#    if len(filtered_registrant_list) > 0:
+    registrant = filtered_registrant_list[0]
+#    else:
+#        registrant = Registrant()
 
     if request.POST:
         print(request.POST)
@@ -66,7 +71,10 @@ def new_registrant(request):
 
 def edit_camper(request, camper_id):
 
-    camper = get_object_or_404(Camper, pk=camper_id)
+    if camper_id == "0":
+        camper = Camper()
+    else:
+        camper = get_object_or_404(Camper, pk=camper_id)
 
     filtered_camper_list = Camper.objects.filter(id=camper_id)
 

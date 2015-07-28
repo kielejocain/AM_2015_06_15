@@ -4,6 +4,8 @@ from datetime import *
 # Registrant
 
 
+
+
 class Registrant(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -32,7 +34,6 @@ class Camper(models.Model):
 
     def __unicode__(self):
         return unicode(self.first_name + " " + self.last_name)
-
 
 
 class EventYear(models.Model):

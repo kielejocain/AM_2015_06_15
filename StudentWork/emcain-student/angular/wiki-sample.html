@@ -1,0 +1,54 @@
+<html>
+<head>
+    <title>
+        Angular
+    </title>
+</head>
+<bto
+<body>
+Beer data from http://www.brewerydb.com/developers JSON REST API
+<div class="container" ng-app="myApp" ng-controller="beersCtrl">
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+            <th></th>
+            <th>Brewery</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr> <!--for item beer in list beers -->
+            <td>{{batchcomplete}}</td>
+            <td>{{query}}</td>
+            <td>{{query.normalized}}</td>
+            <td>{{query.normalized.from}}</td>
+            <td>{{query.normalized.to}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src='angular.js'></script>
+<script>
+    var myApp = angular.module("myApp", []);
+    function beersCtrl($scope, $http) {
+
+        function onsuccess(data, status, headers, config) {
+            //Either this
+            $scope["beers"] = data;
+            //or this
+            $scope.beers = data;
+
+            console.log(data);
+            console.log(status);
+            console.log(headers);
+            console.log(config);
+        }
+
+        $http.get('https://en.wikipedia.org/w/api.php?action=query&titles=cat&prop=revisions&rvprop=content&format=jsonfm').success(onsuccess);
+    }
+</script>
+
+</body>
+</html>

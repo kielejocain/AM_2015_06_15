@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>
+      {% block title %}
+       Intervals
+      {% endblock %}
+  </title>
+  <link rel="stylesheet" href="{% static ear_training_app/ear_training.css %}">
+  <script src="{% static ear_training_app/tones.js %}"></script>
+  <script src="{% static ear_training_app/exercise.js %}"></script>
+</head>
+<body>
+  {% block content %}
+  <h2>Exercise Page</h2>
+    <p>
+      To complete this exercise, identify the interval.
+       You may play the top or bottom note alone, or both notes together, using the buttons below.
+    </p>
+  <div id="button1" class="play-button">{{ label1 }}</div>
+  <div id="button2" class="play-button">{{ label2 }}</div>
+  <div id="button3" class="play-button">{{ label3 }}</div>
+
+  <p id="answer-result"></p>
+  {% endblock %}
+{% block navigation %}
+<nav>
+  <div id="courses"><a href="courses.html">Back to courses page</a></div>
+  <div id="next"><a href="#">Next Exercise</a></div>
+  <div id="previous"><a href="#">Previous Exercise</a></div>
+</nav>
+{% endblock %}
+</body>

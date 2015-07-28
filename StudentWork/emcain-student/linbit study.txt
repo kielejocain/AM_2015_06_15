@@ -1,0 +1,42 @@
+study for linbit interview:
+
+the three questions here:
+
+https://blog.udemy.com/programming-interview-questions/
+
+1. Reversing a linked list
+
+Data structure manipulation is one of the most common concepts you can be asked about during a programming interview. Reversing a linked list is such a common problem, that knowing how to do it should be expected of you.
+
+It’s particularly vital that you understand exactly what is going on in this function, rather than just memorizing how to do it. You can learn about this in more detail in this beginner’s programming class for Java, which the following example is written in.
+
+2. Calculating a factorial
+
+This is a simple math function, done both iteratively and recursively. You may be asked to write a function using one or both of these methods, so be prepared. It also helps to understand how iteration and recursion works, which you can learn in this course on the structure and interpretation of computer science.
+
+2a. iteratively
+2b. recursively
+
+3. What’s the difference between overriding and overloading a function?
+
+Function overloading refers to when there is more than one function with the same name and functionality, in the same class, but each with different parameters.
+
+For example, say you’re a game developer coding a function for the player entity to take damage. In your game, there are numerous ways the character can take damage – from falling, from getting attacked by an enemy, from getting squished by a boulder, etc. You would have several functions, all named damage, but each with different parameters to calculate specific types of damage. By overloading, you’re able to use the same name for numerous functions that take in different parameters.
+
+Function overriding refers to two functions that share the same parameters, but where a function in the child class redefines or sometimes extends a function in the parent class.
+
+Going back to the game development example – say you have a parent class called Gun, and within that class are numerous child classes, each for a different gun. The parent class Gun has a function called Gun.shoot(). The child classes each have their own functions for shooting as well – Rifle.shoot(), Pistol.shoot(), Shotgun.shoot(). By overriding Gun.shoot(), you’re able to define the shoot function uniquely for each child class.
+
+other:
+
+unix pipes
+sort and uniq 
+ssh for connecting to a server--attaching my command line to someone else's
+
+connect to my server in the cloud using ssh, do command experiments there. 
+
+ssh sends command line + results. 
+	
+python:
+lists to dicts, dicts to objects
+

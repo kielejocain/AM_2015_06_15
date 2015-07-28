@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<head>
+  <!-- <link rel="stylesheet" href="/static/ear_training_app/ear_training.css"> -->
+  <link rel="stylesheet" href="{% static 'ear_training_app/ear_training.css' %}">
+  <script src="tones.js"></script>
+  <script src="exercise.js"></script>
+</head>
+<body>
+  <h1>Courses Page</h1>
+  <section>
+    <div id="scales" class="course">
+      <h2 class="course-title">
+        Scales
+      </h2>
+      <div id="scales-progress" class="course-progress">
+        <p>exercise 10 of 30</p>
+        <p>33% complete</p>
+      </div>
+    </div>
+
+    <div id="intervals" class="course">
+      <a href="intervals/exercises/interval_exercise.html">
+      <h2 class="course-title">
+        Intervals
+      </h2>
+      <div id="intervals-progress" class="course-progress">
+        <p>exercise 10 of 30</p>
+        <p>33% complete</p>
+      </div>
+      </a>
+    </div>
+
+    <div id="chords" class="course">
+      <h2 class="course-title">
+        Chords
+      </h2>
+      <div id="chords-progress" class="course-progress">
+        <p>exercise 10 of 30</p>
+        <p>33% complete</p>
+      </div>
+    </div>
+  </section>
+
+
+  <nav>
+      <div><a href="index.html">Home</a></div>
+  </nav>
+</body>

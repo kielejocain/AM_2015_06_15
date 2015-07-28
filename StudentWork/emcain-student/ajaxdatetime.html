@@ -1,0 +1,60 @@
+<body>
+<pre>
+look up:
+request.readyState (4)
+
+0   UNSENT  open() has not been called yet.
+1   OPENED  send() has been called.
+2   HEADERS_RECEIVED    send() has been called, and headers and status are available.
+3   LOADING     Downloading; responseText holds partial data.
+4   DONE    The operation is complete.
+
+
+request.status (200)
+
+returns the request's status; 200 means succesful. 
+
+JSON.parse
+
+turns a string into a JSON object, using a comma separated set of key value pairs. (notation??)
+
+request.responseText
+https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
+
+
+data["something"]
+
+request.onreadystatechange
+
+
+</pre>
+
+<script>
+    //AJAX - ASYNC JAVASCRIPT AND XML
+    //XMLHTTPRequest is the JavaScript Command
+    //NOT XML - Usually JSON
+
+
+    var request = new XMLHttpRequest();
+
+    function drawTime(time) {
+        document.body.innerHTML = time + "<br>\n" + document.body.innerHTML; // adds input "time" to the inner html. this is just  a display thing
+    }
+
+    function onRequestChange() {
+        console.log(request.readyState, request.status); //takes readystate and status as input
+        if ((request.readyState == 4) && (request.status == 200)) { // if the request has been completed and its status is "successful"
+            var data = JSON.parse(request.responseText); // takes attribute responseText from  request, calls JSON's parse method on it. Creates a dict/hash/obj
+            drawTime(data["milliseconds_since_epoch"] + " " + data["time"] + " " + data["date"]); // takes values from data object, concatenates them, calls drawTime
+        }
+    }
+
+    function fetchDateTime() {
+        request.onreadystatechange = onRequestChange; // sets the function onRequestChange to be called when readystatechange happens
+        request.open("GET", "http://date.jsontest.com/", true); //asks request to call a "GET" request on date.jsontest.com. Async = true
+        request.send(); //sends request
+        setTimeout(fetchDateTime, 1000) //funct calls itself after 1 second
+    }
+    fetchDateTime();
+</script>
+</body>

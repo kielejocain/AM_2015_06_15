@@ -1,0 +1,12 @@
+<h3>edit page.</h3>
+<form method="post">
+  {% csrf_token %}
+  <label>
+    Edit note name:
+  </label>
+  <input value="{{ note.name }}" name="name">
+  &nbsp;&nbsp;
+  <input value="{{ note.votes }}" name="votes">
+  <br>
+  <input type="submit" value="Save"/>
+</form>
