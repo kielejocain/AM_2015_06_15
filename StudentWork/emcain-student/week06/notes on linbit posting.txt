@@ -1,0 +1,152 @@
+Job Responsibilities:
+
+§ Continue development of DRBDManage with existing maintainer
+
+
+§ Interact with customers and assist engineering team with day to day tasks to stay 
+
+updated on current developments on DRBD and Linux HA technologies
+
+
+
+§ Troubleshoot, configure, and install: Linux High Availability and Disaster Recovery 
+
+technology, including but not limited to: DRBD, Pacemaker, Heartbeat, Corosync
+
+
+
+§ Assist with documentation efforts, bug testing and white paper creation
+explaining technical stuff to nontech people--give a 2 sentence summary
+
+documentation--
+-user manual for AmeriCorps db (if I have)
+-report for CUB
+
+bug testing--
+problem solving
+analytical thinking
+difficult thing to figure out
+why database is shitty
+
+
+
+Preferred Skills:
+
+§ Experience with high availability, disaster recovery, and server administration
+
+§ Knowledge of Linux High Availability and Disaster Recovery technologies such as 
+
+DRBD, Heartbeat, Pacemaker, Corosync
+
+wiki:
+DRBD® software is a distributed replicated storage system for the Linux platform. It is implemented as several userspace management applications and some shell scripts and is normally used on high availability (HA) computer clusters.
+
+DRBD also refers to the logical block devices provided by the scheme and to the software that implements it. DRBD device and DRBD block device are also often used for the former.
+
+The DRBD software is free software released under the terms of the GNU General Public License version 2.
+
+DRBD is part of the Lisog open source stack initiative.
+
+Heartbeat
+
+In computer clusters, heartbeat network is a private network which is shared only by the cluster nodes, and is not accessible from outside the cluster. It is used by cluster nodes in order to monitor each node's status and communicate with each other.
+
+The heartbeat method uses the FIFO nature of the signals sent across the network. By making sure that all messages have been received, the system ensures that events can be properly ordered.[1]
+
+In this communications protocol every node sends back a message in a given interval, say delta, in effect confirming that it is alive and has a heartbeat. These messages are viewed as control messages that help determine that the network includes no delayed messages.[1] A receiver node called a "sink", maintains an ordered list of the received messages. Once a message with a timestamp later than the given marked time is received from every node, the system determines that all messages have been received, since the FIFO property ensures that the messages are ordered.[1]
+
+In general, it is difficult to select a delta that is optimal for all applications. If delta is too small, it requires too much overhead and if it is large it results in performance degradation as everything waits for the next heartbeat signal.[1]
+
+Pacemaker
+
+Q: Can I use Pacemaker with Heartbeat?
+
+A: Yes. Pacemaker started off life as part of the Heartbeat project and continues to support it as an alternative to Corosync. See this documentation for more details
+http://linux-ha.org/wiki/Main_Page
+
+http://clusterlabs.org/faq.html read this and write down/look up unknown terms. get a one sentence def for each--don't fall down the rabbit hole.
+
+
+Corosync
+The Corosync Cluster Engine is a Group Communication System with additional features for implementing high availability within applications. The project provides four C Application Programming Interface features:
+
+    A closed process group communication model with virtual synchrony guarantees for creating replicated state machines.
+    A simple availability manager that restarts the application process when it has failed.
+    A configuration and statistics in-memory database that provide the ability to set, retrieve, and receive change notifications of information.
+    A quorum system that notifies applications when quorum is achieved or lost.
+
+Our project is used as a High Availability framework by projects such as Apache Qpid and Pacemaker.
+
+We are always looking for developers or users interested in clustering or participating in our project.
+
+The project is hosted by GitHub.
+
+https://github.com/corosync/corosync/wiki
+
+
+
+§ Familiarity with Virtualization technologies (KVM, Xen, VMware)
+
+KVM (Kernel-based Virtual Machine) is a virtualization infrastructure for the Linux kernel that turns it into a hypervisor. It was merged into the Linux kernel mainline in kernel version 2.6.20, which was released on February 5, 2007. KVM requires a processor with hardware virtualization extension.
+
+
+Xen /ˈzɛn/ is a hypervisor using a microkernel design, providing services that allow multiple computer operating systems to execute on the same computer hardware concurrently.
+
+The University of Cambridge Computer Laboratory developed the first versions of Xen. The Xen community develops and maintains Xen as free and open-source software, subject to the requirements of the GNU General Public License (GPL), version 2. Xen is currently available for the IA-32, x86-64 and ARM instruction sets.
+
+VMware
+
+Choose Cloud Infrastructure and Business Mobility Solutions Enabled by One Cloud, Any Application, Any Device
+
+VMware’s cloud infrastructure and business mobility solutions break the bonds that tie IT systems and end-user environments to physical hardware, providing both IT and the business greater efficiency, agility and control. VMware is the recognized leader in virtualization and automation of compute, networking and storage resources from the desktop to the data center and to the cloud. Our technologies and the open standards they support provide a powerful foundation enabled by “One Cloud, Any Application, Any Device”—our brave new IT architecture.
+- See more at: http://www.vmware.com/why-choose-vmware/#sthash.QunMx4LY.dpuf
+
+
+
+
+§ BS/MS in computer science or a related technical field
+
+§ Familiarity with Web-based ticketing systems such as OTRS
+
+
+Required Skills:
+
+§ Experience with Linux and basic administration of Linux systems
+
+§ General IT knowledge including: networking, server OSes, storage options, etc.
+networking
+
+http://www.enterprisenetworkingplanet.com/netsysm/10-killer-interview-questions-for-network-professionals.html
+
+server OS:
+
+On the Internet the dominant operating systems among servers are UNIX-like open source distributions, such as those based on Linux and FreeBSD,[6] with Windows Server also having a very significant share. Proprietary operating systems such as z/OS and Mac OS X are also deployed, but in much smaller numbers.
+
+Specialist server-oriented operating systems have traditionally had features such as:
+
+    GUI not available or optional
+    Ability to reconfigure and update both hardware and software to some extent without restart
+    Advanced backup facilities to permit regular and frequent online backups of critical data,
+    Transparent data transfer between different volumes or devices
+    Flexible and advanced networking capabilities
+    Automation capabilities such as daemons in UNIX and services in Windows
+    Tight system security, with advanced user, resource, data, and memory protection.
+    Advanced detection and alerting on conditions such as overheating, processor and disk failure.[7]
+
+In practice, today many desktop and server operating systems share similar code bases, differing mostly in configuration.
+
+
+§ Must be able to interact with customers in a professional manner
+
+§ Organized, outgoing personality, and motivated to learn
+
+§ Verbal communication skills
+
+§ Ability to troubleshoot issues effectively
+
+thing of 5 examples, pick 3 and elaborate 
+
+§ High attention to detail(s)
+
+--look up examples/ related skills
+have 3-5 examples written out. 
