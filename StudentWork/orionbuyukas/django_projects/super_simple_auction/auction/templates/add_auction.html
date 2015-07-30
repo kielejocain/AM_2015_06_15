@@ -1,0 +1,24 @@
+
+    {% block title %}
+Create New Auction for: {{ item.name }}
+{% endblock %}
+{% block content %}
+{% csrf_token %}
+< method="post">
+
+    {{ item.item_name }}
+
+    Auction End date:
+    <input value="{{ auction.auction_end_date | date:" Y-m-d" }}" name="auction_end_date" type="date">
+    <br>
+    Opening bid:
+    <input value="{{ auction.opening_bid }}" name="opening_bid" type="number">
+    <br>
+    Auction Increment:
+    <input value="{{ auction.increment }}" name="increment" type="number">
+
+    <input type="submit" value="SAVE"/>
+</form>
+
+
+{% endblock %}
