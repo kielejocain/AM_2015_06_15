@@ -1,0 +1,23 @@
+todo:
+login
+if login is true:
+    allow post auction
+    allow create store
+    allow bid auction
+list auctions
+
+search auctions
+view studios
+
+
+{% block content %}
+    {% if auctions %}
+{% for auction in auctions %}
+{{ auction.item.name }} {{ auction.auction_end_date }} {{ auction. }}
+
+{% endfor %}
+{% else %}
+    <p>No Auctions Available</p>
+    {% endif %}
+
+{% endblock %}

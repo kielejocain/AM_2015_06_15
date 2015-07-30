@@ -1,29 +1,38 @@
+from django.contrib.auth.models import User
 from django.db import models
 from datetime import *
 # Classes:
 # Registrant
 
 
-
+# USER TYPES
 
 class Registrant(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField()
-    phone = models.CharField(max_length=15)  # will create validation later
+    # first_name = models.CharField(max_length=50)
+    # last_name = models.CharField(max_length=50)
+    # email = models.EmailField()
+    user = models.OneToOneField(User)
+    phone = models.CharField(max_length=15, default="needed")  # will create validation later
     total_owed = models.DecimalField(max_digits=20, decimal_places=4, default=0)
     total_paid = models.DecimalField(max_digits=20, decimal_places=4, default=0)
 
     def __str__(self):
-        return self.first_name + " " + self.last_name
+        return self.user.first_name + " " + self.user.last_name
 
     def __unicode__(self):
-        return self.first_name + " " + self.last_name
+        return self.user.first_name + " " + self.user.last_name
+
+
+class Staff(models.Model):
+
+    user = models.ForeignKey(User)
+    is_admin = models.BooleanField(default=False)
+    is_webmaster = models.BooleanField(default=False)
 
 
 # Campers
 class Camper(models.Model):
-    registrant = models.ForeignKey(Registrant)  # recursion
+    registrant = models.ForeignKey(Registrant)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     under_18 = models.BooleanField()

@@ -1,31 +1,38 @@
-<h1>Campers registered by {{ registrant.first_name }} {{ registrant.last_name }}</h1>
+<h1>These are the campers {{ registrant.user.first_name }} {{ registrant.user.last_name }} has signed up in the past:</h1>
 
 <ul>
-    {% for camper in registrant.camper_set.all %}
-        <li>{{ camper.first_name }} {{ camper.last_name }} --
-            {% if camper.under_18 == True %}
-                Child
-            {%  else%}
-                Adult
-            {% endif %}
-            --
-            {% for a in camper.attendance_set.all %}
-                {% if forloop.last %}
-                    {{ a.age_at_start }}
+    {% if registrant.camper_set.all < 0 %}
+        <p>You have not registered anyone.</p>
+
+    {% else %}
+
+        {% for camper in registrant.camper_set.all %}
+            <li>{{ camper.first_name }} {{ camper.last_name }} --
+                {% if camper.under_18 == True %}
+                    Child
+                {%  else%}
+                    Adult
                 {% endif %}
-            {% endfor %}
-            --
-            {% for a in camper.food_preference_set.all %}
+                --
+                {% for a in camper.attendance_set.all %}
+                    {% if forloop.last %}
+                        {{ a.age_at_start }}
+                    {% endif %}
+                {% endfor %}
+                --
+                {% for a in camper.food_preference_set.all %}
 
-                    {{ a.age_at_start }}
-            {% endfor %}
+                        {{ a.age_at_start }}
+                {% endfor %}
 
-        <a href="/edit_camper/{{ camper.id }}">edit</a>
+            <a href="/edit_camper/{{ camper.id }}">edit</a>
 
 
 
-        </li>
-    {% endfor %}
+            </li>
+        {% endfor %}
+
+    {% endif %}
 </ul>
 
 <br><br>

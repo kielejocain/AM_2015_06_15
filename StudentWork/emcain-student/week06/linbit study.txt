@@ -6,6 +6,9 @@ https://blog.udemy.com/programming-interview-questions/
 
 1. Reversing a linked list
 
+read this: http://interactivepython.org/runestone/static/pythonds/BasicDS/linkedlists.html
+and learn more about linked lists.
+
 Data structure manipulation is one of the most common concepts you can be asked about during a programming interview. Reversing a linked list is such a common problem, that knowing how to do it should be expected of you.
 
 It’s particularly vital that you understand exactly what is going on in this function, rather than just memorizing how to do it. You can learn about this in more detail in this beginner’s programming class for Java, which the following example is written in.

@@ -1,0 +1,40 @@
+todo:
+
+display auction
+item deails
+
+bid
+buy now
+
+
+
+link to email seller
+
+edit auction information
+
+
+
+
+{% block content %}
+
+
+
+    <form method="post">
+    {% csrf_token %}
+        Auction End date:
+    <input value="{{ auction.auction_end_date | date:" Y-m-d" }}" name="end_date" type="date">
+    <br>
+
+    <input value="{{ auction.opening_bid }}" name="opening_bid" type="number">
+    <br>
+    Bid increment:
+    <input value="{{ auction.increment }}" name="increment" type="number">
+    <br>
+    Description:
+    <textarea name="description"></textarea>
+
+    <input type="submit" value="Create Auction"/>
+    </form>
+
+
+{% endblock %}

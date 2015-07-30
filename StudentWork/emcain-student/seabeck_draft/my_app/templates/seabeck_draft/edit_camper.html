@@ -1,10 +1,9 @@
 {% load staticfiles %}
 {% block title %}
-Edit Camper
+<h1>Edit Camper</h1>
 {% endblock %}
 
 {% block others %}
-<h1>Campers registered by {{ camper.registrant.first_name }} {{ camper.registrant.last_name }}</h1>
 
 
 
@@ -42,13 +41,13 @@ Edit Camper
 
 <form method="post">
     {% csrf_token %}
-    <h1>
-        {% if camper.id %}
-        Edit Camper:
-        {% else %}
-        New Camper:
-        {% endif %}
-    </h1>
+{#    <h1>#}
+{#        {% if camper.id %}#}
+{#        Edit Camper:#}
+{#        {% else %}#}
+{#        New Camper:#}
+{#        {% endif %}#}
+{#    </h1>#}
 
     First name: <input value="{{ camper.first_name  }}" name="first_name" type="text">
     Last name: <input value="{{ camper.last_name  }}" name="last_name" type="text">
