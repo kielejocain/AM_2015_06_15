@@ -48,12 +48,12 @@ class Bids(models.Model):
     bidder = models.ForeignKey(RegUser)
     max_bid = models.DecimalField(max_digits=15, decimal_places=2, default=1.00)
     bid_amount = models.DecimalField(max_digits=15, decimal_places=2, default=1.00)
-    price = models.DecimalField
+    # price = models.DecimalField
 
-    def bid(self):
+    def place_bid(self):
         if self.bid_amount > self.max_bid:
-            self.price += self.increment
-            return self.price
+            self.auction.price += self.auction.increment
+            return self.auction.price
 
 class Order(models.Model):
     item = models.ForeignKey(Auction)

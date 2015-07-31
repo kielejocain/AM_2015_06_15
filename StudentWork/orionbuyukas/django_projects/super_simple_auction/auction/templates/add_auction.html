@@ -3,10 +3,10 @@
 Create New Auction for: {{ item.name }}
 {% endblock %}
 {% block content %}
-{% csrf_token %}
-< method="post">
 
-    {{ item.item_name }}
+<form method="post">
+{% csrf_token %}
+
 
     Auction End date:
     <input value="{{ auction.auction_end_date | date:" Y-m-d" }}" name="auction_end_date" type="date">

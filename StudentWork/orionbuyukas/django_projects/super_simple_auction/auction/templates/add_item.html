@@ -5,7 +5,8 @@ Add item
     <form method="post">
         {% csrf_token %}
     Item name:
-            <text name="item_name">{{ item.item_name }}</text>
+        <br>
+            <input type="text" name="item_name"> {{ item.item_name }} </input>
     <br>
     Description:
              <textarea name="description">{{ item.description }}</textarea>
