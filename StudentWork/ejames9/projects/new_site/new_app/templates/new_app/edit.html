@@ -1,30 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog Entry</title>
-</head>
-<body>
+{% extends "glass_base_generic.html" %}
+{% block content %}
+
   <form method="post">
     {% csrf_token %}
 
     <h3>
       Title:
       </h3>
-    <input type="text" name="title_text" value="{{ object.title_text }}"></input>
+    <input type="text" name="title_text" value="{{ blog.title_text }}"></input>
     <br>
     <h3>
       Name:
       </h3>
-    <input type="text" name="name_text" value="{{ object.name_text }}"></input>
+    <input type="text" name="name_text" value="{{ blog.name_text }}"></input>
     <br>
     <h3>
       Blog Post:
     </h3>
-    <textarea name="blog_text">{{ object.blog_text }}</textarea>
+    <textarea name="blog_text">{{ blog.blog_text }}</textarea>
     <br>
     <input type="submit" value="Save" </input>
   </form>
 
 </body>
 </html>
+{% endblock %}

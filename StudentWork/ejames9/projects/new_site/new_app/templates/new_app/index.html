@@ -1,8 +1,9 @@
+{% extends "glass_base_generic.html" %}
 
-
-{% if object_list %}
+{% block content %}
+{% if blog_list %}
     <ul>
-    {% for blog in object_list %}
+    {% for blog in blog_list %}
     <a href="/blog/{{blog.id}}"
         <li><h1>{{ blog.title_text }}</h1></li>
           <ul>
@@ -11,6 +12,9 @@
       </a>
     {% endfor %}
     </ul>
+    <a href="/create2/1/"><b>Post New Blog</b></a>
 {% else %}
     <p>No blogs are available.</p>
 {% endif %}
+
+{% endblock %}

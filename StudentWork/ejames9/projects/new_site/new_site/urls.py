@@ -16,10 +16,16 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from new_app import views
+from django.contrib.auth.models import User
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index, name='index'),
     url(r'^blog/(?P<id>[0-9]+)/$', views.details, name='details'),
     url(r'^edit/(?P<id>[0-9]+)/$', views.edit, name='edit'),
+    url(r'^create2/(?P<id>[0-9]+)/$', views.create2, name='create2'),
+    url(r'^register/$', views.register, name='register'),
+    url(r'^login/', views.login_view, name='login'),
+
+
 ]

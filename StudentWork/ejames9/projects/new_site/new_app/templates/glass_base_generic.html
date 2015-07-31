@@ -16,11 +16,10 @@
     <div id="menu">
 
 
-        <div id="bro">Menu</div>
+        <div id="bro"><span id="span1">Menu</span><span id="span2">Close</span></div>
         <div id="header"><p id="heady"><b>the Stained Glass Window</b></p>
-          <div>
-            <!-- <img src="https://www.thetileapp.com/img/blog.png" id="head1"/> -->
-          </div>
+          {% block header %}
+          {% endblock %}
         </div>
 
     </div>
@@ -28,6 +27,8 @@
       {% block content %}
       {% endblock %}
     </div>
-    <div id="footer"></div>
+    {% block footer %}
+    {% endblock %}
+
 </body>
 </html>

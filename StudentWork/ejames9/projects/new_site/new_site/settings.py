@@ -82,6 +82,8 @@ DATABASES = {
     }
 }
 
+MEDIA_ROOT = 'media/'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

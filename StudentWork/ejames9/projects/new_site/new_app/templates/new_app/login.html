@@ -1,0 +1,165 @@
+<style>
+
+body{
+
+    background: white url("/static/new_app/images/stained_glass3.jpg")
+}
+
+#register {
+  z-index: 0;
+  position: absolute;
+  height: 400px;
+  width: 600px;
+  left: 27%;
+  top: 23%;
+  background-color: black;
+  opacity: .9;
+  border-radius: 15px;
+
+}
+
+#gate1 {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background-color: #14143B;
+}
+
+#gate2 {
+  z-index: 4;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background-color: #14143B;
+}
+
+#gatel {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50%;
+  width: 50%;
+  background-color: #EF2EF2;
+}
+
+#gatel2 {
+  z-index: 5;
+  position: absolute;
+  height: 50%;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  background-color: #EF2EF2;
+}
+
+#gater {
+  z-index: 3;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  width: 50%;
+  background-color: #4D44FA;
+}
+
+body:hover #gate1 {
+  opacity: .8;
+  Height: 15%;
+  transition-duration: 1.5s;
+}
+
+body:hover #gate2 {
+  opacity: .8;
+  Height: 15%;
+  transition-duration: 1.5s;
+}
+
+body:hover #gatel {
+  opacity: .8;
+  width: 10%;
+  transition-duration: 1.5s;
+}
+
+body:hover #gatel2 {
+  opacity: .8;
+  width: 10%;
+  transition-duration: 1.5s;
+}
+
+
+body:hover #gater {
+  opacity: .8;
+  width: 10%;
+  transition-duration: 1.5s;
+}
+
+body:hover #heady {
+  opacity: 1;
+  transition-duration: 3s;
+}
+
+#heady {
+  opacity: 0;
+  font-family: HelveticaNeue-Light;
+  position: relative;
+  left: 100px;
+  color: #EF2EF2;
+  font-size: 36px;
+}
+
+#register {
+  color: white;
+}
+
+#user {
+  z-index: 6;
+  border-radius: 5px;
+  border: none;
+  position: absolute;
+  left: 28%;
+  top: 35%;
+  font-family: HelveticaNeue-Light;
+  height: 40px;
+}
+
+#pass {
+  border-radius: 5px;
+  border: none;
+  position: absolute;
+  left: 28.5%;
+  top: 50%;
+  font-family: HelveticaNeue-Light;
+}
+
+#log {
+  height: 200px;
+  width: 10px;
+  position: absolute;
+  left: 40.5%;
+  top: 65%;
+}
+
+
+
+</style>
+
+
+<div id="gate1"><p id="heady"><b>the Stained Glass Window</b></p></div>
+<div id="gatel"></div>
+<div id="gatel2"></div>
+<div id="register">
+  <form method="post">
+    {% csrf_token %}
+    <label id="user">Username:<input type="text" name="username" value="   {{ user.username }}"></input></label>
+    <label id="pass">Password:<input type="password" name="password" value="   {{ user.password }}"></input></label>
+    <input type="submit" id="log" class="button" value="Login">
+  </form>
+</div>
+<div id="gater"></div>
+<div id="gate2"></div>
