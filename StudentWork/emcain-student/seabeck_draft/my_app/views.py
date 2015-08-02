@@ -11,6 +11,8 @@ from django.shortcuts import get_object_or_404, render
 
 from .models import Registrant, Camper, Rate
 
+import json
+
 # def index(request):
 #     return HttpResponse("Hello, world. You're at the polls index.")
 
@@ -79,6 +81,20 @@ def index(request):
 def detail(request, registrant_id):
     registrant = get_object_or_404(Registrant, pk=registrant_id)
     return render(request, 'seabeck_draft/detail.html', {'registrant': registrant})
+
+@login_required()
+def dynamic_detail(request, registrant_id):
+    # registrant = get_object_or_404(Registrant, pk=registrant_id)
+    return render(request, 'seabeck_draft/dynamic_detail.html', {})
+
+
+def api_campers(request, registrant_id):
+    campers = Camper.objects.filter(registrant__id=registrant_id)
+    output = []
+    for camper in campers:
+        output.append({"id":camper.id, "name": camper.first_name + " " + camper.last_name})
+    return HttpResponse(json.dumps(output, indent=4), content_type="application/json")
+
 
 
 def login_needed(request):
