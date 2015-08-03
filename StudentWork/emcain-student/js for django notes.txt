@@ -1,0 +1,68 @@
+https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName
+
+https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode
+
+Syntax
+
+var dupNode = node.cloneNode(deep);
+
+node
+    The node to be cloned.
+dupNode
+    The new node that will be a clone of node
+deep Optional
+    true if the children of the node should also be cloned, or false to clone only the specified node. 
+	
+Example
+
+var p = document.getElementById("para1");
+var p_prime = p.cloneNode(true);
+
+If the original node has an ID and the clone is to be placed in the same document, the ID of the clone should be modified to be unique. Name attributes may need to be modified also, depending on whether duplicate names are expected.
+
+
+--jQuery--
+
+.clone()
+Categories: Manipulation > Copying	
+.clone( [withDataAndEvents ] )Returns: jQuery
+
+Description: Create a deep copy of the set of matched elements.
+
+    version added: 1.0.clone( [withDataAndEvents ] )
+        withDataAndEvents (default: false)
+        Type: Boolean
+        A Boolean indicating whether event handlers should be copied along with the elements. As of jQuery 1.4, element data will be copied as well.
+    version added: 1.5.clone( [withDataAndEvents ] [, deepWithDataAndEvents ] )
+        withDataAndEvents (default: false)
+        Type: Boolean
+        A Boolean indicating whether event handlers and data should be copied along with the elements. The default value is false. *In jQuery 1.5.0 the default value was incorrectly true; it was changed back to false in 1.5.1 and up.
+        deepWithDataAndEvents (default: value of withDataAndEvents)
+        Type: Boolean
+        A Boolean indicating whether event handlers and data for all children of the cloned element should be copied. By default its value matches the first argument's value (which defaults to false).
+
+		
+		
+The .clone() method performs a deep copy of the set of matched elements, meaning that it copies the matched elements as well as all of their descendant elements and text nodes.
+
+Note: For performance reasons, the dynamic state of certain form elements (e.g., user data typed into textarea and user selections made to a select) is not copied to the cloned elements. When cloning input elements, the dynamic state of the element (e.g., user data typed into text inputs and user selections made to a checkbox) is retained in the cloned elements.
+
+When used in conjunction with one of the insertion methods, .clone() is a convenient way to duplicate elements on a page. Consider the following HTML:
+1
+2
+3
+4
+	
+
+<div class="container">
+  <div class="hello">Hello</div>
+  <div class="goodbye">Goodbye</div>
+</div>
+
+As shown in the discussion for .append(), normally when an element is inserted somewhere in the DOM, it is moved from its old location. So, given the code:
+1
+	
+
+$( ".hello" ).appendTo( ".goodbye" );
+
+The resulting DOM structure would be:

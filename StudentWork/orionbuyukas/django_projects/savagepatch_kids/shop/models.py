@@ -20,5 +20,5 @@ class Product(models.Model):
     item_name = models.CharField(max_length=255)
     add_date = models.DateTimeField(auto_now_add=True)
     price = models.DecimalField(default=0, max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='static/shop/images')
     img_link = models.CharField(max_length=255) #optional

@@ -27,6 +27,10 @@ urlpatterns = [
     url(r'^edit_registrant/(?P<registrant_id>[0-9]+)/$', views.edit_registrant,
         name='edit_registrant'),
     url(r'^edit_camper/(?P<camper_id>[0-9]+)/$', views.edit_camper, name='edit_camper'),
+
+    url(r'^api_campers/(?P<registrant_id>[0-9]+)/$', views.api_campers, name='api_campers'),
+
+    url(r'^dynamic_detail/(?P<registrant_id>[0-9]+)/$', views.dynamic_detail, name='dynamic_detail'),
     url(r'(?P<registrant_id>[0-9]+)/$', views.detail, name='detail'),
 
     url(r'^login/$', views.login_view, name='login_view'),
