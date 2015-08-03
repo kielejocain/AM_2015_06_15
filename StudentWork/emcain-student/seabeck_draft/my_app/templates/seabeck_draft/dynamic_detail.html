@@ -1,11 +1,11 @@
 {% load staticfiles %}
 <script src="{% static "my_app/js/dynamic-detail-script.js" %}"></script>
 
-<h2>These are the campers {{ registrant.user.first_name }} {{ registrant.user.last_name }} has signed up in the
+<h2>These are the campers {{ family.user.first_name }} {{ family.user.last_name }} has signed up in the
     past:</h2>
 <p> this is the dynamic page. </p>
 <ul>
-    {% if registrant.camper_set.all < 0 %}
+    {% if family.camper_set.all < 0 %}
         <p>You have not registered anyone.</p>
 
     {% else %}

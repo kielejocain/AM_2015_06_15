@@ -19,7 +19,7 @@
  * - have buttons to remove or edit attendances. (eventually figure out how to handle housing and part time people)*/
 
 
-var registrant_id = 1;
+var family_id = 1;
 function campers(e) {
     console.log(e);
     var data = JSON.parse(e.target.responseText)
@@ -27,7 +27,7 @@ function campers(e) {
 }
 function getCampers() {
     var request = new XMLHttpRequest();
-    request.open("GET", "/api_campers/" + registrant_id);
+    request.open("GET", "/api_campers/" + family_id);
     request.onload = campers;
     request.send();
 }

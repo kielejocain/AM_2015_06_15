@@ -1,0 +1,28 @@
+{% load staticfiles %}
+{% block title %}
+Edit Family
+{% endblock %}
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <h1>
+        {% if family.id %}
+        Edit Family:
+        {% else %}
+        New Family:
+        {% endif %}
+    </h1>
+
+    First name: <input value="{{ family.first_name  }}" name="first_name" type="text">
+    Last name: <input value="{{ family.last_name  }}" name="last_name" type="text">
+    <br>
+    Phone number: <input value="{{ family.phone  }}" name="phone" type="text">
+    Email address: <input value="{{ family.email  }}" name="email" type="text">
+    <br>
+    <input type="submit" value="SAVE"/>
+</form>
+
+
+
+{% endblock %}

@@ -8,7 +8,7 @@
 
 
 <ul>
-    {% for indiv in camper.registrant.camper_set.all %}
+    {% for indiv in camper.family.camper_set.all %}
         {% if indiv != camper %}
             <li>{{ indiv.first_name }} {{ indiv.last_name }} --
                 {% if indiv.under_18 == True %}
@@ -65,5 +65,5 @@
 {% endblock %}
 
 {% block last %}
-    <a href="/">Return to Registrants List</a>
+    <a href="/">Return to Families List</a>
 {% endblock %}
