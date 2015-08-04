@@ -7,9 +7,9 @@ from django.template import RequestContext, loader
 
 from django.core.urlresolvers import reverse
 
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 
-from .models import Registrant, Camper, Rate
+from .models import Family, Camper, Rate
 
 import json
 
@@ -46,13 +46,13 @@ def register_view(request):
         user.last_name = request.POST['last_name']
         user.save()
 
-        registrant = Registrant()
-        registrant.user = user
-        registrant.phone = request.POST['phone']
-        registrant.save()
+        family = Family()
+        family.user = user
+        family.phone = request.POST['phone']
+        family.save()
 
         camper = Camper()
-        camper.registrant = registrant
+        camper.family = family
         camper.first_name = user.first_name
         camper.last_name = user.last_name
         camper.under_18 = False
@@ -66,30 +66,31 @@ def register_view(request):
 
 def logout_view(request):
     logout(request)
-    # Redirect to a success page.
+    return redirect("/logout_successful/")
+
 
 @login_required(login_url='/login_needed/')
 def index(request):
-    registrants_list = Registrant.objects.order_by("user__last_name")
+    families_list = Family.objects.order_by("user__last_name")
 #often use two underscores to represent dot/fk relationship
     template = loader.get_template('seabeck_draft/index.html')
-    context = RequestContext(request, {'registrants_list': registrants_list})
+    context = RequestContext(request, {'families_list': families_list})
 
     return HttpResponse(template.render(context))
 
 @login_required()
-def detail(request, registrant_id):
-    registrant = get_object_or_404(Registrant, pk=registrant_id)
-    return render(request, 'seabeck_draft/detail.html', {'registrant': registrant})
+def detail(request, family_id):
+    family = get_object_or_404(Family, pk=family_id)
+    return render(request, 'seabeck_draft/detail.html', {'family': family})
 
 @login_required()
-def dynamic_detail(request, registrant_id):
-    # registrant = get_object_or_404(Registrant, pk=registrant_id)
+def dynamic_detail(request, family_id):
+    # family = get_object_or_404(Family, pk=family_id)
     return render(request, 'seabeck_draft/dynamic_detail.html', {})
 
 
-def api_campers(request, registrant_id):
-    campers = Camper.objects.filter(registrant__id=registrant_id)
+def api_campers(request, family_id):
+    campers = Camper.objects.filter(family__id=family_id)
     output = []
     for camper in campers:
         output.append({"id":camper.id, "name": camper.first_name + " " + camper.last_name})
@@ -100,48 +101,51 @@ def api_campers(request, registrant_id):
 def login_needed(request):
     return render(request, 'seabeck_draft/login_needed.html')
 
-def edit_registrant(request, registrant_id):
+def logout_successful(request):
+    return render(request, 'seabeck_draft/logout_successful.html')
 
-    if registrant_id == 0:
+def edit_family(request, family_id):
+
+    if family_id == 0:
         print "new"
-        registrant = Registrant()
+        family = Family()
     else:
         print "existing"
-        registrant = get_object_or_404(Registrant, pk=registrant_id)
+        family = get_object_or_404(Family, pk=family_id)
 
-    filtered_registrant_list = Registrant.objects.filter(id=registrant_id)
+    filtered_family_list = Family.objects.filter(id=family_id)
 
-#    if len(filtered_registrant_list) > 0:
-    registrant = filtered_registrant_list[0]
+#    if len(filtered_family_list) > 0:
+    family = filtered_family_list[0]
 #    else:
-#        registrant = Registrant()
+#        family = Family()
 
     if request.POST:
         print(request.POST)
-        registrant.first_name = request.POST["first_name"]
-        registrant.last_name = request.POST["last_name"]
-        registrant.email = request.POST["email"]
-        registrant.phone = request.POST["phone"]
-        registrant.save()
+        family.first_name = request.POST["first_name"]
+        family.last_name = request.POST["last_name"]
+        family.email = request.POST["email"]
+        family.phone = request.POST["phone"]
+        family.save()
         return HttpResponseRedirect("/")
 
-    return render(request, 'seabeck_draft/edit_registrant.html', {'registrant': registrant})
+    return render(request, 'seabeck_draft/edit_family.html', {'family': family})
 
 
-def new_registrant(request):
+def new_family(request):
 
-    registrant = Registrant()
+    family = Family()
 
     if request.POST:
         print(request.POST)
-        registrant.first_name = request.POST["first_name"]
-        registrant.user.last_name = request.POST["user.last_name"]
-        registrant.email = request.POST["email"]
-        registrant.phone = request.POST["phone"]
-        registrant.save()
+        family.first_name = request.POST["first_name"]
+        family.user.last_name = request.POST["user.last_name"]
+        family.email = request.POST["email"]
+        family.phone = request.POST["phone"]
+        family.save()
         return HttpResponseRedirect("/")
 
-    return render(request, 'seabeck_draft/new_registrant.html', {'registrant': registrant})
+    return render(request, 'seabeck_draft/new_family.html', {'family': family})
 
 
 def edit_camper(request, camper_id):

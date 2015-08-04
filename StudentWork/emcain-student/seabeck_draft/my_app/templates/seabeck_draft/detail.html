@@ -1,39 +1,73 @@
-<h1>These are the campers {{ registrant.user.first_name }} {{ registrant.user.last_name }} has signed up in the past:</h1>
+{% extends "seabeck_draft/logged_in_base_template.html" %}
 
-<ul>
-    {% if registrant.camper_set.all < 0 %}
-        <p>You have not registered anyone.</p>
+{#{% block header %}#}
+{##}
+{#    <div class="navbar">#}
+{#        <div class="navbar-inner">#}
+{#            <a class="brand" href="#">Title</a>#}
+{##}
+{#            <ul class="nav breadcrumb">#}
+{#                <li><a href="#">Home</a> <span class="divider">/</span></li>#}
+{#                <li><a href="#">Library</a> <span class="divider">/</span></li>#}
+{#                <li class="active">Data</li>#}
+{#            </ul>#}
+{##}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#{% endblock %}#}
 
-    {% else %}
+{% block content %}
+    <h1>Hello, {{ family.user.first_name }} {{ family.user.last_name }}!</h1>
+    <h2>These are the campers you have signed up in the past.</h2>
 
-        {% for camper in registrant.camper_set.all %}
-            <li id="camper_{{ camper.id }}" class="camper_li">{{ camper.first_name }} {{ camper.last_name }} --
-                {% if camper.under_18 == True %}
-                    Child
-                {%  else%}
-                    Adult
-                {% endif %}
-                --
-                {% for a in camper.attendance_set.all %}
-                    {% if forloop.last %}
-                        {{ a.age_at_start }}
+    <ul>
+        {% if family.camper_set.all < 0 %}
+            <p>You have not registered anyone.</p>
+
+        {% else %}
+
+            {% for camper in family.camper_set.all %}
+                <li id="camper_{{ camper.id }}" class="camper_li">{{ camper.first_name }} {{ camper.last_name }} --
+                    {% if camper.under_18 == True %}
+                        Child
+                    {% else %}
+                        Adult
                     {% endif %}
-                {% endfor %}
-                --
-                {% for a in camper.food_preference_set.all %}
-
-                        {{ a.age_at_start }}
-                {% endfor %}
-
-            <a href="/edit_camper/{{ camper.id }}">edit</a>
-
+                    --
+                    {% for a in camper.attendance_set.all %}
+                        {% if forloop.last %}
+                            {{ a.age_at_start }}
+                        {% endif %}
+                    {% endfor %}
+                    --
 
 
-            </li>
-        {% endfor %}
+<button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Sign Up
+</button>
+<button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Remove
+</button>
 
-    {% endif %}
-</ul>
 
-<br><br>
-<a href="/">Return to main page</a>
+       <a href="/edit_camper/{{ camper.id }}">edit</a>
+
+
+                </li>
+            {% endfor %}
+
+        {% endif %}
+    </ul>
+
+    <h2>Here are the people who will be attending camp this year.</h2>
+    <h3>To sign up someone who has attended in the past, click "sign up" above.</h3>
+<button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> New Camper
+</button>
+    <p>(put a list of this year's campers here.</p>
+
+    <br><br>
+    <a href="/">Return to main page</a>
+
+{% endblock %}

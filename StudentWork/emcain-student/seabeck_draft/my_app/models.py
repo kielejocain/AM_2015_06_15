@@ -2,12 +2,12 @@ from django.contrib.auth.models import User
 from django.db import models
 from datetime import *
 # Classes:
-# Registrant
+# Family
 
 
 # USER TYPES
 
-class Registrant(models.Model):
+class Family(models.Model):
     # first_name = models.CharField(max_length=50)
     # last_name = models.CharField(max_length=50)
     # email = models.EmailField()
@@ -32,7 +32,7 @@ class Staff(models.Model):
 
 # Campers
 class Camper(models.Model):
-    registrant = models.ForeignKey(Registrant)
+    family = models.ForeignKey(Family)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     under_18 = models.BooleanField()
