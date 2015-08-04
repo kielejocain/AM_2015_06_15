@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <style>
+        /* apply a natural box layout model to all elements */
+        *, *:before, *:after {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: darkgray;
+            font-size: 2em;
+            font-family: "Gotham", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
+        }
+
+        select {
+            font-size: 1em;
+        }
+
+        button {
+            min-width: 20em;
+            min-height: 3em;
+            font-size: 1em;
+        }
+
+        #smoke {
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        #dialog {
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #ffffff;
+            border: 1px solid black;
+            width: 600px;
+            height: 400px;
+
+            margin-top: 100px;
+            position: relative;
+        }
+
+        #dialog .top {
+            background-color: darkblue;
+            color: gold;
+        }
+
+        .hidden {
+            display: none;
+            opacity: 0;
+        }
+
+        .bar {
+            position: absolute;
+            width: 100%;
+            padding: 0.5em;
+        }
+
+        .top {
+            top: 0;
+            text-align: center;
+        }
+
+        .bottom {
+            bottom: 0;
+            text-align: right;
+            background-color: lightgray;
+        }
+
+        .content {
+            background-color: #ffffff;
+            padding: 2em;
+        }
+
+    </style>
+    <script>
+        function showDialog() {
+            document.getElementById("smoke").classList.remove("hidden");
+            document.getElementById("dialog").classList.remove("hidden");
+        }
+        function closeDialog() {
+            document.getElementById("smoke").classList.add("hidden");
+            document.getElementById("dialog").classList.add("hidden");
+        }
+        function saveFormData() {
+            closeDialog();
+            document.body.innerHTML += formData["options"] + "<br>";
+        }
+        var formData = {};
+        function dataChanged(object) {
+            formData[object.name] = object.value;
+            console.log(formData);
+        }
+    </script>
+</head>
+<body>
+<button onclick="showDialog()">Open Dialog</button>
+<div class="hidden" id="smoke">
+    <div class="hidden" id="dialog">
+        <div class="top bar"> Dialog Title</div>
+        <div class="content">
+            <p> Select an option: </p>
+            <select size="3" name="options" id="options" onchange="dataChanged(this)">
+                <option value="1"> One</option>
+                <option value="2"> Two</option>
+                <option value="3"> Three</option>
+            </select>
+        </div>
+        <div class="bottom bar">
+            <button onclick="saveFormData()">OK</button>
+            <button onclick="closeDialog()">Cancel</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
