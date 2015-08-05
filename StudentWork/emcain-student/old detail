@@ -1,0 +1,88 @@
+
+{#    <ul>#}
+{#        {% if family.camper_set.all < 0 %}#}
+{#            <p>You have not registered anyone.</p>#}
+{##}
+{#        {% else %}#}
+{##}
+{#            {% for camper in family.camper_set.all %}#}
+{#                <li id="camper_{{ camper.id }}" class="camper_li">{{ camper.first_name }} {{ camper.last_name }} --#}
+{#                    {% if camper.under_18 == True %}#}
+{#                        Child#}
+{#                    {% else %}#}
+{#                        Adult#}
+{#                    {% endif %}#}
+{#                    --#}
+{#                    {% for a in camper.attendance_set.all %}#}
+{#                        {% if forloop.last %}#}
+{#                            {{ a.age_at_start }}#}
+{#                        {% endif %}#}
+{#                    {% endfor %}#}
+{#                    --#}
+
+
+{#<button type="button" class="btn btn-default btn-lg">#}
+{#  <span class="glyph sign-up" aria-hidden="true"></span>Sign Up#}
+{#</button>#}
+{##}
+{#                {% static "my_app/image/no-sign.jpg" %}'#}
+{#<button type="button" class="btn btn-default btn-lg">#}
+{#  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Remove#}
+{#</button>#}
+{##}
+{##}
+{#       <a href="/edit_camper/{{ camper.id }}">edit</a>#}
+{##}
+{##}
+{#                </li>#}
+{#            {% endfor %}#}
+{##}
+{#        {% endif %}#}
+{#    </ul>#}
+
+{#    <h2>Here are the people who will be attending camp this year.</h2>#}
+{#    <h3>To sign up someone who has attended in the past, click "sign up" above.</h3>#}
+{#    <h3>If someone who does not appear on the list above will be attending this year, please click "new camper" to add them. </h3>#}
+{#<button type="button" class="btn btn-default btn-lg">#}
+{#  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>New Camper#}
+{#</button>#}
+{#    <p>(put a list of this year's campers here.</p>#}
+
+{#   <ul>#}
+{#        {% if family.camper_set.attendence_set.all < 0 %}#}
+{#            <p>You have not registered anyone.</p>#}
+{##}
+{#        {% else %}#}
+{##}
+{#            {% for camper in family.camper_set.all %}#}
+{#                <li id="camper_{{ camper.id }}" class="camper_li">{{ camper.first_name }} {{ camper.last_name }} --#}
+{#                    {% if camper.under_18 == True %}#}
+{#                        Child#}
+{#                    {% else %}#}
+{#                        Adult#}
+{#                    {% endif %}#}
+{#                    --#}
+{#                    {% for a in camper.attendance_set.all %}#}
+{#                        {% if forloop.last %}#}
+{#                            {{ a.age_at_start }}#}
+{#                        {% endif %}#}
+{#                    {% endfor %}#}
+{#                    --#}
+
+
+{#<button type="button" class="btn btn-default btn-lg">#}
+{#  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Sign Up#}
+{#</button>#}
+{#<button type="button" class="btn btn-default btn-lg">#}
+{#  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Remove#}
+{#</button>#}
+{##}
+{##}
+{#       <a href="/edit_camper/{{ camper.id }}">edit</a>#}
+{##}
+{##}
+{#                </li>#}
+{#            {% endfor %}#}
+{##}
+{#        {% endif %}#}
+{#    </ul>#}
