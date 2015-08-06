@@ -17,4 +17,8 @@ MY_STORE.application.views.product_detail = function () {
         container.appendChild(element);
 
     }
-};
+
+    return {
+        draw: draw
+    }
+}();

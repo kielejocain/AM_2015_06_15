@@ -3,9 +3,9 @@ MY_STORE.application = function () {
     var self = this;
 
     function drawProducts() {
-        console.log(MY_STORE.application.models.products);
+        console.log(MY_STORE.application.models.product);
         MY_STORE.application.views.product_list.draw(
-            MY_STORE.application.models.products,
+            MY_STORE.application.models.product,
             MY_STORE.application.options.product_list
         )
     }
@@ -24,7 +24,7 @@ MY_STORE.application = function () {
 
     function init(options) {
         this.options = options;
-        this.loadData("api/products.js", drawProducts, "products");
+        this.loadData("api/product.js", drawProducts, "product");
     }
 
     return {

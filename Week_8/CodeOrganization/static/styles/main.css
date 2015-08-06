@@ -1,0 +1,10 @@
+body {
+    font-family: sans-serif;
+    color: silver;
+    background-color: darkblue;
+}
+
+.product {
+    color: purple;
+    background-color: lightgreen;
+}
