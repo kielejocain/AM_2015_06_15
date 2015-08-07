@@ -661,6 +661,7 @@
     "fields": {
       "username": "admin",
       "first_name": "",
+      and
       "last_name": "",
       "is_active": true,
       "is_superuser": true,

@@ -58,6 +58,13 @@ body {
     right: 1em;
 }
 
+.list-to-add {
+    font-size: 25%;
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+}
+
 .column {
     display: inline-block;
     vertical-align: top;
