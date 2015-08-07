@@ -7,6 +7,8 @@ used JSON to create list of campers and format them based on whether they are at
 
 To do next:
 
+add "family id" to the JSON input, and filter so only current family's campers are shown. --this will waste a lot of time. Instead, only pass in current family's campers to the JSON object. 
+
 figure out how to create and add buttons to each <li> in the campers list. 
 create a function to draw a form below a given <li> for that camper. 
 get the buttons to hook up to the function

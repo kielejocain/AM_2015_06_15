@@ -100,27 +100,15 @@ def api_campers(request, family_id):
 
 
         output.append({"id":camper.id, "name": camper.first_name + " " + camper.last_name,  "in_current_year" : in_current_year})
-    # if request.POST:
-    #     if not camper:
-    #         camper = Camper()
-    #         camper.first_name =
-    #     else:
-    #         camper = (current camper)
-    #     # need to create camper if doesn't exist yet
-    #     attendance = Attendance()
-    #     attendance.camper = request.post[camper]  # how to get current camper???
-    #     print(request.POST)
-    #     attendance.event_year = request.POST[current_year]
-    #     attendance.last_name = request.POST["last_name"]
-    #     family.email = request.POST["email"]
-    #     family.phone = request.POST["phone"]
-    #     family.save()
-    #     return HttpResponseRedirect("/")
+
 
     return HttpResponse(json.dumps(output, indent=4), content_type="application/json")
 
 
-
+# def api_detail(request, family_id):
+#         family = get_object_or_404(Family, pk=family_id)
+#     return render(request, 'seabeck_draft/detail.html', {'family': family})
+#
 
 
 def login_needed(request):

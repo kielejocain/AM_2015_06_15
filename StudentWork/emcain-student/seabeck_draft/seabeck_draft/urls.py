@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from my_app import views
 
 urlpatterns = [
@@ -43,4 +46,4 @@ urlpatterns = [
     url(r'^register/$', views.register_view, name='register_view')
 #    url(r'(?P<family_id>[0-9]+)/$', views.edit, name='edit'),
 
-    ]
+    ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
