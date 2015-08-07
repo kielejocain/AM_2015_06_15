@@ -1,0 +1,15 @@
+notes on Seabeck Draft--8/4
+
+Did today:
+
+added "attending this year" boolean field to api_campers
+used JSON to create list of campers and format them based on whether they are attending this year. 
+
+To do next:
+
+figure out how to create and add buttons to each <li> in the campers list. 
+create a function to draw a form below a given <li> for that camper. 
+get the buttons to hook up to the function
+get POST to work for the above
+get the page to update itself when this stuff happens. 
+eventually, convert the UL to Bootstrap rows, or a table. 

@@ -61,12 +61,13 @@ class EventYear(models.Model):
 
 class Attendance(models.Model):  # i.e. Campers by year
     event_year = models.ForeignKey(EventYear)
-    camper = models.ForeignKey(Camper)  # recursion
+    camper = models.ForeignKey(Camper)
     grade = models.IntegerField(null=True, blank=True)
 
     def age_at_start(self):
         try:
             return int(self.event_year.get_year()) - int(self.camper.dob.year)
+            #need to fix this to use specific date
         except:
             return "unknown age"
 
@@ -75,6 +76,7 @@ class Attendance(models.Model):  # i.e. Campers by year
 
     def __unicode__(self):
         return self.camper.first_name + " " + self.camper.last_name + " - " + unicode(self.event_year)
+
 
 
 class Shirt(models.Model):

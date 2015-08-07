@@ -34,6 +34,9 @@ urlpatterns = [
     # url(r'^api_campers/(?P<family_id>[0-9]+)/$', views.api_campers, name='api_campers'),
 
     # url(r'^dynamic_detail/(?P<family_id>[0-9]+)/$', views.dynamic_detail, name='dynamic_detail'),
+
+    url(r'^api_campers/(?P<family_id>[0-9]+)/$', views.api_campers, name='api_campers'),
+
     url(r'(?P<family_id>[0-9]+)/$', views.detail, name='detail'),
 
     url(r'^login/$', views.login_view, name='login_view'),

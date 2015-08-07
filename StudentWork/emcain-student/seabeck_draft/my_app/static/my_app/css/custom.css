@@ -105,3 +105,11 @@ header {
 	color: navy;
 	background-color: cornsilk;
 }
+
+span .glyph {
+    @extend .glyphicon;
+}
+
+span .sign-up {
+    @extend .glyphicon-plus;
+}

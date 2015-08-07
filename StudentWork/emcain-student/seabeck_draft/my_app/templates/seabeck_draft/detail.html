@@ -1,5 +1,6 @@
 {% extends "seabeck_draft/logged_in_base_template.html" %}
 
+
 {#{% block header %}#}
 {##}
 {#    <div class="navbar">#}
@@ -18,54 +19,86 @@
 {#{% endblock %}#}
 
 {% block content %}
+
+    <style>
+        .campers_of_family {
+            color: slategray;
+            font-style: italic;
+        }
+
+        .active {
+            color: green;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+    </style>
+
+    <script>
+        var request = new XMLHttpRequest();
+
+        function draw(data) {
+//        document.body.innerHTML = time + "<br>\n" + document.body.innerHTML;
+            console.log(data);
+            var listdiv = document.getElementById("campers-list");
+            {#        for (var item in data){#}
+            {#              if (data.hasOwnProperty(item)) {#}
+            {#                  console.log(item + " -> " + data[item]);#}
+            {#                  listdiv.innerHTML == listdiv.innerHTML + "<br>\n" + "id: " + data["id"];#}
+            {#              }#}
+            {#        }#}
+
+            listdiv.innerHTML = "<br>\n" + data; // removed listdiv.innerhtml +
+        }
+
+        function onRequestChange() {
+            console.log(request.readyState, request.status);
+            if ((request.readyState == 4) && (request.status == 200)) {
+                var data = JSON.parse(request.responseText);
+                console.log(data);
+                var output = "<ul class='campers_of_family'>";
+                for (var item in data) {
+                    output = output + "<li";
+                    if (data[item].in_current_year) {
+                        output = output + " class='active' ";
+                    }
+                    output = output +  ">";
+
+                    output = output + data[item].name;
+
+                    output = output + " - "
+
+                    if (!data[item].in_current_year) {
+                        output = output + " not";
+                    }
+
+
+
+                    output = output + " attending this year </li>";
+                    }
+                output = output + "</ul>"
+                draw(output);
+                }
+
+
+        }
+
+        function fetch(url) {
+            request.onreadystatechange = onRequestChange;
+            request.open("GET", url, true);
+            request.send();
+        }
+        fetch("/api_campers/2");
+
+
+    </script>
+
     <h1>Hello, {{ family.user.first_name }} {{ family.user.last_name }}!</h1>
     <h2>These are the campers you have signed up in the past.</h2>
 
-    <ul>
-        {% if family.camper_set.all < 0 %}
-            <p>You have not registered anyone.</p>
-
-        {% else %}
-
-            {% for camper in family.camper_set.all %}
-                <li id="camper_{{ camper.id }}" class="camper_li">{{ camper.first_name }} {{ camper.last_name }} --
-                    {% if camper.under_18 == True %}
-                        Child
-                    {% else %}
-                        Adult
-                    {% endif %}
-                    --
-                    {% for a in camper.attendance_set.all %}
-                        {% if forloop.last %}
-                            {{ a.age_at_start }}
-                        {% endif %}
-                    {% endfor %}
-                    --
-
-
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Sign Up
-</button>
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Remove
-</button>
-
-
-       <a href="/edit_camper/{{ camper.id }}">edit</a>
-
-
-                </li>
-            {% endfor %}
-
-        {% endif %}
-    </ul>
-
-    <h2>Here are the people who will be attending camp this year.</h2>
-    <h3>To sign up someone who has attended in the past, click "sign up" above.</h3>
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> New Camper
-</button>
-    <p>(put a list of this year's campers here.</p>
+    <div id="campers-list">
+        Loading campers...
+    </div>
 
     <br><br>
     <a href="/">Return to main page</a>
