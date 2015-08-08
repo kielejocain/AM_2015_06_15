@@ -1,0 +1,56 @@
+{% load staticfiles %}
+<script src="{% static "my_app/js/dynamic-detail-script.js" %}"></script>
+
+<h2>These are the campers {{ family.user.first_name }} {{ family.user.last_name }} has signed up in the
+    past:</h2>
+<p> this is the dynamic page. </p>
+<ul>
+    {% if family.camper_set.all < 0 %}
+        <p>You have not registered anyone.</p>
+
+    {% else %}
+
+
+        <li id="camper_{{ camper.id }}" class="camper_li">{{ camper.first_name }} {{ camper.last_name }} --
+
+            <span class="child_adult"></span>
+            --
+            {% if forloop.last %}
+                {{ a.age_at_start }}
+            {% endif %}
+            --
+
+            {{ a.age_at_start }}
+
+            <button id="edit_camper_{{ camper.id }}" class="edit_camper_button">Edit</button>
+            <button id="remove_camper_{{ camper.id }}" class="remove_camper_button">Remove</button>
+
+
+            <form method="post">
+                {% csrf_token %}
+
+
+                First name: <input value="{{ camper.first_name }}" name="first_name" type="text">
+                Last name: <input value="{{ camper.last_name }}" name="last_name" type="text">
+                <br>
+                Age: <select value="{{ camper.under_18 }}" name="under_18">
+                <option value="Null"></option>
+                <option value="False">Adult (18+)</option>
+                <option value="True">Child (under 18)</option>
+            </select>
+                Birth date: <input value="{{ camper.dob }}" name="dob" type="date">
+                <br>
+                <input type="submit" value="SAVE"/>
+            </form>
+
+
+        </li>
+
+
+    {% endif %}
+</ul>
+
+<br><br>
+<button>Add Camper</button>
+
+<a href="/">Return to main page</a>

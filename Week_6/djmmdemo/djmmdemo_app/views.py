@@ -17,10 +17,10 @@ def api_post(request, model_name):
 def api_get(request):
     data = {"lists": {}, "all":[]}
     for s in Song.objects.all():
-        data["all"].append({"title": s.title})
+        data["all"].append({"title": s.title, "id": s.id})
     for p in Playlist.objects.all():
         playlist = {"name": p.name, "songs": []}
         for sp in PlaylistsSongs.objects.filter(playlist=p):
-            playlist["songs"].append({"title": sp.song.title})
+            playlist["songs"].append({"title": sp.song.title, "id": sp.song.id})
         data["lists"][p.id] = playlist
     return HttpResponse(json.dumps(data, indent=4), content_type="application/json")

@@ -50,11 +50,19 @@ body {
     color: #ffee00;
 }
 
-.add-to-list {
+.add-to-list,
+.remove-from-list {
     font-size: 25%;
     position: absolute;
     bottom: 1em;
     right: 1em;
+}
+
+.list-to-add {
+    font-size: 25%;
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
 }
 
 .column {

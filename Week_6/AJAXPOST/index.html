@@ -18,8 +18,8 @@
         form_data.append("lyrics", song.lyrics);
 
         //var data = "title=Dead%20man\'s%20party&lyrics=Its%20a%20dead...";
-        var request = new XMLHttpRequest();
-        request.open("POST", "/my_app/songs/0/");
+        var request = new XMLHttpRequest(); //tell server to do stuff in background
+        request.open("POST", "/my_app/songs/0/"); //
         request.send(form_data);
 
     </script>

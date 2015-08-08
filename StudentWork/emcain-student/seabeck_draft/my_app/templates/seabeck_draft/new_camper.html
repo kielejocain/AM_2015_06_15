@@ -4,10 +4,10 @@ New Camper
 {% endblock %}
 
 {% block others %}
-<h1>Campers registered by {{ camper.registrant.first_name }} {{ camper.registrant.last_name }}</h1>
+<h1>Campers registered by {{ camper.family.first_name }} {{ camper.family.last_name }}</h1>
 
 <ul>
-    {% for indiv in camper.registrant.camper_set.all %}
+    {% for indiv in camper.family.camper_set.all %}
         {% if indiv != camper %}
             <li>{{ indiv.first_name }} {{ indiv.last_name }} --
                 {% if indiv.under_18 == True %}
@@ -57,5 +57,5 @@ New Camper
 {% endblock %}
 
 {% block last %}
-    <a href="/">Return to Registrants List</a>
+    <a href="/">Return to Families List</a>
 {% endblock %}

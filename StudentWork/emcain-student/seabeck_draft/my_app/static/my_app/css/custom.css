@@ -1,0 +1,120 @@
+/*Some colors, generated from puget_sound_map at pictaculous.com*/
+
+/*#88945D*/
+/*#A7B986*/
+/*#FDFAE7*/
+
+body {
+    background-image: url("../image/puget_sound_map.jpg");
+    background-size:  100% auto;
+    font-family: sans-serif;
+    padding: 0;
+}
+
+header {
+    background-color: #FDFAE7;
+    color: #A7B986;
+    display: inline-block;
+    width: 100%;
+    padding: 0 0 1em 0;
+    margin-top: 0;
+    top: 0;
+    border-style: none none double none;
+    border-color: #3A2D0D;
+    border-width: 5px;
+}
+
+/*.breadcrumb {*/
+    /*background-color: #FDFAE7;*/
+    /*color: #A7B986;*/
+    /*display: inline-block;*/
+    /*width: 100%;*/
+    /*padding: 1em;*/
+    /*margin-top: 0;*/
+    /*border-style: double;*/
+    /*border: black;*/
+/*}*/
+.breadcrumb li {
+    font-size: 20px;
+    display: block;
+    float: left;
+    top: 0;
+    margin-right: 1em;
+}
+
+.breadcrumb a {
+    color: #A7B986;
+}
+.breadcrumb a:hover {
+    color: #88945D;
+}
+.breadcrumb>.active {
+    color: #88945D;
+}
+.breadcrumb>li+li:before {
+    color: rgba(204, 204, 204, 1);
+    content: " \2771\00a0";
+    margin-right: 1em;
+}
+
+/*.breadcrumb {*/
+    /*background-color: #FDFAE7;*/
+    /*color: #A7B986;*/
+/*}*/
+
+
+
+/*.breadcrumb a {*/
+    /*color: #A7B986;*/
+/*}*/
+
+
+
+/*.breadcrumb>.active {*/
+    /*color: #88945D;*/
+/*}*/
+
+.outer-div {
+
+    background-color: rgba(236, 231, 228, 0.8);
+    color: #303457;
+    box-shadow: .1em .1em .1em #2C2724;
+    padding: 2em 2em 1em 2em;
+    border-width: 1em;
+    border-color: #303457;
+
+    text-align: center;
+
+    border: 3px outset #303457;
+
+    height: auto;
+    width: 80%;
+
+
+    margin: 2em auto auto auto;
+
+    top: 20%;
+
+    font-size: 1.5em;
+
+}
+
+
+.navbar {
+	padding: .5em;
+	color: navy;
+	background-color: cornsilk;
+}
+
+span .glyph {
+    @extend .glyphicon;
+}
+
+span .sign-up {
+    @extend .glyphicon-plus;
+}
+
+span .input-group {
+    margin: 0;
+}
+

@@ -1,29 +1,38 @@
+from django.contrib.auth.models import User
 from django.db import models
 from datetime import *
 # Classes:
-# Registrant
+# Family
 
 
+# USER TYPES
 
-
-class Registrant(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField()
-    phone = models.CharField(max_length=15)  # will create validation later
+class Family(models.Model):
+    # first_name = models.CharField(max_length=50)
+    # last_name = models.CharField(max_length=50)
+    # email = models.EmailField()
+    user = models.OneToOneField(User)
+    phone = models.CharField(max_length=15, default="needed")  # will create validation later
     total_owed = models.DecimalField(max_digits=20, decimal_places=4, default=0)
     total_paid = models.DecimalField(max_digits=20, decimal_places=4, default=0)
 
     def __str__(self):
-        return self.first_name + " " + self.last_name
+        return self.user.first_name + " " + self.user.last_name
 
     def __unicode__(self):
-        return self.first_name + " " + self.last_name
+        return self.user.first_name + " " + self.user.last_name
+
+
+class Staff(models.Model):
+
+    user = models.ForeignKey(User)
+    is_admin = models.BooleanField(default=False)
+    is_webmaster = models.BooleanField(default=False)
 
 
 # Campers
 class Camper(models.Model):
-    registrant = models.ForeignKey(Registrant)  # recursion
+    family = models.ForeignKey(Family)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     under_18 = models.BooleanField()
@@ -52,12 +61,13 @@ class EventYear(models.Model):
 
 class Attendance(models.Model):  # i.e. Campers by year
     event_year = models.ForeignKey(EventYear)
-    camper = models.ForeignKey(Camper)  # recursion
+    camper = models.ForeignKey(Camper)
     grade = models.IntegerField(null=True, blank=True)
 
     def age_at_start(self):
         try:
             return int(self.event_year.get_year()) - int(self.camper.dob.year)
+            #need to fix this to use specific date
         except:
             return "unknown age"
 
@@ -66,6 +76,7 @@ class Attendance(models.Model):  # i.e. Campers by year
 
     def __unicode__(self):
         return self.camper.first_name + " " + self.camper.last_name + " - " + unicode(self.event_year)
+
 
 
 class Shirt(models.Model):

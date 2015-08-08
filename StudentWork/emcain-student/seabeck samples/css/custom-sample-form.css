@@ -1,5 +1,5 @@
 body {
-    background-image: url("../image/tiedye.jpg");
+    background-image: url("../image/puget_sound_map.jpg");
     background-size:  100% auto;
     font-family: sans-serif;
 }
@@ -7,7 +7,7 @@ body {
 
 .outer-div {
 	
-    background-color: rgba(236, 231, 228, 0.6);
+    background-color: rgba(236, 231, 228, 0.8);
     color: #303457;
     box-shadow: .1em .1em .1em #2C2724;
     padding: 2em 2em 1em 2em;

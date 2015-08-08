@@ -1,0 +1,14 @@
+stuff for 8/6 -- project notes
+
+did today:
+
+wrote some html for hidden forms and some js to show it. have not tested.
+moved <script> content to a separate (static) file. It is no longer working argh. (same issue as CSS/Bootstrap files)
+
+To do:
+
+figure out how the hell to get static files to load!!!!!!!!!!!!!!!!! -- I really need these to work :(
+
+YAYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+
+test the sample js/html stuff. The html is meant to be stuck in the "innerHtml" section of the js where it's writing raw HTML, with some concatenation with id numbers etc. The JS should probs be a separate function.  
