@@ -79,8 +79,9 @@ def index(request):
     return HttpResponse(template.render(context))
 
 @login_required()
-def detail(request, family_id):
-    family = get_object_or_404(Family, pk=family_id)
+def detail(request):
+
+    family = get_object_or_404(Family, user=request.user)
     return render(request, 'seabeck_draft/detail.html', {'family': family})
 
 @login_required()
@@ -89,10 +90,11 @@ def dynamic_detail(request, family_id):
     return render(request, 'seabeck_draft/dynamic_detail.html', {})
 
 
-def api_campers(request, family_id):
+def api_campers(request):
+
     years = EventYear.objects.all()
     current_year = list(reversed(years))[0]
-    campers = Camper.objects.filter(family__id=family_id)
+    campers = Camper.objects.filter(family__user=request.user)
     output = []
     print(current_year)
     for camper in campers:

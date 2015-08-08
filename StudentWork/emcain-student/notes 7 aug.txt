@@ -1,0 +1,26 @@
+notes for 7 aug on seabeck draft
+
+did today:
+
+added a crap ton of js drawing stuff
+
+changed the detail system for determining the family to show--removed id from url, take it from logged in user
+
+to do:
+
+get rid of excess pages/templates/views
+make the buttons on the detail page do stuff
+hook up form fields to database
+improve the general base template to have a sidebar with cost (UGGH THIS REQUIRES ALL KINDS OF STUFF)
+
+Create templates or sample html for the other pages. Current structure idea:
+-profile page for user/family with emergency contact and regular contact info
+-detail page as exists currently
+-housing questions
+-scholarship question--real simple
+-payment page
+
+add logout button/link to everything
+
+fix header to actually have the bread crumbs go somewhere
+
