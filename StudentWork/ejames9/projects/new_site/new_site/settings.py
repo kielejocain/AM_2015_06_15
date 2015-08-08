@@ -82,7 +82,9 @@ DATABASES = {
     }
 }
 
-MEDIA_ROOT = 'media/'
+MEDIA_ROOT = '/Users/ericfoster/AM_2015_6_15/StudentWork/ejames9/projects/new_site/new_app/static/new_app/media/'
+
+MEDIA_URL = '/media/'
 
 
 # Internationalization
@@ -96,7 +98,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

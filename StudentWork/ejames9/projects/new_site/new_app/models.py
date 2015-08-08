@@ -2,28 +2,28 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class UserProfiles(models.Model):
-    uppath = 'user_logo/'
-    user = models.ForeignKey(User, unique=True)
-    user_logo = models.ImageField(upload_to=uppath, blank=True, null=True)
-    join_date = models.DateTimeField('date joined')
-
-    def __str__(self):
-        return self.join_date
-
-    def __unicode__(self):
-        return self.first_name
-        return self.last_name
-        return self.username
-        return self.password
-        return self.join_date
+# class UserProfiles(models.Model):
+#     user = models.ForeignKey(User, unique=True)
+#     join_date = models.DateTimeField('date joined')
+#
+#     def __str__(self):
+#         return self.join_date
+#
+#     def __unicode__(self):
+#         return self.first_name
+#         return self.last_name
+#         return self.username
+#         return self.password
+#         return self.join_date
 
 
 class Blog(models.Model):
-    user_profile = models.ForeignKey(UserProfiles, null=True)
+    uppath = 'images'
+    # user_profile = models.ForeignKey(UserProfiles, null=True)
     name_text = models.CharField(max_length=20)
     title_text = models.CharField(max_length=200)
     blog_text = models.TextField()
+    image = models.ImageField(upload_to=uppath, blank=True, null=True)
     pub_date = models.DateTimeField('date published')
 
     def __str__(self):

@@ -1,27 +1,18 @@
 {% extends "glass_base_generic.html" %}
 {% block content %}
 
-  <form method="post">
-    {% csrf_token %}
-
-    <h3>
-      Title:
-      </h3>
+  <form method="post" id="blog_form">{% csrf_token %}
+    <h3>Title:</h3>
     <input type="text" name="title_text" value="{{ blog.title_text }}"></input>
     <br>
-    <h3>
-      Name:
-      </h3>
+    <h3>Name:</h3>
     <input type="text" name="name_text" value="{{ blog.name_text }}"></input>
     <br>
-    <h3>
-      Blog Post:
-    </h3>
+    <h3>Blog Post:</h3>
     <textarea name="blog_text">{{ blog.blog_text }}</textarea>
     <br>
-    <input type="submit" value="Save" </input>
+    <input type="submit" value="Save"></input>
   </form>
 
-</body>
-</html>
+
 {% endblock %}

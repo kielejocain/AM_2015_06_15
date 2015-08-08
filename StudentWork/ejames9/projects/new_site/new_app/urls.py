@@ -22,13 +22,11 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index, name='index'),
     url(r'^blog/(?P<id>[0-9]+)/$', views.details, name='details'),
-    url(r'^blog/(?P<id>[0-9]+)/#editBlog/$', views.details, name='editBlog'),
     url(r'^edit/(?P<id>[0-9]+)/$', views.edit, name='edit'),
     url(r'^create2/(?P<id>[0-9]+)/$', views.create2, name='create2'),
     url(r'^register/$', views.register, name='register'),
-    url(r'^login/$', views.login_view, name='login'),
-    url(r'^api_delete_comment/$', views.api_delete_comment, name='api_delete_comment'),
-    url(r'^api_add_comment/$', views.api_add_comment, name='api_add_comment'),
+    url(r'^login/', views.login_view, name='login'),
+    url(r'^api_delete_comment/', views.api_delete_comment, name='details'),
 
 
 ]

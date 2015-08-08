@@ -1,63 +1,92 @@
 {% extends "glass_base_generic.html" %}
 
 {% block header %}
-<a href="/create2/1/">
-  <img src="/static/new_app/images/post_icon.png" id="icon">
-</a>
-  <p id="icon1l"><b>Post Blog</b></p>
+<script>
+var blog_id = {{blog.id}};
+var pub_time2 = "{{comment.pub_time}}";
+var comment_list = {{comment_list}};
+var blog = "{{blog.blog_text}}";
+</script>
+
+  <img src="/static/new_app/media/images/post_icon.png" href="#editBlog" id="icon1">
+  <p id="icon1l">Edit Blog</p>
 {% endblock %}
 
 {% block content %}
-          <p id="blog_title"><b>
-            {{ blog.title_text }}</b>
-          </p>
+<div id="body2">
+  <div id="blog_content">
+    <p id="blog_title"><b>{{ blog.title_text }}</b></p>
+    <p id="blgr_name">{{ blog.name_text }}</p>
+    <p id="blog_post">Blog Post:</p>
+    <p id="blog_date">{{blog.pub_date}}</p>
+    <p id="blog_text">{{ blog.blog_text }}</p>
 
-            <p id="blgr_name">
-              {{ blog.name_text }}
-            </p>
-            <p id="blog_post">
-              Blog Post:
-            </p>
-            <p id="blog_date">{{blog.pub_date}}</p>
-            <p id="blog_text">
-              {{ blog.blog_text }}
-            </p>
-
-            <!-- Delete Post Button -->
-            <p id="del">Delete Post</p>
-            <form method="post">
-              {% csrf_token %}
-              <input type="submit" name="action" value="Bye Bye" id="delete"></input>
-            </form>
-
-
-<!-- Loop for inserting Comment info. -->
-{% for comment in comment_list %}
-  {% if comment %}
-
-          <p id="cmt_name">{{ comment.cmtr_name }}</p>
-          <p id="pub_time">{{ comment.pub_time }}</p>
-          <p id="cmt_txt">{{ comment.cmt_text }}</p>
-
-  {% endif %}
+{% for blog in blog_list %}
+    {% if blog.image %}
+    <img src="/static/new_app{{ blog.image.url }}" id="image2">
+    {% endif %}
 {% endfor %}
 
 
+
+
+  <!-- Delete Post Button -->
+    <p id="del">Delete Post</p>
+    <form method="post"
+    >{% csrf_token %}<input type="submit" name="action" value="Bye Bye" id="delete"></input
+    ></form>
+
+<!--Comments-->
+  <parent id="parent">
+<!-- Loop for inserting Comment info from server. -->
+{% for comment in comment_list %}
+  {% if comment %}
+    <comment id="comment"
+          ><button id="delcmt">x</button
+          ><p id="cmt_name">{{ comment.cmtr_name }}</p
+          ><p id="pub_time">{{ comment.pub_time }}</p
+          ><p id="cmt_txt">{{ comment.cmt_text }}</p
+        ></comment>
+  {% endif %}
+{% endfor %}
+  </parent>
+ </div>
+</div>
+
+<!--Edit Blog View Form-->
+<form method="post" enctype="multipart/form-data" id="blog_form">{% csrf_token %}
+  <h3 id="h3Title">Headline:</h3>
+  <input type="text" id="edit_title" name="title_text" value="{{ blog.title_text }}"></input>
+  <br>
+  <h3 id="h3Name">Author:</h3>
+  <input type="text" id="edit_name" name="name_text" value="{{ blog.name_text }}"></input>
+  <br>
+  <h3 id="h3Blog_Post">Blog Post:</h3>
+  <textarea name="blog_text" id="edit_blog">{{ blog.blog_text }}</textarea>
+  <br>
+  <input type="submit" name="submit" value="Submit Edit" id="edit_submit"></input>
+  <input type="file" name="image" id="image" height="200px" width="200px"</input>
+</form>
+
+
+<script src="/static/new_app/stained_glassAJAX.js"></script>
 {% endblock %}
 
 {% block footer %}
       <div id="footer">
         <!-- Add Comment Form -->
         <p id="addc">What do you think? Add a comment below.</p>
-          <form method="post">
-            {% csrf_token %}
-            <input type="text" name="cmtr_name" value="Name {{ comment.cmtr_name }}" id="cmtr_name" class="form2"></input>
-            <textarea name="cmt_text" value="{{ comment.cmt_text }}" id="cmt_textf" class="form">Comment here.......</textarea>
-            <input type="submit" value="Save" id="save" class="form2">
-          </form>
+          <div id="cmtfrm">{% csrf_token %}
+            <input type="text" name="cmtr_name" value="{{ comment.cmtr_name }}" placeholder="Name" id="cmtr_name" class="form2"></input>
+            <textarea name="cmt_text" value="{{ comment.cmt_text }}" placeholder="Comment Here........" id="cmt_textf" class="form"></textarea>
+            <button id="save" class="form2">Save</button>
+          </div>
       </div>
-{% endblock %}
+      <div id="footer2">
+      </div>
 
-<a href="/" id="Index"><strong>Index</strong></a>
-  <br />
-<a href="/edit/{{blog.id}}/" id="edit"><strong>Edit Post</strong></a>
+
+      <a href="/" id="Index"><strong>Index</strong></a>
+        <br />
+      <a href="/edit/{{blog.id}}/" id="edit"><strong>Edit Post</strong></a>
+{% endblock %}

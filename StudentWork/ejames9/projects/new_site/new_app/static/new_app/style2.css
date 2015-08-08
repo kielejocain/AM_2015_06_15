@@ -125,7 +125,7 @@
     width: 900px;
     height: 1400px;
     left: 165px;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: black;
     border: 8px solid black;
     opacity: .8;
@@ -135,7 +135,7 @@
 
 body {
 
-    background: white url("images/stained_glass3.jpg");
+    background: white url("media/images/stained_glass3.jpg");
 
 }
 
@@ -157,6 +157,19 @@ body {
   opacity: .9;
 
 }
+
+#footer2 {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 30px;
+        background-color: #14143B;
+        opacity: .7;
+        z-index: 3;
+        display: none;
+}
+
 #blog_title {
   font-family: HelveticaNeue-Light;
   font-size: 36px;
@@ -262,6 +275,10 @@ body {
   color: lightblue;
 }
 
+#save:active {
+  background-color: red;
+}
+
 #pub_time {
   font-family: HelveticaNeue-Light;
   color: #4D44FA;
@@ -322,14 +339,14 @@ body {
   color: #14143B;
   border-radius: 4px;
   border: none;
-  height: 18px;
+  height: 16px;
   left: 32%;
   top: 100px;
   margin-bottom: 5px;
   position: relative;
 }
 
-#icon {
+#icon1 {
   left: 60%;
   top: 150px;
   opacity: .4;
@@ -340,12 +357,12 @@ body {
 
 }
 
-#icon:hover {
+#icon1:hover {
   opacity: .9;
 }
 
 #icon1l {
-  left: 61.3%;
+  left: 61.7%;
   top: 174px;
   position: relative;
   color: lightblue;
@@ -353,22 +370,167 @@ body {
   opacity: .8;
 }
 
-#gate1 {
-  position: absolute;
-  z-index: 6;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background-color: #14143B;
+.index {
+  font-family: HelveticaNeue-Light;
+  color: white;
+  position: relative;
+  left: 27%;
 }
 
-#gate2 {
+#title:link {
+  text-decoration: none;
+}
+
+#title:visited {
+  color: #4D44FA;
+}
+
+
+#name:link {
+  text-decoration: none;
+
+}
+
+#name {
+
+}
+
+#footer2 {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 30px;
+        background-color: #14143B;
+        opacity: .8;
+        z-index: 3;
+
+}
+
+#delcmt {
+  display: none;
+
+}
+
+comment:hover #delcmt {
+  display: inline-block;
+  background-color: transparent;
+  border: 1px solid blue;
+  height: 11px;
+  width: 15px;
+  border-radius: 2px;
+  text-align: center;
+  padding: 0px 1px 15px 1px;
+  margin-right: 4px;
+  color: blue;
+}
+
+#blog_form {
+  display: none;
+  font-family: HelveticaNeue-Light;
+
+}
+
+#edit_title {
   position: absolute;
-  z-index: 6;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background-color: #14143B;
+  left: 32%;
+  top: 7%;
+  border-radius: 10px;
+  background-color: black;
+  color: lightblue;
+  border: 1px solid lightblue;
+  height: 25px;
+  width: 300px;
+  font-size: 20px;
+  text-align: center;
+}
+
+#edit_name {
+  position: absolute;
+  left: 32%;
+  top: 12%;
+  border-radius: 10px;
+  background-color: black;
+  color: lightblue;
+  border: 1px solid lightblue;
+  height: 25px;
+  width: 300px;
+  font-size: 18px;
+  text-align: center;
+}
+
+#edit_blog {
+  position: absolute;
+  left: 11%;
+  top: 17%;
+  border-radius: 10px;
+  background-color: black;
+  color: lightblue;
+  border: 1px solid lightblue;
+  height: 500px;
+  width: 700px;
+  font-size: 22px;
+  text-align: center;
+  font-size: 16px;
+}
+
+#edit_submit {
+  position: absolute;
+  left: 43%;
+  top: 75%;
+  width: 120px;
+  height: 50px;
+  background-color: blue;
+  border-radius: 7px;
+  border: none;
+  font-size: 18px;
+
+
+}
+
+#edit_submit:hover {
+  background-color: red;
+}
+
+#edit_submit:active {
+  background-color: green;
+  color: white;
+}
+
+#h3Title {
+  color: lightblue;
+  position: absolute;
+  left: 30%;
+  top: 3.5%;
+
+}
+
+#h3Name {
+  position: absolute;
+  color: lightblue;
+  left: 30.5%;
+  top: 8.5%;
+}
+
+#h3Blog_Post {
+  position: absolute;
+  color: lightblue;
+  left: 9%;
+  top: 13.5%;
+}
+
+#image {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  left: 39%;
+  top: 57%;
+
+}
+
+#image2 {
+  height: 375px;
+  width: 500px;
+  float: right;
+  top: 15%;
 }

@@ -6,6 +6,9 @@ from datetime import datetime
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+import json
+from django.views.decorators.csrf import csrf_exempt
+from django.core.urlresolvers import reverse
 
 def register(request):
     if request.POST:
@@ -32,7 +35,7 @@ def login_view(request):
     return render(request, 'new_app/login.html', {})
 
 
-@login_required(login_url='new_app/login.html')
+@login_required(login_url='/login/')
 def index(request):
     blog_list = Blog.objects.all()
     template = loader.get_template('new_app/index.html')
@@ -42,6 +45,7 @@ def index(request):
 
     return HttpResponse(template.render(context))
 
+@csrf_exempt
 def details(request, id):
     blog = Blog.objects.filter(id=id)[0]
     comment_list = Comment.objects.filter(blog=blog)
@@ -55,19 +59,17 @@ def details(request, id):
             if request.POST["action"] == "Bye Bye":
                 blog.delete()
                 return HttpResponseRedirect("/")
-
-        else:
-            print(request.POST)
-            comment = Comment()
-            comment.blog = blog
-            comment.cmt_text = request.POST["cmt_text"]
-            comment.cmtr_name = request.POST["cmtr_name"]
-
-            comment.pub_time = datetime.now()
-
-            comment.save()
-            return HttpResponseRedirect(".")
-
+        elif "submit" in request.POST:
+            if request.POST["submit"] == "Submit Edit":
+                blog.blog_text = request.POST["blog_text"]
+                blog.name_text = request.POST["name_text"]
+                blog.title_text = request.POST["title_text"]
+                if "image" in request.FILES:
+                    if request.FILES["image"] != '':
+                        blog.image = request.FILES["image"]
+                blog.save()
+                print blog.image
+                return HttpResponseRedirect("/")
 
     return HttpResponse(template.render(context))
 
@@ -105,10 +107,30 @@ def save_blog(request, blog):
 
     blog.save()
 
-def comment(request, id):
-    comment = Comment()
-    comment.cmt_text = request.POST["cmt_text"]
-    comment.cmtr_name = request.POST["cmtr_text"]
-    comment.pub_date = datetime.now()
+@csrf_exempt
+def api_delete_comment(request):
+    if request.POST:
+        print request.POST
+        text = request.POST["text"]
+        print text
+        del_comment = Comment.objects.get(cmt_text__exact=text)
+        del_comment.delete()
+    return HttpResponse(str(text))
 
-    comment.save()
+@csrf_exempt
+def api_add_comment(request):
+
+    if request.POST:
+        print request.POST
+        comment = Comment()
+        blog_id = request.POST["blog_id"]
+        comment.blog = Blog.objects.filter(id=blog_id)[0]
+        comment.cmtr_name = request.POST["cmtr_name"]
+        comment.cmt_text = request.POST["cmt_text"]
+        comment.pub_time = datetime.now()
+        comment.save()
+        print comment
+
+        pub_time = str(comment.pub_time)
+        print pub_time
+    return HttpResponse(pub_time)

@@ -1,8 +1,9 @@
 <style>
 
-body{
+body {
 
-    background: white url("/static/new_app/images/stained_glass3.jpg")
+    background: white url("/static/new_app/images/stained_glass3.jpg");
+
 }
 
 #register {
@@ -10,8 +11,8 @@ body{
   position: absolute;
   height: 400px;
   width: 600px;
-  left: 27%;
-  top: 23%;
+  left: 28%;
+  top: 24%;
   background-color: black;
   opacity: .9;
   border-radius: 15px;
@@ -45,7 +46,7 @@ body{
   left: 0;
   height: 50%;
   width: 50%;
-  background-color: #EF2EF2;
+  background-color: #4D44FA;
 }
 
 #gatel2 {
@@ -55,7 +56,7 @@ body{
   left: 0;
   bottom: 0;
   width: 50%;
-  background-color: #EF2EF2;
+  background-color: #4D44FA;
 }
 
 #gater {
@@ -65,37 +66,37 @@ body{
   top: 0;
   right: 0;
   width: 50%;
-  background-color: #4D44FA;
+  background-color: #ef2ef2;
 }
 
 body:hover #gate1 {
   opacity: .8;
-  Height: 15%;
+  Height: 13%;
   transition-duration: 1.5s;
 }
 
 body:hover #gate2 {
   opacity: .8;
-  Height: 15%;
+  Height: 13%;
   transition-duration: 1.5s;
 }
 
 body:hover #gatel {
   opacity: .8;
-  width: 10%;
+  width: 9%;
   transition-duration: 1.5s;
 }
 
 body:hover #gatel2 {
   opacity: .8;
-  width: 10%;
+  width: 9%;
   transition-duration: 1.5s;
 }
 
 
 body:hover #gater {
   opacity: .8;
-  width: 10%;
+  width: 9%;
   transition-duration: 1.5s;
 }
 
@@ -115,34 +116,68 @@ body:hover #heady {
 
 #register {
   color: white;
+  font-family: HelveticaNeue-Light;
 }
 
 #user {
-  z-index: 6;
-  border-radius: 5px;
+  border-radius: 15px;
   border: none;
   position: absolute;
-  left: 28%;
+  left: 34%;
   top: 35%;
   font-family: HelveticaNeue-Light;
-  height: 40px;
+  height: 30px;
+  font-size: 20px;
 }
 
 #pass {
-  border-radius: 5px;
+  font-size: 20px;
+  height: 30px;
+  border-radius: 15px;
   border: none;
   position: absolute;
-  left: 28.5%;
+  left: 34%;
   top: 50%;
   font-family: HelveticaNeue-Light;
 }
 
-#log {
-  height: 200px;
-  width: 10px;
+#l {
+  font-family: HelveticaNeue-Light;
+  font-weight: bold;
+  font-size: 12;
+  border-radius: 5px;
+  border: none;
+  height: 60px;
+  width: 60px;
   position: absolute;
-  left: 40.5%;
-  top: 65%;
+  left: 85%;
+  bottom: 7%;
+  background-color: #4D44FA;
+}
+
+#l:hover {
+  background-color: #EF2EF2;
+}
+
+#h1 {
+  color: #4D44FA;
+  position: relative;
+  left: 5%;
+  top: 1%;
+}
+
+#u {
+  color: #EF2EF2;
+  position: absolute;
+  left: 19%;
+  top: 33%;
+}
+
+#p {
+  color: #EF2EF2;
+  position: absolute;
+  left: 19%;
+  top: 48%;
 }
 
 
@@ -153,12 +188,14 @@ body:hover #heady {
 <div id="gate1"><p id="heady"><b>the Stained Glass Window</b></p></div>
 <div id="gatel"></div>
 <div id="gatel2"></div>
-<div id="register">
+<div id="register"><h1 id="h1">Login</h1>
   <form method="post">
     {% csrf_token %}
-    <label id="user">Username:<input type="text" name="username" value="   {{ user.username }}"></input></label>
-    <label id="pass">Password:<input type="password" name="password" value="   {{ user.password }}"></input></label>
-    <input type="submit" id="log" class="button" value="Login">
+    <h4 id="u">Username</h4>
+    <h4 id="p">Password</h4>
+    <input type="text" id="user" name="username" value="{{ user.username }}"></input>
+    <input type="password"  id="pass" name="password" value="{{ user.password }}"></input>
+    <input type="submit" id="l" value="Login"></input>
   </form>
 </div>
 <div id="gater"></div>
