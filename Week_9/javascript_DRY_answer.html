@@ -1,0 +1,54 @@
+<body></body>
+<script>
+    /**
+     * GOAL: output A B C X A B C Y A B C Z on separate lines
+     */
+
+    /**
+     * BEFORE
+     */
+    function interleavePatternsOne() {
+        document.write("A<br>");
+        document.write("B<br>");
+        document.write("C<br>");
+
+        document.write("X<br>");
+
+        document.write("A<br>");
+        document.write("B<br>");
+        document.write("C<br>");
+
+        document.write("Y<br>");
+
+        document.write("A<br>");
+        document.write("B<br>");
+        document.write("C<br>");
+
+        document.write("Z<br>");
+    }
+
+    /**
+     * TODO: Refactor using loops and functions to solve problem,
+     *          with a little redundancy as possible,
+     *          naming all variables and functions as clearly as possible.
+     */
+
+    /**
+     * AFTER:
+     */
+    function interleavePatterns(commonPattern, uniqueItems, separator) {
+        var output = [];
+        for (var i = 0; i < uniqueItems.length; i++) {
+            for (var c = 0; c < commonPattern.length; c++) {
+                output.push(commonPattern[c]);
+            }
+            output.push(uniqueItems[i]);
+        }
+        return output.join(separator);
+    }
+
+    var LINE_SEPARATOR = "<br>";
+    var COMMON_PATTERN = "ABC";
+    var LETTERS = "XYZ";
+    document.write(interleavePatterns(COMMON_PATTERN, LETTERS));
+</script>
