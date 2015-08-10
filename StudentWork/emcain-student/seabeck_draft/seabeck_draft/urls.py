@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from my_app import views
 
 urlpatterns = [
@@ -35,12 +38,12 @@ urlpatterns = [
 
     # url(r'^dynamic_detail/(?P<family_id>[0-9]+)/$', views.dynamic_detail, name='dynamic_detail'),
 
-    url(r'^api_campers/(?P<family_id>[0-9]+)/$', views.api_campers, name='api_campers'),
+    url(r'^api_campers/$', views.api_campers, name='api_campers'),
 
-    url(r'(?P<family_id>[0-9]+)/$', views.detail, name='detail'),
+    url(r'^detail/$', views.detail, name='detail'),
 
     url(r'^login/$', views.login_view, name='login_view'),
     url(r'^register/$', views.register_view, name='register_view')
 #    url(r'(?P<family_id>[0-9]+)/$', views.edit, name='edit'),
 
-    ]
+    ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -79,8 +79,9 @@ def index(request):
     return HttpResponse(template.render(context))
 
 @login_required()
-def detail(request, family_id):
-    family = get_object_or_404(Family, pk=family_id)
+def detail(request):
+
+    family = get_object_or_404(Family, user=request.user)
     return render(request, 'seabeck_draft/detail.html', {'family': family})
 
 @login_required()
@@ -89,10 +90,11 @@ def dynamic_detail(request, family_id):
     return render(request, 'seabeck_draft/dynamic_detail.html', {})
 
 
-def api_campers(request, family_id):
+def api_campers(request):
+
     years = EventYear.objects.all()
     current_year = list(reversed(years))[0]
-    campers = Camper.objects.filter(family__id=family_id)
+    campers = Camper.objects.filter(family__user=request.user)
     output = []
     print(current_year)
     for camper in campers:
@@ -100,27 +102,15 @@ def api_campers(request, family_id):
 
 
         output.append({"id":camper.id, "name": camper.first_name + " " + camper.last_name,  "in_current_year" : in_current_year})
-    # if request.POST:
-    #     if not camper:
-    #         camper = Camper()
-    #         camper.first_name =
-    #     else:
-    #         camper = (current camper)
-    #     # need to create camper if doesn't exist yet
-    #     attendance = Attendance()
-    #     attendance.camper = request.post[camper]  # how to get current camper???
-    #     print(request.POST)
-    #     attendance.event_year = request.POST[current_year]
-    #     attendance.last_name = request.POST["last_name"]
-    #     family.email = request.POST["email"]
-    #     family.phone = request.POST["phone"]
-    #     family.save()
-    #     return HttpResponseRedirect("/")
+
 
     return HttpResponse(json.dumps(output, indent=4), content_type="application/json")
 
 
-
+# def api_detail(request, family_id):
+#         family = get_object_or_404(Family, pk=family_id)
+#     return render(request, 'seabeck_draft/detail.html', {'family': family})
+#
 
 
 def login_needed(request):

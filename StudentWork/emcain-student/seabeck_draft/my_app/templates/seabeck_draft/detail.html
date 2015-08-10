@@ -1,106 +1,41 @@
 {% extends "seabeck_draft/logged_in_base_template.html" %}
 
 
-{#{% block header %}#}
-{##}
-{#    <div class="navbar">#}
-{#        <div class="navbar-inner">#}
-{#            <a class="brand" href="#">Title</a>#}
-{##}
-{#            <ul class="nav breadcrumb">#}
-{#                <li><a href="#">Home</a> <span class="divider">/</span></li>#}
-{#                <li><a href="#">Library</a> <span class="divider">/</span></li>#}
-{#                <li class="active">Data</li>#}
-{#            </ul>#}
-{##}
-{#        </div>#}
-{#    </div>#}
-{##}
-{#{% endblock %}#}
+
 
 {% block content %}
+    {% load staticfiles %}
 
+    <link rel='stylesheet' type="text/css" href='{% static "my_app/css/bootstrap-theme.css" %}'/>
+    <link rel='stylesheet' type="text/css" href='{% static "my_app/css/custom.css" %}'/>
     <style>
-        .campers_of_family {
+        #campers_of_family {
             color: slategray;
             font-style: italic;
         }
 
-        .active {
+        div .active {
             color: green;
             font-weight: bold;
             font-style: normal;
         }
 
+
+
     </style>
 
-    <script>
-        var request = new XMLHttpRequest();
-
-        function draw(data) {
-//        document.body.innerHTML = time + "<br>\n" + document.body.innerHTML;
-            console.log(data);
-            var listdiv = document.getElementById("campers-list");
-            {#        for (var item in data){#}
-            {#              if (data.hasOwnProperty(item)) {#}
-            {#                  console.log(item + " -> " + data[item]);#}
-            {#                  listdiv.innerHTML == listdiv.innerHTML + "<br>\n" + "id: " + data["id"];#}
-            {#              }#}
-            {#        }#}
-
-            listdiv.innerHTML = "<br>\n" + data; // removed listdiv.innerhtml +
-        }
-
-        function onRequestChange() {
-            console.log(request.readyState, request.status);
-            if ((request.readyState == 4) && (request.status == 200)) {
-                var data = JSON.parse(request.responseText);
-                console.log(data);
-                var output = "<ul class='campers_of_family'>";
-                for (var item in data) {
-                    output = output + "<li";
-                    if (data[item].in_current_year) {
-                        output = output + " class='active' ";
-                    }
-                    output = output +  ">";
-
-                    output = output + data[item].name;
-
-                    output = output + " - "
-
-                    if (!data[item].in_current_year) {
-                        output = output + " not";
-                    }
-
-
-
-                    output = output + " attending this year </li>";
-                    }
-                output = output + "</ul>"
-                draw(output);
-                }
-
-
-        }
-
-        function fetch(url) {
-            request.onreadystatechange = onRequestChange;
-            request.open("GET", url, true);
-            request.send();
-        }
-        fetch("/api_campers/2");
-
-
-    </script>
 
     <h1>Hello, {{ family.user.first_name }} {{ family.user.last_name }}!</h1>
     <h2>These are the campers you have signed up in the past.</h2>
 
+{#    This section will be filled in by the draw_detail script. #}
     <div id="campers-list">
         Loading campers...
     </div>
 
     <br><br>
     <a href="/">Return to main page</a>
+
+    <script src='{% static "my_app/js/draw_detail.js" %}'></script>
 
 {% endblock %}

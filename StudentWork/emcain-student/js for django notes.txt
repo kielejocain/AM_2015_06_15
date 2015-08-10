@@ -66,3 +66,4 @@ As shown in the discussion for .append(), normally when an element is inserted s
 $( ".hello" ).appendTo( ".goodbye" );
 
 The resulting DOM structure would be:
+

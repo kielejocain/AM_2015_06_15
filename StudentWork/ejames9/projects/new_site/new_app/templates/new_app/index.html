@@ -1,16 +1,28 @@
+{% extends "glass_base_generic.html" %}
+
+{% block header %}
+<a href="/create2/1/">
+  <img src="/static/new_app/images/post_icon.png" id="icon">
+</a>
+  <p id="icon1l"><b>Post Blog</b></p>
+{% endblock %}
 
 
-{% if object_list %}
+{% block content %}
+{% if blog_list %}
     <ul>
-    {% for blog in object_list %}
+    {% for blog in blog_list %}
     <a href="/blog/{{blog.id}}"
-        <li><h1>{{ blog.title_text }}</h1></li>
+        <li id="title" class="index"><h1>{{ blog.title_text }}</h1></li>
           <ul>
-            <li><h3>{{ blog.name_text }}</h3></li>
+            <li id="name" class="index"><h4>written by  {{ blog.name_text }}</h4></li>
           </ul>
       </a>
     {% endfor %}
-    </ul>
+
 {% else %}
     <p>No blogs are available.</p>
 {% endif %}
+<div id="footer2"></div>
+
+{% endblock %}

@@ -113,3 +113,8 @@ span .glyph {
 span .sign-up {
     @extend .glyphicon-plus;
 }
+
+span .input-group {
+    margin: 0;
+}
+
