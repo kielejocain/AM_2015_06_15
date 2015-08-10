@@ -1,0 +1,107 @@
+<style>
+    #main {
+        vertical-align: top;
+    }
+
+    #main select,
+    #main input,
+    #main button {
+        width: 100%;
+        vertical-align: top;
+    }
+</style>
+<body>
+<div id="main">
+    <label>
+        Enter New Item Name:
+    </label>
+    <input id="item-name" placeholder="item-name">
+
+    <button id="save-item">
+        Save Item
+    </button>
+
+    <label>
+        Item List:
+        <select id="item-list" size="12"></select>
+    </label>
+
+</div>
+<script>
+    function init() {
+
+        var NS = {
+            model: {
+                items: []
+            },
+            selectedItem: {name: "", id: "0"}
+        };
+
+        function onNameChange(e) {
+            NS.selectedItem.name = e.target.value;
+        }
+
+        document.getElementById("item-name").addEventListener("change", onNameChange);
+
+        var onItemAdded = function (e) {
+            var item = JSON.parse(e.target.responseText);
+            var items = NS.model.items;
+            items.unshift(item);
+            document.getElementById("item-name").value = "";
+            NS.selectedItem.name = "";
+
+            draw();
+        };
+
+        function onClickSave() {
+            var item = NS.selectedItem;
+            if (item.name.length == 0) {
+                return;
+            }
+
+            var form_data = new FormData();
+
+            form_data.append("name", item.name);
+
+            var request = new XMLHttpRequest();
+            request.onload = onItemAdded;
+            request.open("POST", "/api/v1/model/");
+            request.send(form_data);
+        }
+
+        document.getElementById("save-item").addEventListener("click", onClickSave);
+
+
+        function draw() {
+            var items = NS.model.items;
+            var select = document.getElementById("item-list");
+            select.innerHTML = "";
+            for (var i = 0; i < items.length; i++) {
+                var item = items[i];
+                var option = document.createElement("option");
+                option.innerHTML = item.name;
+                option.setAttribute("value", item.id);
+                select.appendChild(option);
+            }
+        }
+
+        function receive(e) {
+            var response = e.target.responseText;
+            NS.model = JSON.parse(response);
+            draw();
+        }
+
+        function load() {
+            var request = new XMLHttpRequest();
+            request.onload = receive;
+            request.open("GET", "/api/v1/model/");
+            request.send();
+        }
+
+        load();
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+
+</script>
+</body>
