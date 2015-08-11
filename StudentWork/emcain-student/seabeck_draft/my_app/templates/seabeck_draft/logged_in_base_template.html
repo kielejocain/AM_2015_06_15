@@ -1,0 +1,44 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            Camp Registration App
+        {% endblock %}
+    </title>
+    <link rel='stylesheet' type="text/css" href='{% static "my_app/css/bootstrap-theme.css" %}'/>
+    <link rel='stylesheet' type="text/css" href='{% static "my_app/css/bootstrap.css" %}'/>
+    <link rel='stylesheet' type="text/css" href='{% static "my_app/css/custom.css" %}'/>
+
+</head>
+<body>
+<header>
+    {% block header %}
+        <ol class="breadcrumb">
+            <li><a href="#">family profile</a>
+            </li>
+            <li class="active">this year's campers</li>
+        </ol>
+    {% endblock %}
+</header>
+
+<div class="outer-div">
+    {% block content %}
+        content goes here
+    {% endblock %}
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src='{% static "my_app/js/bootstrap.js" %}'></script>
+<script>
+        console.log ('stuff');
+        console.log( '{{ family.id }}' );
+        fetch("/api_campers/");
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<style>
+    #demo {
+        background-color: darkgreen;
+    }
+
+    #demo a {
+        border: 1px solid black;
+        border-radius: 12px;
+        background-color: goldenrod;
+        color: black;
+        margin: 1em;
+        padding: 1em;
+        text-decoration: none;
+    }
+
+    #demo .view {
+        border: 1px solid black;
+        border-radius: 12px;
+        background-color: goldenrod;
+        color: black;
+        margin: 2em;
+        padding: 2em;
+        font-size: 2em;
+        display: none;
+    }
+
+    #demo div.selected {
+        display: block;
+    }
+</style>
+<body id="demo">
+<a href="#view=a">
+    A
+</a>
+<a href="#view=b">
+    B
+</a>
+<a href="#view=c">
+    C
+</a>
+
+<div id="a" class="view">
+    A
+</div>
+<div id="b" class="view">
+    B
+</div>
+<div id="c" class="view">
+    C
+</div>
+</body>
+<script>
+    function showView(view) {
+        console.log("view:" + view)
+        var divList = document.querySelectorAll("#demo .view");
+        for (var d = 0; d < divList.length; d++) {
+            divList[d].classList.remove("selected");
+        }
+        document.getElementById(view).classList.add("selected");
+    }
+
+    function hashChanged(e) {
+        console.log(e);
+        var hash = window.location.hash;
+        hash = hash.split("#")[1];
+        var pairList = hash.split("&");
+        for (var i = 0; i < pairList.length; i++) {
+            var pair = pairList[i];
+            var parts = pair.split("=");
+            var key = parts[0];
+            var value = parts[1];
+
+            if (key == "view") {
+                showView(value);
+            }
+        }
+    }
+    function init() {
+        window.addEventListener("hashchange", hashChanged);
+        showView("a")
+    }
+    document.addEventListener("DOMContentLoaded", init)
+
+</script>

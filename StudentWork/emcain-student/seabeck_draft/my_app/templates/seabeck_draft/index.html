@@ -1,12 +1,12 @@
-<h1>The following people have registered for camp:</h1>
+<h1>Welcome, {{ family.user.first_name }} {{ family.user.last_name }}!</h1>
 
-{%  if registrants_list %}
+{%  if families_list %}
     <ul>
-    {%  for registrant in registrants_list %}
-        <li><a href="/detail/{{ registrant.id }}">{{ registrant }}</a>
-            phone: {{ registrant.phone }}
-            email: {{ registrant.email }}
-        <a href="/edit_registrant/{{ registrant.id }}">edit</a>
+    {%  for family in families_list %}
+        <li><a href="/detail/{{ family.id }}">{{ family }}</a>
+            phone: {{ family.phone }}
+            email: {{ family.user.email }}
+        <a href="/edit_family/{{ family.id }}">edit</a>
 
         </li>
 
@@ -16,4 +16,4 @@
     <p>No one has registered. </p>
 {% endif %}
 
-<a href="new_registrant.html">New Registration</a>
+<a href="new_family.html">New Registration</a>

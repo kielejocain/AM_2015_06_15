@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+{% block contents %}
+    {{ auction.item.name }}
+    <br>
+    {{ auction.price }}
+    <br>
+    <form method="post">
+    <h2>Bid!</h2>
+    Max Bid:
+    <input type="number" name="bid_amount" value="Max Bid">
+    <input type="submit" value="Submit Bid!">
+
+
+    </form>
+
+{% endblock %}
+
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+todo:
+login
+if login is true:
+    allow post auction
+    allow create store
+    allow bid auction
+else:
+    offer register
+    login
+
+list auctions
+
+search auctions
+view studios
+{% block header %}
+    {% if user_login == True %}
+    welcome: {{ user.username }}
+     {% else %}
+        <a href="login.html">login</a>
+        <a href="register.html">register</a>
+    {% endif %}
+
+{% endblock  %}
+<body>
+
+{% block content %}
+    {% if auctions %}
+{% for auction in auctions %}
+{{ auction.item.name }} {{ auction.auction_end_date }} {{ auction.price }}
+
+{% endfor %}
+{% else %}
+    <p>No Auctions Available</p>
+    {% endif %}
+
+{% endblock %}
+
+    {% if user_login == True %}
+<a href="add_item.html">Add Item</a>
+    {% endif %}
+
+</body>

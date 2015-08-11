@@ -1,0 +1,15 @@
+Add item
+{% block content %}
+
+
+    <form method="post">
+        {% csrf_token %}
+    Item name:
+        <br>
+            <input type="text" name="item_name"> {{ item.item_name }} </input>
+    <br>
+    Description:
+             <textarea name="description">{{ item.description }}</textarea>
+        <input type="submit" value="Create new item"/>
+    </form>
+{% endblock %}

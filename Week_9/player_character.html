@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var GAME = {
+
+        abilities: [
+            {
+                id: 1,
+                name: "Agility"
+            },
+            {
+                id: 2,
+                name: "Strength"
+            }
+        ],
+
+        die_type: [
+            {
+                id: 1,
+                name: "d4",
+                value: 4
+            }
+            {
+                id: 2,
+                name: "d6",
+                value: 6
+            }
+        ],
+
+        characters: [
+            {
+                name: "kevin",
+                "ability_value_pairs": [
+                    {ability: 1, die_type: 2},
+                    {ability: 2, die_type: 1}
+                ]
+            }
+        ]
+    };
+
+    /**
+     *
+     * @example_use select(my_array_list, "name" , "id", 2);
+     * @param list
+     * @param display_name
+     * @param value_name
+     * @param selected_value
+     */
+    function select(list, display_name, value_name, selected_value) {
+
+    }
+
+
+    function drawCharacterAbility(pair) {
+        var list = GAME.abilities;
+        body.innerHTML += select(list, "name", "id", pair.ability);
+        var list = GAME.die_type;
+        body.innerHTML += select(list, "name", "id", pair.die_type);
+    }
+    function drawCharacterSkill(skill) {
+
+    }
+    function drawCharacter(index) {
+        var character = GAME.characters[index];
+
+        //loop through player ability/die pairs and call drawCharacterAbility once for each
+        //for( var i = 0; ...
+        var pair_list = character.ability_value_pairs;
+        var pair = pair_list[i];
+        drawCharacterAbility(pair)
+    }
+
+    var selectedCharacter = 0;
+    drawCharacter(selectedCharacter);
+
+</script>
+<select id="ability" size="6">
+    <option value="1">Agility</option>
+    <option value="2" selected>Strength</option>
+</select>
+</body>
+</html>

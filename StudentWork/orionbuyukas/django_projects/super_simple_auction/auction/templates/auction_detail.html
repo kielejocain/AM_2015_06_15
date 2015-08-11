@@ -1,0 +1,32 @@
+todo:
+
+display auction
+item deails
+
+bid
+buy now
+
+
+
+link to email seller
+
+edit auction information
+
+
+
+
+{% block content %}
+
+    {{ auction.name }}
+    <br>
+    {{ auction.description }}
+    <br>
+    {{ auction.increment }}
+    <br>
+    {{ auction.opening_bid }}
+
+
+<a href="bidding.html/{{ auction.auction_id }}">Place Bid</a>
+
+
+{% endblock %}

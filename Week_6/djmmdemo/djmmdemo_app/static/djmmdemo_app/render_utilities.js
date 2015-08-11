@@ -1,9 +1,9 @@
-function objectListIntoSelectOptions(select, objectList, displayField) {
+function objectListIntoSelectOptions(select, objectList, displayField, valueField) {
     select.innerHTML="";
     for (var index in objectList) {
         var item = objectList[index];
         var option = document.createElement("option");
-        option.value = index;
+        option.value = item[valueField];
         option.innerHTML = item[displayField];
         select.appendChild(option);
     }
