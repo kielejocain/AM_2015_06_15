@@ -1,0 +1,19 @@
+<script>
+    function useMe() {
+        return 2 + 2;
+    }
+
+    alert(window.location);
+
+    if (window.location.indexOf("localhost") != -1) {
+        function test_useMe() {
+            var result = useMe();
+            var expected = 4;
+            var passFail = (result == expected);
+            return passFail;
+        }
+
+        test_useMe();
+    }
+
+</script>
