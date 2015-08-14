@@ -26,6 +26,7 @@
 
         document.write("Z<br>");
     }
+    interleavePatternsOne();
 
     /**
      * TODO: Refactor using loops and functions to solve problem,
@@ -50,5 +51,6 @@
     var LINE_SEPARATOR = "<br>";
     var COMMON_PATTERN = "ABC";
     var LETTERS = "XYZ";
-    document.write(interleavePatterns(COMMON_PATTERN, LETTERS));
+    var result = interleavePatterns(COMMON_PATTERN, LETTERS, LINE_SEPARATOR);
+    document.write(result);
 </script>
