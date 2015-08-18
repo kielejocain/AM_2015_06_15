@@ -1,0 +1,98 @@
+<body>
+<div id="list"></div>
+<button id="view-button">Display Order</button>
+<div id="output"></div>
+</body>
+<script>
+    var list = [
+        {name: "apple", ordinal: 0, id: 1},
+        {name: "banana", ordinal: 0, id: 2},
+        {name: "cherry", ordinal: 0, id: 3},
+        {name: "orange", ordinal: 0, id: 4},
+        {name: "pear", ordinal: 0, id: 5}
+    ];
+
+    function getItemById(id) {
+        for (var i = 0; i < list.length; i++) {
+            var item = list[i];
+            if (item.id == id)
+                return item;
+        }
+        return undefined;
+    }
+
+    function show(e) {
+        var targetElement = document.getElementById("list");
+        var itemElementList = targetElement.children;
+        var outputElement = document.getElementById("output");
+        outputElement.innerHTML = "";
+        for (var i = 0; i < itemElementList.length; i++) {
+            var itemElement = itemElementList[i];
+            var id = itemElement.getAttribute("data-id");
+            var item = getItemById(id);
+            item.ordinal = i;
+
+            outputElement.innerHTML += i + itemElement.lastChild.innerHTML + "<br>"
+        }
+        console.log(list);
+    }
+
+    function move(e, direction) {
+        var button = e.target;
+        var item = button.parentElement;
+        var list = item.parentElement;
+        var index = [].slice.call(list.children).indexOf(item);
+        var destination = index;
+
+        if (direction == -1) {
+            destination = index + direction;
+        } else if (direction == 1) {
+            destination = index + 1 + direction;
+        }
+
+        if (destination > list.children.length) {
+            destination = 0;
+        } else if (destination < 0) {
+            destination = list.children.length;
+        }
+        list.insertBefore(item, list.children[destination]);
+
+    }
+    function upClick(e) {
+        move(e, -1);
+    }
+
+    function downClick(e) {
+        move(e, 1);
+    }
+
+    function init() {
+        var targetElement = document.getElementById("list");
+
+        var button = document.getElementById("view-button");
+        button.addEventListener("click", show);
+
+        for (var i = 0; i < list.length; i++) {
+            var item = list[i];
+            var div = document.createElement("div");
+            div.setAttribute("data-id", item.id);
+
+            var up = document.createElement("button");
+            up.innerHTML = "up";
+            up.addEventListener("click", upClick);
+            div.appendChild(up);
+
+            var down = document.createElement("button");
+            down.innerHTML = "down";
+            down.addEventListener("click", downClick)
+            div.appendChild(down);
+
+            var span = document.createElement("span");
+            span.innerHTML = item.name;
+            div.appendChild(span);
+            targetElement.appendChild(div);
+        }
+
+    }
+    document.addEventListener("DOMContentLoaded", init);
+</script>
