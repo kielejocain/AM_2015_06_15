@@ -1,15 +1,14 @@
 <body>
 <div id="list"></div>
-<button id="view-button">Display Order</button>
 <div id="output"></div>
 </body>
 <script>
     var list = [
         {name: "apple", ordinal: 0, id: 1},
-        {name: "banana", ordinal: 0, id: 2},
-        {name: "cherry", ordinal: 0, id: 3},
-        {name: "orange", ordinal: 0, id: 4},
-        {name: "pear", ordinal: 0, id: 5}
+        {name: "banana", ordinal: 1, id: 2},
+        {name: "cherry", ordinal: 2, id: 3},
+        {name: "orange", ordinal: 3, id: 4},
+        {name: "pear", ordinal: 4, id: 5}
     ];
 
     function getItemById(id) {
@@ -21,7 +20,7 @@
         return undefined;
     }
 
-    function show(e) {
+    function update() {
         var targetElement = document.getElementById("list");
         var itemElementList = targetElement.children;
         var outputElement = document.getElementById("output");
@@ -31,10 +30,16 @@
             var id = itemElement.getAttribute("data-id");
             var item = getItemById(id);
             item.ordinal = i;
-
-            outputElement.innerHTML += i + itemElement.lastChild.innerHTML + "<br>"
         }
-        console.log(list);
+        show();
+    }
+    function show() {
+        var outputElement = document.getElementById("output");
+        outputElement.innerHTML = "";
+        for (var i = 0; i < list.length; i++) {
+            var item = list[i];
+            outputElement.innerHTML += item.ordinal + item.name + item.id + "<br>"
+        }
     }
 
     function move(e, direction) {
@@ -56,8 +61,9 @@
             destination = list.children.length;
         }
         list.insertBefore(item, list.children[destination]);
-
+        update();
     }
+
     function upClick(e) {
         move(e, -1);
     }
@@ -68,9 +74,6 @@
 
     function init() {
         var targetElement = document.getElementById("list");
-
-        var button = document.getElementById("view-button");
-        button.addEventListener("click", show);
 
         for (var i = 0; i < list.length; i++) {
             var item = list[i];
