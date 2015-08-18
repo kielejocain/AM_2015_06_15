@@ -34,6 +34,7 @@
 
             var f = document.getElementById('registration');
             f.addEventListener("submit", function (e) {
+                e.preventDefault();
 
                 var errors = [];
 
@@ -105,20 +106,20 @@
     <fieldset>
         <label>
             <div> Email:</div>
-            <input name="email" id="email"> </label>
+            <input name="email" id="email" type="email" required> </label>
         <label>
             <div> Phone:</div>
-            <input name="phone" id="phone"> </label>
+            <input name="phone" id="phone" required> </label>
         <label>
             <div> First Name:</div>
-            <input name="first_name" id="first_name"> </label>
+            <input name="first_name" id="first_name" required> </label>
         <label>
             <div> Last Name:</div>
-            <input name="last_name" id="last_name"> </label>
+            <input name="last_name" id="last_name" required> </label>
         <br>
 
         <div style="text-align: right">
-            <input type="submit" value="Register">
+            <input type="submit" value="Register" required>
         </div>
     </fieldset>
 </form>
