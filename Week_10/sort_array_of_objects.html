@@ -21,13 +21,11 @@
     ];
 
     function display(list) {
-        document.body.innerHTML += "<br>";
         for (var i = 0; i < list.length; i++) {
             var item = list[i];
             var text = item.id + " " + item.name + " " + item.price + "<br>";
             document.body.innerHTML += text;
         }
-        document.body.innerHTML += "<br>";
     }
 
     document.body.innerHTML += "<h2>Original:</h2>";
@@ -37,7 +35,8 @@
     list.sort();
     display(list);
 
-    function compareTwoObjectsByPrice(a, b) {
+    //A and B swapped in parameters so prices will be in descending order
+    function compareTwoObjectsByPrice(b, a) {
 
         if (a.price > b.price) {
             return 1;
