@@ -46,8 +46,9 @@
             }
         }
         return clone;
-
     }
+
+
     //This version creates new objects
     function arrayToObject(inputArray) {
 
@@ -61,7 +62,8 @@
 
             // using id as the key;
             // add a clone of the item to output object.
-            outputObject[item.id] = clone(item, "id");
+            var duplicate = clone(item, "id");
+            outputObject[item.id] = duplicate;
         }
         return outputObject;
     }
