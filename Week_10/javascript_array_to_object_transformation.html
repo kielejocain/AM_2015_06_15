@@ -1,0 +1,27 @@
+<body>
+<script>
+    var original = [
+        {id: 123, name: "Bob", dob: "1/1/2011"},
+        {id: 456, name: "Bob", dob: "1/1/2011"}
+    ];
+
+    var desired = {
+        123: {name: "Bob", dob: "1/1/2011"},
+        456: {name: "Bob", dob: "1/1/2011"}
+    };
+
+    function arrayToObject(inputArray) {
+        var outputObject = {};
+        for (var i = 0; i < original.length; i++) {
+            var item = original[i];
+            var id = item["id"];
+            delete item.id;
+            outputObject[id] = item;
+        }
+        return outputObject;
+    }
+
+    console.log(arrayToObject(original));
+
+</script>
+</body>

@@ -46,7 +46,11 @@
         var button = e.target;
         var item = button.parentElement;
         var list = item.parentElement;
-        var index = [].slice.call(list.children).indexOf(item);
+        //use Array.slice convert children to regular array,
+        // so we can use array's indexOf method.
+        // we could loop through instead of using indexOf but this is faster.
+        var converted = Array.slice.call(list.children);
+        var index = converted.indexOf(item);
         var destination = index;
 
         if (direction == -1) {
