@@ -1,0 +1,61 @@
+<body>
+<script src="pretty_json.js"></script>
+<script>
+    var original = [
+        {id: 123, name: "Kevin", dob: "1/1/2011"},
+        {id: 456, name: "Bob", dob: "2/2/2012"}
+    ];
+
+    var desired =
+            "<table>" +
+            "<tr><td>id</td><td>name</td><td>dob</td></tr>" +
+            "<tr><td>123</td><td>Kevin</td><td>1/1/2011</td></tr>" +
+            "<tr><td>456</td><td>Bob</td><td>2/2/2012</td></tr>" +
+            "</table>";
+
+
+    function arrayToTable(inputArray) {
+
+        var outputTable = "<table>";
+
+        //headings
+        outputTable += "<tr>";
+        var properties = Object.keys(inputArray[0]);
+        for (var p = 0; p < properties.length; p++) {
+            var property_name = properties[p];
+            outputTable += "<th>";
+            outputTable += property_name;
+            outputTable += "</th>";
+        }
+        outputTable += "</tr>";
+
+        //Loop through list indexes
+        for (var i = 0; i < inputArray.length; i++) {
+            //pull one item off using index
+            var item = inputArray[i];
+            outputTable += "<tr>";
+
+            // using id as the key;
+            // add a clone of the item to output object.
+            for (var p = 0; p < properties.length; p++) {
+                var property_name = properties[p];
+                outputTable += "<td>";
+                outputTable += item[property_name];
+                outputTable += "</td>";
+
+            }
+            outputTable += "</tr>";
+
+        }
+        outputTable += "</table>";
+
+        return outputTable;
+    }
+
+    function init() {
+        var result = arrayToTable(original);
+        document.body.innerHTML = result;
+    }
+    document.addEventListener("DOMContentLoaded", init);
+</script>
+</body>
