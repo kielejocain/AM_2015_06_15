@@ -14,9 +14,9 @@
             "</table>";
 
 
-    function arrayToTable(inputArray) {
+    function arrayToTableStrings(inputArray) {
 
-        var outputTable = "<table>";
+        var outputTable = "<table>\n";
 
         //headings
         outputTable += "<tr>";
@@ -27,7 +27,7 @@
             outputTable += property_name;
             outputTable += "</th>";
         }
-        outputTable += "</tr>";
+        outputTable += "</tr>\n";
 
         //Loop through list indexes
         for (var i = 0; i < inputArray.length; i++) {
@@ -44,17 +44,58 @@
                 outputTable += "</td>";
 
             }
-            outputTable += "</tr>";
+            outputTable += "</tr>\n";
 
         }
-        outputTable += "</table>";
+        outputTable += "</table>\n";
 
         return outputTable;
     }
 
+    function arrayToTableElements(inputArray) {
+
+        var outputTable = document.createElement("table");
+
+        //headings
+        var tr = document.createElement("tr");
+        var properties = Object.keys(inputArray[0]);
+        for (var p = 0; p < properties.length; p++) {
+            var property_name = properties[p];
+            var th = document.createElement("th");
+            th.innerHTML = property_name;
+            tr.appendChild(th);
+        }
+        outputTable.appendChild(tr);
+
+        //Loop through list indexes
+        for (var i = 0; i < inputArray.length; i++) {
+            //pull one item off using index
+            var item = inputArray[i];
+
+            var tr = document.createElement("tr");
+            var properties = Object.keys(inputArray[0]);
+            for (var p = 0; p < properties.length; p++) {
+                var property_name = properties[p];
+                var td = document.createElement("td");
+                td.innerHTML = item[property_name];
+                tr.appendChild(td);
+            }
+            outputTable.appendChild(tr);
+
+        }
+
+        return (outputTable);
+    }
+
     function init() {
-        var result = arrayToTable(original);
-        document.body.innerHTML = result;
+        var resultString = arrayToTableStrings(original);
+        resultString = resultString.replace(/</g, "&lt;");
+        resultString = resultString.replace(/>/g, "&gt;");
+        document.body.innerHTML += "<pre>" + resultString + "</pre>";
+
+        var resultTable = arrayToTableElements(original);
+        document.body.appendChild(resultTable);
+
     }
     document.addEventListener("DOMContentLoaded", init);
 </script>
