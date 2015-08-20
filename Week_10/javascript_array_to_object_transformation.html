@@ -11,11 +11,22 @@
     };
 
     function arrayToObject(inputArray) {
+
+        //initialze empty output object
         var outputObject = {};
+
+        //Loop through list indexes
         for (var i = 0; i < original.length; i++) {
+            //pull one item off using index
             var item = original[i];
+
+            //copy id before removing it!
             var id = item["id"];
+
+            //remove id from object
             delete item.id;
+
+            // using id as the key; add item to output object
             outputObject[id] = item;
         }
         return outputObject;
