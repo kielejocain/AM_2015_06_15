@@ -1,26 +1,23 @@
 <body>
 <script src="pretty_json.js"></script>
 <script>
-    var original = [
+    var listOfObjects = [
         {id: 123, name: "Kevin", dob: "1/1/2011"},
         {id: 456, name: "Bob", dob: "2/2/2012"}
     ];
 
-    var desired =
-            "<table>" +
-            "<tr><td>id</td><td>name</td><td>dob</td></tr>" +
-            "<tr><td>123</td><td>Kevin</td><td>1/1/2011</td></tr>" +
-            "<tr><td>456</td><td>Bob</td><td>2/2/2012</td></tr>" +
-            "</table>";
+    //TODO: Make a table from the data above
 
+    //Extra Credit 1: Add Headings
+    //Extra Credit 2: Add Headings without a second loop.
 
-    function arrayToTableStrings(inputArray) {
+    function arrayToTableStrings(listOfObjects) {
 
         var outputTable = "<table>\n";
 
         //headings
         outputTable += "<tr>";
-        var properties = Object.keys(inputArray[0]);
+        var properties = Object.keys(listOfObjects[0]);
         for (var p = 0; p < properties.length; p++) {
             var property_name = properties[p];
             outputTable += "<th>";
@@ -29,14 +26,10 @@
         }
         outputTable += "</tr>\n";
 
-        //Loop through list indexes
-        for (var i = 0; i < inputArray.length; i++) {
-            //pull one item off using index
-            var item = inputArray[i];
+        for (var i = 0; i < listOfObjects.length; i++) {
+            var item = listOfObjects[i];
             outputTable += "<tr>";
 
-            // using id as the key;
-            // add a clone of the item to output object.
             for (var p = 0; p < properties.length; p++) {
                 var property_name = properties[p];
                 outputTable += "<td>";
@@ -60,40 +53,34 @@
         var tr = document.createElement("tr");
         var properties = Object.keys(inputArray[0]);
         for (var p = 0; p < properties.length; p++) {
-            var property_name = properties[p];
+            var propertyName = properties[p];
             var th = document.createElement("th");
-            th.innerHTML = property_name;
+            th.innerHTML = propertyName;
             tr.appendChild(th);
         }
         outputTable.appendChild(tr);
 
-        //Loop through list indexes
         for (var i = 0; i < inputArray.length; i++) {
-            //pull one item off using index
             var item = inputArray[i];
-
             var tr = document.createElement("tr");
             var properties = Object.keys(inputArray[0]);
             for (var p = 0; p < properties.length; p++) {
-                var property_name = properties[p];
+                var propertyName = properties[p];
                 var td = document.createElement("td");
-                td.innerHTML = item[property_name];
+                td.innerHTML = item[propertyName];
                 tr.appendChild(td);
             }
             outputTable.appendChild(tr);
-
         }
-
         return (outputTable);
     }
 
     function init() {
-        var resultString = arrayToTableStrings(original);
+        var resultString = arrayToTableStrings(listOfObjects);
         resultString = resultString.replace(/</g, "&lt;");
         resultString = resultString.replace(/>/g, "&gt;");
         document.body.innerHTML += "<pre>" + resultString + "</pre>";
-
-        var resultTable = arrayToTableElements(original);
+        var resultTable = arrayToTableElements(listOfObjects);
         document.body.appendChild(resultTable);
 
     }
