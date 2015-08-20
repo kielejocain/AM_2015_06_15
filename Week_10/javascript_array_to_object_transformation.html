@@ -1,38 +1,79 @@
 <body>
+<script src="pretty_json.js"></script>
 <script>
     var original = [
-        {id: 123, name: "Bob", dob: "1/1/2011"},
-        {id: 456, name: "Bob", dob: "1/1/2011"}
+        {id: 123, name: "Kevin", dob: "1/1/2011"},
+        {id: 456, name: "Bob", dob: "2/2/2012"}
     ];
 
     var desired = {
-        123: {name: "Bob", dob: "1/1/2011"},
+        123: {name: "Kevin", dob: "1/1/2011"},
         456: {name: "Bob", dob: "1/1/2011"}
     };
 
+    //This version modifies the original object
+    function arrayToObjectDestructive(inputArray) {
+
+        //initialze empty output object
+        var outputObject = {};
+
+        //Loop through list indexes
+        for (var i = 0; i < inputArray.length; i++) {
+            //pull one item off using index
+            var item = inputArray[i];
+
+            //copy id before removing it!
+            var id = item["id"].toString();
+
+            // using id as the key; add item to output object
+            outputObject[id] = item;
+
+            //remove id from object
+            delete item.id;
+        }
+        return outputObject;
+    }
+
+    function clone(item, omit) {
+        var properties = Object.keys(item);
+        var clone = {};
+
+        for (var p = 0; p < properties.length; p++) {
+            var property_name = properties[p];
+            console.log(property_name);
+            if (property_name != omit) {
+                clone[property_name] = item[property_name];
+            }
+        }
+        return clone;
+
+    }
+    //This version creates new objects
     function arrayToObject(inputArray) {
 
         //initialze empty output object
         var outputObject = {};
 
         //Loop through list indexes
-        for (var i = 0; i < original.length; i++) {
+        for (var i = 0; i < inputArray.length; i++) {
             //pull one item off using index
-            var item = original[i];
+            var item = inputArray[i];
 
-            //copy id before removing it!
-            var id = item["id"];
-
-            //remove id from object
-            delete item.id;
-
-            // using id as the key; add item to output object
-            outputObject[id] = item;
+            // using id as the key;
+            // add a clone of the item to output object.
+            outputObject[item.id] = clone(item, "id");
         }
         return outputObject;
     }
 
-    console.log(arrayToObject(original));
+    function init() {
+        var result = arrayToObject(original);
+        //add some whitespace
+        json = prettyJson(result);
+        document.body.innerHTML = json;
+    }
+    document.addEventListener("DOMContentLoaded", init);
+
 
 </script>
 </body>
